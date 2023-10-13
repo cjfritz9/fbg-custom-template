@@ -1,58 +1,45 @@
-'use client';
 import React, { useEffect } from 'react';
-import logo from '@/public/assets/images/fbg-logo.webp';
 import Link from 'next/link';
-import Image from 'next/image';
 import { PiPaintBrushHouseholdBold } from 'react-icons/pi';
 import { themeChange } from 'theme-change';
-
-
+import Logo from '../UI/Logo';
+import ThemeButton from '../actions/ThemeButton';
+import SearchBar from '../actions/SearchBar';
+import { themes } from '@/lib/static/themes';
+import { links } from '@/lib/static/links';
 
 const Header: React.FC = () => {
-  useEffect(() => {
-    themeChange(false);
-  }, []);
   return (
-    <div className='navbar bg-base-100 h-32 px-12 text-primary'>
+    <div className='navbar bg-base-100 h-32 px-12 text-primary border-b-primary border-b'>
       <div className='flex-1 align-center'>
-        <Link href='/'>
-          <Image src={logo} alt='Full Blast Gear Logo' height={76} />
-        </Link>
+        <Logo />
       </div>
-      
       <div className='flex-none gap-4'>
-        <div className='form-control'>
-          <input
-            type='text'
-            placeholder='Search'
-            className='input input-bordered border-secondary w-24 md:w-auto'
-          />
-        </div>
+        <SearchBar />
         <ul className='menu menu-horizontal px-1 gap-4'>
           <li>
             <details className='align-center'>
-              <summary className='text-secondary normal-case text-3xl after:hidden'>
-                <PiPaintBrushHouseholdBold />
+              <summary className='text-secondary normal-case after:hidden gap-4'>
+                <p className='text-xl'>[Dev]</p>
+                <p className='text-3xl'>
+                  <PiPaintBrushHouseholdBold />
+                </p>
               </summary>
               <ul className='p-2 bg-base-100 right-0 top-10 w-32 z-10'>
-                <li className='text-secondary normal-case text-lg'>
-                  <button data-set-theme="theme1" data-act-class="theme1">Theme 1</button>
-                </li>
-                <li className='text-secondary normal-case text-lg'>
-                  <button data-set-theme="theme2" data-act-class="theme2">Theme 2</button>
-                </li>
-                <li className='text-secondary normal-case text-lg'>
-                  <button data-set-theme="theme3" data-act-class="theme3">Theme 3</button>
-                </li>
-                <li className='text-secondary normal-case text-lg'>
-                  <button data-set-theme="theme4" data-act-class="theme4">Theme 4</button>
-                </li>
-                <li className='text-secondary normal-case text-lg'>
-                  <button data-set-theme="theme5" data-act-class="theme5">Theme 5</button>
-                </li>
-                <li className='text-secondary normal-case text-lg'>
-                  <button data-set-theme="dark" data-act-class="dark">Dark</button>
-                </li>
+                {themes.map((theme) => (
+                  <li
+                    key={theme.attributeName}
+                    className='text-secondary normal-case text-lg'
+                  >
+                    <ThemeButton
+                      attributes={{
+                        'data-set-theme': theme.attributeName,
+                        'data-act-class': theme.attributeName
+                      }}
+                      themeChoice={theme.uiName}
+                    />
+                  </li>
+                ))}
               </ul>
             </details>
           </li>
@@ -62,16 +49,16 @@ const Header: React.FC = () => {
                 Menu
               </summary>
               <ul className='p-2 bg-base-100 right-0 top-10 w-32 z-10'>
-                <li>
-                  <Link href='/' className='text-secondary normal-case text-xl'>
-                    Shop
-                  </Link>
-                </li>
-                <li>
-                  <Link href='/' className='text-secondary normal-case text-xl'>
-                    About
-                  </Link>
-                </li>
+                {links.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      href={link.slug}
+                      className='text-secondary normal-case text-xl'
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </details>
           </li>

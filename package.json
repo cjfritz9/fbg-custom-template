@@ -4,18 +4,20 @@
   "private": true,
   "scripts": {
     "dev": "rm -rf .next && next dev",
-    "build": "next build",
+    "build": "rm -rf .next && next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.17",
     "@tailwindcss/typography": "^0.5.10",
     "next": "13.5.4",
     "next-cloudinary": "^4.24.1",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^4.11.0",
-    "theme-change": "^2.5.0"
+    "theme-change": "^2.5.0",
+    "use-debounce": "^9.0.4"
   },
   "devDependencies": {
     "@types/node": "^20",
