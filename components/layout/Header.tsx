@@ -10,7 +10,7 @@ import { links } from '@/lib/static/links';
 
 const Header: React.FC = () => {
   return (
-    <div className='navbar bg-base-100 h-32 px-12 text-primary border-b-primary border-b'>
+    <div className='navbar bg-base-100 h-32 px-12 text-primary z-10'>
       <div className='flex-1 align-center'>
         <Logo />
       </div>

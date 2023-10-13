@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { Inter, Mulish, Montserrat } from 'next/font/google';
 import Providers from './providers';
 import Announcement from '@/components/actions/Announcement';
+import Border from '@/components/layout/Border';
 
 const inter = Inter({ subsets: ['latin'] });
 const monsterrat = Montserrat({ subsets: ['latin'] });
@@ -19,12 +20,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en' data-theme='theme1'>
+    <html lang='en' data-theme='dark'>
       <body className={`${inter.className} ${monsterrat.className}`}>
         <Announcement />
         <Providers>
           <Header />
         </Providers>
+        <Border />
         {children}
       </body>
     </html>

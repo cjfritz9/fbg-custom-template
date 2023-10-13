@@ -1,10 +1,11 @@
 import type { Config } from 'tailwindcss';
 
+const defaultLightTheme = require('daisyui/src/theming/themes')[
+  '[data-theme=dark]'
+];
 const defaultDarkTheme = require('daisyui/src/theming/themes')[
   '[data-theme=dark]'
 ];
-
-console.log(defaultDarkTheme);
 
 const config: Config = {
   content: [
@@ -16,6 +17,7 @@ const config: Config = {
     themes: [
       {
         theme1: {
+          ...defaultLightTheme,
           primary: '#321714',
           'primary-content': '#FFFFFF',
           secondary: '#E0522E',
@@ -26,6 +28,7 @@ const config: Config = {
       },
       {
         theme2: {
+          ...defaultLightTheme,
           primary: '#321714',
           'primary-content': '#FFFFFF',
           secondary: '#E0522E',
@@ -41,6 +44,7 @@ const config: Config = {
 
       {
         theme3: {
+          ...defaultLightTheme,
           primary: '#321714',
           'primary-content': '#FFFFFF',
           secondary: '#E0522E',
@@ -55,6 +59,7 @@ const config: Config = {
       },
       {
         theme4: {
+          ...defaultLightTheme,
           primary: '#321714',
           'primary-content': '#FFFFFF',
           secondary: '#E0522E',
