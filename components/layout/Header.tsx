@@ -10,7 +10,7 @@ import { links } from '@/lib/static/links';
 
 const Header: React.FC = () => {
   return (
-    <div className='navbar bg-base-100 h-32 px-12 text-primary z-10'>
+    <div className='navbar bg-base-100 h-32 px-12 text-primary z-[15]'>
       <div className='flex-1 align-center'>
         <Logo />
       </div>
@@ -25,7 +25,7 @@ const Header: React.FC = () => {
                   <PiPaintBrushHouseholdBold />
                 </p>
               </summary>
-              <ul className='p-2 bg-base-100 right-0 top-10 w-32 z-10'>
+              <ul className='p-2 bg-base-100 right-0 top-10 w-32 z-[15]'>
                 {themes.map((theme) => (
                   <li
                     key={theme.attributeName}
@@ -48,7 +48,7 @@ const Header: React.FC = () => {
               <summary className='text-secondary normal-case text-xl'>
                 Menu
               </summary>
-              <ul className='p-2 bg-base-100 right-0 top-10 w-32 z-10'>
+              <ul className='p-2 bg-base-100 right-0 top-10 w-32 z-[15]'>
                 {links.map((link) => (
                   <li key={link.name}>
                     <Link

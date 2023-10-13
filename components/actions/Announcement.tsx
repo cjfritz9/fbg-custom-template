@@ -25,7 +25,7 @@ const Announcement: React.FC = () => {
 
   return (
     <div
-      className={`w-full flex px-12 py-4 bg-accent z-10 ${
+      className={`w-full flex px-12 py-4 bg-accent z-[15] ${
         isPageAtTop ? 'justify-center' : 'justify-between'
       } align-center font-normal top-0 ${!isPageAtTop && isOpen && 'sticky'}`}
     >
