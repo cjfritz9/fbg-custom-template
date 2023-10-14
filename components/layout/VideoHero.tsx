@@ -24,9 +24,8 @@ const VideoHero: React.FC = () => {
         className='overflow-hidden 2xl:mt-[-200px] xl:mt-[-160px] lg:mt-[-120px] md:mt-[-80px] sm:mt-[-40px] pointer-events-none brightness-[33%]'
       >
         <source src='/assets/videos/gun-cleaning.webm' type='video/webm' />
-        {/*              TODO: GET MP4 AND OGG
         <source src='/assets/videos/gun-cleaning.mp4' type='video/mp4' />
-        <source src='/assets/videos/gun-cleaning.ogg' type='video/ogg' /> */}
+        <source src='/assets/videos/gun-cleaning.ogg' type='video/ogg' />
       </video>
     </div>
   );
