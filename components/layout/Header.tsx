@@ -6,7 +6,7 @@ import Logo from '../UI/Logo';
 import ThemeButton from '../actions/ThemeButton';
 import SearchBar from '../actions/SearchBar';
 import { themes } from '@/lib/static/themes';
-import { links } from '@/lib/static/links';
+import { navLinks } from '@/lib/static/links';
 
 const Header: React.FC = () => {
   return (
@@ -49,7 +49,7 @@ const Header: React.FC = () => {
                 Menu
               </summary>
               <ul className='p-2 bg-base-100 right-0 top-10 w-32 z-[15]'>
-                {links.map((link) => (
+                {navLinks.map((link) => (
                   <li key={link.name}>
                     <Link
                       href={link.slug}

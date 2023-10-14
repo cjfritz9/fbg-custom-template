@@ -1,3 +1,4 @@
+import { footerLinks } from '@/lib/static/links';
 import { StaticImageData } from 'next/image';
 import React from 'react';
 
@@ -23,14 +24,14 @@ export interface ImageWithTextProps extends React.PropsWithChildren {
    * Container Styles
    *
    * Tailwind CSS style string format
-  */
+   */
   styles: TailwindCSSStyles;
   /**
    * OPTIONAL - Reverses the layout
    *
-   * [default = text | image]
+   * [default = image | text]
    *
-   * [reversed = image | text]
-  */
+   * [reversed = text | image]
+   */
   reverse?: boolean;
 }

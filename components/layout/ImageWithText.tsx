@@ -9,7 +9,7 @@ const ImageWithText: React.FC<ImageWithTextProps> = ({
   reverse = false
 }) => {
   return (
-    <div className={`hero py-24 px-12 ${styles}`}>
+    <div className={`hero py-24 px-40 ${styles}`}>
       <div
         className={`hero-content h-full max-w-max gap-24 ${
           reverse
@@ -22,7 +22,7 @@ const ImageWithText: React.FC<ImageWithTextProps> = ({
           src={imageSrc}
           height='720'
           alt='Full bore blast firearm cleaning system product image'
-          className='min-w-[72rem] shadow-2xl z-0'
+          className='max-w-4xl shadow-2xl z-0'
         />
         <div className={`${reverse ? 'text-left' : 'text-right'}`}>
           {textContent}

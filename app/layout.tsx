@@ -5,6 +5,8 @@ import { Inter, Mulish, Montserrat } from 'next/font/google';
 import Providers from './providers';
 import Announcement from '@/components/actions/Announcement';
 import Border from '@/components/layout/Border';
+import Ankle from '@/components/layout/Ankle';
+import Footer from '@/components/layout/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 const monsterrat = Montserrat({ subsets: ['latin'] });
@@ -25,9 +27,11 @@ export default function RootLayout({
         <Announcement />
         <Providers>
           <Header />
+          <Border />
+          {children}
+          <Ankle />
+          <Footer />
         </Providers>
-        <Border />
-        {children}
       </body>
     </html>
   );

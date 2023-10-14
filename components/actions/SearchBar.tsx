@@ -7,6 +7,10 @@ import { Products } from '@/@types/shopify';
 import useIsClient from '@/lib/hooks/useIsClient';
 import { useRouter } from 'next/navigation';
 
+/** Implements Combobox from '@headlessui/react'
+ *
+ * https://headlessui.com/react/combobox
+ */
 const SearchBar: React.FC = () => {
   const router = useRouter();
   const isClient = useIsClient();
