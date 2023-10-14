@@ -6,8 +6,9 @@ import logo from '@/public/assets/images/fbg-logo.webp';
 import logoAlt from '@/public/assets/images/fbg-logo-white.webp';
 import { ThemeContext } from '@/context/Theme.context';
 import { ThemeInterface } from '@/@types/context';
+import { LogoProps } from '@/@types/props';
 
-const Logo: React.FC = () => {
+const Logo: React.FC<LogoProps> = ({ height = 76 }) => {
   const { theme } = useContext(ThemeContext) as ThemeInterface;
   const [logoVariant, setLogoVariant] = useState(logoAlt);
 
@@ -25,7 +26,7 @@ const Logo: React.FC = () => {
         priority
         src={logoVariant}
         alt='Full Blast Gear Logo'
-        height={76}
+        height={height}
       />
     </Link>
   );

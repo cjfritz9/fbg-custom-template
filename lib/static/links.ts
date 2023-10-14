@@ -9,30 +9,24 @@ export const navLinks = [
   }
 ];
 
-export const footerLinks = [
-  {
-    companyLinks: [
-      { name: 'Contact', slug: '/contact' },
-      { name: 'FAQ', slug: '/faq' },
-      { name: 'Account', slug: '/account' }
-    ]
-  },
-  {
-    policyLinks: [
-      { name: 'Terms & Conditions', slug: '/policies/terms-and-conditions' },
-      { name: 'Privacy Policy', slug: '/policies/privacy' },
-      { name: 'Cookie Policy', slug: '/policies/cookies' },
-      { name: 'Return Policy', slug: '/policies/returns' }
-    ]
-  },
-  {
-    informationalLinks: [
-      { name: 'Shipping', slug: '/information/shipping' },
-      { name: 'Warranties', slug: '/information/warranties' },
-      {
-        name: 'Non-Traditional Gun Cleaning',
-        slug: '/information/non-traditional-gun-cleaning'
-      }
-    ]
-  }
-];
+export const footerLinks = {
+  companyLinks: [
+    { name: 'Contact', slug: '/contact' },
+    { name: 'FAQ', slug: '/faq' },
+    { name: 'Account', slug: '/account' }
+  ],
+  policyLinks: [
+    { name: 'Terms & Conditions', slug: '/policies/terms-and-conditions' },
+    { name: 'Privacy Policy', slug: '/policies/privacy' },
+    { name: 'Cookie Policy', slug: '/policies/cookies' },
+    { name: 'Return Policy', slug: '/policies/returns' }
+  ],
+  informationalLinks: [
+    {
+      name: 'Gun Cleaning',
+      slug: '/information/non-traditional-gun-cleaning'
+    },
+    { name: 'Warranties', slug: '/information/warranties' },
+    { name: 'Shipping', slug: '/information/shipping' }
+  ]
+};

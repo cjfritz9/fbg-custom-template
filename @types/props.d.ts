@@ -5,8 +5,12 @@ import React from 'react';
 type TailwindCSSStyles = string;
 
 export interface ButtonProps extends React.PropsWithChildren {
-  /** Tailwind CSS string format */
+  /** Tailwind CSS + DaisyUI utility string format */
   styles: TailwindCSSStyles;
+}
+
+export interface LogoProps {
+  height?: number;
 }
 
 export interface ThemeButtonProps {
@@ -21,9 +25,11 @@ export interface ThemeButtonProps {
 export interface ImageWithTextProps extends React.PropsWithChildren {
   imageSrc: StaticImageData;
   /**
-   * Container Styles
-   *
    * Tailwind CSS style string format
+   *
+   * Container Styles for DaisyUI Hero with figure
+   * 
+   * https://daisyui.com/components/hero/#hero-with-figure
    */
   styles: TailwindCSSStyles;
   /**
@@ -34,4 +40,9 @@ export interface ImageWithTextProps extends React.PropsWithChildren {
    * [reversed = text | image]
    */
   reverse?: boolean;
+}
+
+export interface FooterLinkGroupProps {
+  title: string;
+  links: typeof footerLinks.companyLinks
 }
