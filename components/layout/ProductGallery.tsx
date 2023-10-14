@@ -20,7 +20,7 @@ const ProductGallery: React.FC = () => {
       <div>
         <div className='flex gap-4 items-baseline'>
           <h2 className='text-2xl font-bold'>TOP PRODUCTS</h2>
-          <Link href='/shop' className='text-xs underline underline-offset-4'>SHOP NOW</Link>
+          <Link href='/shop' className='text-xs underline underline-offset-4 text-accent'>SHOP NOW</Link>
         </div>
         <p>
           From our full kit to any piece or part, you are sure to find what you
