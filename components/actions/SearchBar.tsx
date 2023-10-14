@@ -65,10 +65,10 @@ const SearchBar: React.FC = () => {
               <Combobox.Option key={product.slug} value={product.slug}>
                 {({ active }) => (
                   <span
-                    className={`block px-2 truncate w-full text-primary-content ${
+                    className={`block px-2 truncate w-full ${
                       active && product[0]
-                        ? 'bg-neutral text-base-100'
-                        : 'bg-base-100 text-neutral'
+                        ? 'bg-neutral text-secondary'
+                        : 'bg-base-200 text-secondary'
                     }`}
                   >
                     {product.title}
