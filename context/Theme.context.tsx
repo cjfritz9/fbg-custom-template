@@ -22,7 +22,7 @@ const getTheme = () => {
   let theme = '';
 
   if (typeof window !== 'undefined') {
-    theme = localStorage.getItem('theme') ?? '';
+    theme = localStorage.getItem('theme') ?? 'dark';
   }
 
   return theme;

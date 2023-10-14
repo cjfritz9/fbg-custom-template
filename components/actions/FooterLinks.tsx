@@ -23,8 +23,6 @@ const FooterLinks: React.FC = () => {
   //   }
   // }, [pathname]);
 
-  console.log(activeIndex);
-
   return (
     <div className='tabs mt-10'>
       {/* {footerLinks.map((link, i) => (
