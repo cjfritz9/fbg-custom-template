@@ -1,12 +1,12 @@
-import Header from '@/components/layout/Header';
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter, Mulish, Montserrat } from 'next/font/google';
 import Providers from './providers';
 import Announcement from '@/components/actions/Announcement';
+import Header from '@/components/layout/Header';
 import Border from '@/components/layout/Border';
 import Ankle from '@/components/layout/Ankle';
-import Footer from '@/components/actions/footer/Footer';
+import Footer from '@/components/layout/footer/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 const monsterrat = Montserrat({ subsets: ['latin'] });

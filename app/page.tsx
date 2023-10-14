@@ -1,6 +1,7 @@
 import Button from '@/components/actions/Button';
 import Border from '@/components/layout/Border';
 import ImageWithText from '@/components/layout/ImageWithText';
+import ProductGallery from '@/components/layout/ProductGallery';
 import VideoHero from '@/components/layout/VideoHero';
 import productImage from '@/public/assets/images/fbg-cleaning-system-E.webp';
 
@@ -29,6 +30,7 @@ export default function Home() {
         </div>
         <Button styles='btn-outline btn-accent mt-4'>SHOP NOW</Button>
       </ImageWithText>
+      <ProductGallery />
     </main>
   );
 }
