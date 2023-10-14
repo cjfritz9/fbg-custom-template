@@ -9,7 +9,7 @@ import { ThemeInterface } from '@/@types/context';
 
 const Logo: React.FC = () => {
   const { theme } = useContext(ThemeContext) as ThemeInterface;
-  const [logoVariant, setLogoVariant] = useState(logo)
+  const [logoVariant, setLogoVariant] = useState(logoAlt)
 
   useEffect(() => {
     if (theme === 'theme5' || theme === 'dark') {
