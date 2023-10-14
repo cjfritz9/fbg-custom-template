@@ -23,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en' data-theme='dark'>
-      <body className={`${inter.className} ${monsterrat.className}`}>
+      <body className={`${inter.className} ${monsterrat.className} overflow-x-hidden`}>
         <Announcement />
         <Providers>
           <Header />

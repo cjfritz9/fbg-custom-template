@@ -40,7 +40,7 @@ const ProductGallery: React.FC = () => {
             clickable: true
           }}
           modules={[Autoplay, Pagination]}
-          className='h-96 w-[100%]'
+          className='h-96 w-[100%] !overflow-x-visible'
         >
           <SwiperSlide className='!w-[33%] text-center text-xl text-black bg-white'>
             Product 1
