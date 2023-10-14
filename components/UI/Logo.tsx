@@ -9,19 +9,24 @@ import { ThemeInterface } from '@/@types/context';
 
 const Logo: React.FC = () => {
   const { theme } = useContext(ThemeContext) as ThemeInterface;
-  const [logoVariant, setLogoVariant] = useState(logoAlt)
+  const [logoVariant, setLogoVariant] = useState(logoAlt);
 
   useEffect(() => {
     if (theme === 'theme5' || theme === 'dark') {
-      setLogoVariant(logoAlt)
+      setLogoVariant(logoAlt);
     } else {
-      setLogoVariant(logo)
+      setLogoVariant(logo);
     }
-  }, [theme])
+  }, [theme]);
 
   return (
     <Link href='/'>
-      <Image priority src={logoVariant} alt='Full Blast Gear Logo' height={76} />
+      <Image
+        priority
+        src={logoVariant}
+        alt='Full Blast Gear Logo'
+        height={76}
+      />
     </Link>
   );
 };

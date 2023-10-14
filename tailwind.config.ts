@@ -23,7 +23,8 @@ const config: Config = {
           secondary: '#E0522E',
           accent: '#2EC4B6',
           neutral: '#5B6C5D',
-          'base-100': '#FFFFFF'
+          'base-100': '#FFFFFF',
+          'base-200': '#e6e6e6'
         }
       },
       {
@@ -35,6 +36,7 @@ const config: Config = {
           accent: '#E9CE2C',
           neutral: '#717568',
           'base-100': '#FFFFFF',
+          'base-200': '#e6e6e6',
           '--rounded-btn': '0rem',
           '--rounded-box': '0rem',
           '--rounded-badge': '0rem',
@@ -51,6 +53,7 @@ const config: Config = {
           accent: '#58A4B0',
           neutral: '#0C7C59',
           'base-100': '#FFFFFF',
+          'base-200': '#e6e6e6',
           '--rounded-btn': '0rem',
           '--rounded-box': '0rem',
           '--rounded-badge': '0rem',
@@ -65,7 +68,8 @@ const config: Config = {
           secondary: '#E0522E',
           accent: '#5448C8',
           neutral: '#606C38',
-          'base-100': '#FFFFFF'
+          'base-100': '#FFFFFF',
+          'base-200': '#e6e6e6'
         }
       },
       {
@@ -74,7 +78,8 @@ const config: Config = {
           secondary: '#E0522E',
           accent: '#4C86A8',
           neutral: '#426A5A',
-          'base-100': '#321714'
+          'base-100': '#321714',
+          'base-200': '#472e2c'
         }
       },
       {
@@ -84,6 +89,7 @@ const config: Config = {
           'primary-content': '#1d232a',
           secondary: '#FFFFFF',
           'base-100': '#1d232a',
+          'base-200': '#34393f',
           '--rounded-btn': '0rem',
           '--rounded-box': '0rem',
           '--rounded-badge': '0rem',

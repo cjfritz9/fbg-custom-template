@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '../actions/Button';
 
 const VideoHero: React.FC = () => {
   return (
@@ -11,9 +12,9 @@ const VideoHero: React.FC = () => {
           Fostering a Revolution in Firearms Products for Gun Enthusiasts
         </p>
         <div className='text-lg absolute w-full bottom-14'>
-          <button className='btn btn-secondary text-lg text-base-100 w-48 justify-self-center bottom-32'>
+          <Button styles='hover:btn-ghost btn-secondary text-lg text-base-100 w-48 justify-self-center bottom-32'>
             BUY NOW
-          </button>
+          </Button>
         </div>
       </div>
       <video

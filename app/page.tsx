@@ -1,3 +1,4 @@
+import Button from '@/components/actions/Button';
 import Border from '@/components/layout/Border';
 import ImageWithText from '@/components/layout/ImageWithText';
 import VideoHero from '@/components/layout/VideoHero';
@@ -8,7 +9,7 @@ export default function Home() {
     <main>
       <VideoHero />
       <Border />
-      <ImageWithText bgColor='neutral' imageSrc={productImage} reverse>
+      <ImageWithText styles='bg-neutral' imageSrc={productImage} reverse>
         <h2 className='text-2xl font-bold'>
           Full-Bore Blast Firearm Cleaning System
         </h2>
@@ -26,7 +27,7 @@ export default function Home() {
             firearms clean, well-preserved, and firing accurately at all times.
           </p>
         </div>
-        <button className='btn btn-outline btn-accent mt-4'>SHOW NOW</button>
+        <Button styles='btn-outline btn-accent mt-4'>SHOP NOW</Button>
       </ImageWithText>
     </main>
   );

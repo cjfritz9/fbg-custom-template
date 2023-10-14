@@ -3,13 +3,13 @@ import Image from 'next/image';
 import React from 'react';
 
 const ImageWithText: React.FC<ImageWithTextProps> = ({
-  bgColor,
+  styles,
   imageSrc,
   children: textContent,
   reverse = false
 }) => {
   return (
-    <div className={`hero py-24 px-12 bg-${bgColor}`}>
+    <div className={`hero py-24 px-12 ${styles}`}>
       <div
         className={`hero-content h-full max-w-max gap-24 ${
           reverse
