@@ -12,22 +12,22 @@ const FooterLinks: React.FC = () => {
     router.push(slug);
   };
 
-  useEffect(() => {
-    const pathnameIndex = footerLinks.findIndex(
-      (link) => link.slug === pathname
-    );
-    if (pathnameIndex >= 0) {
-      setActiveIndex(pathnameIndex);
-    } else {
-      setActiveIndex(null);
-    }
-  }, [pathname]);
+  // useEffect(() => {
+  //   const pathnameIndex = footerLinks.findIndex(
+  //     (link) => link.slug === pathname
+  //   );
+  //   if (pathnameIndex >= 0) {
+  //     setActiveIndex(pathnameIndex);
+  //   } else {
+  //     setActiveIndex(null);
+  //   }
+  // }, [pathname]);
 
   console.log(activeIndex);
 
   return (
     <div className='tabs mt-10'>
-      {footerLinks.map((link, i) => (
+      {/* {footerLinks.map((link, i) => (
         <a
           key={i}
           className={`tab tab-bordered ${i === activeIndex && 'tab-active'}`}
@@ -35,7 +35,7 @@ const FooterLinks: React.FC = () => {
         >
           {link.name}
         </a>
-      ))}
+      ))} */}
     </div>
   );
 };
