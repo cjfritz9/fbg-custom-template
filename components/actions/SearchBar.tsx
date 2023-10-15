@@ -45,7 +45,7 @@ const SearchBar: React.FC = () => {
       <input
         type='text'
         placeholder='Search'
-        className='input input-bordered border-secondary bg-primary-content w-24 md:w-auto disabled'
+        className='input input-bordered border-primary bg-primary-content w-24 md:w-auto disabled'
       />
     </div>;
   }
@@ -60,7 +60,7 @@ const SearchBar: React.FC = () => {
         <Combobox onChange={handleChange}>
           <Combobox.Input
             placeholder='Search...'
-            className='input input-bordered border-secondary bg-primary-content w-24 md:w-auto'
+            className='input input-bordered border-primary bg-primary-content w-24 md:w-auto'
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />

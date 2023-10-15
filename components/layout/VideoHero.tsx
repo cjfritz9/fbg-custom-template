@@ -3,7 +3,7 @@ import Button from '../actions/Button';
 
 const VideoHero: React.FC = () => {
   return (
-    <div className='max-h-[640px] overflow-hidden 2xl:px-12 bg-base-100 backdrop-filter relative'>
+    <div className='max-h-[640px] h-[640px] overflow-hidden 2xl:px-12 bg-base-100 backdrop-filter relative'>
       <div className='absolute bg-transparent h-full w-full 2xl:mx-[-3rem] z-10 text-center'>
         <h1 className='text-5xl font-bold absolute w-full bottom-40'>
           Full Bore Blast Firearm Cleaning System

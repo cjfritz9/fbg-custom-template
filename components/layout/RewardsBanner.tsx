@@ -12,7 +12,7 @@ const RewardsBanner: React.FC = () => {
           <p className='text-lg'>Earn points for every dollar spent at Full Blast Gear to unlock discounts with each purchase.</p>
         </div>
       </div>
-      <Link href='/rewards' className='text-lg underline underline-offset-4'>Learn More</Link>
+      <Link href='/rewards' className='text-lg underline underline-offset-4'>View Details</Link>
     </div>
   );
 };

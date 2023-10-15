@@ -10,7 +10,7 @@ const Ankle: React.FC = () => {
           className='input input-bordered join-item'
           placeholder='email@example.com'
         />
-        <button className='btn join-item'>
+        <button aria-label='E-mail signup submit button' className='btn join-item'>
           <RiArrowRightLine />
         </button>
       </div>

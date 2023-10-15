@@ -88,7 +88,7 @@ const config: Config = {
           primary: '#FFFFFF',
           'primary-content': '#1d232a',
           secondary: '#E3532D',
-          accent: '#e81209',
+          accent: '#ba0e07',
           'base-100': '#1d232a',
           'base-200': '#34393f',
           'base-300': '#14191d',

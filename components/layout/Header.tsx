@@ -21,7 +21,7 @@ const Header: React.FC = () => {
           <ul className='menu menu-horizontal px-1 gap-4'>
             <li>
               <details className='align-center'>
-                <summary className='text-secondary normal-case after:hidden gap-4'>
+                <summary className='text-primary normal-case after:hidden gap-4'>
                   <p className='text-xl'>[Dev]</p>
                   <p className='text-3xl'>
                     <PiPaintBrushHouseholdBold />
@@ -31,7 +31,7 @@ const Header: React.FC = () => {
                   {themes.map((theme) => (
                     <li
                       key={theme.attributeName}
-                      className='text-secondary normal-case text-lg'
+                      className='text-primary normal-case text-lg'
                     >
                       <ThemeButton
                         attributes={{
@@ -47,7 +47,7 @@ const Header: React.FC = () => {
             </li>
             <li className='w-32'>
               <details>
-                <summary className='text-secondary normal-case text-xl'>
+                <summary className='text-primary normal-case text-xl'>
                   Menu
                 </summary>
                 <ul className='p-2 bg-base-100 right-0 top-10 w-32 z-[15]'>
@@ -55,7 +55,7 @@ const Header: React.FC = () => {
                     <li key={link.name}>
                       <Link
                         href={link.slug}
-                        className='text-secondary normal-case text-xl'
+                        className='text-primary normal-case text-xl'
                       >
                         {link.name}
                       </Link>

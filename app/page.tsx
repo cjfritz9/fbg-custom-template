@@ -5,6 +5,7 @@ import ProductGallery from '@/components/layout/ProductGallery';
 import RewardsBanner from '@/components/layout/RewardsBanner';
 import VideoHero from '@/components/layout/VideoHero';
 import productImage from '@/public/assets/images/fbg-cleaning-system-E.webp';
+import placeholderImage from '@/public/assets/images/fbg-placeholder.webp';
 
 export default function Home() {
   return (
@@ -33,6 +34,25 @@ export default function Home() {
       </ImageWithText>
       <RewardsBanner />
       <ProductGallery />
+      <ImageWithText imageSrc={placeholderImage} styles='bg-neutral'>
+        <h2 className='text-2xl font-bold'>
+          USA Hunting and Shooting Gear Made to Last
+        </h2>
+        <h4 className='text-lg text-secondary'>
+          From Amber Waves of Grain to the Neighborhood Range
+        </h4>
+        <p className='text-md pt-4'>
+          We prioritize domestic job creation and environmental support. We
+          source materials, assemble, and manufacture in the USA, collaborating
+          with like-minded U.S. manufacturers. A portion of sales aids various
+          causes.
+        </p>
+        <p className='text-md pt-4'>
+          Full Blast Gear backs your Second Amendment rights with versatile,
+          durable products suitable for hunters and shooters. Our U.S.-made
+          goods offer innovation and quality, backed by our guarantee.
+        </p>
+      </ImageWithText>
     </main>
   );
 }
