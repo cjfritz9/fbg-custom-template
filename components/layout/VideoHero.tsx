@@ -12,8 +12,8 @@ const VideoHero: React.FC = () => {
           Fostering a Revolution in Firearms Products for Gun Enthusiasts
         </p>
         <div className='text-lg absolute w-full bottom-14'>
-          <Button styles='hover:btn-ghost btn-secondary text-lg text-base-100 w-48 justify-self-center bottom-32'>
-            BUY NOW
+          <Button styles='btn-primary text-lg text-base-100 w-48 justify-self-center bottom-32'>
+            SHOP NOW
           </Button>
         </div>
       </div>

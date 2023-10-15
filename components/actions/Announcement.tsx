@@ -21,7 +21,29 @@ const Announcement: React.FC = () => {
     };
   });
 
-  if (!isClient) return null;
+  if (!isClient) {
+    return (
+      <div
+        className={`w-full flex px-44 py-4 bg-accent z-[15] ${
+          isPageAtTop ? 'justify-center' : 'justify-between'
+        } align-center font-normal top-0 ${!isPageAtTop && isOpen && 'sticky'}`}
+      >
+        {!isPageAtTop && <div />}
+        <span className='flex gap-1'>
+          <p className='font-semibold'>MADE IN THE USA</p>
+          <p>| Free Shipping $[amt]+ | [policies] Warranty & Returns</p>
+        </span>
+        {!isPageAtTop && (
+          <div
+            className='hover:cursor-pointer text-xl'
+            onClick={isClient ? () => setIsOpen(false) : undefined}
+          >
+            <RiCloseFill />
+          </div>
+        )}
+      </div>
+    );
+  }
 
   return (
     <div
@@ -31,7 +53,7 @@ const Announcement: React.FC = () => {
     >
       {!isPageAtTop && <div />}
       <span className='flex gap-1'>
-        <p className='font-bold'>MADE IN THE USA</p>
+        <p className='font-semibold'>MADE IN THE USA</p>
         <p>| Free Shipping $[amt]+ | [policies] Warranty & Returns</p>
       </span>
       {!isPageAtTop && (

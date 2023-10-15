@@ -9,7 +9,7 @@ const ImageWithText: React.FC<ImageWithTextProps> = ({
   reverse = false
 }) => {
   return (
-    <div className={`hero py-24 px-40 ${styles}`}>
+    <div className={`hero py-16 px-40 ${styles}`}>
       <div
         className={`hero-content h-full max-w-max gap-24 ${
           reverse

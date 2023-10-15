@@ -16,11 +16,11 @@ import Link from 'next/link';
  */
 const ProductGallery: React.FC = () => {
   return (
-    <div className='w-[100%] h-full flex flex-col bg-[#14191d] gap-12 px-44 py-12 overflow-visible'>
+    <div className='w-[100%] h-full flex flex-col bg-neutral gap-12 px-44 py-16 overflow-visible'>
       <div>
         <div className='flex gap-4 items-baseline'>
           <h2 className='text-2xl font-bold'>TOP PRODUCTS</h2>
-          <Link href='/shop' className='text-xs underline underline-offset-4 text-accent'>SHOP NOW</Link>
+          <Link href='/shop' className='text-xs underline underline-offset-4 text-secondary-content'>SHOP NOW</Link>
         </div>
         <p>
           From our full kit to any piece or part, you are sure to find what you
