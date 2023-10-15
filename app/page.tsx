@@ -13,7 +13,7 @@ export default function Home() {
       <VideoHero />
       <Border />
       <ImageWithText styles='bg-neutral' imageSrc={productImage} reverse>
-        <h2 className='text-2xl font-bold'>
+        <h2 className='text-3xl font-bold'>
           Full-Bore Blast Firearm Cleaning System
         </h2>
         <h4 className='text-lg text-secondary'>
@@ -35,7 +35,7 @@ export default function Home() {
       <RewardsBanner />
       <ProductGallery />
       <ImageWithText imageSrc={placeholderImage} styles='bg-neutral'>
-        <h2 className='text-2xl font-bold'>
+        <h2 className='text-3xl font-bold'>
           USA Hunting and Shooting Gear Made to Last
         </h2>
         <h4 className='text-lg text-secondary'>
