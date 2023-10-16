@@ -12,11 +12,15 @@ export default function Home() {
     <main>
       <VideoHero />
       <Border />
-      <ImageWithText styles='bg-neutral' imageSrc={productImage} reverse>
+      <ImageWithText
+        styles='bg-neutral text-primary'
+        imageSrc={productImage}
+        reverse
+      >
         <h2 className='text-3xl font-bold'>
           Full-Bore Blast Firearm Cleaning System
         </h2>
-        <h4 className='text-lg text-secondary'>
+        <h4 className='text-md text-secondary font-semibold'>
           Fostering a Revolution in Firearms Products
         </h4>
         <div className='flex-col'>
@@ -30,15 +34,18 @@ export default function Home() {
             firearms clean, well-preserved, and firing accurately at all times.
           </p>
         </div>
-        <Button styles='btn-outline btn-secondary mt-4'>BUY NOW</Button>
+        <Button styles='btn-secondary mt-4'>BUY NOW</Button>
       </ImageWithText>
       <RewardsBanner />
       <ProductGallery />
-      <ImageWithText imageSrc={placeholderImage} styles='bg-neutral'>
+      <ImageWithText
+        imageSrc={placeholderImage}
+        styles='bg-neutral text-primary'
+      >
         <h2 className='text-3xl font-bold'>
           USA Hunting and Shooting Gear Made to Last
         </h2>
-        <h4 className='text-lg text-secondary'>
+        <h4 className='text-md text-secondary font-semibold'>
           From Amber Waves of Grain to the Neighborhood Range
         </h4>
         <p className='text-md pt-4'>

@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { PiPaintBrushHouseholdBold } from 'react-icons/pi';
-import { themeChange } from 'theme-change';
 import Logo from '../UI/Logo';
 import ThemeButton from '../actions/ThemeButton';
 import SearchBar from '../actions/SearchBar';
@@ -17,9 +16,10 @@ const Header: React.FC = () => {
           <Logo />
         </div>
         <div className='flex-none gap-4'>
+          <ThemeButton />
           <SearchBar />
           <ul className='menu menu-horizontal px-1 gap-4'>
-            <li>
+            {/* <li>
               <details className='align-center'>
                 <summary className='text-primary normal-case after:hidden gap-4'>
                   <p className='text-xl'>[Dev]</p>
@@ -44,7 +44,7 @@ const Header: React.FC = () => {
                   ))}
                 </ul>
               </details>
-            </li>
+            </li> */}
             <li className='w-32'>
               <details>
                 <summary className='text-primary normal-case text-xl'>
@@ -54,6 +54,7 @@ const Header: React.FC = () => {
                   {navLinks.map((link) => (
                     <li key={link.name}>
                       <Link
+                        prefetch
                         href={link.slug}
                         className='text-primary normal-case text-xl'
                       >

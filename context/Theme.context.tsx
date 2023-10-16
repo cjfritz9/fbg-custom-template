@@ -6,11 +6,19 @@ export const ThemeContext = createContext<ThemeInterface | null>(null);
 const ThemeProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const [theme, setTheme] = useState(getTheme());
 
+  const toggleTheme = () => {
+    if (theme === 'light') {
+      setTheme('dark');
+    } else {
+      setTheme('light');
+    }
+  };
+
   return (
     <ThemeContext.Provider
       value={{
         theme,
-        setTheme
+        toggleTheme
       }}
     >
       {children}
@@ -19,10 +27,15 @@ const ThemeProvider: React.FC<PropsWithChildren> = ({ children }) => {
 };
 
 const getTheme = () => {
-  let theme = '';
+  let theme = 'light';
 
   if (typeof window !== 'undefined') {
-    theme = localStorage.getItem('theme') ?? 'dark';
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      theme = savedTheme;
+    } else {
+      localStorage.setItem('theme', 'light');
+    }
   }
 
   return theme;

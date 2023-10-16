@@ -7,18 +7,22 @@ import logoAlt from '@/public/assets/images/fbg-logo-white.webp';
 import { ThemeContext } from '@/context/Theme.context';
 import { ThemeInterface } from '@/@types/context';
 import { LogoProps } from '@/@types/props';
+import useIsClient from '@/lib/hooks/useIsClient';
 
 const Logo: React.FC<LogoProps> = ({ height = 76 }) => {
   const { theme } = useContext(ThemeContext) as ThemeInterface;
-  const [logoVariant, setLogoVariant] = useState(logoAlt);
+  const { isClient } = useIsClient();
+  const [logoVariant, setLogoVariant] = useState(logo);
 
   useEffect(() => {
-    if (theme === 'theme5' || theme === 'dark') {
+    if (theme === 'dark') {
       setLogoVariant(logoAlt);
     } else {
       setLogoVariant(logo);
     }
   }, [theme]);
+
+  if (!isClient) return null;
 
   return (
     <Link href='/'>
