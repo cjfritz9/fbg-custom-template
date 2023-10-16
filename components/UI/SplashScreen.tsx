@@ -5,6 +5,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import logoAlt from '@/public/assets/images/fbg-logo-white.webp';
 import Image from 'next/image';
 import anime from 'animejs';
+import useIsClient from '@/lib/hooks/useIsClient';
 
 const SplashScreen: React.FC = () => {
   const pathname = usePathname();
