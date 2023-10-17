@@ -13,7 +13,7 @@ const VideoHero: React.FC<VideoHeroProps> = ({ videoUrl }) => {
           Fostering a Revolution in Firearms Products for Gun Enthusiasts
         </p>
         <div className='text-lg absolute w-full bottom-14'>
-          <Button styles='hover:brightness-125 hover:bg-white bg-white text-lg text-[#1D232A] w-48 justify-self-center bottom-32'>
+          <Button styles='hover:brightness-90 hover:bg-white bg-white text-lg text-[#1D232A] w-48 justify-self-center bottom-32'>
             SHOP NOW
           </Button>
         </div>
