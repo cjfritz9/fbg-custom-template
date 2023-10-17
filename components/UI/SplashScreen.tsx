@@ -5,6 +5,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import logoAlt from '@/public/assets/images/fbg-logo-white.webp';
 import Image from 'next/image';
 import anime from 'animejs';
+import useIsClient from '@/lib/hooks/useIsClient';
 
 const SplashScreen: React.FC = () => {
   const pathname = usePathname();
@@ -12,6 +13,7 @@ const SplashScreen: React.FC = () => {
   const bgRef = useRef(null);
   const logoRef = useRef(null);
   const [showSplash, setShowSplash] = useState(true);
+  const { isClient } = useIsClient();
 
   const animate = () => {
     const bgEle = bgRef.current;
@@ -53,16 +55,23 @@ const SplashScreen: React.FC = () => {
 
   useEffect(() => {
     animate();
-    scroll({behavior: 'smooth', top: 0})
+    scroll({ behavior: 'smooth', top: 0 });
   }, []);
 
   if (!showSplash || !isHome) return null;
 
   return (
     <>
-      <div className='flex lg:hidden flex-col gap-12 top-4 left-4 sm:top-10 sm:left-12 absolute z-[51]'>
-        <Image priority src={logoAlt} alt='Full Blast Gear Logo' height={48} />
-      </div>
+      {isClient && (
+        <div className='flex lg:hidden flex-col gap-12 top-4 left-4 sm:top-10 sm:left-12 absolute z-[51]'>
+          <Image
+            priority
+            src={logoAlt}
+            alt='Full Blast Gear Logo'
+            height={48}
+          />
+        </div>
+      )}
       <span className='block lg:hidden loading loading-spinner loading-lg text-white text-center absolute z-[52] top-[20dvh] left-[47dvw]'></span>
       <div
         ref={bgRef}
