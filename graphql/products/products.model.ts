@@ -24,8 +24,6 @@ export const getAllProducts = async () => {
     data
   })) as AllProductsResponse;
 
-  console.log(response.body.data.products.edges)
-
   const results = formatAllProductsResponse(response);
 
   return results;

@@ -20,13 +20,15 @@ const FooterLinkGroup: React.FC<FooterLinkGroupProps> = ({ title, links }) => {
 
   return (
     <div className='flex flex-col text-white items-start w-28 md:w-44'>
-      <h4 className='font-semibold mb-4 text-center w-full'>{title}</h4>
+      <p className='font-semibold mb-4 text-center w-full'>{title}</p>
       <div className='tabs flex flex-col gap-4'></div>
       {links.map((link, i) => (
         <Link
           key={i}
           href={link.slug}
-          className={`tab font-semibold px-0 text-white text-opacity-70 w-full h-fit text-center ${i === activeIndex && 'tab-active'}`}
+          className={`tab font-semibold px-0 text-white text-opacity-70 w-full h-fit text-center ${
+            i === activeIndex && 'tab-active'
+          }`}
         >
           {link.name}
         </Link>
