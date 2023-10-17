@@ -24,7 +24,7 @@ const Announcement: React.FC = () => {
   if (!isClient) {
     return (
       <div
-        className={`w-full flex px-44 py-4 bg-accent z-[15] ${
+        className={`w-full flex px-44 py-4 bg-accent z-[15] text-white  ${
           isPageAtTop ? 'justify-center' : 'justify-between'
         } align-center font-normal top-0 ${!isPageAtTop && isOpen && 'sticky'}`}
       >
@@ -47,7 +47,7 @@ const Announcement: React.FC = () => {
 
   return (
     <div
-      className={`w-full flex px-44 py-4 bg-accent z-[15] ${
+      className={`w-full flex px-44 py-4 bg-accent z-[15] text-white ${
         isPageAtTop ? 'justify-center' : 'justify-between'
       } align-center font-normal top-0 ${!isPageAtTop && isOpen && 'sticky'}`}
     >

@@ -4,12 +4,12 @@ import { VideoHeroProps } from '@/@types/props';
 
 const VideoHero: React.FC<VideoHeroProps> = ({ videoUrl }) => {
   return (
-    <div className='max-h-[640px] h-[640px] overflow-hidden 2xl:px-12 bg-base-100 backdrop-filter relative'>
+    <div className='max-h-[640px] h-[640px] overflow-hidden 2xl:px-12 bg-[#1D232A] backdrop-filter relative'>
       <div className='absolute bg-transparent h-full w-full 2xl:mx-[-3rem] z-10 text-center'>
-        <h1 className='text-5xl font-bold absolute w-full bottom-40 pointer-events-none'>
+        <h1 className='text-5xl text-white font-bold absolute w-full bottom-40 pointer-events-none'>
           Full Bore Blast Firearm Cleaning System
         </h1>
-        <p className='text-lg absolute w-full bottom-32 pointer-events-none'>
+        <p className='text-lg absolute text-white w-full bottom-32 pointer-events-none'>
           Fostering a Revolution in Firearms Products for Gun Enthusiasts
         </p>
         <div className='text-lg absolute w-full bottom-14'>

@@ -1,7 +1,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter, Montserrat } from 'next/font/google';
-import Providers from './providers';
+// import Providers from './providers';
 import SplashScreen from '@/components/UI/SplashScreen';
 import Announcement from '@/components/actions/Announcement';
 import Header from '@/components/layout/Header';
@@ -20,21 +20,20 @@ export default function RootLayout({
   children
 }: {
   children: React.ReactNode;
-  }) {
-  
+}) {
   return (
-    <html lang='en'>
+    <html lang='en' data-theme='light'>
       <body
         className={`${inter.className} ${monsterrat.className} overflow-x-hidden`}
       >
-        <SplashScreen />
-        <Announcement />
-        <Providers>
+        {/* <Providers> */}
+          <SplashScreen />
+          <Announcement />
           <Header />
           {children}
           <Ankle />
           <Footer />
-        </Providers>
+        {/* </Providers> */}
       </body>
     </html>
   );

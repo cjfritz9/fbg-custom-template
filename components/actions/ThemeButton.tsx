@@ -1,38 +1,39 @@
 'use client';
-import { ThemeInterface } from '@/@types/context';
-// import { ThemeButtonProps } from '@/@types/props';
-import { ThemeContext } from '@/context/Theme.context';
-import React, { useContext, useEffect, useState } from 'react';
-import { themeChange } from 'theme-change';
+
+import React, { useEffect, useState } from 'react';
 import { TbMoon, TbSun } from 'react-icons/tb';
-import useIsClient from '@/lib/hooks/useIsClient';
+import { themeChange } from 'theme-change';
 
 const ThemeButton: React.FC = () => {
-  const { theme, toggleTheme } = useContext(ThemeContext) as ThemeInterface;
-  const { isClient } = useIsClient();
-  const [attributes, setAttributes] = useState({
-    'data-set-theme': theme === 'light' ? 'dark' : 'light',
-    'data-act-class': theme === 'light' ? 'dark' : 'light'
-  });
+  const [theme, setTheme] = useState('light');
 
-  useEffect(() => {
-    setAttributes({
-      'data-set-theme': theme === 'light' ? 'dark' : 'light',
-      'data-act-class': theme === 'light' ? 'dark' : 'light'
-    });
-  }, [theme]);
+  const handleClick = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
 
   useEffect(() => {
     themeChange(false);
-  }, [isClient]);
-
-  if (!isClient) return null;
+    setTheme(getTheme())
+  }, []);
 
   return (
-    <button className='text-2xl' {...attributes} onClick={toggleTheme}>
+    <button
+      className='text-2xl text-white'
+      data-set-theme={theme === 'light' ? 'dark' : 'light'}
+      data-act-class={theme === 'light' ? 'light' : 'dark'}
+      onClick={handleClick}
+    >
       {theme === 'light' ? <TbMoon /> : <TbSun />}
     </button>
   );
+};
+
+const getTheme = () => {
+  let theme = 'light';
+  if (typeof window !== undefined) {
+    theme = window.localStorage.getItem('theme') ?? 'light';
+  }
+  return theme;
 };
 
 export default ThemeButton;
