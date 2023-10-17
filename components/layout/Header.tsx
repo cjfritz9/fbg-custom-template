@@ -13,10 +13,10 @@ const Header: React.FC = () => {
         <div className='flex-1 align-center'>
           <Logo />
         </div>
-        <div className='flex-none gap-4'>
+        <div className='flex-none gap-8'>
           <ThemeButton />
           <SearchBar />
-          <ul className='menu menu-horizontal px-1 gap-4'>
+          <ul className='menu menu-horizontal gap-4'>
             <li className='w-32'>
               <details>
                 <summary className='hover:text-white hover:text-opacity-75 text-white normal-case text-xl'>
