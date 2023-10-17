@@ -21,7 +21,7 @@ const ImageWithText: React.FC<ImageWithTextProps> = ({
           priority={false}
           src={imageSrc}
           alt='Full bore blast firearm cleaning system product image'
-          className='max-w-4xl shadow-2xl z-0 w-full xl:h-[560px] xl:w-auto h-auto'
+          className='max-w-4xl shadow-2xl z-0 w-full xl:w-auto h-auto'
         />
         <div className={`${reverse ? 'text-center xl:text-left' : 'text-center xl:text-right'}`}>
           {textContent}

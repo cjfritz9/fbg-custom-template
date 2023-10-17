@@ -24,9 +24,9 @@ const Home: React.FC = async () => {
         <h2 className='text-3xl font-bold'>
           {content.topContent.title}
         </h2>
-        <h4 className='text-md text-secondary font-semibold'>
+        <p className='text-md text-secondary font-semibold'>
           {content.topContent.subtitle}
-        </h4>
+        </p>
         <div className='flex-col'>
           <p className='text-md pt-4'>{content.topContent.paragraphs}</p>
         </div>
@@ -39,9 +39,9 @@ const Home: React.FC = async () => {
         styles='bg-neutral text-primary'
       >
         <h2 className='text-3xl font-bold'>{content.bottomContent.title}</h2>
-        <h4 className='text-md text-secondary font-semibold'>
+        <p className='text-md text-secondary font-semibold'>
           {content.bottomContent.subtitle}
-        </h4>
+        </p>
         <p className='text-md pt-4'>{content.bottomContent.paragraphs}</p>
       </ImageWithText>
     </main>

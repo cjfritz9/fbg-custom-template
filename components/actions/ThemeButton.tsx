@@ -20,6 +20,7 @@ const ThemeButton: React.FC = () => {
 
   return (
     <button
+      aria-label='Toggle Theme'
       className='md:text-2xl text-white'
       data-set-theme={theme === 'light' ? 'dark' : 'light'}
       data-act-class={theme === 'light' ? 'light' : 'dark'}
