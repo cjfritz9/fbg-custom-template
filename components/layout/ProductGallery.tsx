@@ -16,13 +16,13 @@ import Link from 'next/link';
  */
 const ProductGallery: React.FC = () => {
   return (
-    <div className='w-[100%] text-primary h-full flex flex-col bg-neutral gap-12 px-44 py-16 overflow-visible'>
+    <div className='bg-base-300 w-[100%] text-primary h-full flex flex-col md:bg-neutral gap-12 p-4 md:py-16 md:px-40 overflow-x-hidden'>
       <div>
         <div className='flex gap-4 items-baseline'>
           <h2 className='text-2xl font-bold'>TOP PRODUCTS</h2>
           <Link href='/shop' className='text-xs underline underline-offset-4 text-secondary font-bold'>SHOP NOW</Link>
         </div>
-        <p>
+        <p className='hidden md:block'>
           From our full kit to any piece or part, you are sure to find what you
           need.
         </p>
@@ -42,19 +42,19 @@ const ProductGallery: React.FC = () => {
           modules={[Autoplay, Pagination]}
           className='h-96 w-[100%] !overflow-x-visible'
         >
-          <SwiperSlide className='!w-[33%] text-center text-xl text-black bg-white'>
+          <SwiperSlide className='md:!w-[33%] text-center text-xl text-black bg-white'>
             Product 1
           </SwiperSlide>
-          <SwiperSlide className='!w-[33%] text-center text-xl text-black bg-white'>
+          <SwiperSlide className='md:!w-[33%] text-center text-xl text-black bg-white'>
             Product 2
           </SwiperSlide>
-          <SwiperSlide className='!w-[33%] text-center text-xl text-black bg-white'>
+          <SwiperSlide className='md:!w-[33%] text-center text-xl text-black bg-white'>
             Product 3
           </SwiperSlide>
-          <SwiperSlide className='!w-[33%] text-center text-xl text-black bg-white'>
+          <SwiperSlide className='md:!w-[33%] text-center text-xl text-black bg-white'>
             Product 4
           </SwiperSlide>
-          <SwiperSlide className='!w-[33%] text-center text-xl text-black bg-white'>
+          <SwiperSlide className='md:!w-[33%] text-center text-xl text-black bg-white'>
             Product 5
           </SwiperSlide>
         </Swiper>

@@ -1,10 +1,12 @@
 'use client';
 
+import useIsClient from '@/lib/hooks/useIsClient';
 import React, { useEffect, useState } from 'react';
 import { TbMoon, TbSun } from 'react-icons/tb';
 import { themeChange } from 'theme-change';
 
 const ThemeButton: React.FC = () => {
+  const { isClient } = useIsClient();
   const [theme, setTheme] = useState('light');
 
   const handleClick = () => {
@@ -13,12 +15,12 @@ const ThemeButton: React.FC = () => {
 
   useEffect(() => {
     themeChange(false);
-    setTheme(getTheme())
+    setTheme(getTheme());
   }, []);
 
   return (
     <button
-      className='text-2xl text-white'
+      className='md:text-2xl text-white'
       data-set-theme={theme === 'light' ? 'dark' : 'light'}
       data-act-class={theme === 'light' ? 'light' : 'dark'}
       onClick={handleClick}

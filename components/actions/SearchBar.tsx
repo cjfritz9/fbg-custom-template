@@ -40,14 +40,16 @@ const SearchBar: React.FC = () => {
     }
   }, [debouncedQuery]);
 
-  if (isClient) {
-    <div className='form-control'>
-      <input
-        type='text'
-        placeholder='Search'
-        className='input input-bordered border-primary bg-primary-content w-24 md:w-auto disabled'
-      />
-    </div>;
+  if (!isClient) {
+    return (
+      <div className='form-control'>
+        <input
+          type='text'
+          placeholder='Search'
+          className='input input-bordered border-primary bg-primary-content w-24 md:w-auto disabled'
+        />
+      </div>
+    );
   }
 
   const handleChange = (slug: string) => {
@@ -55,7 +57,7 @@ const SearchBar: React.FC = () => {
   };
 
   return (
-    <div className='form-control'>
+    <div className='form-control hidden lg:inline-block'>
       <div className='relative'>
         <Combobox onChange={handleChange}>
           <Combobox.Input

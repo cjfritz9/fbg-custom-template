@@ -4,7 +4,7 @@ import { MdOutlineCardGiftcard } from 'react-icons/md';
 
 const RewardsBanner: React.FC = () => {
   return (
-    <div className='w-full text-white flex justify-between items-center px-44 py-16 bg-base-300'>
+    <div className='w-full text-white hidden md:flex justify-between items-center px-44 py-16 bg-base-300'>
       <div className='flex items-center gap-8'>
         <MdOutlineCardGiftcard className='text-7xl' />
         <div>

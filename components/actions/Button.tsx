@@ -7,7 +7,7 @@ import React from 'react';
  * https://daisyui.com/components/button/
  */
 const Button: React.FC<ButtonProps> = ({ styles, children }) => {
-  return <button className={`btn ${styles}`}>{children}</button>;
+  return <button className={`btn w-full lg:w-fit ${styles}`}>{children}</button>;
 };
 
 export default Button;
