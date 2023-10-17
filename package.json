@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",
+    "@shopify/shopify-api": "^8.0.1",
     "@tailwindcss/typography": "^0.5.10",
     "@types/animejs": "^3.1.8",
     "animejs": "^3.2.1",
