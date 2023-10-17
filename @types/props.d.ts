@@ -13,13 +13,9 @@ export interface LogoProps {
   height?: number;
 }
 
-// export interface ThemeButtonProps {
-//   themeChoice: string;
-//   attributes: {
-//     'data-set-theme': string;
-//     'data-act-class': string;
-//   };
-// }
+export interface VideoHeroProps {
+  videoUrl: string;
+}
 
 /** @type {children} Text content to be rendered aside the image */
 export interface ImageWithTextProps extends React.PropsWithChildren {
