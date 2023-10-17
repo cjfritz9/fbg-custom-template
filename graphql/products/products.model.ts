@@ -1,5 +1,6 @@
-import { AllProductsResponse, ProductByHandleResponse } from "@/@types/api";
-import client from "../shopify-client";
+import { AllProductsResponse, ProductByHandleResponse } from '@/@types/api';
+import client from '../shopify-client';
+import { formatAllProductsResponse, formatProductResponse } from '../utils';
 
 export const getAllProducts = async () => {
   const data = `{
@@ -11,21 +12,24 @@ export const getAllProducts = async () => {
           description
           images (first: 10) {
             nodes {
+              altText
               url
             }
           }
         }
       }
     }
-  }`
+  }`;
   const response = (await client.query({
     data
   })) as AllProductsResponse;
 
-  const results = response.body.data.products.edges
+  console.log(response.body.data.products.edges)
+
+  const results = formatAllProductsResponse(response);
 
   return results;
-}
+};
 
 export const getProductByHandle = async (handle: string) => {
   const data = `{
@@ -35,16 +39,17 @@ export const getProductByHandle = async (handle: string) => {
       description
       images(first: 10) {
         nodes {
+          altText
           url
         }
       }
     }
-  }`
+  }`;
   const response = (await client.query({
     data
   })) as ProductByHandleResponse;
 
-  const result = response.body.data.productByHandle
+  const result = formatProductResponse(response);
 
   return result;
-}
+};

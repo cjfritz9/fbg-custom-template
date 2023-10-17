@@ -1,3 +1,13 @@
+interface HeroFields {
+  key: 'media';
+  value: string;
+  reference: {
+    sources: {
+      url: string;
+    }[];
+  };
+}
+
 interface ImageWithTextFields {
   key: 'title' | 'subtitle' | 'paragraphs';
   value: string;
@@ -8,19 +18,24 @@ export type ProductImage = {
 };
 
 export interface Product {
-  node: {
-    title: string;
-    handle: string;
-    description: string;
-    images: {
-      nodes: ProductImage[];
-    };
+  title: string;
+  handle: string;
+  description: string;
+  images: {
+    nodes: ProductImage[];
   };
 }
 
 export interface HomeContentResponse {
   body: {
     data: {
+      hero: {
+        nodes: [
+          {
+            fields: HeroFields[];
+          }
+        ];
+      };
       top: {
         nodes: [
           {
@@ -43,7 +58,7 @@ export interface AllProductsResponse {
   body: {
     data: {
       products: {
-        edges: Product[];
+        edges: [{ node: Product }];
       };
     };
   };

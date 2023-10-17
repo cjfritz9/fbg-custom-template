@@ -1,5 +1,6 @@
 import { HomeContentResponse } from '@/@types/api';
 import client from '../shopify-client';
+import { formatHomeContentResponse } from '../utils';
 
 export const getHomeContent = async () => {
   const data = `{
@@ -26,6 +27,7 @@ export const getHomeContent = async () => {
           reference {
             ... on MediaImage{
               image {
+                altText
                 url
               }
             }
@@ -41,6 +43,7 @@ export const getHomeContent = async () => {
           reference {
             ... on MediaImage{
               image {
+                altText
                 url
               }
             }
@@ -53,7 +56,7 @@ export const getHomeContent = async () => {
     data
   })) as HomeContentResponse;
 
-  const result = response.body.data;
+  const result = formatHomeContentResponse(response);
 
   return result;
 };
