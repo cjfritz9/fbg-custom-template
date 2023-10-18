@@ -1,6 +1,8 @@
 import { footerLinks } from '@/lib/static/links';
 import { StaticImageData } from 'next/image';
 import React from 'react';
+import { Product } from './api';
+import { FormattedProduct } from './context';
 
 type TailwindCSSStyles = string;
 
@@ -41,4 +43,16 @@ export interface ImageWithTextProps extends React.PropsWithChildren {
 export interface FooterLinkGroupProps {
   title: string;
   links: typeof footerLinks.companyLinks
+}
+
+export interface ProductCardProps {
+  title: string;
+  handle: string;
+  description: string;
+  imageSrc: string;
+  imageAlt: string;
+}
+
+export interface ProductMenuProps {
+  setProducts: React.Dispatch<React.SetStateAction<FormattedProduct[]>>
 }

@@ -26,14 +26,12 @@ export default function RootLayout({
       <body
         className={`${inter.className} ${monsterrat.className} overflow-x-hidden`}
       >
-        {/* <Providers> */}
-          <SplashScreen />
-          <Announcement />
-          <Header />
-          {children}
-          <Ankle />
-          <Footer />
-        {/* </Providers> */}
+        <SplashScreen />
+        <Announcement />
+        <Header />
+        {children}
+        <Ankle />
+        <Footer />
       </body>
     </html>
   );

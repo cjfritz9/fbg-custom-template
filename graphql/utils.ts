@@ -1,4 +1,10 @@
-import { AllProductsResponse, HomeContentResponse, ProductByHandleResponse } from '@/@types/api';
+import {
+  HomeContentResponse,
+  ProductByHandleResponse,
+  ProductsByTagResponse,
+  ProductsResponse
+} from '@/@types/api';
+import { FormattedProduct } from '@/@types/context';
 
 export const formatHomeContentResponse = (res: HomeContentResponse) => {
   const data = res.body.data;
@@ -7,7 +13,7 @@ export const formatHomeContentResponse = (res: HomeContentResponse) => {
     topContent: {
       title: data.top.nodes[0].fields.find((field) => field.key === 'title')
         ?.value,
-      
+
       subtitle: data.top.nodes[0].fields.find(
         (field) => field.key === 'subtitle'
       )?.value,
@@ -19,7 +25,7 @@ export const formatHomeContentResponse = (res: HomeContentResponse) => {
     bottomContent: {
       title: data.top.nodes[0].fields.find((field) => field.key === 'title')
         ?.value,
-      
+
       subtitle: data.top.nodes[0].fields.find(
         (field) => field.key === 'subtitle'
       )?.value,
@@ -31,8 +37,10 @@ export const formatHomeContentResponse = (res: HomeContentResponse) => {
   };
 };
 
-export const formatAllProductsResponse = (res: AllProductsResponse) => {
-  const products = []
+export const formatProductsResponse = (
+  res: ProductsResponse
+): FormattedProduct[] => {
+  const products = <FormattedProduct[]>[];
   const rawProductsData = res.body.data.products.edges;
 
   for (const product of rawProductsData) {
@@ -41,11 +49,11 @@ export const formatAllProductsResponse = (res: AllProductsResponse) => {
       handle: product.node.handle,
       description: product.node.description,
       images: product.node.images.nodes
-    })
+    });
   }
 
   return products;
-}
+};
 
 export const formatProductResponse = (res: ProductByHandleResponse) => {
   const rawProductData = res.body.data.productByHandle;
@@ -55,5 +63,21 @@ export const formatProductResponse = (res: ProductByHandleResponse) => {
     handle: rawProductData.handle,
     description: rawProductData.description,
     images: rawProductData.images.nodes
+  };
+};
+
+export const formatProductsByTagResponse = (res: ProductsByTagResponse): FormattedProduct[] => {
+  const products = <FormattedProduct[]>[];
+  const rawProductsData = res.body.data.products.nodes;
+
+  for (const product of rawProductsData) {
+    products.push({
+      title: product.title,
+      handle: product.handle,
+      description: product.description,
+      images: product.images.nodes
+    });
   }
+
+  return products;
 }

@@ -14,7 +14,8 @@ interface ImageWithTextFields {
 }
 
 export type ProductImage = {
-  url: string[];
+  url: string;
+  altText: string;
 };
 
 export interface Product {
@@ -54,11 +55,21 @@ export interface HomeContentResponse {
   };
 }
 
-export interface AllProductsResponse {
+export interface ProductsResponse {
   body: {
     data: {
       products: {
         edges: [{ node: Product }];
+      };
+    };
+  };
+}
+
+export interface ProductsByTagResponse {
+  body: {
+    data: {
+      products: {
+        nodes: Product[];
       };
     };
   };

@@ -1,4 +1,4 @@
-import { getProductByHandle } from '@/graphql/products/products.model';
+import { fetchProductByHandle } from '@/graphql/products/products.model';
 import { NextRequest, NextResponse } from 'next/server';
 
 export const GET = async (
@@ -6,7 +6,7 @@ export const GET = async (
   { params }: { params: { handle: string } }
 ) => {
   const { handle } = params;
-  const result = await getProductByHandle(handle)
+  const result = await fetchProductByHandle(handle)
 
   return NextResponse.json(result);
 };

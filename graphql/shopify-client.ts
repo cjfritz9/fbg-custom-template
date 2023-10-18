@@ -11,7 +11,7 @@ const shopify = shopifyApi({
 });
 
 const session = shopify.session.customAppSession(
-  process.env.SHOPIFY_SHOP_NAME!
+  shopify.config.hostName
 );
 
 const client = new shopify.clients.Graphql({ session });

@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import { Combobox } from '@headlessui/react';
 import { useDebounce } from 'use-debounce';
-import { Products } from '@/@types/shopify';
 import useIsClient from '@/lib/hooks/useIsClient';
 import { useRouter } from 'next/navigation';
 
@@ -15,7 +14,7 @@ const SearchBar: React.FC = () => {
   const router = useRouter();
   const isClient = useIsClient();
   const [query, setQuery] = useState('');
-  const [products, setProducts] = useState<Products>([]);
+  const [products, setProducts] = useState<any[]>([]);
   const [debouncedQuery] = useDebounce(query, 300);
 
   useEffect(() => {
