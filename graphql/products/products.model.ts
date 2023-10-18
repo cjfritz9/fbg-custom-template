@@ -1,29 +1,84 @@
-import { ProductByHandleResponse, ProductsByTagResponse, ProductsResponse } from '@/@types/api';
+import {
+  FormattedProduct,
+  FormattedProductResponse,
+  ProductByHandleResponse,
+  ProductsResponse
+} from '@/@types/api';
 import client from '../shopify-client';
-import { formatProductResponse, formatProductsByTagResponse, formatProductsResponse } from '../utils';
-import { FormattedProduct } from '@/@types/context';
+import {
+  formatProductResponse,
+  formatProductsResponse
+} from '../utils';
+import { GetProductsParams } from '@/@types/shopify';
 
-export const fetchAllProducts = async () => {
+const fetchPrevPage = async (cursor: string) => {
   const data = `{
-    products (first: 10) {
-      edges {
-        node {
-          title
-          handle
-          description
-          images (first: 10) {
-            nodes {
-              altText
-              url
-            }
+    products(first: 6, before: "${cursor}") {
+      nodes {
+        title
+        handle
+        description
+        images(first: 5) {
+          nodes {
+            url
+            altText
           }
         }
+      }
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        startCursor
+        endCursor
       }
     }
   }`;
   const response = (await client.query({
     data
   })) as ProductsResponse;
+
+  return response;
+};
+
+const fetchNextPage = async (cursor: string | null) => {
+  const data = `{
+    products(first: 6, after: ${cursor ? `"${cursor}"` : null}) {
+      nodes {
+        title
+        handle
+        description
+        images(first: 5) {
+          nodes {
+            url
+            altText
+          }
+        }
+      }
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        startCursor
+        endCursor
+      }
+    }
+  }`;
+  const response = (await client.query({
+    data
+  })) as ProductsResponse;
+
+  return response;
+};
+
+export const fetchProducts = async ({
+  cursor,
+  nextPage
+}: GetProductsParams): Promise<FormattedProductResponse> => {
+  let response: ProductsResponse;
+  if (!cursor || nextPage) {
+    response = await fetchNextPage(cursor)
+  } else {
+    response = await fetchPrevPage(cursor)
+  }
 
   const results = formatProductsResponse(response);
 
@@ -55,7 +110,7 @@ export const fetchProductByHandle = async (handle: string) => {
 
 export const fetchProductsByTag = async (
   tag: string
-): Promise<FormattedProduct[]> => {
+): Promise<FormattedProductResponse> => {
   const data = `{
     products (first: 10, query: "tag:${tag}") {
       nodes {
@@ -73,9 +128,9 @@ export const fetchProductsByTag = async (
   }`;
   const response = (await client.query({
     data
-  })) as ProductsByTagResponse;
+  })) as ProductsResponse;
 
-  const results = formatProductsByTagResponse(response);
+  const results = formatProductsResponse(response);
 
   return results;
 };

@@ -27,6 +27,13 @@ export interface Product {
   };
 }
 
+export interface PageInfo {
+  hasNextPage: boolean;
+  hasPreviousPage: boolean;
+  startCursor: string;
+  endCursor: string;
+}
+
 export interface HomeContentResponse {
   body: {
     data: {
@@ -59,17 +66,8 @@ export interface ProductsResponse {
   body: {
     data: {
       products: {
-        edges: [{ node: Product }];
-      };
-    };
-  };
-}
-
-export interface ProductsByTagResponse {
-  body: {
-    data: {
-      products: {
         nodes: Product[];
+        pageInfo: PageInfo;
       };
     };
   };
@@ -81,4 +79,16 @@ export interface ProductByHandleResponse {
       productByHandle: Product;
     };
   };
+}
+
+export interface FormattedProduct {
+  title: string;
+  handle: string;
+  description: string;
+  images: { url: string; altText: string }[];
+}
+
+export interface FormattedProductResponse {
+  pageInfo: PageInfo;
+  products: FormattedProduct[]
 }

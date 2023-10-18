@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { ProductMenuProps } from '@/@types/props';
-import { FilterMethods, SortMethods } from '@/@types/context';
+import { FilterMethods, SortMethods } from '@/@types/shop';
 import { getProductsByTag } from '@/app/api/requests';
 
 const ProductMenu: React.FC<ProductMenuProps> = ({

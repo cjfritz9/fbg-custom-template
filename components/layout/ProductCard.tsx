@@ -5,8 +5,8 @@ import React from 'react';
 import Button from '../actions/Button';
 
 const ProductCard: React.FC<ProductCardProps> = ({
+  priority,
   title,
-  description,
   handle,
   imageSrc,
   imageAlt
@@ -15,6 +15,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
     <div className='card w-96 glass text-primary drop-shadow-2xl shadow-2xl'>
       <figure>
         <Image
+          priority
           src={imageSrc}
           alt={imageAlt}
           width={240}
@@ -39,7 +40,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
 export const LoadingCards: React.FC = () => {
   return (
     <div className='flex flex-wrap gap-12 lg:py-8 lg:px-8 xl:py-16 xl:px-28'>
-      {Array.from(new Array(3)).map((_, i) => (
+      {Array.from(new Array(6)).map((_, i) => (
         <div
           key={i}
           className='card animate-pulse w-96 glass text-primary drop-shadow-2xl shadow-2xl'

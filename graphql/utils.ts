@@ -1,10 +1,10 @@
 import {
+  FormattedProductResponse,
   HomeContentResponse,
   ProductByHandleResponse,
-  ProductsByTagResponse,
   ProductsResponse
 } from '@/@types/api';
-import { FormattedProduct } from '@/@types/context';
+import { FormattedProduct } from '@/@types/api'; 
 
 export const formatHomeContentResponse = (res: HomeContentResponse) => {
   const data = res.body.data;
@@ -39,20 +39,23 @@ export const formatHomeContentResponse = (res: HomeContentResponse) => {
 
 export const formatProductsResponse = (
   res: ProductsResponse
-): FormattedProduct[] => {
+): FormattedProductResponse => {
   const products = <FormattedProduct[]>[];
-  const rawProductsData = res.body.data.products.edges;
+  const rawProductsData = res.body.data.products.nodes;
 
   for (const product of rawProductsData) {
     products.push({
-      title: product.node.title,
-      handle: product.node.handle,
-      description: product.node.description,
-      images: product.node.images.nodes
+      title: product.title,
+      handle: product.handle,
+      description: product.description,
+      images: product.images.nodes
     });
   }
 
-  return products;
+  return {
+    pageInfo: res.body.data.products.pageInfo,
+    products
+  }
 };
 
 export const formatProductResponse = (res: ProductByHandleResponse) => {
@@ -66,18 +69,18 @@ export const formatProductResponse = (res: ProductByHandleResponse) => {
   };
 };
 
-export const formatProductsByTagResponse = (res: ProductsByTagResponse): FormattedProduct[] => {
-  const products = <FormattedProduct[]>[];
-  const rawProductsData = res.body.data.products.nodes;
+// export const formatProductsByTagResponse = (res: ProductsResponse): FormattedProduct[] => {
+//   const products = <FormattedProduct[]>[];
+//   const rawProductsData = res.body.data.products.nodes;
 
-  for (const product of rawProductsData) {
-    products.push({
-      title: product.title,
-      handle: product.handle,
-      description: product.description,
-      images: product.images.nodes
-    });
-  }
+//   for (const product of rawProductsData) {
+//     products.push({
+//       title: product.title,
+//       handle: product.handle,
+//       description: product.description,
+//       images: product.images.nodes
+//     });
+//   }
 
-  return products;
-}
+//   return products;
+// }

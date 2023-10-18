@@ -2,7 +2,7 @@ import { footerLinks } from '@/lib/static/links';
 import { StaticImageData } from 'next/image';
 import React from 'react';
 import { Product } from './api';
-import { FormattedProduct } from './context';
+import { FormattedProduct } from './shop';
 
 type TailwindCSSStyles = string;
 
@@ -46,9 +46,9 @@ export interface FooterLinkGroupProps {
 }
 
 export interface ProductCardProps {
+  priority: boolean;
   title: string;
   handle: string;
-  description: string;
   imageSrc: string;
   imageAlt: string;
 }
@@ -56,4 +56,10 @@ export interface ProductCardProps {
 export interface ProductMenuProps {
   onUpdateProducts: (updatedProducts: FormattedProduct[]) => void;
   onLoading: (loading: boolean) => void;
+}
+
+export interface PaginationBarProps {
+  href: string;
+  page: number;
+  pageCount: number;
 }

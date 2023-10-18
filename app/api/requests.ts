@@ -1,4 +1,5 @@
-import { FilterMethods } from '@/@types/context';
+import { FormattedProductResponse } from '@/@types/api';
+import { FilterMethods } from '@/@types/shop';
 import { cache } from 'react';
 
 export const getHomeContent = cache(async () => {
@@ -8,7 +9,7 @@ export const getHomeContent = cache(async () => {
   return result;
 });
 
-export const getAllProducts = cache(async () => {
+export const getAllProducts = cache(async (): Promise<FormattedProductResponse> => {
   const response = await fetch(`api/products`);
   const results = await response.json();
 
