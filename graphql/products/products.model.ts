@@ -4,10 +4,7 @@ import {
   ProductsResponse
 } from '@/@types/api';
 import client from '../shopify-client';
-import {
-  formatProductResponse,
-  formatProductsResponse
-} from '../utils';
+import { formatProductResponse, formatProductsResponse } from '../utils';
 import { GetProductsParams } from '@/@types/shopify';
 
 const fetchPrevPage = async (cursor: string) => {
@@ -74,9 +71,9 @@ export const fetchProducts = async ({
 }: GetProductsParams): Promise<FormattedProductResponse> => {
   let response: ProductsResponse;
   if (!cursor || nextPage) {
-    response = await fetchNextPage(cursor)
+    response = await fetchNextPage(cursor);
   } else {
-    response = await fetchPrevPage(cursor)
+    response = await fetchPrevPage(cursor);
   }
 
   const results = formatProductsResponse(response);
@@ -111,17 +108,23 @@ export const fetchProductsByTag = async (
   tag: string
 ): Promise<FormattedProductResponse> => {
   const data = `{
-    products (first: 10, query: "tag:${tag}") {
+    products (first: 6, query: "tag:${tag}") {
       nodes {
         title
         handle
         description
-        images(first: 10) {
+        images(first: 5) {
           nodes {
-            altText
             url
+            altText
           }
         }
+      }
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        startCursor
+        endCursor
       }
     }
   }`;

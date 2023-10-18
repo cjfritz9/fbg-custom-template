@@ -9,12 +9,23 @@ export const getHomeContent = cache(async () => {
   return result;
 });
 
-export const getProducts = cache(async (): Promise<FormattedProductResponse> => {
-  const response = await fetch(`api/products`);
-  const results = await response.json();
+export const getProducts = cache(
+  async (): Promise<FormattedProductResponse> => {
+    const response = await fetch(`api/products`);
+    const results = await response.json();
 
-  return results;
-});
+    return results;
+  }
+);
+
+export const getPaginatedProducts = cache(
+  async (query: string): Promise<FormattedProductResponse> => {
+    const response = await fetch(`api/products?${query}`);
+    const results = await response.json();
+
+    return results;
+  }
+);
 
 export const getProductByHandle = cache(async (handle: string) => {
   const response = await fetch(`api/products/${handle}`);
@@ -23,9 +34,11 @@ export const getProductByHandle = cache(async (handle: string) => {
   return result;
 });
 
-export const getProductsByTag = cache(async (tag: FilterMethods) => {
-  const response = await fetch(`api/products/tags/${tag}`);
-  const results = await response.json();
+export const getProductsByTag = cache(
+  async (tag: FilterMethods): Promise<FormattedProductResponse> => {
+    const response = await fetch(`api/products/tags/${tag}`);
+    const results = await response.json();
 
-  return results;
-});
+    return results;
+  }
+);

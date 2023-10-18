@@ -38,27 +38,23 @@ const ProductCard: React.FC<ProductCardProps> = ({
 };
 
 export const LoadingCards: React.FC = () => {
-  return (
-    <div className='flex flex-wrap gap-12 lg:py-8 lg:px-8 xl:py-16 xl:px-28'>
-      {Array.from(new Array(6)).map((_, i) => (
-        <div
-          key={i}
-          className='card animate-pulse w-96 glass text-primary drop-shadow-2xl shadow-2xl'
-        >
-          <figure>
-            <div className='h-[254px] w-full bg-primary opacity-50'></div>
-          </figure>
-          <div className='card-body'>
-            <div className='h-6 w-full bg-primary rounded opacity-50'></div>
-            <div className='h-24 w-full bg-primary rounded opacity-50'></div>
-            <div className='card-actions justify-end'>
-              <Button styles='btn-primary !w-full opacity-50 pointer-events-none'></Button>
-            </div>
-          </div>
+  return Array.from(new Array(6)).map((_, i) => (
+    <div
+      key={i}
+      className='card animate-pulse w-96 glass text-primary drop-shadow-2xl shadow-2xl'
+    >
+      <figure>
+        <div className='h-[254px] w-full bg-primary opacity-50'></div>
+      </figure>
+      <div className='card-body'>
+        <div className='h-6 w-full bg-primary rounded opacity-50'></div>
+        <div className='h-24 w-full bg-primary rounded opacity-50'></div>
+        <div className='card-actions justify-end'>
+          <Button styles='btn-primary !w-full opacity-50 pointer-events-none'></Button>
         </div>
-      ))}
+      </div>
     </div>
-  );
+  ));
 };
 
 export default ProductCard;

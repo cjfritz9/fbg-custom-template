@@ -30,8 +30,8 @@ export interface Product {
 export interface PageInfo {
   hasNextPage: boolean;
   hasPreviousPage: boolean;
-  startCursor: string;
-  endCursor: string;
+  startCursor: string | null;
+  endCursor: string | null;
 }
 
 export interface HomeContentResponse {

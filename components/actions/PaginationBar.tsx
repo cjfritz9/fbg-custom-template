@@ -1,18 +1,65 @@
-import React from 'react';
-import { PaginationBarProps } from '@/@types/props';
+'use client';
+
+import React, { useState } from 'react';
+import { PaginationBarProps, PaginationLinkProps } from '@/@types/props';
+import Link from 'next/link';
+import { getPaginatedProducts } from '@/app/api/requests';
 
 const PaginationBar: React.FC<PaginationBarProps> = ({
-  href,
-  page,
-  pageCount
+  cursors,
+  onUpdateProducts,
+  onLoading
 }) => {
+  const [page, setPage] = useState(1)
+
+  const handleClick = async (nextPage: boolean, usedCursor: string | null) => {
+    if (nextPage) {
+      setPage((prev) => prev + 1)
+      console.log('handle click', page)
+    } else {
+      setPage((prev) => prev - 1)
+    }
+    onLoading(true);
+    const { pageInfo, products } = await getPaginatedProducts(
+      `nextPage=${nextPage}&cursor=${usedCursor}`
+    );
+    onUpdateProducts(products, pageInfo);
+    onLoading(false);
+  };
+
   return (
-    <div className='join'>
-      <button className='join-item btn'>«</button>
-      <button className='join-item btn'>Page 22</button>
-      <button className='join-item btn'>»</button>
+    <div className='join w-full align-center'>
+      {/* <PaginationLink href={`${href}?nextPage=false&cursor=${cursor}`}> */}
+      <button
+        className='join-item btn'
+        onClick={() => handleClick(false, cursors[0])}
+      >
+        «
+      </button>
+      {/* </PaginationLink> */}
+      <button className='join-item btn'>{`Page ${page}`}</button>
+      {/* <PaginationLink href={`${href}?nextPage=true&cursor=${cursor}`}> */}
+      <button
+        className='join-item btn'
+        onClick={() => handleClick(true, cursors[1])}
+      >
+        »
+      </button>
+      {/* </PaginationLink> */}
     </div>
   );
 };
+
+// const PaginationLink: React.FC<PaginationLinkProps> = ({ children, href }) => {
+//   return (
+//     <Link
+//       prefetch
+//       href={href}
+//       className='border rounded text-slate-500 text-sm hover:bg-orange-100 hover:text-slate-700'
+//     >
+//       {children}
+//     </Link>
+//   );
+// };
 
 export default PaginationBar;

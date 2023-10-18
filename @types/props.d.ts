@@ -1,6 +1,6 @@
 import { footerLinks } from '@/lib/static/links';
 import { StaticImageData } from 'next/image';
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import { Product } from './api';
 import { FormattedProduct } from './shop';
 
@@ -26,7 +26,7 @@ export interface ImageWithTextProps extends React.PropsWithChildren {
    * Tailwind CSS style string format
    *
    * Container Styles for DaisyUI Hero with figure
-   * 
+   *
    * https://daisyui.com/components/hero/#hero-with-figure
    */
   styles: TailwindCSSStyles;
@@ -42,7 +42,7 @@ export interface ImageWithTextProps extends React.PropsWithChildren {
 
 export interface FooterLinkGroupProps {
   title: string;
-  links: typeof footerLinks.companyLinks
+  links: typeof footerLinks.companyLinks;
 }
 
 export interface ProductCardProps {
@@ -54,12 +54,17 @@ export interface ProductCardProps {
 }
 
 export interface ProductMenuProps {
-  onUpdateProducts: (updatedProducts: FormattedProduct[]) => void;
+  onUpdateProducts: (
+    updatedProducts: FormattedProduct[],
+    updatedPageInfo: PageInfo
+  ) => void;
   onLoading: (loading: boolean) => void;
 }
 
-export interface PaginationBarProps {
+export interface PaginationBarProps extends ProductMenuProps {
+  cursors: [string | null, string | null];
+}
+
+export interface PaginationLinkProps extends PropsWithChildren {
   href: string;
-  page: number;
-  pageCount: number;
 }

@@ -1,6 +1,7 @@
 import {
   FormattedProductResponse,
   HomeContentResponse,
+  PageInfo,
   ProductByHandleResponse,
   ProductsResponse
 } from '@/@types/api';
@@ -42,6 +43,7 @@ export const formatProductsResponse = (
 ): FormattedProductResponse => {
   const products = <FormattedProduct[]>[];
   const rawProductsData = res.body.data.products.nodes;
+  const rawPageInfo = res.body.data.products.pageInfo
 
   for (const product of rawProductsData) {
     products.push({
@@ -52,8 +54,16 @@ export const formatProductsResponse = (
     });
   }
 
+  const pageInfo: PageInfo = {
+    hasPreviousPage: rawPageInfo.hasPreviousPage,
+    hasNextPage: rawPageInfo.hasNextPage,
+    startCursor: rawPageInfo.hasPreviousPage ? rawPageInfo.startCursor : null,
+    endCursor: rawPageInfo.hasNextPage ? rawPageInfo.endCursor : null,
+  }
+
+
   return {
-    pageInfo: res.body.data.products.pageInfo,
+    pageInfo,
     products
   }
 };

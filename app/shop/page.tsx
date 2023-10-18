@@ -3,10 +3,11 @@
 import ProductMenu from '@/components/actions/ProductMenu';
 import ProductCard, { LoadingCards } from '@/components/layout/ProductCard';
 import React, { useEffect, useState } from 'react';
-import { FormattedProduct } from '@/@types/api';
+import { FormattedProduct, PageInfo } from '@/@types/api';
 import { PaginationData } from '@/@types/shop';
 import { fetchProducts } from '@/graphql/products/products.model';
 import { getProducts } from '../api/requests';
+import PaginationBar from '@/components/actions/PaginationBar';
 
 const ShopPage: React.FC = () => {
   const [products, setProducts] = useState<FormattedProduct[]>([]);
@@ -18,8 +19,14 @@ const ShopPage: React.FC = () => {
     hasPreviousPage: false
   });
 
-  const onUpdateProducts = (updatedProducts: FormattedProduct[]) => {
+  const onUpdateProducts = (
+    updatedProducts: FormattedProduct[],
+    updatedPageInfo: PageInfo,
+    nextPage?: boolean
+  ) => {
+    console.log(updatedProducts);
     setProducts(updatedProducts);
+    setPaginationData(updatedPageInfo);
   };
 
   const onLoading = (loading: boolean) => {
@@ -44,11 +51,11 @@ const ShopPage: React.FC = () => {
   return (
     <div className='flex w-full h-auto bg-base-100'>
       <ProductMenu onUpdateProducts={onUpdateProducts} onLoading={onLoading} />
-      {isLoading ? (
-        <LoadingCards />
-      ) : (
-        <div className='flex flex-wrap gap-12 lg:py-8 lg:px-8 xl:py-16 xl:px-28'>
-          {products.map((product, i) => (
+      <div className='flex flex-wrap gap-12 lg:py-8 lg:px-8 xl:py-16 xl:px-28'>
+        {isLoading ? (
+          <LoadingCards />
+        ) : (
+          products.map((product, i) => (
             <ProductCard
               priority={i < 4}
               key={product.handle}
@@ -57,9 +64,14 @@ const ShopPage: React.FC = () => {
               imageSrc={product.images[0].url}
               imageAlt={product.images[0].altText}
             />
-          ))}
-        </div>
-      )}
+          ))
+        )}
+        <PaginationBar
+          cursors={[paginationData.startCursor, paginationData.endCursor]}
+          onLoading={onLoading}
+          onUpdateProducts={onUpdateProducts}
+        />
+      </div>
     </div>
   );
 };
