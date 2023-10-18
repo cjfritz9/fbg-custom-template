@@ -34,6 +34,11 @@ export interface PageInfo {
   endCursor: string | null;
 }
 
+export interface QueryResult {
+  title: string;
+  handle: string;
+}
+
 export interface HomeContentResponse {
   body: {
     data: {
@@ -81,6 +86,19 @@ export interface ProductByHandleResponse {
   };
 }
 
+export interface ProductsByQueryResponse {
+  body: {
+    data: {
+      products: {
+        nodes: {
+          title: string;
+          handle: string;
+        }[];
+      };
+    };
+  };
+}
+
 export interface FormattedProduct {
   title: string;
   handle: string;
@@ -90,5 +108,5 @@ export interface FormattedProduct {
 
 export interface FormattedProductResponse {
   pageInfo: PageInfo;
-  products: FormattedProduct[]
+  products: FormattedProduct[];
 }

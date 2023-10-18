@@ -1,4 +1,4 @@
-import { FormattedProductResponse } from '@/@types/api';
+import { FormattedProductResponse, QueryResult } from '@/@types/api';
 import { FilterMethods } from '@/@types/shop';
 import { cache } from 'react';
 
@@ -37,6 +37,15 @@ export const getProductByHandle = cache(async (handle: string) => {
 export const getProductsByTag = cache(
   async (tag: FilterMethods): Promise<FormattedProductResponse> => {
     const response = await fetch(`api/products/tags/${tag}`);
+    const results = await response.json();
+
+    return results;
+  }
+);
+
+export const getProductsByQuery = cache(
+  async (query: string): Promise<QueryResult[]> => {
+    const response = await fetch(`api/products/search?query=${query}`);
     const results = await response.json();
 
     return results;

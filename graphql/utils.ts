@@ -3,9 +3,11 @@ import {
   HomeContentResponse,
   PageInfo,
   ProductByHandleResponse,
-  ProductsResponse
+  ProductsByQueryResponse,
+  ProductsResponse,
+  QueryResult
 } from '@/@types/api';
-import { FormattedProduct } from '@/@types/api'; 
+import { FormattedProduct } from '@/@types/api';
 
 export const formatHomeContentResponse = (res: HomeContentResponse) => {
   const data = res.body.data;
@@ -43,7 +45,7 @@ export const formatProductsResponse = (
 ): FormattedProductResponse => {
   const products = <FormattedProduct[]>[];
   const rawProductsData = res.body.data.products.nodes;
-  const rawPageInfo = res.body.data.products.pageInfo
+  const rawPageInfo = res.body.data.products.pageInfo;
 
   for (const product of rawProductsData) {
     products.push({
@@ -58,14 +60,13 @@ export const formatProductsResponse = (
     hasPreviousPage: rawPageInfo.hasPreviousPage,
     hasNextPage: rawPageInfo.hasNextPage,
     startCursor: rawPageInfo.hasPreviousPage ? rawPageInfo.startCursor : null,
-    endCursor: rawPageInfo.hasNextPage ? rawPageInfo.endCursor : null,
-  }
-
+    endCursor: rawPageInfo.hasNextPage ? rawPageInfo.endCursor : null
+  };
 
   return {
     pageInfo,
     products
-  }
+  };
 };
 
 export const formatProductResponse = (res: ProductByHandleResponse) => {
@@ -77,4 +78,13 @@ export const formatProductResponse = (res: ProductByHandleResponse) => {
     description: rawProductData.description,
     images: rawProductData.images.nodes
   };
+};
+
+export const formatProductsByQueryResponse = (
+  res: ProductsByQueryResponse
+): QueryResult[] => {
+  return res.body.data.products.nodes.map((result) => ({
+    title: result.title.replace('Full-Bore Blast', 'F.B.G.'),
+    handle: result.handle
+  }));
 };

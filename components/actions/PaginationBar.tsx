@@ -1,8 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { PaginationBarProps, PaginationLinkProps } from '@/@types/props';
-import Link from 'next/link';
+import { PaginationBarProps } from '@/@types/props';
 import { getPaginatedProducts } from '@/app/api/requests';
 
 const PaginationBar: React.FC<PaginationBarProps> = ({
@@ -29,18 +28,15 @@ const PaginationBar: React.FC<PaginationBarProps> = ({
 
   return (
     <div className='join w-full align-center'>
-      {/* <PaginationLink href={`${href}?nextPage=false&cursor=${cursor}`}> */}
       <button
         className={`join-item btn ${
-          !hasPages.prev && 'btn-disabled'
+          !hasPages.prev || page === 1 ? 'btn-disabled' : ''
         } hover:text-white`}
         onClick={() => handleClick(false, cursors[0])}
       >
         «
       </button>
-      {/* </PaginationLink> */}
-      <span className='join-item btn btn-disabled !bg-neutral !text-black'>{`Page ${page}`}</span>
-      {/* <PaginationLink href={`${href}?nextPage=true&cursor=${cursor}`}> */}
+      <span className='join-item btn btn-disabled !bg-neutral !text-primary'>{`Page ${page}`}</span>
       <button
         className={`join-item btn ${
           !hasPages.next && 'btn-disabled'
@@ -49,21 +45,8 @@ const PaginationBar: React.FC<PaginationBarProps> = ({
       >
         »
       </button>
-      {/* </PaginationLink> */}
     </div>
   );
 };
-
-// const PaginationLink: React.FC<PaginationLinkProps> = ({ children, href }) => {
-//   return (
-//     <Link
-//       prefetch
-//       href={href}
-//       className='border rounded text-slate-500 text-sm hover:bg-orange-100 hover:text-slate-700'
-//     >
-//       {children}
-//     </Link>
-//   );
-// };
 
 export default PaginationBar;

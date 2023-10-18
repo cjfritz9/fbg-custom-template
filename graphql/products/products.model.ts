@@ -1,10 +1,16 @@
 import {
+  FormattedProduct,
   FormattedProductResponse,
   ProductByHandleResponse,
-  ProductsResponse
+  ProductsResponse,
+  QueryResult
 } from '@/@types/api';
 import client from '../shopify-client';
-import { formatProductResponse, formatProductsResponse } from '../utils';
+import {
+  formatProductResponse,
+  formatProductsByQueryResponse,
+  formatProductsResponse
+} from '../utils';
 import { GetProductsParams } from '@/@types/shopify';
 
 const fetchPrevPage = async (cursor: string) => {
@@ -77,6 +83,27 @@ export const fetchProducts = async ({
   }
 
   const results = formatProductsResponse(response);
+
+  return results;
+};
+
+export const fetchProductsByQuery = async (
+  query: string
+): Promise<QueryResult[]> => {
+  const data = `{
+    products(first: 5, query: "(title:*${query}*) OR (description:*${query}*)" ) {
+      nodes {
+        title
+        handle
+      }
+    }
+  }`;
+
+  const response = (await client.query({
+    data
+  })) as ProductsResponse;
+
+  const results = formatProductsByQueryResponse(response);
 
   return results;
 };

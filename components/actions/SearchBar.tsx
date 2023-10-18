@@ -5,6 +5,8 @@ import { Combobox } from '@headlessui/react';
 import { useDebounce } from 'use-debounce';
 import useIsClient from '@/lib/hooks/useIsClient';
 import { useRouter } from 'next/navigation';
+import { getProductsByQuery } from '@/app/api/requests';
+import { QueryResult } from '@/@types/api';
 
 /** Implements Combobox from '@headlessui/react'
  *
@@ -14,19 +16,17 @@ const SearchBar: React.FC = () => {
   const router = useRouter();
   const isClient = useIsClient();
   const [query, setQuery] = useState('');
-  const [products, setProducts] = useState<any[]>([]);
+  const [products, setProducts] = useState<QueryResult[]>([]);
   const [debouncedQuery] = useDebounce(query, 300);
 
   useEffect(() => {
     if (debouncedQuery.length > 1) {
       const controller = new AbortController();
       (async () => {
-        // TODO: USE SHOPIFY API QUERY HERE
-        const response = { data: [] };
-        const { data: results } = response;
+        const results = await getProductsByQuery(debouncedQuery);
 
         if (results.length === 0) {
-          setProducts([{ title: 'No Results', slug: '' }]);
+          setProducts([{ title: 'No Results', handle: '' }]);
         } else {
           setProducts(results);
         }
@@ -65,13 +65,13 @@ const SearchBar: React.FC = () => {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
-          <Combobox.Options className='absolute bg-base-100 py-1 w-full'>
-            {products.map((product: any) => (
-              <Combobox.Option key={product.slug} value={product.slug}>
+          <Combobox.Options className='absolute bg-base-100 py-1 w-full z-50'>
+            {products.map((product) => (
+              <Combobox.Option key={product.handle} value={product.handle}>
                 {({ active }) => (
                   <span
                     className={`block px-2 truncate w-full ${
-                      active && product[0]
+                      active && products[0]
                         ? 'bg-neutral text-secondary'
                         : 'bg-base-200 text-secondary'
                     }`}
