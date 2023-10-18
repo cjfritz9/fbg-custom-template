@@ -9,7 +9,7 @@ import { GetProductsParams } from '@/@types/shopify';
 
 const fetchPrevPage = async (cursor: string) => {
   const data = `{
-    products(first: 6, before: "${cursor}") {
+    products(last: 6, before: "${cursor}") {
       nodes {
         title
         handle

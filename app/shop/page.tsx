@@ -11,6 +11,7 @@ import PaginationBar from '@/components/actions/PaginationBar';
 
 const ShopPage: React.FC = () => {
   const [products, setProducts] = useState<FormattedProduct[]>([]);
+  const [hasPages, setHasPages] = useState({ prev: false, next: true });
   const [isLoading, setIsLoading] = useState(true);
   const [paginationData, setPaginationData] = useState<PaginationData>({
     startCursor: null,
@@ -21,12 +22,14 @@ const ShopPage: React.FC = () => {
 
   const onUpdateProducts = (
     updatedProducts: FormattedProduct[],
-    updatedPageInfo: PageInfo,
-    nextPage?: boolean
+    updatedPageInfo: PageInfo
   ) => {
-    console.log(updatedProducts);
     setProducts(updatedProducts);
     setPaginationData(updatedPageInfo);
+    setHasPages({
+      prev: updatedPageInfo.hasPreviousPage,
+      next: updatedPageInfo.hasNextPage
+    });
   };
 
   const onLoading = (loading: boolean) => {
@@ -52,6 +55,12 @@ const ShopPage: React.FC = () => {
     <div className='flex w-full h-auto bg-base-100'>
       <ProductMenu onUpdateProducts={onUpdateProducts} onLoading={onLoading} />
       <div className='flex flex-wrap gap-12 lg:py-8 lg:px-8 xl:py-16 xl:px-28'>
+        <PaginationBar
+          cursors={[paginationData.startCursor, paginationData.endCursor]}
+          hasPages={hasPages}
+          onLoading={onLoading}
+          onUpdateProducts={onUpdateProducts}
+        />
         {isLoading ? (
           <LoadingCards />
         ) : (
@@ -66,11 +75,6 @@ const ShopPage: React.FC = () => {
             />
           ))
         )}
-        <PaginationBar
-          cursors={[paginationData.startCursor, paginationData.endCursor]}
-          onLoading={onLoading}
-          onUpdateProducts={onUpdateProducts}
-        />
       </div>
     </div>
   );

@@ -63,6 +63,7 @@ export interface ProductMenuProps {
 
 export interface PaginationBarProps extends ProductMenuProps {
   cursors: [string | null, string | null];
+  hasPages: { prev: boolean; next: boolean };
 }
 
 export interface PaginationLinkProps extends PropsWithChildren {
