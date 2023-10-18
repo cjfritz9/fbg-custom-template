@@ -54,5 +54,6 @@ export interface ProductCardProps {
 }
 
 export interface ProductMenuProps {
-  setProducts: React.Dispatch<React.SetStateAction<FormattedProduct[]>>
+  onUpdateProducts: (updatedProducts: FormattedProduct[]) => void;
+  onLoading: (loading: boolean) => void;
 }

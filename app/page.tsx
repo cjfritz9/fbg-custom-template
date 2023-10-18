@@ -1,13 +1,13 @@
+import React from 'react';
 import Button from '@/components/actions/Button';
 import Border from '@/components/layout/Border';
 import ImageWithText from '@/components/layout/ImageWithText';
 import ProductGallery from '@/components/layout/ProductGallery';
 import RewardsBanner from '@/components/layout/RewardsBanner';
 import VideoHero from '@/components/layout/VideoHero';
-import { getHomeContent } from '@/graphql/content/content.model';
 import productImage from '@/public/assets/images/fbg-cleaning-system-E.webp';
 import placeholderImage from '@/public/assets/images/fbg-placeholder.webp';
-import React from 'react';
+import { getHomeContent } from './api/requests';
 
 const Home: React.FC = async () => {
   const content = await getHomeContent();

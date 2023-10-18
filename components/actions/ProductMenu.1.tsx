@@ -1,18 +1,11 @@
-'use client';
-
 import React from 'react';
 import { ProductMenuProps } from '@/@types/props';
 import { FilterMethods, SortMethods } from '@/@types/context';
 import { getProductsByTag } from '@/app/api/requests';
 
-const ProductMenu: React.FC<ProductMenuProps> = ({
-  onUpdateProducts,
-  onLoading
-}) => {
+const ProductMenu: React.FC<ProductMenuProps> = ({ setProducts }) => {
   const handleFilterClick = async (option: FilterMethods) => {
-    onLoading(true);
-    onUpdateProducts(await getProductsByTag(option));
-    onLoading(false);
+    setProducts(await getProductsByTag(option));
   };
 
   const handleSortClick = async (option: SortMethods) => {
@@ -53,5 +46,4 @@ const ProductMenu: React.FC<ProductMenuProps> = ({
     </div>
   );
 };
-
 export default ProductMenu;

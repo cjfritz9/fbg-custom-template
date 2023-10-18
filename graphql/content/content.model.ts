@@ -2,7 +2,7 @@ import { HomeContentResponse } from '@/@types/api';
 import client from '../shopify-client';
 import { formatHomeContentResponse } from '../utils';
 
-export const getHomeContent = async () => {
+export const fetchHomeContent = async () => {
   const data = `{
     hero: metaobjects(type: "video_hero", first: 1) {
       nodes {
