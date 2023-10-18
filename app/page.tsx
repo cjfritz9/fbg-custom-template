@@ -7,10 +7,10 @@ import RewardsBanner from '@/components/layout/RewardsBanner';
 import VideoHero from '@/components/layout/VideoHero';
 import productImage from '@/public/assets/images/fbg-cleaning-system-E.webp';
 import placeholderImage from '@/public/assets/images/fbg-placeholder.webp';
-import { getHomeContent } from './api/requests';
+import { fetchHomeContent } from '@/graphql/content/content.model';
 
 const Home: React.FC = async () => {
-  const content = await getHomeContent();
+  const content = await fetchHomeContent();
 
   return (
     <main>

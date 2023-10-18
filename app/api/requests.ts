@@ -9,7 +9,7 @@ export const getHomeContent = cache(async () => {
   return result;
 });
 
-export const getAllProducts = cache(async (): Promise<FormattedProductResponse> => {
+export const getProducts = cache(async (): Promise<FormattedProductResponse> => {
   const response = await fetch(`api/products`);
   const results = await response.json();
 

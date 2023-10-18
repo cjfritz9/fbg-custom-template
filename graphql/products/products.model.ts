@@ -1,5 +1,4 @@
 import {
-  FormattedProduct,
   FormattedProductResponse,
   ProductByHandleResponse,
   ProductsResponse

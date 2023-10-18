@@ -68,19 +68,3 @@ export const formatProductResponse = (res: ProductByHandleResponse) => {
     images: rawProductData.images.nodes
   };
 };
-
-// export const formatProductsByTagResponse = (res: ProductsResponse): FormattedProduct[] => {
-//   const products = <FormattedProduct[]>[];
-//   const rawProductsData = res.body.data.products.nodes;
-
-//   for (const product of rawProductsData) {
-//     products.push({
-//       title: product.title,
-//       handle: product.handle,
-//       description: product.description,
-//       images: product.images.nodes
-//     });
-//   }
-
-//   return products;
-// }

@@ -1,6 +1,5 @@
 'use client';
 
-import ProductMenu from '@/components/actions/ProductMenu.1';
 import React, { PropsWithChildren } from 'react';
 
 const ProductsLayout: React.FC<PropsWithChildren> = ({ children }) => {

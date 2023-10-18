@@ -2,14 +2,11 @@
 
 import ProductMenu from '@/components/actions/ProductMenu';
 import ProductCard, { LoadingCards } from '@/components/layout/ProductCard';
-import React, { Suspense, useEffect, useState } from 'react';
-import { getAllProducts } from '@/app/api/requests';
-import {
-  FormattedProduct,
-  FormattedProductResponse,
-  PageInfo
-} from '@/@types/api';
+import React, { useEffect, useState } from 'react';
+import { FormattedProduct } from '@/@types/api';
 import { PaginationData } from '@/@types/shop';
+import { fetchProducts } from '@/graphql/products/products.model';
+import { getProducts } from '../api/requests';
 
 const ShopPage: React.FC = () => {
   const [products, setProducts] = useState<FormattedProduct[]>([]);
@@ -31,7 +28,7 @@ const ShopPage: React.FC = () => {
 
   useEffect(() => {
     (async () => {
-      const { pageInfo, products } = await getAllProducts();
+      const { pageInfo, products } = await getProducts();
       const { hasNextPage, hasPreviousPage, startCursor, endCursor } = pageInfo;
       setProducts(products);
       setPaginationData({
