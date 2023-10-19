@@ -13,6 +13,8 @@ const PaginationBar: React.FC<PaginationBarProps> = ({
   const [page, setPage] = useState(1);
 
   const handleClick = async (nextPage: boolean, usedCursor: string | null) => {
+    const container = document.getElementById('cards-container')!;
+    container.scrollIntoView({block: 'start', behavior: 'smooth'})
     onLoading(true);
     const { pageInfo, products } = await getPaginatedProducts(
       `nextPage=${nextPage}&cursor=${usedCursor}`

@@ -5,7 +5,6 @@ import ProductCard, { LoadingCards } from '@/components/layout/ProductCard';
 import React, { useEffect, useState } from 'react';
 import { FormattedProduct, PageInfo } from '@/@types/api';
 import { PaginationData } from '@/@types/shop';
-import { fetchProducts } from '@/graphql/products/products.model';
 import { getProducts } from '../api/requests';
 import PaginationBar from '@/components/actions/PaginationBar';
 
@@ -54,13 +53,7 @@ const ShopPage: React.FC = () => {
   return (
     <div className='flex w-full h-auto bg-base-100'>
       <ProductMenu onUpdateProducts={onUpdateProducts} onLoading={onLoading} />
-      <div className='flex flex-wrap gap-12 lg:py-8 lg:px-8 xl:py-16 xl:px-28'>
-        <PaginationBar
-          cursors={[paginationData.startCursor, paginationData.endCursor]}
-          hasPages={hasPages}
-          onLoading={onLoading}
-          onUpdateProducts={onUpdateProducts}
-        />
+      <div id='cards-container' className='flex flex-wrap gap-12 lg:py-8 lg:px-8 xl:py-16 xl:px-28'>
         {isLoading ? (
           <LoadingCards />
         ) : (
@@ -75,6 +68,12 @@ const ShopPage: React.FC = () => {
             />
           ))
         )}
+        <PaginationBar
+          cursors={[paginationData.startCursor, paginationData.endCursor]}
+          onLoading={onLoading}
+          hasPages={hasPages}
+          onUpdateProducts={onUpdateProducts}
+        />
       </div>
     </div>
   );
