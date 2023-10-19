@@ -84,7 +84,7 @@ export const formatProductsByQueryResponse = (
   res: ProductsByQueryResponse
 ): QueryResult[] => {
   return res.body.data.products.nodes.map((result) => ({
-    title: result.title.replace('Full-Bore Blast', ''),
+    title: result.title,
     handle: result.handle,
     image: result.images.nodes[0].url
   }));

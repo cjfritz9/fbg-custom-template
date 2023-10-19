@@ -22,9 +22,9 @@ const ProductMenu: React.FC<ProductMenuProps> = ({
 
   return (
     <div className='py-12 bg-base-300'>
-      <div className='flex flex-col w-80 sticky top-16 items-center'>
-        <p className='text-xl font-semibold py-4'>SORT</p>
-        <div className='tabs flex flex-col gap-2 text-sm pb-4 opacity-70 items-center'>
+      <div className='flex flex-col w-64 sticky top-16 items-left px-8'>
+        <p className='text-xl font-semibold py-4 px-2'>SORT</p>
+        <div className='tabs flex flex-col gap-2 text-sm pb-4 opacity-70 items-start w-full'>
           <p
             className='tab text-white'
             onClick={() => handleSortClick('featured')}
@@ -56,8 +56,8 @@ const ProductMenu: React.FC<ProductMenuProps> = ({
             PRICE - HIGH
           </p>
         </div>
-        <p className='text-xl font-semibold py-4'>FILTER</p>
-        <div className='tabs flex flex-col gap-2 text-sm pb-4 opacity-70 items-center'>
+        <p className='text-xl font-semibold py-4 px-2'>FILTER</p>
+        <div className='tabs flex flex-col gap-2 text-sm pb-4 opacity-70 items-start w-full'>
           <p
             className='tab text-white'
             onClick={() => handleFilterClick('full kits')}

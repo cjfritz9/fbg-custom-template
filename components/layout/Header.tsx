@@ -28,7 +28,7 @@ const Header: React.FC = () => {
                       <Link
                         prefetch
                         href={link.slug}
-                        className='text-white normal-case text-xl'
+                        className='text-white hover:text-white hover:text-opacity-75  normal-case text-xl'
                       >
                         {link.name}
                       </Link>

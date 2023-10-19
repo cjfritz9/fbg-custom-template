@@ -12,7 +12,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   imageAlt
 }) => {
   return (
-    <div className='card w-96 glass text-primary drop-shadow-2xl shadow-2xl'>
+    <div className='card w-[20rem] md:w-[26rem] glass text-primary drop-shadow-2xl shadow-2xl'>
       <figure>
         <Image
           priority
