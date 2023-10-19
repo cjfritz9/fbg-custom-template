@@ -91,10 +91,18 @@ export const fetchProductsByQuery = async (
   query: string
 ): Promise<QueryResult[]> => {
   const data = `{
-    products(first: 5, query: "(product_type:${query}) OR (tag:${query}) OR (title:*${query}*)" ) {
+    products(
+      first: 5,
+      query: "(product_type:${query}) OR (tag:${query}) OR (title:*${query}*)"
+    ) {
       nodes {
         title
         handle
+        images (first: 1) {
+          nodes {
+            url
+          }
+        }
       }
     }
   }`;

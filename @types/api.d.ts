@@ -37,6 +37,7 @@ export interface PageInfo {
 export interface QueryResult {
   title: string;
   handle: string;
+  image: string;
 }
 
 export interface HomeContentResponse {
@@ -93,6 +94,9 @@ export interface ProductsByQueryResponse {
         nodes: {
           title: string;
           handle: string;
+          images: {
+            nodes: ProductImage[];
+          };
         }[];
       };
     };

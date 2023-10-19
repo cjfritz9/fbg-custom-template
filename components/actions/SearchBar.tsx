@@ -7,6 +7,8 @@ import useIsClient from '@/lib/hooks/useIsClient';
 import { useRouter } from 'next/navigation';
 import { getProductsByQuery } from '@/app/api/requests';
 import { QueryResult } from '@/@types/api';
+import Image from 'next/image';
+import Border from '../layout/Border';
 
 /** Implements Combobox from '@headlessui/react'
  *
@@ -16,8 +18,13 @@ const SearchBar: React.FC = () => {
   const router = useRouter();
   const isClient = useIsClient();
   const [query, setQuery] = useState('');
+  const [isFocused, setIsFocused] = useState(false);
   const [products, setProducts] = useState<QueryResult[]>([]);
   const [debouncedQuery] = useDebounce(query, 300);
+
+  const handleChange = (slug: string) => {
+    router.push(`shop/${slug}`);
+  };
 
   useEffect(() => {
     if (debouncedQuery.length > 1) {
@@ -26,7 +33,7 @@ const SearchBar: React.FC = () => {
         const results = await getProductsByQuery(debouncedQuery);
 
         if (results.length === 0) {
-          setProducts([{ title: 'No Results', handle: '' }]);
+          setProducts([{ image: '', title: 'No Results', handle: '' }]);
         } else {
           setProducts(results);
         }
@@ -51,9 +58,7 @@ const SearchBar: React.FC = () => {
     );
   }
 
-  const handleChange = (slug: string) => {
-    router.push(`/${slug}`);
-  };
+  const noResults = products[0] && products[0].title === 'No Results';
 
   return (
     <div className='form-control hidden lg:inline-block'>
@@ -61,25 +66,51 @@ const SearchBar: React.FC = () => {
         <Combobox onChange={handleChange}>
           <Combobox.Input
             placeholder='Search...'
-            className='input input-bordered border-primary bg-primary-content w-24 md:w-auto'
+            className={`input input-bordered border-primary bg-primary-content ${
+              isFocused ? 'w-72 xl:w-[480px]' : 'w-48 xl:w-[320px]'
+            } transition-all duration-1000`}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
+            onFocus={() => setIsFocused(true)}
+            onBlur={() => setIsFocused(false)}
           />
-          <Combobox.Options className='absolute bg-base-100 py-1 w-full z-50'>
+          <Combobox.Options
+            className={`absolute bg-base-100 w-full z-50 ${
+              noResults ? 'pointer-events-none' : 'cursor-pointer'
+            }`}
+          >
             {products.map((product) => (
-              <Combobox.Option key={product.handle} value={product.handle}>
-                {({ active }) => (
-                  <span
-                    className={`block px-2 truncate w-full ${
-                      active && products[0]
-                        ? 'bg-neutral text-secondary'
-                        : 'bg-base-200 text-secondary'
-                    }`}
-                  >
-                    {product.title}
-                  </span>
-                )}
-              </Combobox.Option>
+              <>
+                <Border />
+                <Combobox.Option key={product.handle} value={product.handle}>
+                  {({ active }) => (
+                    <span
+                      className={`flex gap-4 h-20 items-center w-full text-xl text-primary ${
+                        active && !noResults
+                          ? 'bg-neutral text-secondary'
+                          : 'bg-base-200'
+                      }`}
+                    >
+                      {!noResults && (
+                        <Image
+                          src={product.image}
+                          alt={`Search result image for ${product.title}`}
+                          height={80}
+                          width={80}
+                          className='w-20 h-20 object-cover object-center'
+                        />
+                      )}
+                      <p
+                        className={`truncate pr-2 ${
+                          noResults && 'text-center w-full'
+                        }`}
+                      >
+                        {product.title}
+                      </p>
+                    </span>
+                  )}
+                </Combobox.Option>
+              </>
             ))}
           </Combobox.Options>
         </Combobox>
