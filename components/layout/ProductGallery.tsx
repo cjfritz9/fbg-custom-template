@@ -67,18 +67,17 @@ const ProductGallery: React.FC = () => {
               className='md:!w-[33%] text-center relative flex items-center'
             >
               <Link href={`shop/${product.handle}`} className='w-full h-full'>
-                <div className='absolute bg-gradient-to-t from-slate-300 via-35% via-transparent to-transparent w-full h-full'>
-                </div>
-                  <p className='absolute w-full bottom-12 text-xl font-semibold text-accent'>
-                    {product.title}
-                  </p>
+                <div className='absolute bg-gradient-to-t from-slate-300 via-35% via-transparent to-transparent w-full h-full'></div>
+                <p className='absolute w-full bottom-12 text-xl font-semibold text-accent'>
+                  {product.title}
+                </p>
                 <Image
                   src={product.images[0].url}
                   alt={product.images[0].altText}
                   width={512}
                   height={400}
                   objectFit='cover'
-                  objectPosition='center center'
+                  objectPosition='center bottom'
                   className='h-full'
                 />
               </Link>

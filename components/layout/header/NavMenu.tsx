@@ -29,11 +29,7 @@ const NavMenu: React.FC = () => {
       <div className='flex flex-col-reverse sm:flex-col w-full md:gap-4'>
         <div className='flex w-full justify-between items-center'>
           <div />
-          <ul className='menu menu-horizontal bg-base-100 hidden md:inline-flex gap-4 justify-end md:justify-between py-0 px-0 -mr-4'>
-            {navLinks.map((link) => (
-              <NavLink key={link.slug} link={link} />
-            ))}
-          </ul>
+          <SearchBar variant='header' />
           <div
             className='gap-4 w-48 text-xl font-bold justify-end items-center cursor-pointer hidden lg:flex'
             onClick={handleCallClick}
@@ -44,7 +40,11 @@ const NavMenu: React.FC = () => {
         </div>
         <div className='flex w-full justify-between items-center'>
           <div />
-          <SearchBar variant='header' />
+          <ul className='menu menu-horizontal bg-base-100 hidden md:inline-flex gap-4 justify-end md:justify-between py-0 px-0 -mr-4'>
+            {navLinks.map((link) => (
+              <NavLink key={link.slug} link={link} />
+            ))}
+          </ul>
           <div className='flex gap-4 text-2xl text-primary w-24 sm:w-48 justify-end items-center'>
             <NavIcon
               variants={[IoCallOutline, IoCall]}
