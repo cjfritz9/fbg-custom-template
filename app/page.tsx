@@ -17,7 +17,7 @@ const Home: React.FC = async () => {
       <VideoHero videoUrl={content.videoUrl} />
       <Border />
       <ImageWithText
-        styles='bg-neutral text-primary'
+        styles='bg-base-100 text-primary'
         imageSrc={productImage}
         reverse
       >
@@ -30,13 +30,13 @@ const Home: React.FC = async () => {
         <div className='flex-col'>
           <p className='text-md pt-4'>{content.topContent.paragraphs}</p>
         </div>
-        <Button styles='btn-secondary mt-4'>BUY NOW</Button>
+        <Button styles='btn-primary mt-4'>BUY NOW</Button>
       </ImageWithText>
       <RewardsBanner />
       <ProductGallery />
       <ImageWithText
         imageSrc={placeholderImage}
-        styles='bg-neutral text-primary'
+        styles='bg-base-100 text-primary'
       >
         <h2 className='text-3xl font-bold'>{content.bottomContent.title}</h2>
         <p className='text-md text-secondary font-semibold'>

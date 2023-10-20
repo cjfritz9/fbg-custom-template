@@ -4,9 +4,9 @@ import { Inter, Montserrat } from 'next/font/google';
 // import Providers from './providers';
 import SplashScreen from '@/components/UI/SplashScreen';
 import Announcement from '@/components/actions/Announcement';
-import Header from '@/components/layout/Header';
 import Ankle from '@/components/layout/Ankle';
 import Footer from '@/components/layout/footer/Footer';
+import Header from '@/components/layout/header/Header';
 
 const inter = Inter({ subsets: ['latin'] });
 const monsterrat = Montserrat({ subsets: ['latin'] });

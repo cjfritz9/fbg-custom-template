@@ -1,8 +1,9 @@
-import { footerLinks } from '@/lib/static/links';
+import { footerLinks, navLinks } from '@/lib/static/links';
 import { StaticImageData } from 'next/image';
 import React, { PropsWithChildren } from 'react';
 import { Product } from './api';
 import { FormattedProduct } from './shop';
+import { IconType } from 'react-icons';
 
 type TailwindCSSStyles = string;
 
@@ -38,6 +39,27 @@ export interface ImageWithTextProps extends React.PropsWithChildren {
    * [reversed = text | image]
    */
   reverse?: boolean;
+}
+
+export interface SearchBarProps {
+  variant: 'header' | 'drawer';
+}
+
+export interface NavLinkProps {
+  link: (typeof navLinks)[0];
+}
+
+/**
+ * @type {variants} Icon variants for hover and non hover states
+ * 
+ * variants[0] represents initial state
+ * 
+ * variants[1] represents hover state
+ */
+export interface NavIconProps {
+  variants: [IconType, IconType];
+  href?: string;
+  styles?: string;
 }
 
 export interface FooterLinkGroupProps {

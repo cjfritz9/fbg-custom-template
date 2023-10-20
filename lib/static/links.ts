@@ -6,6 +6,10 @@ export const navLinks = [
   {
     name: 'About',
     slug: '/about'
+  },
+  {
+    name: 'Contact',
+    slug: '/contact'
   }
 ];
 
