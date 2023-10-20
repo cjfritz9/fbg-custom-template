@@ -31,7 +31,7 @@ const Announcement: React.FC = () => {
         {!isPageAtTop && <div />}
         <span className='flex gap-1'>
           <p className='font-semibold'>MADE IN THE USA</p>
-          <p>| Free Shipping $[amt]+ | [policies] Warranty & Returns</p>
+          <p>| Free Shipping $50+ | 2 Year Warranty</p>
         </span>
         {!isPageAtTop && (
           <div
@@ -54,7 +54,7 @@ const Announcement: React.FC = () => {
       {!isPageAtTop && <div />}
       <span className='flex gap-1'>
         <p className='font-semibold'>MADE IN THE USA</p>
-        <p>| Free Shipping $[amt]+ | [policies] Warranty & Returns</p>
+        <p>| Free Shipping $50+ | 2 Year Warranty</p>
       </span>
       {!isPageAtTop && (
         <div
