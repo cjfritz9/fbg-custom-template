@@ -2,7 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react';
-import logoAlt from '@/public/assets/images/fbg-logo-white.webp';
+import logoAlt from '@/public/assets/images/fbg-logo.webp';
 import Image from 'next/image';
 import anime from 'animejs';
 import useIsClient from '@/lib/hooks/useIsClient';
@@ -75,7 +75,7 @@ const SplashScreen: React.FC = () => {
       <span className='block lg:hidden loading loading-spinner loading-lg text-white text-center absolute z-[52] top-[20dvh] left-[47dvw]'></span>
       <div
         ref={bgRef}
-        className='flex fixed bg-[#1d232a] h-full w-full z-50 items-center overflow'
+        className='flex fixed bg-base-100 h-full w-full z-50 items-center overflow'
       >
         <div ref={logoRef} className='hidden lg:block translate-x-[-240px]'>
           <Image
