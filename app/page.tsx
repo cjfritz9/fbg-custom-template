@@ -18,7 +18,7 @@ const Home: React.FC = async () => {
       <Border />
       <ImageWithText
         styles='bg-base-100 text-primary'
-        imageSrc={productImage}
+        imageSrc={content.topContent.image!}
         reverse
       >
         <h2 className='text-3xl font-bold'>
@@ -35,7 +35,7 @@ const Home: React.FC = async () => {
       <RewardsBanner />
       <ProductGallery />
       <ImageWithText
-        imageSrc={placeholderImage}
+        imageSrc={content.bottomContent.image!}
         styles='bg-base-100 text-primary'
       >
         <h2 className='text-3xl font-bold'>{content.bottomContent.title}</h2>

@@ -22,7 +22,7 @@ export interface VideoHeroProps {
 
 /** @type {children} Text content to be rendered aside the image */
 export interface ImageWithTextProps extends React.PropsWithChildren {
-  imageSrc: StaticImageData;
+  imageSrc: StaticImageData | string;
   /**
    * Tailwind CSS style string format
    *
@@ -65,6 +65,10 @@ export interface NavIconProps {
 export interface FooterLinkGroupProps {
   title: string;
   links: typeof footerLinks.companyLinks;
+}
+
+export interface SlideContainerProps extends PropsWithChildren {
+  href: string;
 }
 
 export interface ProductCardProps {

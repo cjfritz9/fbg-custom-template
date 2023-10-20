@@ -9,8 +9,13 @@ interface HeroFields {
 }
 
 interface ImageWithTextFields {
-  key: 'title' | 'subtitle' | 'paragraphs';
+  key: 'title' | 'subtitle' | 'paragraphs' | 'image';
   value: string;
+  reference: {
+    image: {
+      url: string;
+    }
+  }
 }
 
 export type ProductImage = {

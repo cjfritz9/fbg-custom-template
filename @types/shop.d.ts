@@ -9,7 +9,7 @@ export type SortMethods =
   | 'price - low'
   | 'price - high';
 
-export type FilterMethods = 'full kits' | 'parts';
+export type FilterMethods = string;
 
 type Cursor = string | null;
 

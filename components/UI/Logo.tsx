@@ -7,7 +7,7 @@ import { LogoProps } from '@/@types/props';
 const Logo: React.FC<LogoProps> = ({ height = 76 }) => {
   return (
     <Link href='/'>
-      <Image priority src={logo} height={height} alt='Full Blast Gear Logo' className={`w-full !max-w-full max-lg:h-12`} />
+      <Image priority src={logo} height={height} alt='Full Blast Gear Logo' className={`w-auto !max-w-full max-lg:h-12`} />
     </Link>
   );
 };

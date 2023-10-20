@@ -23,19 +23,23 @@ export const formatHomeContentResponse = (res: HomeContentResponse) => {
 
       paragraphs: data.top.nodes[0].fields.find(
         (field) => field.key === 'paragraphs'
-      )?.value
+      )?.value,
+      image: data.top.nodes[0].fields.find((field) => field.key === 'image')
+        ?.reference.image.url
     },
     bottomContent: {
-      title: data.top.nodes[0].fields.find((field) => field.key === 'title')
+      title: data.bottom.nodes[0].fields.find((field) => field.key === 'title')
         ?.value,
 
-      subtitle: data.top.nodes[0].fields.find(
+      subtitle: data.bottom.nodes[0].fields.find(
         (field) => field.key === 'subtitle'
       )?.value,
 
-      paragraphs: data.top.nodes[0].fields.find(
+      paragraphs: data.bottom.nodes[0].fields.find(
         (field) => field.key === 'paragraphs'
-      )?.value
+      )?.value,
+      image: data.bottom.nodes[0].fields.find((field) => field.key === 'image')
+        ?.reference.image.url
     }
   };
 };

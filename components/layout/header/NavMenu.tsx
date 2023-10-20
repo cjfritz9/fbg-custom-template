@@ -23,13 +23,13 @@ const NavMenu: React.FC = () => {
 
   return (
     <div className='navbar flex bg-base-100 h-20 md:h-32 px-4 md:px-12 text-primary z-[15]'>
-      <div className='flex align-center sm:!w-48'>
+      <div className='flex align-center min-w-[12rem]'>
         <Logo />
       </div>
       <div className='flex flex-col-reverse sm:flex-col w-full md:gap-4'>
         <div className='flex w-full justify-between items-center'>
           <div />
-          <ul className='menu menu-horizontal bg-base-100 hidden md:inline-flex gap-4 justify-end md:justify-between pr-0 py-0'>
+          <ul className='menu menu-horizontal bg-base-100 hidden md:inline-flex gap-4 justify-end md:justify-between py-0 px-0 -mr-4'>
             {navLinks.map((link) => (
               <NavLink key={link.slug} link={link} />
             ))}
@@ -45,7 +45,7 @@ const NavMenu: React.FC = () => {
         <div className='flex w-full justify-between items-center'>
           <div />
           <SearchBar variant='header' />
-          <div className='flex gap-4 text-2xl text-primary w-48 justify-end items-center'>
+          <div className='flex gap-4 text-2xl text-primary w-24 sm:w-48 justify-end items-center'>
             <NavIcon
               variants={[IoCallOutline, IoCall]}
               href='tel:+18003189030'
@@ -98,7 +98,7 @@ const NavLink: React.FC<NavLinkProps> = ({ link }) => {
       key={link.name}
       className='uppercase text-xl font-semibold active:bg-base-100 px-0 py-0'
     >
-      <Link prefetch href={link.slug} className='py-0 pr-0'>
+      <Link prefetch href={link.slug} className='py-0 hover:bg-transparent hover:text-secondary'>
         {link.name}
       </Link>
     </li>
