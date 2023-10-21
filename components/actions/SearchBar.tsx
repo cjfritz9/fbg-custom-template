@@ -25,7 +25,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ variant }) => {
   const [debouncedQuery] = useDebounce(query, 300);
 
   const handleChange = (slug: string) => {
-    router.push(`shop/${slug}`);
+    router.push(`/shop/${slug}`);
   };
 
   useEffect(() => {

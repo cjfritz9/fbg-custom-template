@@ -36,10 +36,10 @@ const ProductPage: React.FC<ProductMetadata> = async ({
     <section className='flex flex-col lg:flex-row gap-8 text-primary'>
       <div className='flex flex-col h-full justify-between'>
         <div className='flex flex-col gap-4'>
-          <Button styles='bg-base-100 border-0 !w-full -mb-4'>
+          <Button styles='bg-base-100 border-0 !w-full -mb-8 hover:bg-base-100'>
             <TbChevronCompactUp className='text-4xl text-base-200' />
           </Button>
-          {images.map((image) => (
+          {images.slice(0, 4).map((image) => (
             <Image
               key={image.url}
               src={image.url}
@@ -50,20 +50,20 @@ const ProductPage: React.FC<ProductMetadata> = async ({
             />
           ))}
         </div>
-        <Button styles='bg-base-100 border-0 !w-full -mt-4'>
+        <Button styles='bg-base-100 border-0 !w-full -mt-4 hover:bg-base-100'>
           <TbChevronCompactDown className='text-4xl text-base-200' />
         </Button>
       </div>
-      <div>
+      <div className='flex justify-center max-h-[556px] w-[720px]'>
         <Image
           src={images[0].url}
           alt={images[0].altText}
           height={800}
           width={800}
-          className='object-cover object-center h-auto w-full'
+          className='object-cover object-center h-auto w-max max-h-[556px]'
         />
       </div>
-      <div className='flex flex-col px-8 gap-8 max-w-[40rem]'>
+      <div className='flex flex-col gap-8 max-w-[40rem]'>
         <div>
           <h2 className='text-3xl font-bold'>{product.title}</h2>
           <div className='flex gap-2 text-secondary text-xl font-bold items-center w-[656px]'>
@@ -78,7 +78,7 @@ const ProductPage: React.FC<ProductMetadata> = async ({
         <Border />
         <div>
           <p className='uppercase font-semibold text-xl pb-4'>Specs</p>
-          <ul className='custom-scroll list-disc pl-5 max-h-56 overflow-y-auto'>
+          <ul className='custom-scroll list-disc pl-5 max-h-48 overflow-y-auto'>
             <li>
               Material: Galvanized Carbon Steel, Solid Brass, Micro Suede, Nylon
               Mesh, Polyvinyl, Molded Plastic.
