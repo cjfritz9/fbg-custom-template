@@ -7,7 +7,7 @@ export const GET = async (
   { params }: { params: { handle: string } }
 ) => {
   const { handle } = params;
-  const result = await getProductByHandle(handle)
+  const result = await fetchProductByHandle(handle);
 
   return NextResponse.json(result);
 };

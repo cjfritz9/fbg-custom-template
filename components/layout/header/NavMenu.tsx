@@ -2,7 +2,7 @@
 
 import { navLinks } from '@/lib/static/links';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SearchBar from '../../actions/SearchBar';
 import Logo from '../../UI/Logo';
 import { NavIconProps, NavLinkProps } from '@/@types/props';
@@ -15,6 +15,7 @@ import {
   IoPerson,
   IoPersonOutline
 } from 'react-icons/io5';
+import { usePathname } from 'next/navigation';
 
 const NavMenu: React.FC = () => {
   const handleCallClick = () => {
@@ -40,7 +41,7 @@ const NavMenu: React.FC = () => {
         </div>
         <div className='flex w-full justify-between items-center'>
           <div />
-          <ul className='menu menu-horizontal bg-base-100 hidden md:inline-flex gap-4 justify-end md:justify-between py-0 px-0 -mr-4'>
+          <ul className='menu menu-horizontal bg-base-100 hidden lg:inline-flex gap-0 xl:gap-4 justify-end md:justify-between py-0 px-0 -mr-4'>
             {navLinks.map((link) => (
               <NavLink key={link.slug} link={link} />
             ))}
@@ -93,12 +94,26 @@ const NavMenu: React.FC = () => {
 };
 
 const NavLink: React.FC<NavLinkProps> = ({ link }) => {
+  const pathname = usePathname();
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    if (pathname === link.slug) {
+      setIsActive(true);
+    } else {
+      setIsActive(false);
+    }
+  }, [pathname, link.slug])
   return (
     <li
       key={link.name}
-      className='uppercase text-xl font-semibold active:bg-base-100 px-0 py-0'
+      className={`uppercase text-lg xl:text-xl font-semibold px-0 py-0 ${isActive ? 'text-secondary' : 'text-primary'}`}
     >
-      <Link prefetch href={link.slug} className='py-0 hover:bg-transparent hover:text-secondary'>
+      <Link
+        prefetch
+        href={link.slug}
+        className='py-0 hover:bg-transparent hover:text-secondary focus:!text-secondary active:!text-secondary focus:!bg-transparent active:!bg-transparent'
+      >
         {link.name}
       </Link>
     </li>

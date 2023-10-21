@@ -30,9 +30,9 @@ const ProductGallery: React.FC = () => {
   }, []);
 
   return (
-    <div className='bg-base-300 w-[100%] text-primary h-full flex flex-col md:bg-neutral gap-12 p-4 md:py-16 md:px-40 overflow-x-hidden'>
-      <div>
-        <div className='flex gap-4 items-baseline'>
+    <div className='bg-base-200 w-full text-primary h-full flex flex-col md:bg-neutral gap-12 p-4 md:py-16 md:px-40 overflow-x-hidden'>
+      <div className='h-full'>
+        <div className='flex-col md:flex gap-4 items-baseline'>
           <h2 className='text-2xl font-bold'>TOP PRODUCTS</h2>
           <Link
             href='/shop'
@@ -76,9 +76,7 @@ const ProductGallery: React.FC = () => {
                   alt={product.images[0].altText}
                   width={512}
                   height={400}
-                  objectFit='cover'
-                  objectPosition='center bottom'
-                  className='h-full'
+                  className='h-full object-cover object-bottom'
                 />
               </Link>
             </SwiperSlide>

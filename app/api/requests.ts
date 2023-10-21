@@ -1,4 +1,4 @@
-import { FormattedProductResponse, QueryResult } from '@/@types/api';
+import { FormattedProduct, FormattedProductResponse, QueryResult } from '@/@types/api';
 import { FilterMethods } from '@/@types/shop';
 import { cache } from 'react';
 
@@ -27,8 +27,8 @@ export const getPaginatedProducts = cache(
   }
 );
 
-export const getProductByHandle = cache(async (handle: string) => {
-  const response = await fetch(`api/products/${handle}`);
+export const getProductByHandle = cache(async (handle: string): Promise<FormattedProduct> => {
+  const response = await fetch(`${process.env.BASE_API_URL}/products/${handle}`);
   const result = await response.json();
 
   return result;

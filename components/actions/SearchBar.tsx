@@ -74,9 +74,8 @@ const SearchBar: React.FC<SearchBarProps> = ({ variant }) => {
           <Combobox onChange={handleChange}>
             <Combobox.Input
               placeholder='Search...'
-              className={`input input-bordered border-primary bg-primary-content ${
-                isFocused ? 'w-[560px]' : 'w-96'
-              } transition-all duration-1000`}
+              className={`input input-bordered border-primary bg-primary-content w-96 xl:w-[560px]
+              transition-all duration-1000`}
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               onFocus={() => setIsFocused(true)}
