@@ -35,6 +35,7 @@ const ProductGallery: React.FC = () => {
         <div className='flex-col md:flex gap-4 items-baseline'>
           <h2 className='text-2xl font-bold'>TOP PRODUCTS</h2>
           <Link
+            prefetch={false}
             href='/shop'
             className='text-xs underline underline-offset-4 text-secondary font-bold'
           >
@@ -66,7 +67,11 @@ const ProductGallery: React.FC = () => {
               key={product.handle}
               className='md:!w-[33%] text-center relative flex items-center'
             >
-              <Link href={`shop/${product.handle}`} className='w-full h-full'>
+              <Link
+                href={`shop/${product.handle}`}
+                prefetch={false}
+                className='w-full h-full'
+              >
                 <div className='absolute bg-gradient-to-t from-slate-300 via-35% via-transparent to-transparent w-full h-full'></div>
                 <p className='absolute w-full bottom-12 text-xl font-semibold text-accent'>
                   {product.title}

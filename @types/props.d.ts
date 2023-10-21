@@ -10,6 +10,8 @@ type TailwindCSSStyles = string;
 export interface ButtonProps extends React.PropsWithChildren {
   /** Tailwind CSS + DaisyUI utility string format */
   styles: TailwindCSSStyles;
+  href?: string;
+  prefetch?: boolean;
 }
 
 export interface LogoProps {

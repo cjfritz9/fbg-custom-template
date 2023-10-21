@@ -36,7 +36,7 @@ const ProductPage: React.FC<ProductMetadata> = async ({
     <section className='flex flex-col lg:flex-row gap-8 text-primary'>
       <div className='flex flex-col h-full justify-between'>
         <div className='flex flex-col gap-4'>
-          <Button styles='bg-base-100 border-0 !w-full -mb-8 hover:bg-base-100'>
+          <Button styles='bg-base-100 border-0 !w-full -mb-4 hover:bg-base-100'>
             <TbChevronCompactUp className='text-4xl text-base-200' />
           </Button>
           {images.slice(0, 4).map((image) => (
@@ -46,7 +46,7 @@ const ProductPage: React.FC<ProductMetadata> = async ({
               alt={image.altText}
               height={256}
               width={256}
-              className='w-28 h-28 object-cover'
+              className='w-32 h-32 object-cover'
             />
           ))}
         </div>
@@ -60,7 +60,7 @@ const ProductPage: React.FC<ProductMetadata> = async ({
           alt={images[0].altText}
           height={800}
           width={800}
-          className='object-cover object-center h-auto w-max max-h-[556px]'
+          className='object-cover object-center w-full max-h-[556px]'
         />
       </div>
       <div className='flex flex-col gap-8 max-w-[40rem]'>

@@ -23,9 +23,13 @@ const ImageWithText: React.FC<ImageWithTextProps> = ({
           height={512}
           width={896}
           alt='Full bore blast firearm cleaning system product image'
-          className='max-w-4xl shadow-2xl z-0 w-full h-auto xl:h-max'
+          className='max-w-4xl shadow-2xl z-0 w-full h-auto object-cover'
         />
-        <div className={`${reverse ? 'text-center xl:text-left' : 'text-center xl:text-right'}`}>
+        <div
+          className={`${
+            reverse ? 'text-center xl:text-left' : 'text-center xl:text-right'
+          }`}
+        >
           {textContent}
         </div>
       </div>
