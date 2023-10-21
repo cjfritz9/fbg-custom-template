@@ -41,7 +41,7 @@ export const LoadingCards: React.FC = () => {
   return Array.from(new Array(6)).map((_, i) => (
     <div
       key={i}
-      className='card animate-pulse w-96 glass text-primary drop-shadow-2xl shadow-2xl'
+      className='card animate-pulse w-[20rem] md:w-[26rem] glass text-primary drop-shadow-2xl shadow-2xl'
     >
       <figure>
         <div className='h-[254px] w-full bg-primary opacity-50'></div>

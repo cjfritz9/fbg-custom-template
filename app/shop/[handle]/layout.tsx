@@ -19,25 +19,25 @@ const ProductLayout: React.FC<PropsWithChildren> = ({ children }) => {
 
   return (
     <div className='flex flex-col w-full h-auto bg-base-100 lg:py-8 lg:px-8 xl:py-16 xl:px-28'>
-      <div className='flex gap-2 text-primary uppercase text-xs'>
-        {crumbs.map((crumb, i) => (
-          <>
-            {i < crumbs.length - 1 ? (
-              <>
-                <Link
-                  key={crumb.name}
-                  href={`/${crumb.path}`}
-                  className='underline underline-offset-2 hover:text-secondary font-bold'
-                >
-                  {crumb.name}
-                </Link>
-                <div className='select-none'>{'>'}</div>
-              </>
-            ) : (
-              <p className='select-none'>{crumb.name}</p>
-            )}
-          </>
-        ))}
+      <div className='breadcrumbs flex gap-2 text-primary uppercase text-xs'>
+        <ul>
+          {crumbs.map((crumb, i) => (
+            <>
+              {i < crumbs.length - 1 ? (
+                <li key={crumb.name}>
+                  <Link
+                    href={`/${crumb.path}`}
+                    className='underline underline-offset-2 hover:text-secondary font-bold'
+                  >
+                    {crumb.name}
+                  </Link>
+                </li>
+              ) : (
+                <li key={crumb.name} className='select-none'>{crumb.name}</li>
+              )}
+            </>
+          ))}
+        </ul>
       </div>
       {children}
     </div>
