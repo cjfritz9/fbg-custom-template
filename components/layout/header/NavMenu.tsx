@@ -41,7 +41,7 @@ const NavMenu: React.FC = () => {
         </div>
         <div className='flex w-full justify-between items-center'>
           <div />
-          <ul className='menu menu-horizontal bg-base-100 hidden lg:inline-flex gap-0 xl:gap-4 justify-end md:justify-between py-0 px-0 -mr-4'>
+          <ul className='menu menu-horizontal bg-base-100 hidden lg:inline-flex gap-0 xl:gap-4 justify-end md:justify-between py-0 px-0 -mr-4 xl:mr-0 '>
             {navLinks.map((link) => (
               <NavLink key={link.slug} link={link} />
             ))}
