@@ -56,6 +56,7 @@ const ProductPage: React.FC<ProductMetadata> = async ({
       </div>
       <div className='flex justify-center max-h-[556px] w-[720px]'>
         <Image
+          priority
           src={images[0].url}
           alt={images[0].altText}
           height={800}
