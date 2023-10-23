@@ -116,7 +116,7 @@ const ProductPage: React.FC<ProductMetadata> = async ({
                 storage pouch. Select components are made using precision CNC
                 machined solid brass, carbon steel, nylon, and micro suede.
                 Built to last a lifetime, Full Blast Gear products are proudly
-                made in the USA with the finest materials and
+                made in the USA with the finest materials.
               </p>
             </div>
           </div>
