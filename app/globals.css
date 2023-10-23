@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -33,7 +32,6 @@ img {
 
 .custom-scroll::-webkit-scrollbar {
   width: 6px;
-
 }
 
 .custom-scroll::-webkit-scrollbar-track {
@@ -41,6 +39,9 @@ img {
 }
 
 .custom-scroll::-webkit-scrollbar-thumb {
-  background: #E3532D;
-  
+  background: #e3532d;
+}
+
+.display-unset {
+  display: unset;
 }

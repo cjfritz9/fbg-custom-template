@@ -53,9 +53,9 @@ export interface NavLinkProps {
 
 /**
  * @type {variants} Icon variants for hover and non hover states
- * 
+ *
  * variants[0] represents initial state
- * 
+ *
  * variants[1] represents hover state
  */
 export interface NavIconProps {
@@ -79,6 +79,28 @@ export interface ProductCardProps {
   handle: string;
   imageSrc: string;
   imageAlt: string;
+}
+
+/**
+ * @type {title} Title to display on the gallery heading
+ * @type {subtitle} Short phrase to display beneath the title and link
+ * @type {productsTag} Shopify Product Tag to query for
+ * @type {length} Number of products to display (Max: 10)
+ * @type {link} Link to view more of these kinds of products (optional)
+ */
+export interface ProductGalleryProps {
+  title: string;
+  subtitle: string;
+  productsTag: string;
+  length: number;
+  link?: {
+    name: string;
+    slug: string;
+  };
+}
+
+export interface ProductReviewsProps {
+  
 }
 
 export interface ProductMenuProps {

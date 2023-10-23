@@ -31,7 +31,8 @@ const Home: React.FC = async () => {
         <Button styles='btn-primary mt-4 lg:!w-48' href='/shop'>SHOP NOW</Button>
       </ImageWithText>
       <RewardsBanner />
-      <ProductGallery />
+      <ProductGallery title='TOP PRODUCTS' subtitle='From our full kit to any piece or part, you are sure to find what you
+          need.' productsTag='top products' length={5} link={{name: 'SHOP NOW', slug: '/shop'}} />
       <ImageWithText
         imageSrc={content.bottomContent.image!}
         styles='bg-base-100 text-primary'
