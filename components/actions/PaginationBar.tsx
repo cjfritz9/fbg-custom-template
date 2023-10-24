@@ -29,7 +29,7 @@ const PaginationBar: React.FC<PaginationBarProps> = ({
   };
 
   return (
-    <div className='join w-full align-center'>
+    <div className='join w-full align-center justify-center lg:justify-start pt-8'>
       <button
         className={`join-item btn ${
           !hasPages.prev || page === 1 ? 'btn-disabled' : ''
@@ -38,7 +38,7 @@ const PaginationBar: React.FC<PaginationBarProps> = ({
       >
         «
       </button>
-      <span className='join-item btn btn-disabled !bg-neutral !text-primary'>{`Page ${page}`}</span>
+      <span className='join-item btn btn-disabled !bg-neutral !text-primary grow lg:grow-0 max-w-[236px]'>{`Page ${page}`}</span>
       <button
         className={`join-item btn ${
           !hasPages.next && 'btn-disabled'

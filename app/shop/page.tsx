@@ -1,6 +1,6 @@
 'use client';
 
-import ProductMenu from '@/components/actions/ProductMenu';
+import ProductMenu from '@/components/actions/product-menu/ProductMenu';
 import ProductCard, { LoadingCards } from '@/components/layout/ProductCard';
 import React, { useEffect, useState } from 'react';
 import { FormattedProduct, PageInfo } from '@/@types/api';
@@ -51,9 +51,9 @@ const ShopPage: React.FC = () => {
   }, []);
 
   return (
-    <div className='flex w-full h-auto bg-base-100'>
+    <div className='flex flex-col lg:flex-row w-full h-auto bg-base-100'>
       <ProductMenu onUpdateProducts={onUpdateProducts} onLoading={onLoading} />
-      <div id='cards-container' className='flex flex-wrap gap-12 lg:py-8 lg:px-8 xl:py-16 xl:px-28'>
+      <div id='cards-container' className='flex flex-wrap gap-4 lg:gap-12 py-8 px-8 xl:py-16 xl:px-28 justify-center lg:justify-start'>
         {isLoading ? (
           <LoadingCards />
         ) : (

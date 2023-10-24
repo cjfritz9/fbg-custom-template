@@ -2,7 +2,7 @@ import { footerLinks, navLinks } from '@/lib/static/links';
 import { StaticImageData } from 'next/image';
 import React, { PropsWithChildren } from 'react';
 import { Product } from './api';
-import { FormattedProduct } from './shop';
+import { FilterMethods, FormattedProduct, SortMethods } from './shop';
 import { IconType } from 'react-icons';
 
 type TailwindCSSStyles = string;
@@ -99,9 +99,7 @@ export interface ProductGalleryProps {
   };
 }
 
-export interface ProductReviewsProps {
-  
-}
+export interface ProductReviewsProps {}
 
 export interface ProductMenuProps {
   onUpdateProducts: (
@@ -109,6 +107,14 @@ export interface ProductMenuProps {
     updatedPageInfo: PageInfo
   ) => void;
   onLoading: (loading: boolean) => void;
+}
+
+export interface ProductMenuGroupProps {
+  category: string;
+  options: string[];
+  onMenuSelect:
+    | ((option: SortMethods) => Promise<void>)
+    | ((option: FilterMethods) => Promise<void>);
 }
 
 export interface PaginationBarProps extends ProductMenuProps {

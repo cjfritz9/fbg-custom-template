@@ -72,7 +72,7 @@ const SplashScreen: React.FC = () => {
           />
         </div>
       )}
-      <span className='block lg:hidden loading loading-spinner loading-lg text-white text-center absolute z-[52] top-[20dvh] left-[47dvw]'></span>
+      <span className='block lg:hidden loading loading-spinner loading-lg text-primary text-center absolute z-[52] top-[20dvh] left-[47dvw]'></span>
       <div
         ref={bgRef}
         className='flex fixed bg-base-100 h-full w-full z-50 items-center overflow'
