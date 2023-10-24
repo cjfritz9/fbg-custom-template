@@ -26,6 +26,20 @@ const fetchPrevPage = async (cursor: string) => {
             altText
           }
         }
+        priceRangeV2 {
+          minVariantPrice {
+            amount
+            currencyCode
+          }
+        }
+        metafields(first: 2, namespace: "reviews") {
+          nodes {
+            key
+            id
+            namespace
+            value
+          }
+        }
       }
       pageInfo {
         hasNextPage
@@ -53,6 +67,20 @@ const fetchNextPage = async (cursor: string | null) => {
           nodes {
             url
             altText
+          }
+        }
+        priceRangeV2 {
+          minVariantPrice {
+            amount
+            currencyCode
+          }
+        }
+        metafields(first: 2, namespace: "reviews") {
+          nodes {
+            key
+            id
+            namespace
+            value
           }
         }
       }
@@ -103,6 +131,20 @@ export const fetchProductsByQuery = async (
             url
           }
         }
+        priceRangeV2 {
+          minVariantPrice {
+            amount
+            currencyCode
+          }
+        }
+        metafields(first: 2, namespace: "reviews") {
+          nodes {
+            key
+            id
+            namespace
+            value
+          }
+        }
       }
     }
   }`;
@@ -122,10 +164,24 @@ export const fetchProductByHandle = async (handle: string) => {
       title
       handle
       description
-      images(first: 10) {
+      images(first: 5) {
         nodes {
-          altText
           url
+          altText
+        }
+      }
+     	priceRangeV2 {
+        minVariantPrice {
+          amount
+          currencyCode
+        }
+      }
+      metafields(first: 2, namespace: "reviews") {
+        nodes {
+          key
+          id
+          namespace
+          value
         }
       }
     }
@@ -135,6 +191,8 @@ export const fetchProductByHandle = async (handle: string) => {
   })) as ProductByHandleResponse;
 
   const result = formatProductResponse(response);
+
+  console.log({ result });
 
   return result;
 };
@@ -152,6 +210,20 @@ export const fetchProductsByTag = async (
           nodes {
             url
             altText
+          }
+        }
+        priceRangeV2 {
+          minVariantPrice {
+            amount
+            currencyCode
+          }
+        }
+        metafields(first: 2, namespace: "reviews") {
+          nodes {
+            key
+            id
+            namespace
+            value
           }
         }
       }

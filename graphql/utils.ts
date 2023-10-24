@@ -8,6 +8,8 @@ import {
   QueryResult
 } from '@/@types/api';
 import { FormattedProduct } from '@/@types/api';
+import { RiCreativeCommonsNdLine } from 'react-icons/ri';
+import { json } from 'stream/consumers';
 
 export const formatHomeContentResponse = (res: HomeContentResponse) => {
   const data = res.body.data;
@@ -52,11 +54,27 @@ export const formatProductsResponse = (
   const rawPageInfo = res.body.data.products.pageInfo;
 
   for (const product of rawProductsData) {
+    let rating = 0;
+    let reviewCount = 0;
+    if (product.metafields.nodes.length > 1) {
+      rating = formatRating(
+        product.metafields.nodes.find((node) => node.key === 'rating')!.value
+      );
+      reviewCount = +product.metafields.nodes.find(
+        (node) => node.key === 'rating_count'
+      )!.value;
+    }
+
     products.push({
       title: product.title,
       handle: product.handle,
       description: product.description,
-      images: product.images.nodes
+      images: product.images.nodes,
+      minPrice: product.priceRangeV2.minVariantPrice.amount,
+      reviews: {
+        rating,
+        reviewCount
+      }
     });
   }
 
@@ -73,14 +91,33 @@ export const formatProductsResponse = (
   };
 };
 
-export const formatProductResponse = (res: ProductByHandleResponse) => {
+export const formatProductResponse = (
+  res: ProductByHandleResponse
+): FormattedProduct => {
   const rawProductData = res.body.data.productByHandle;
+
+  let rating = 0;
+  let reviewCount = 0;
+  if (rawProductData.metafields.nodes.length > 1) {
+    rating = formatRating(
+      rawProductData.metafields.nodes.find((node) => node.key === 'rating')!
+        .value
+    );
+    reviewCount = +rawProductData.metafields.nodes.find(
+      (node) => node.key === 'rating_count'
+    )!.value;
+  }
 
   return {
     title: rawProductData.title,
     handle: rawProductData.handle,
     description: rawProductData.description,
-    images: rawProductData.images.nodes
+    images: rawProductData.images.nodes,
+    minPrice: rawProductData.priceRangeV2.minVariantPrice.amount,
+    reviews: {
+      rating,
+      reviewCount
+    }
   };
 };
 
@@ -92,4 +129,10 @@ export const formatProductsByQueryResponse = (
     handle: result.handle,
     image: result.images.nodes[0].url
   }));
+};
+
+const formatRating = (ratingData: string): number => {
+  const parsedRating = JSON.parse(ratingData);
+
+  return +parsedRating.value;
 };

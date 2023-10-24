@@ -1,5 +1,6 @@
 import { ProductMetadata } from '@/@types/metadata';
 import { getProductByHandle } from '@/app/api/requests';
+import ReviewStars from '@/components/UI/ReviewStars';
 import Button from '@/components/actions/Button';
 import Border from '@/components/layout/Border';
 import ProductGallery from '@/components/layout/ProductGallery';
@@ -72,19 +73,12 @@ const ProductPage: React.FC<ProductMetadata> = async ({
         <div className='flex flex-col gap-8 max-w-[40rem]'>
           <div>
             <h2 className='text-3xl font-bold'>{product.title}</h2>
-            <div className='flex gap-2 text-secondary text-xl font-bold items-center w-full'>
-              <IoStar />
-              <IoStar />
-              <IoStar />
-              <IoStar />
-              <IoStar />
-              <p className='text-sm font-semibold text-primary'>(45)</p>
-            </div>
+            <ReviewStars reviews={product.reviews} showCount />
           </div>
           <Border />
           <div className='flex flex-col gap-4 py-4 -my-4 xl:sticky xl:top-0 bg-base-100'>
             <h4 className='text-2xl xl:text-3xl font-bold tracking-widest'>
-              $74.99
+              ${product.minPrice}
             </h4>
             <div className='flex gap-4 '>
               <Button styles='btn-primary grow h-16 font-bold text-lg fixed bottom-0 -mx-4 z-30 xl:static xl:mx-0'>

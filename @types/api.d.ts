@@ -14,8 +14,8 @@ interface ImageWithTextFields {
   reference: {
     image: {
       url: string;
-    }
-  }
+    };
+  };
 }
 
 export type ProductImage = {
@@ -30,6 +30,18 @@ export interface Product {
   images: {
     nodes: ProductImage[];
   };
+  priceRangeV2: {
+    minVariantPrice: {
+      amount: string;
+      currencyCode: 'USD';
+    };
+  };
+  metafields :{
+    nodes: {
+      key: 'rating' | 'rating_count';
+      value: string;
+    }[]
+  }
 }
 
 export interface PageInfo {
@@ -113,6 +125,11 @@ export interface FormattedProduct {
   handle: string;
   description: string;
   images: { url: string; altText: string }[];
+  minPrice: string;
+  reviews: {
+    rating: number;
+    reviewCount: number;
+  }
 }
 
 export interface FormattedProductResponse {

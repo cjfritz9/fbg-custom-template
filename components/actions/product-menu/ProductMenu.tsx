@@ -23,7 +23,6 @@ const ProductMenu: React.FC<ProductMenuProps> = ({
       handleFilterClick(option);
     } else {
     }
-    console.log(option);
   };
 
   return (

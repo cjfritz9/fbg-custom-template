@@ -63,8 +63,10 @@ const ShopPage: React.FC = () => {
               key={product.handle}
               title={product.title}
               handle={`/shop/${product.handle}`}
+              price={product.minPrice}
               imageSrc={product.images[0].url}
               imageAlt={product.images[0].altText}
+              reviews={product.reviews}
             />
           ))
         )}

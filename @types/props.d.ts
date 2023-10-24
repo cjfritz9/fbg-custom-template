@@ -77,8 +77,13 @@ export interface ProductCardProps {
   priority: boolean;
   title: string;
   handle: string;
+  price: string;
   imageSrc: string;
   imageAlt: string;
+  reviews: {
+    rating: number;
+    reviewCount: number;
+  }
 }
 
 /**
@@ -98,6 +103,14 @@ export interface ProductGalleryProps {
     slug: string;
   };
 }
+
+export interface ReviewStarsProps {
+  reviews: {
+    rating: number;
+    reviewCount: number;
+  }
+  showCount?: boolean;
+ }
 
 export interface ProductReviewsProps {}
 

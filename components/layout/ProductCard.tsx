@@ -3,19 +3,22 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import Button from '../actions/Button';
+import ReviewStars from '../UI/ReviewStars';
 
 const ProductCard: React.FC<ProductCardProps> = ({
   priority,
   title,
   handle,
+  price,
   imageSrc,
-  imageAlt
+  imageAlt,
+  reviews
 }) => {
   return (
     <div className='card w-[20rem] md:w-[26rem] glass text-primary drop-shadow-2xl shadow-2xl'>
       <figure>
         <Image
-          priority
+          priority={priority}
           src={imageSrc}
           alt={imageAlt}
           width={240}
@@ -24,7 +27,11 @@ const ProductCard: React.FC<ProductCardProps> = ({
         />
       </figure>
       <div className='card-body items-start'>
-        <div className='h-36'>
+        <div className='h-36 w-full'>
+          <div className='flex justify-between pt-2'>
+            <p className='text-xl font-bold text-secondary'>${price}</p>
+            <ReviewStars reviews={reviews} />
+          </div>
           <h2 className='card-title text-2xl'>{title}</h2>
         </div>
         <div className='card-actions w-full'>
