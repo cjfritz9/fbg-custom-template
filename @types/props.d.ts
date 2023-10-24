@@ -36,9 +36,9 @@ export interface ImageWithTextProps extends React.PropsWithChildren {
   /**
    * OPTIONAL - Reverses the layout
    *
-   * [default = image | text]
+   * [default: image | text]
    *
-   * [reversed = text | image]
+   * [reversed: text | image]
    */
   reverse?: boolean;
 }

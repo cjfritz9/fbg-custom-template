@@ -37,10 +37,10 @@ const ProductPage: React.FC<ProductMetadata> = async ({
   return (
     <main>
       <section className='flex-col lg:flex-row gap-8 text-primary inline-flex'>
-        <div className='flex justify-between h-fit top-16 sticky gap-8'>
+        <div className='flex flex-col-reverse xl:flex-row justify-between h-fit xl:top-16 xl:sticky gap-8'>
           <div className='flex flex-col justify-between'>
-            <div className='flex flex-col gap-4'>
-              <Button styles='bg-base-100 border-0 !w-full -mb-4 hover:bg-base-100'>
+            <div className='flex flex-row xl:flex-col gap-4'>
+              <Button styles='bg-base-100 border-0 !w-full -mb-4 hover:bg-base-100 hidden xl:flex'>
                 <TbChevronCompactUp className='text-4xl text-base-200' />
               </Button>
               {images.slice(0, 4).map((image) => (
@@ -50,29 +50,29 @@ const ProductPage: React.FC<ProductMetadata> = async ({
                   alt={image.altText}
                   height={256}
                   width={256}
-                  className='w-32 h-32 object-cover'
+                  className='w-24 xl:w-32 h-24 xl:h-32 object-cover'
                 />
               ))}
             </div>
-            <Button styles='bg-base-100 border-0 !w-full -mt-4 hover:bg-base-100'>
+            <Button styles='bg-base-100 border-0 !w-full -mt-4 hover:bg-base-100 hidden xl:flex'>
               <TbChevronCompactDown className='text-4xl text-base-200' />
             </Button>
           </div>
-          <div className='flex justify-center max-h-[556px] w-[720px]'>
+          <div className='flex justify-center max-h-[556px] xl:w-[720px]'>
             <Image
               priority
               src={images[0].url}
               alt={images[0].altText}
               height={800}
               width={800}
-              className='object-cover object-center w-full max-h-[556px]'
+              className='object-cover object-center w-full h-auto max-h-[556px]'
             />
           </div>
         </div>
         <div className='flex flex-col gap-8 max-w-[40rem]'>
           <div>
             <h2 className='text-3xl font-bold'>{product.title}</h2>
-            <div className='flex gap-2 text-secondary text-xl font-bold items-center w-[656px]'>
+            <div className='flex gap-2 text-secondary text-xl font-bold items-center w-full'>
               <IoStar />
               <IoStar />
               <IoStar />
@@ -82,15 +82,15 @@ const ProductPage: React.FC<ProductMetadata> = async ({
             </div>
           </div>
           <Border />
-          <div className='flex flex-col gap-4 py-4 -my-4 sticky top-0 bg-base-100'>
-            <h4 className='text-3xl font-bold tracking-widest relative'>
+          <div className='flex flex-col gap-4 py-4 -my-4 xl:sticky xl:top-0 bg-base-100'>
+            <h4 className='text-2xl xl:text-3xl font-bold tracking-widest'>
               $74.99
             </h4>
-            <div className='flex gap-4'>
-              <Button styles='btn-primary grow h-16 font-bold text-lg'>
+            <div className='flex gap-4 '>
+              <Button styles='btn-primary grow h-16 font-bold text-lg fixed bottom-0 -mx-4 z-30 xl:static xl:mx-0'>
                 ADD TO CART
               </Button>
-              <div className='tooltip' data-tip='Bookmark this item'>
+              <div className='hidden xl:inline-block tooltip' data-tip='Bookmark this item'>
                 <Button styles='btn-base-200 border border-primary h-16 font-bold text-2xl !w-24 hover:bg-base-100'>
                   <IoBookmarkOutline />
                 </Button>

@@ -18,7 +18,7 @@ const Breadcrumbs: React.FC = () => {
   ];
 
   return (
-    <div className='breadcrumbs flex gap-2 text-primary uppercase text-xs'>
+    <div className='hidden breadcrumbs xl:flex gap-2 text-primary uppercase text-xs'>
       <ul>
         {crumbs.map((crumb, i) =>
           i < crumbs.length - 1 ? (
