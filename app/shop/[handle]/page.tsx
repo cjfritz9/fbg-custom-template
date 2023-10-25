@@ -73,7 +73,11 @@ const ProductPage: React.FC<ProductMetadata> = async ({
         <div className='flex flex-col gap-8 max-w-[40rem]'>
           <div>
             <h2 className='text-4xl font-bold'>{product.title}</h2>
-            <ReviewStars reviews={product.reviews} styles='!text-2xl' showCount />
+            <ReviewStars
+              reviews={product.reviews}
+              styles='!text-2xl'
+              showCount
+            />
           </div>
           <Border />
           <div className='flex flex-col gap-4 py-4 -my-4 xl:sticky xl:top-0 bg-base-100'>
@@ -84,7 +88,10 @@ const ProductPage: React.FC<ProductMetadata> = async ({
               <Button styles='btn-primary grow h-16 font-bold text-lg fixed bottom-0 -mx-4 z-30 xl:static xl:mx-0'>
                 ADD TO CART
               </Button>
-              <div className='hidden xl:inline-block tooltip' data-tip='Bookmark this item'>
+              <div
+                className='hidden xl:inline-block tooltip'
+                data-tip='Bookmark this item'
+              >
                 <Button styles='btn-base-200 border border-primary h-16 font-bold text-2xl !w-24 hover:bg-base-100'>
                   <IoBookmarkOutline />
                 </Button>
@@ -95,96 +102,45 @@ const ProductPage: React.FC<ProductMetadata> = async ({
           <div>
             <p className='uppercase font-semibold text-xl pb-4'>DESCRIPTION</p>
             <div className='custom-scroll overflow-y-auto text-lg'>
-              <p>
-                This innovative Full-Bore Blast Complete Shotgun Cleaning Kit is
-                quicker and superior in quality to any single-pass bore cleaner
-                on the market. Meticulously crafted by dedicated hunters,
-                shooters, and firearms enthusiasts, Full Blast gun cleaning
-                supplies are professional grade and designed to last the
-                lifetime of your firearm. This professional grade 12-part kit
-                includes our proprietary Quick-Connect-and- Release (QCR) system
-                with the innovative Full-Bore Blast FlexRod; reusable foxtail
-                mops or Bore-tips® and mesh wash bag; a dual open-slotted tip;
-                free spinning tip-end adaptors; a premium bore cleaning nylon or
-                Bronze brush; a clear hard case accessories organizer; and a
-                storage pouch. Select components are made using precision CNC
-                machined solid brass, carbon steel, nylon, and micro suede.
-                Built to last a lifetime, Full Blast Gear products are proudly
-                made in the USA with the finest materials.
-              </p>
+              <p>{product.description}</p>
             </div>
           </div>
-          <Border />
-          <div>
-            <p className='uppercase font-semibold text-xl pb-4'>INCLUDES</p>
-            <ul className='custom-scroll list-disc pl-5 overflow-y-auto text-lg'>
-              <li>
-                Full-Bore Blast Flex Rod (1) Attach cleaning elements on each
-                end for push and pull through cleaning
-              </li>
-              <li>
-                Quick Connect - Release Adapter Male (2) - brushes and tip ends
-                free spin for additional bore protection
-              </li>
-              <li>
-                Quick Connect - Release Adapter Female (2) - Change out brushes
-                and mop in seconds
-              </li>
-              <li>
-                Dual Open-Slotted Tip-End Cleaner (1) - Run two patches through
-                with 360° of clean / lubricating
-              </li>
-              <li>
-                Foxtail Mop Cleaner / Applicator (2) or Bore-tip® (1 Pack) -
-                washable and re-usable
-              </li>
-              <li>
-                Nylon Brush (1) or Bronze Wire Brush - Premium quality bristles
-                twisted in brass and steel
-              </li>
-              <li>
-                Hard Case Brush and Jag Accessories Organizer (1) - Clear case
-                to see jags and cleaning tips
-              </li>
-              <li>
-                Mesh Zipper Wash Bag (1) - Toss in washing machine bag for
-                cleaning mops and Bore-tips®
-              </li>
-              <li>
-                Micro-Suede Wash and Polish Cloth (1) - Wipe, clean and polish
-                Kit and gun parts
-              </li>
-              <li>
-                Storage Zipper Pouch (1) - Semi-clear no tear water resistant
-                easy access storage pouch
-              </li>
-            </ul>
-          </div>
-          <Border />
-          <div>
-            <p className='uppercase font-semibold text-xl pb-4'>Specs</p>
-            <ul className='custom-scroll list-disc pl-5 overflow-y-auto text-lg'>
-              <li>
-                Material: Galvanized Carbon Steel, Solid Brass, Micro Suede,
-                Nylon Mesh, Polyvinyl, Molded Plastic.
-              </li>
-              <li>
-                Size/Dimensions: Length - 40″ Width - Variable per gauge and
-                caliber
-              </li>
-              <li>Colors: Bright Red, Blaze Orange, Safety Green</li>
-              <li>
-                Compatible: Bore Chore Quick Connect Release System - Shotgun
-              </li>
-              <li>Weight: 1 kg</li>
-              <li>Manufactured: USA</li>
-            </ul>
-          </div>
+          {product.includes && product.includes.length > 0 && (
+            <>
+              <Border />
+              <div>
+                <p className='uppercase font-semibold text-xl pb-4'>INCLUDES</p>
+                <ul className='custom-scroll list-disc pl-5 overflow-y-auto text-lg'>
+                  {product.includes.map((listItem, i) => (
+                    <li key={i}>{listItem}</li>
+                  ))}
+                </ul>
+              </div>
+            </>
+          )}
+          {product.specs && product.specs.length > 0 && (
+            <>
+              <Border />
+              <div>
+                <p className='uppercase font-semibold text-xl pb-4'>Specs</p>
+                <ul className='custom-scroll list-disc pl-5 overflow-y-auto text-lg'>
+                  {product.specs.map((listItem, i) => (
+                    <li key={i}>{listItem}</li>
+                  ))}
+                </ul>
+              </div>
+            </>
+          )}
         </div>
       </section>
       <ProductReviews handle={handle} reviews={product.reviews} />
       <section className='mt-12'>
-        <ProductGallery title='Similar Products' subtitle='' productsTag='top products' length={5} />
+        <ProductGallery
+          title='Similar Products'
+          subtitle=''
+          productsTag='top products'
+          length={5}
+        />
       </section>
     </main>
   );

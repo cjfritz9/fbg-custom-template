@@ -170,6 +170,12 @@ export const fetchProductByHandle = async (handle: string) => {
           altText
         }
       }
+      includes: metafield(namespace: "custom", key: "includes") {
+        value
+      }
+      specs: metafield(namespace: "custom", key: "specs") {
+        value
+      }
      	priceRangeV2 {
         minVariantPrice {
           amount

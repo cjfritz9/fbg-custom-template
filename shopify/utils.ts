@@ -112,6 +112,8 @@ export const formatProductResponse = (
     title: rawProductData.title,
     handle: rawProductData.handle,
     description: rawProductData.description,
+    includes: JSON.parse(rawProductData.includes?.value ?? '[]'),
+    specs: JSON.parse(rawProductData.specs?.value ?? '[]'),
     images: rawProductData.images.nodes,
     minPrice: rawProductData.priceRangeV2.minVariantPrice.amount,
     reviews: {

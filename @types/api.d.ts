@@ -27,6 +27,12 @@ export interface Product {
   title: string;
   handle: string;
   description: string;
+  includes?: {
+    value: string;
+  }
+  specs?: {
+    value: string;
+  }
   images: {
     nodes: ProductImage[];
   };
@@ -36,12 +42,12 @@ export interface Product {
       currencyCode: 'USD';
     };
   };
-  metafields :{
+  metafields: {
     nodes: {
       key: 'rating' | 'rating_count';
       value: string;
-    }[]
-  }
+    }[];
+  };
 }
 
 export interface PageInfo {
@@ -124,12 +130,14 @@ export interface FormattedProduct {
   title: string;
   handle: string;
   description: string;
+  includes?: string[];
+  specs?: string[];
   images: { url: string; altText: string }[];
   minPrice: string;
   reviews: {
     rating: number;
     reviewCount: number;
-  }
+  };
 }
 
 export interface FormattedProductResponse {
