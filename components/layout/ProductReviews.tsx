@@ -16,7 +16,6 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
     })();
   }, [handle]);
 
-  console.log(reviewsList);
   return (
     <section className='flex flex-col text-primary py-12'>
       <Border />

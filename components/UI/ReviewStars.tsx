@@ -9,7 +9,6 @@ const ReviewStars: React.FC<ReviewStarsProps> = ({
   styles = '',
   showCount = false
 }) => {
-  console.log({ reviews })
   const stars = generateStars(reviews.rating);
 
   return reviews.reviewCount === 0 ? (
