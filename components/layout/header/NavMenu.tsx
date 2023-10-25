@@ -57,7 +57,7 @@ const NavMenu: React.FC = () => {
               href='/account'
               styles='hidden lg:block'
             />
-            <NavIcon variants={[IoBagOutline, IoBag]} />
+            <NavIcon variants={[IoBagOutline, IoBag]} href='#' />
             <div className='drawer lg:hidden z-40 justify-end w-fit'>
               <input
                 id='nav-drawer'

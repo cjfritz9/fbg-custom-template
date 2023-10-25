@@ -57,7 +57,7 @@ const Home: React.FC = async () => {
           {content.bottomContent.paragraphs}
         </p>
         <Button styles='btn-primary mt-4 lg:!w-48' href='/blogs'>
-          LEARN MORE
+          OUR BLOGS
         </Button>
       </ImageWithText>
     </main>
