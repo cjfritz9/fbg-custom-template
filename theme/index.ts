@@ -12,11 +12,11 @@ export const themes = [
       'secondary-content': '#1d232a',
       accent: '#5d0704',
       'accent-content': '#1d232a',
-      neutral: '#e6e6e6',
+      neutral: '#f4f4f4',
       'neutral-focus': '#1d232a',
       'neutral-content': '#1d232a',
       'base-100': '#FFFFFF',
-      'base-200': '#e6e6e6',
+      'base-200': '#f4f4f4',
       'base-300': '#1D232A',
       'base-content': '#1D232A',
 

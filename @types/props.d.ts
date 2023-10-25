@@ -13,6 +13,9 @@ import { IconType } from 'react-icons';
 */
 type TailwindCSSStyles = string;
 
+  /** Shopify Product Handle */
+type ShopifyHandle = string;
+
 export interface ButtonProps extends React.PropsWithChildren {
   styles: TailwindCSSStyles;
   href?: string;
@@ -80,7 +83,7 @@ export interface SlideContainerProps extends PropsWithChildren {
 export interface ProductCardProps {
   priority: boolean;
   title: string;
-  handle: string;
+  handle: ShopifyHandle;
   price: string;
   imageSrc: string;
   imageAlt: string;
@@ -120,9 +123,21 @@ export interface ReviewStarsProps {
  }
 
 export interface ProductReviewsProps {
-  /** Shopify Product Handle */
-  handle: string;
+  handle: ShopifyHandle;
   reviews: ProductReviews;
+}
+
+export interface ReviewProps {
+  review: {
+    id: string;
+    reviewer: {
+      name: string;
+    }
+    rating: number;
+    title: string;
+    body: string;
+    created_at: string;
+  }
 }
 
 export interface ProductMenuProps {
