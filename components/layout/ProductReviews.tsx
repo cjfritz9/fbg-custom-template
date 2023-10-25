@@ -5,16 +5,39 @@ import { ProductReviewsProps, ReviewProps } from '@/@types/props';
 import Border from './Border';
 import ReviewStars from '../UI/ReviewStars';
 import { getReviewsByProductHandle } from '@/app/api/requests';
+import Link from 'next/link';
 
 const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
   const [reviewsList, setReviewsList] = useState([]);
+  const [pagination, setPagination] = useState({
+    currentPage: 1,
+    perPage: 3
+  });
+  const [totalPages, setTotalPages] = useState(
+    Math.ceil(reviews.reviewCount / pagination.perPage)
+  );
+
+  const handleChange = (value: string) => {
+    if (+value > 10 || +value < 1) return;
+    setPagination((prev) => ({
+      ...prev,
+      perPage: +value
+    }))
+  }
 
   useEffect(() => {
     (async () => {
-      const response = await getReviewsByProductHandle(handle);
-      setReviewsList(response);
+      const response = await getReviewsByProductHandle(
+        handle,
+        pagination.currentPage,
+        pagination.perPage
+      );
+      if (response) {
+        setReviewsList(response);
+      }
     })();
-  }, [handle]);
+    setTotalPages(Math.ceil(reviews.reviewCount / pagination.perPage));
+  }, [handle, reviews.reviewCount, pagination.currentPage, pagination.perPage]);
 
   return (
     <section className='flex flex-col text-primary py-12'>
@@ -37,6 +60,40 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
       ) : (
         <p className='mb-6'>Be the first to leave a review!</p>
       )}
+      <Border />
+      <div className='flex justify-between py-4 gap-4 items-center'>
+        <div></div>
+        <div className='flex items-center gap-4'>
+          {Array.from(new Array(totalPages < 10 ? totalPages : 10)).map(
+            (_, i) => (
+              <div
+                key={i}
+                className={
+                  i + 1 === pagination.currentPage
+                    ? 'font-bold text-blue-600 pointer-events-none'
+                    : 'cursor-pointer hover:font-bold'
+                }
+                onClick={() =>
+                  setPagination((prev) => ({
+                    ...prev,
+                    currentPage: i + 1
+                  }))
+                }
+              >
+                {i + 1}
+              </div>
+            )
+          )}
+        </div>
+        <div className='flex items-center gap-4'>
+          <p>Reviews Per Page:</p>
+          <input
+            className='bg-base-200 px-4 py-1 w-12'
+            onChange={(e) => handleChange(e.target.value)}
+            value={pagination.perPage}
+          ></input>
+        </div>
+      </div>
       <Border />
     </section>
   );

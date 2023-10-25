@@ -61,8 +61,10 @@ export const getProductsByQuery = cache(
 );
 
 export const getReviewsByProductHandle = cache(
-  async (handle: string): Promise<any> => {
-    const response = await fetch(`/api/reviews?handle=${handle}`);
+  async (handle: string, page = 1, perPage = 3): Promise<any> => {
+    const response = await fetch(
+      `/api/reviews?handle=${handle}&page=${page}&perPage=${perPage}`
+    );
     const results = await response.json();
 
     return results;

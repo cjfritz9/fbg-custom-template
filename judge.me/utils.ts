@@ -13,10 +13,10 @@ export const fetchJudgeMeIdByProductHandle = async (handle: string) => {
   return result.product.id;
 }
 
-export const fetchReviewsByProductHandle = async (handle: string) => {
+export const fetchReviewsByProductHandle = async (handle: string, page = 1, perPage = 3) => {
   const judgeMeId = await fetchJudgeMeIdByProductHandle(handle);
   const response = await fetch(
-    `${API_URL}/reviews?${AUTH_QUERY_PARAMS}&product_id=${judgeMeId}`
+    `${API_URL}/reviews?${AUTH_QUERY_PARAMS}&product_id=${judgeMeId}&page=${page}&per_page=${perPage}`
   );
   const result = await response.json();
 
