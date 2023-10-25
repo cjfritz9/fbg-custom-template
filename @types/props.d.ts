@@ -5,10 +5,15 @@ import { Product } from './api';
 import { FilterMethods, FormattedProduct, SortMethods } from './shop';
 import { IconType } from 'react-icons';
 
+/**
+ * Tailwind CSS style string format
+ * 
+ * DaisyUI component styles can be added here as well
+ *
+*/
 type TailwindCSSStyles = string;
 
 export interface ButtonProps extends React.PropsWithChildren {
-  /** Tailwind CSS + DaisyUI utility string format */
   styles: TailwindCSSStyles;
   href?: string;
   prefetch?: boolean;
@@ -22,16 +27,15 @@ export interface VideoHeroProps {
   videoUrl: string;
 }
 
-/** @type {children} Text content to be rendered aside the image */
+/** 
+ * @type {children} Text content to be rendered aside the image
+ * 
+ * Container Styles for DaisyUI Hero with figure
+ *
+ * https://daisyui.com/components/hero/#hero-with-figure
+*/
 export interface ImageWithTextProps extends React.PropsWithChildren {
   imageSrc: StaticImageData | string;
-  /**
-   * Tailwind CSS style string format
-   *
-   * Container Styles for DaisyUI Hero with figure
-   *
-   * https://daisyui.com/components/hero/#hero-with-figure
-   */
   styles: TailwindCSSStyles;
   /**
    * OPTIONAL - Reverses the layout
@@ -104,15 +108,22 @@ export interface ProductGalleryProps {
   };
 }
 
+export interface ProductReviews {
+  rating: number;
+  reviewCount: number;
+}
+
 export interface ReviewStarsProps {
-  reviews: {
-    rating: number;
-    reviewCount: number;
-  }
+  reviews: ProductReviews;
+  styles?: TailwindCSSStyles;
   showCount?: boolean;
  }
 
-export interface ProductReviewsProps {}
+export interface ProductReviewsProps {
+  /** Shopify Product Handle */
+  handle: string;
+  reviews: ProductReviews;
+}
 
 export interface ProductMenuProps {
   onUpdateProducts: (

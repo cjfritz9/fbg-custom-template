@@ -59,3 +59,12 @@ export const getProductsByQuery = cache(
     return results;
   }
 );
+
+export const getReviewsByProductHandle = cache(
+  async (handle: string): Promise<any> => {
+    const response = await fetch(`/api/reviews?handle=${handle}`);
+    const results = await response.json();
+
+    return results;
+  }
+);

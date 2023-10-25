@@ -1,4 +1,4 @@
-import { fetchProductsByTag } from '@/graphql/products/products.model';
+import { fetchProductsByTag } from '@/shopify/products/products.model';
 import { NextRequest, NextResponse } from 'next/server';
 
 export const GET = async (
@@ -6,7 +6,7 @@ export const GET = async (
   { params }: { params: { tag: string } }
 ) => {
   const { tag } = params;
-  const result = await fetchProductsByTag(tag)
+  const result = await fetchProductsByTag(tag);
 
   return NextResponse.json(result);
 };

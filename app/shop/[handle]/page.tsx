@@ -72,8 +72,8 @@ const ProductPage: React.FC<ProductMetadata> = async ({
         </div>
         <div className='flex flex-col gap-8 max-w-[40rem]'>
           <div>
-            <h2 className='text-3xl font-bold'>{product.title}</h2>
-            <ReviewStars reviews={product.reviews} showCount />
+            <h2 className='text-4xl font-bold'>{product.title}</h2>
+            <ReviewStars reviews={product.reviews} styles='!text-2xl' showCount />
           </div>
           <Border />
           <div className='flex flex-col gap-4 py-4 -my-4 xl:sticky xl:top-0 bg-base-100'>
@@ -94,7 +94,7 @@ const ProductPage: React.FC<ProductMetadata> = async ({
           <Border />
           <div>
             <p className='uppercase font-semibold text-xl pb-4'>DESCRIPTION</p>
-            <div className='custom-scroll overflow-y-auto'>
+            <div className='custom-scroll overflow-y-auto text-lg'>
               <p>
                 This innovative Full-Bore Blast Complete Shotgun Cleaning Kit is
                 quicker and superior in quality to any single-pass bore cleaner
@@ -117,7 +117,7 @@ const ProductPage: React.FC<ProductMetadata> = async ({
           <Border />
           <div>
             <p className='uppercase font-semibold text-xl pb-4'>INCLUDES</p>
-            <ul className='custom-scroll list-disc pl-5 overflow-y-auto'>
+            <ul className='custom-scroll list-disc pl-5 overflow-y-auto text-lg'>
               <li>
                 Full-Bore Blast Flex Rod (1) Attach cleaning elements on each
                 end for push and pull through cleaning
@@ -163,7 +163,7 @@ const ProductPage: React.FC<ProductMetadata> = async ({
           <Border />
           <div>
             <p className='uppercase font-semibold text-xl pb-4'>Specs</p>
-            <ul className='custom-scroll list-disc pl-5 overflow-y-auto'>
+            <ul className='custom-scroll list-disc pl-5 overflow-y-auto text-lg'>
               <li>
                 Material: Galvanized Carbon Steel, Solid Brass, Micro Suede,
                 Nylon Mesh, Polyvinyl, Molded Plastic.
@@ -182,7 +182,7 @@ const ProductPage: React.FC<ProductMetadata> = async ({
           </div>
         </div>
       </section>
-      <ProductReviews />
+      <ProductReviews handle={handle} reviews={product.reviews} />
       <section className='mt-12'>
         <ProductGallery title='Similar Products' subtitle='' productsTag='top products' length={5} />
       </section>

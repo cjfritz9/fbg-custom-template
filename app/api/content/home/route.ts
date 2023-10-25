@@ -1,4 +1,4 @@
-import { fetchHomeContent } from '@/graphql/content/content.model';
+import { fetchHomeContent } from '@/shopify/content/content.model';
 import { NextResponse } from 'next/server';
 
 export const GET = async () => {
