@@ -27,12 +27,15 @@ export interface Product {
   title: string;
   handle: string;
   description: string;
+  variants: {
+    nodes: { title: string }[];
+  };
   includes?: {
     value: string;
-  }
+  };
   specs?: {
     value: string;
-  }
+  };
   images: {
     nodes: ProductImage[];
   };
