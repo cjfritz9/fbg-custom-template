@@ -11,6 +11,8 @@ const ReviewStars: React.FC<ReviewStarsProps> = ({
 }) => {
   const stars = generateStars(reviews?.rating);
 
+  if (!stars) return null;
+
   return reviews.reviewCount === 0 ? (
     <span> No Reviews </span>
   ) : (
