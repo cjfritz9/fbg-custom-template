@@ -6,6 +6,7 @@ import Border from './Border';
 import ReviewStars from '../UI/ReviewStars';
 import { getReviewsByProductHandle } from '@/app/api/requests';
 import Link from 'next/link';
+import useIsClient from '@/lib/hooks/useIsClient';
 
 const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
   const [reviewsList, setReviewsList] = useState([]);
@@ -15,7 +16,9 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
   });
   const [totalPages, setTotalPages] = useState(
     Math.ceil(reviews.reviewCount / pagination.perPage)
-    );
+  );
+
+  const isClient = useIsClient();
 
   const handleChange = (value: string) => {
     if (+value > 10 || +value < 1) return;
@@ -24,24 +27,24 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
       perPage: +value
     }));
   };
-  
+
   useEffect(() => {
     (async () => {
       const response = await getReviewsByProductHandle(
         handle,
         pagination.currentPage,
         pagination.perPage
-        );
-        if (response) {
-          setReviewsList(response);
-        }
-      })();
-      setTotalPages(Math.ceil(reviews.reviewCount / pagination.perPage));
-    }, [handle, reviews.reviewCount, pagination.currentPage, pagination.perPage]);
-    
-    if (!reviews || !handle) return null;
-    
-    return (
+      );
+      if (response) {
+        setReviewsList(response);
+      }
+    })();
+    setTotalPages(Math.ceil(reviews.reviewCount / pagination.perPage));
+  }, [handle, reviews.reviewCount, pagination.currentPage, pagination.perPage]);
+
+  if (!isClient) return null;
+
+  return (
     <section className='flex flex-col text-primary py-12'>
       <Border />
       <div className='flex flex-col py-12 gap-2'>
