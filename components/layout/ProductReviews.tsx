@@ -8,6 +8,7 @@ import { getReviewsByProductHandle } from '@/app/api/requests';
 import Link from 'next/link';
 
 const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
+  if (!reviews || !handle) return null;
   const [reviewsList, setReviewsList] = useState([]);
   const [pagination, setPagination] = useState({
     currentPage: 1,
@@ -22,8 +23,8 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
     setPagination((prev) => ({
       ...prev,
       perPage: +value
-    }))
-  }
+    }));
+  };
 
   useEffect(() => {
     (async () => {
