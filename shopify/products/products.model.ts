@@ -203,8 +203,6 @@ export const fetchProductByHandle = async (handle: string) => {
 
   const result = formatProductResponse(response);
 
-  console.log({ result })
-
   return result;
 };
 

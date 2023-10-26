@@ -54,7 +54,6 @@ export const getProductsByTag = cache(
 export const getProductsByQuery = cache(
   async (query: string): Promise<QueryResult[]> => {
     const response = await fetch(`/api/products/search?query=${query}`);
-    console.log({ response })
     const results = await response.json();
 
     return results;
