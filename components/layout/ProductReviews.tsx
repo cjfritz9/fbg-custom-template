@@ -27,7 +27,7 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
   };
 
   useEffect(() => {
-    if (!isClient) return;
+    if (!isClient || !reviews || !handle) return;
     (async () => {
       const response = await getReviewsByProductHandle(
         handle,
