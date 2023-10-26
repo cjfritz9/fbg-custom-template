@@ -14,9 +14,7 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
     currentPage: 1,
     perPage: 3
   });
-  const [totalPages, setTotalPages] = useState(
-    Math.ceil(reviews.reviewCount / pagination.perPage)
-  );
+  const [totalPages, setTotalPages] = useState(0);
 
   const isClient = useIsClient();
 
@@ -29,6 +27,7 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
   };
 
   useEffect(() => {
+    if (!isClient) return;
     (async () => {
       const response = await getReviewsByProductHandle(
         handle,
