@@ -27,18 +27,20 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
   };
 
   useEffect(() => {
-    if (!isClient || !reviews || !handle) return;
-    (async () => {
-      const response = await getReviewsByProductHandle(
-        handle,
-        pagination.currentPage,
-        pagination.perPage
-      );
-      if (response) {
-        setReviewsList(response);
-      }
-    })();
-    setTotalPages(Math.ceil(reviews.reviewCount / pagination.perPage));
+    if (isClient || reviews || handle) {
+      (async () => {
+        const response = await getReviewsByProductHandle(
+          handle,
+          pagination.currentPage,
+          pagination.perPage
+        );
+        console.log({ response });
+        if (response) {
+          setReviewsList(response);
+        }
+      })();
+      setTotalPages(Math.ceil(reviews.reviewCount / pagination.perPage));
+    }
   }, [handle, reviews.reviewCount, pagination.currentPage, pagination.perPage]);
 
   if (!isClient) return null;
