@@ -9,9 +9,7 @@ const ReviewStars: React.FC<ReviewStarsProps> = ({
   styles = '',
   showCount = false
 }) => {
-  const stars = generateStars(reviews?.rating);
-
-  if (!stars) return null;
+  const stars = generateStars(reviews.rating);
 
   return reviews.reviewCount === 0 ? (
     <span> No Reviews </span>
@@ -32,7 +30,6 @@ const ReviewStars: React.FC<ReviewStarsProps> = ({
 };
 
 const generateStars = (starCount: number) => {
-  if (!starCount) return;
   const halfStars = starCount % 1 !== 0 ? 1 : 0;
 
   const stars = {

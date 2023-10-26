@@ -26,7 +26,9 @@ const ProductPanel: React.FC<ProductPanelProps> = ({ product }) => {
       </div>
       {product.variants && product.variants.length > 1 && (
         <>
-          <Border />
+          <div className='-my-4'>
+            <Border />
+          </div>
           <p className='uppercase font-semibold text-xl'>SELECT OPTION</p>
 
           <Listbox value={variant} onChange={setVariant}>
@@ -86,13 +88,15 @@ const ProductPanel: React.FC<ProductPanelProps> = ({ product }) => {
           </Listbox>
         </>
       )}
-      <Border />
-      <div className='flex flex-col gap-4 py-4 -my-4 xl:sticky xl:top-0 bg-base-100'>
-        <h4 className='text-2xl xl:text-3xl font-bold tracking-widest'>
-          ${product.minPrice}
-        </h4>
-        <div className='flex gap-4 '>
-          <Button styles='btn-primary grow h-16 font-bold text-lg fixed bottom-0 -mx-4 z-30 xl:static xl:mx-0'>
+      <h4 className='text-2xl font-bold tracking-widest'>
+        ${product.minPrice}
+      </h4>
+      <div className='-my-4'>
+        <Border />
+      </div>
+      <div className='flex flex-col gap-4 py-4 sticky top-0 bg-base-100 outline-none'>
+        <div className='flex gap-4'>
+          <Button styles='btn-primary grow h-16 font-bold text-lg'>
             ADD TO CART
           </Button>
           <div
@@ -105,7 +109,9 @@ const ProductPanel: React.FC<ProductPanelProps> = ({ product }) => {
           </div>
         </div>
       </div>
-      <Border />
+      <div className='-my-4'>
+        <Border />
+      </div>
       <div>
         <p className='uppercase font-semibold text-xl pb-4'>DESCRIPTION</p>
         <div className='custom-scroll overflow-y-auto text-lg'>
@@ -114,7 +120,9 @@ const ProductPanel: React.FC<ProductPanelProps> = ({ product }) => {
       </div>
       {product.includes && product.includes.length > 0 && (
         <>
-          <Border />
+          <div className='-my-4'>
+            <Border />
+          </div>
           <div>
             <p className='uppercase font-semibold text-xl pb-4'>INCLUDES</p>
             <ul className='custom-scroll list-disc pl-5 overflow-y-auto text-lg'>
@@ -127,7 +135,9 @@ const ProductPanel: React.FC<ProductPanelProps> = ({ product }) => {
       )}
       {product.specs && product.specs.length > 0 && (
         <>
-          <Border />
+          <div className='-my-4'>
+            <Border />
+          </div>
           <div>
             <p className='uppercase font-semibold text-xl pb-4'>Specs</p>
             <ul className='custom-scroll list-disc pl-5 overflow-y-auto text-lg'>
