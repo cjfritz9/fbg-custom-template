@@ -29,19 +29,19 @@ const PaginationBar: React.FC<PaginationBarProps> = ({
   };
 
   return (
-    <div className='join w-full align-center justify-center lg:justify-start pt-8'>
+    <div className='join align-center justify-center lg:justify-start mt-8'>
       <button
-        className={`join-item btn ${
+        className={`join-item btn bg-base-100 border ${
           !hasPages.prev || page === 1 ? 'btn-disabled' : ''
         } hover:text-white`}
         onClick={() => handleClick(false, cursors[0])}
       >
         «
       </button>
-      <span className='join-item btn btn-disabled !bg-neutral !text-primary grow lg:grow-0 max-w-[236px]'>{`Page ${page}`}</span>
+      <span className='join-item btn btn-disabled !bg-base-100 !text-primary grow lg:grow-0 max-w-[236px]'>{`Page ${page}`}</span>
       <button
-        className={`join-item btn ${
-          !hasPages.next && 'btn-disabled'
+        className={`join-item btn bg-base-100 ${
+          !hasPages.next ? 'btn-disabled' : ''
         } hover:text-white`}
         onClick={() => handleClick(true, cursors[1])}
       >

@@ -53,29 +53,34 @@ const ShopPage: React.FC = () => {
   return (
     <div className='flex flex-col lg:flex-row w-full h-auto bg-base-100'>
       <ProductMenu onUpdateProducts={onUpdateProducts} onLoading={onLoading} />
-      <div id='cards-container' className='flex flex-wrap gap-4 lg:gap-12 py-8 px-8 xl:py-16 xl:px-28 justify-center lg:justify-start'>
-        {isLoading ? (
-          <LoadingCards />
-        ) : (
-          products.map((product, i) => (
-            <ProductCard
-              priority={i < 4}
-              key={product.handle}
-              title={product.title}
-              handle={`/shop/${product.handle}`}
-              price={product.minPrice}
-              imageSrc={product.images[0].url}
-              imageAlt={product.images[0].altText}
-              reviews={product.reviews}
-            />
-          ))
-        )}
-        <PaginationBar
-          cursors={[paginationData.startCursor, paginationData.endCursor]}
-          onLoading={onLoading}
-          hasPages={hasPages}
-          onUpdateProducts={onUpdateProducts}
-        />
+      <div className='flex flex-col w-full bg-base-200 gap-4 lg:gap-8 py-8 px-8 xl:py-16 xl:px-28'>
+        <div
+          id='cards-container'
+          className='flex flex-wrap gap-4 lg:gap-12 justify-center lg:justify-start bg-base-200 w-full'
+        >
+          {isLoading ? (
+            <LoadingCards />
+          ) : (
+            products.map((product, i) => (
+              <ProductCard
+                priority={i < 4}
+                key={product.handle}
+                title={product.title}
+                handle={`/shop/${product.handle}`}
+                price={product.minPrice}
+                imageSrc={product.images[0].url}
+                imageAlt={product.images[0].altText}
+                reviews={product.reviews}
+              />
+            ))
+          )}
+            </div>
+          <PaginationBar
+            cursors={[paginationData.startCursor, paginationData.endCursor]}
+            onLoading={onLoading}
+            hasPages={hasPages}
+            onUpdateProducts={onUpdateProducts}
+          />
       </div>
     </div>
   );

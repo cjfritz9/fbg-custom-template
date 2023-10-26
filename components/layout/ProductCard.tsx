@@ -4,6 +4,7 @@ import Link from 'next/link';
 import React from 'react';
 import Button from '../actions/Button';
 import ReviewStars from '../UI/ReviewStars';
+import Border from './Border';
 
 const ProductCard: React.FC<ProductCardProps> = ({
   priority,
@@ -15,7 +16,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   reviews
 }) => {
   return (
-    <div className='card w-[20rem] md:w-[26rem] glass text-primary drop-shadow-2xl shadow-2xl'>
+    <div className='card w-[20rem] md:w-[26rem] glass text-primary drop-shadow-md shadow-md'>
       <figure>
         <Image
           priority={priority}
@@ -26,7 +27,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
           className='object-cover w-full h-[254px]'
         />
       </figure>
-      <div className='card-body items-start'>
+      <Border />
+      <div className='card-body bg-base-100 items-start'>
         <div className='h-36 w-full'>
           <div className='flex justify-between pt-2'>
             <p className='text-xl font-bold text-secondary'>${price}</p>

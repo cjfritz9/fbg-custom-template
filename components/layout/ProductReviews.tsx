@@ -5,7 +5,6 @@ import { ProductReviewsProps, ReviewProps } from '@/@types/props';
 import Border from './Border';
 import ReviewStars from '../UI/ReviewStars';
 import { getReviewsByProductHandle } from '@/app/api/requests';
-import Link from 'next/link';
 import useIsClient from '@/lib/hooks/useIsClient';
 
 const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
@@ -27,7 +26,7 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
   };
 
   useEffect(() => {
-    if (isClient || reviews || handle) {
+    if (reviews && handle) {
       (async () => {
         const response = await getReviewsByProductHandle(
           handle,
@@ -40,7 +39,7 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
       })();
       setTotalPages(Math.ceil(reviews.reviewCount / pagination.perPage));
     }
-  }, [handle, reviews.reviewCount, pagination.currentPage, pagination.perPage]);
+  }, [handle, reviews, pagination]);
 
   if (!isClient) return null;
 
@@ -66,7 +65,7 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
         <p className='mb-6'>Be the first to leave a review!</p>
       )}
       <Border />
-      <div className='flex justify-between py-4 gap-4 items-center'>
+      <div className='flex flex-col xl:flex-row justify-between py-4 gap-4 items-center'>
         <div></div>
         <div className='flex items-center gap-4'>
           {Array.from(new Array(totalPages < 10 ? totalPages : 10)).map(
