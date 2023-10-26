@@ -8,7 +8,6 @@ import { getReviewsByProductHandle } from '@/app/api/requests';
 import Link from 'next/link';
 
 const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
-  if (!reviews || !handle) return null;
   const [reviewsList, setReviewsList] = useState([]);
   const [pagination, setPagination] = useState({
     currentPage: 1,
@@ -16,7 +15,7 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
   });
   const [totalPages, setTotalPages] = useState(
     Math.ceil(reviews.reviewCount / pagination.perPage)
-  );
+    );
 
   const handleChange = (value: string) => {
     if (+value > 10 || +value < 1) return;
@@ -25,22 +24,24 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
       perPage: +value
     }));
   };
-
+  
   useEffect(() => {
     (async () => {
       const response = await getReviewsByProductHandle(
         handle,
         pagination.currentPage,
         pagination.perPage
-      );
-      if (response) {
-        setReviewsList(response);
-      }
-    })();
-    setTotalPages(Math.ceil(reviews.reviewCount / pagination.perPage));
-  }, [handle, reviews.reviewCount, pagination.currentPage, pagination.perPage]);
-
-  return (
+        );
+        if (response) {
+          setReviewsList(response);
+        }
+      })();
+      setTotalPages(Math.ceil(reviews.reviewCount / pagination.perPage));
+    }, [handle, reviews.reviewCount, pagination.currentPage, pagination.perPage]);
+    
+    if (!reviews || !handle) return null;
+    
+    return (
     <section className='flex flex-col text-primary py-12'>
       <Border />
       <div className='flex flex-col py-12 gap-2'>
