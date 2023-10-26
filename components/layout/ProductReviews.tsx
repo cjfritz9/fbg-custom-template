@@ -34,7 +34,6 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
           pagination.currentPage,
           pagination.perPage
         );
-        console.log({ response });
         if (response) {
           setReviewsList(response);
         }
