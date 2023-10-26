@@ -1,8 +1,8 @@
 import { footerLinks, navLinks } from '@/lib/static/links';
 import { StaticImageData } from 'next/image';
 import React, { PropsWithChildren } from 'react';
-import { Product } from './api';
-import { FilterMethods, FormattedProduct, SortMethods } from './shop';
+import { FormattedProduct, Product } from './api';
+import { FilterMethods, SortMethods } from './shop';
 import { IconType } from 'react-icons';
 
 /**
@@ -109,6 +109,10 @@ export interface ProductGalleryProps {
     name: string;
     slug: string;
   };
+}
+
+export interface ProductPanelProps {
+  product: FormattedProduct;
 }
 
 export interface ProductReviews {

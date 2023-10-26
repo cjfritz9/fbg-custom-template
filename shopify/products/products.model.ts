@@ -170,6 +170,11 @@ export const fetchProductByHandle = async (handle: string) => {
           altText
         }
       }
+      variants(first: 100) {
+        nodes {
+          title
+        }
+      }
       includes: metafield(namespace: "custom", key: "includes") {
         value
       }
@@ -197,6 +202,8 @@ export const fetchProductByHandle = async (handle: string) => {
   })) as ProductByHandleResponse;
 
   const result = formatProductResponse(response);
+
+  console.log({ result })
 
   return result;
 };

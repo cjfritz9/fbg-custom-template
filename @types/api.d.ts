@@ -27,7 +27,7 @@ export interface Product {
   title: string;
   handle: string;
   description: string;
-  variants: {
+  variants?: {
     nodes: { title: string }[];
   };
   includes?: {
@@ -133,6 +133,7 @@ export interface FormattedProduct {
   title: string;
   handle: string;
   description: string;
+  variants?: string[] | undefined;
   includes?: string[];
   specs?: string[];
   images: { url: string; altText: string }[];
