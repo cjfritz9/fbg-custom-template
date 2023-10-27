@@ -20,6 +20,7 @@ import {
 } from 'react-icons/io5';
 import { usePathname } from 'next/navigation';
 import { HiOutlineMagnifyingGlass } from 'react-icons/hi2';
+import CartBadge from '@/components/UI/CartBadge';
 
 const NavMenu: React.FC = () => {
   const [showSearch, setShowSearch] = useState(false);
@@ -88,7 +89,7 @@ const NavMenu: React.FC = () => {
               href='/account'
               styles='hidden lg:block'
             />
-            <NavIcon variants={[IoCartOutline, IoCart]} />
+            <CartIcon />
             <div className='drawer lg:hidden z-40 justify-end w-fit'>
               <input
                 id='nav-drawer'
@@ -177,10 +178,13 @@ const NavIcon: React.FC<NavIconProps> = ({
   );
 };
 
-// const CartIcon: React.FC = ({
-
-// }) => {
-
-// }
+const CartIcon: React.FC = () => {
+  return (
+    <div className='relative'>
+      <NavIcon variants={[IoCartOutline, IoCart]} />
+      <CartBadge />
+    </div>
+  )
+}
 
 export default NavMenu;

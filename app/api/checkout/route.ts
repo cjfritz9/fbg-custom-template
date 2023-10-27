@@ -8,11 +8,11 @@ export const GET = async (req: NextRequest) => {
   }
   const checkout = await storeClient.checkout.fetch(checkoutId);
 
-  return NextResponse.json({ checkout });
+  return NextResponse.json(checkout);
 };
 
 export const POST = async (req: NextRequest) => {
   const checkout = await storeClient.checkout.create();
 
-  return NextResponse.json({ checkout });
+  return NextResponse.json(checkout);
 };
