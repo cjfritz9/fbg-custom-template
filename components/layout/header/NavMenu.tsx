@@ -51,7 +51,7 @@ const NavMenu: React.FC = () => {
         </div>
         <div className='flex w-full justify-between items-center'>
           <div />
-          <div className='relative flex items-center'>
+          <div className='relative flex items-center h-12'>
             {showSearch ? (
               <>
                 <SearchBar variant='header' />
@@ -64,7 +64,7 @@ const NavMenu: React.FC = () => {
             ) : (
               <ul className='menu menu-horizontal bg-base-100 hidden lg:inline-flex gap-0 xl:gap-4 justify-end md:justify-between py-0 px-0 -mr-4 xl:mr-0 '>
                 {navLinks.map((link) => (
-                  <NavLink key={link.slug} link={link} />
+                  <NavLink key={link.slug} link={link} styles='xl:text-2xl' />
                 ))}
               </ul>
             )}
@@ -124,7 +124,7 @@ const NavMenu: React.FC = () => {
   );
 };
 
-const NavLink: React.FC<NavLinkProps> = ({ link }) => {
+const NavLink: React.FC<NavLinkProps> = ({ link, styles }) => {
   const pathname = usePathname();
   const [isActive, setIsActive] = useState(false);
 
@@ -140,7 +140,7 @@ const NavLink: React.FC<NavLinkProps> = ({ link }) => {
       key={link.name}
       className={`uppercase text-lg xl:text-xl font-semibold px-0 py-0 ${
         isActive && 'underline underline-offset-4'
-      }`}
+      } ${styles}`}
     >
       <Link
         prefetch

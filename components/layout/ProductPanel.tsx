@@ -12,6 +12,7 @@ import {
   HiOutlineCheck,
   HiOutlineCheckBadge
 } from 'react-icons/hi2';
+import Accordion from '../actions/Accordion';
 
 const ProductPanel: React.FC<ProductPanelProps> = ({ product }) => {
   const [variant, setVariant] = useState(
@@ -113,24 +114,22 @@ const ProductPanel: React.FC<ProductPanelProps> = ({ product }) => {
         <Border />
       </div>
       <div>
-        <p className='uppercase font-semibold text-xl pb-4'>DESCRIPTION</p>
-        <div className='custom-scroll overflow-y-auto text-lg'>
+        <Accordion title='DESCRIPTION' defaultExpanded>
           <p>{product.description}</p>
-        </div>
+        </Accordion>
       </div>
       {product.includes && product.includes.length > 0 && (
         <>
           <div className='-my-4'>
             <Border />
           </div>
-          <div>
-            <p className='uppercase font-semibold text-xl pb-4'>INCLUDES</p>
+          <Accordion title='INCLUDED ITEMS'>
             <ul className='custom-scroll list-disc pl-5 overflow-y-auto text-lg'>
               {product.includes.map((listItem, i) => (
                 <li key={i}>{listItem}</li>
               ))}
             </ul>
-          </div>
+          </Accordion>
         </>
       )}
       {product.specs && product.specs.length > 0 && (
@@ -138,14 +137,13 @@ const ProductPanel: React.FC<ProductPanelProps> = ({ product }) => {
           <div className='-my-4'>
             <Border />
           </div>
-          <div>
-            <p className='uppercase font-semibold text-xl pb-4'>Specs</p>
+          <Accordion title='SPECS'>
             <ul className='custom-scroll list-disc pl-5 overflow-y-auto text-lg'>
               {product.specs.map((listItem, i) => (
                 <li key={i}>{listItem}</li>
               ))}
             </ul>
-          </div>
+          </Accordion>
         </>
       )}
     </div>

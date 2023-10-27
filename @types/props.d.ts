@@ -22,6 +22,11 @@ export interface ButtonProps extends React.PropsWithChildren {
   prefetch?: boolean;
 }
 
+export interface AccordionProps extends React.PropsWithChildren {
+  title: string;
+  defaultExpanded?: boolean;
+}
+
 export interface LogoProps {
   height?: number;
 }
@@ -56,6 +61,7 @@ export interface SearchBarProps {
 
 export interface NavLinkProps {
   link: (typeof navLinks)[0];
+  styles?: TailwindCSSStyles;
 }
 
 /**
