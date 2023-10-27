@@ -69,6 +69,7 @@ export interface NavIconProps {
   variants: [IconType, IconType];
   href?: string;
   styles?: string;
+  onClick?: () => void;
 }
 
 export interface FooterLinkGroupProps {
