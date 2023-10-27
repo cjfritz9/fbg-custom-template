@@ -139,7 +139,7 @@ const NavLink: React.FC<NavLinkProps> = ({ link }) => {
     <li
       key={link.name}
       className={`uppercase text-lg xl:text-xl font-semibold px-0 py-0 ${
-        isActive ? 'text-secondary' : 'text-primary'
+        isActive && 'underline underline-offset-4'
       }`}
     >
       <Link
