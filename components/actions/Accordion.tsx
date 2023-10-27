@@ -9,10 +9,10 @@ const Accordion: React.FC<AccordionProps> = ({ title, children, defaultExpanded 
   return (
     <div className='collapse collapse-plus bg-base-100'>
       <input
-        type='radio'
+        type='checkbox'
         name={title + '-accordion'}
         checked={isExpanded}
-        onClick={() => setIsExpanded((prev) => !prev)}
+        onChange={() => setIsExpanded((prev) => !prev)}
       />
       <div className='collapse-title text-xl font-medium'>{title}</div>
       <div className='collapse-content'>{children}</div>
