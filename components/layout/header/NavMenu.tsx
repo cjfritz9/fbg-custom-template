@@ -20,7 +20,6 @@ import {
 } from 'react-icons/io5';
 import { usePathname } from 'next/navigation';
 import { HiOutlineMagnifyingGlass } from 'react-icons/hi2';
-import Border from '../Border';
 
 const NavMenu: React.FC = () => {
   const [showSearch, setShowSearch] = useState(false);
@@ -66,7 +65,7 @@ const NavMenu: React.FC = () => {
             ) : (
               <ul className='menu menu-horizontal bg-base-100 hidden lg:inline-flex gap-0 xl:gap-4 justify-end md:justify-between py-0 px-0 -mr-4 xl:mr-0 '>
                 {navLinks.map((link) => (
-                  <NavLink key={link.slug} link={link} styles='xl:text-2xl' />
+                  <NavLink key={link.slug} link={link} styles='xl:!text-2xl' />
                 ))}
               </ul>
             )}
@@ -177,5 +176,11 @@ const NavIcon: React.FC<NavIconProps> = ({
     </Link>
   );
 };
+
+// const CartIcon: React.FC = ({
+
+// }) => {
+
+// }
 
 export default NavMenu;

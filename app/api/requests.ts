@@ -5,6 +5,7 @@ import {
 } from '@/@types/api';
 import { FilterMethods } from '@/@types/shop';
 import { cache } from 'react';
+import ShopifyBuy from 'shopify-buy';
 
 export const getHomeContent = cache(async () => {
   const response = await fetch(`/api/content/home`);
@@ -70,3 +71,14 @@ export const getReviewsByProductHandle = cache(
     return results;
   }
 );
+
+export const getCheckout = cache(
+  async (checkoutId: string): Promise<ShopifyBuy.Checkout> => {
+    const response = await fetch(
+      `/api/checkout?id=${checkoutId}`
+    )
+    const result = await response.json();
+
+    return result;
+  }
+)

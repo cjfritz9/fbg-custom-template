@@ -24,14 +24,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en' data-theme='light'>
-      <Script type="text/javascript" src="https://af.uppromote.com/tracking_third_party.js?shop=full-blast-gear.myshopify.com" />
+      <Script
+        type='text/javascript'
+        src='https://af.uppromote.com/tracking_third_party.js?shop=full-blast-gear.myshopify.com'
+      />
       <body
         className={`${inter.className} ${monsterrat.className} overflow-x-hidden`}
       >
         <SplashScreen />
         <Announcement />
-        <Header />
-        {children}
+          <Header />
+          {children}
         <Ankle />
         <Footer />
       </body>

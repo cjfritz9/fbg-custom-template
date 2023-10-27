@@ -8,8 +8,8 @@ import {
   QueryResult
 } from '@/@types/api';
 import { FormattedProduct } from '@/@types/api';
-import { RiCreativeCommonsNdLine } from 'react-icons/ri';
-import { json } from 'stream/consumers';
+
+// ADMIN FUNCTIONS 
 
 export const formatHomeContentResponse = (res: HomeContentResponse) => {
   const data = res.body.data;
@@ -139,3 +139,7 @@ const formatRating = (ratingData: string): number => {
 
   return +parsedRating.value;
 };
+
+
+// STOREFRONT FUNCTIONS 
+

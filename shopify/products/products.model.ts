@@ -5,7 +5,7 @@ import {
   ProductsResponse,
   QueryResult
 } from '@/@types/api';
-import client from '../shopify-client';
+import adminClient from '../shopify-admin-client';
 import {
   formatProductResponse,
   formatProductsByQueryResponse,
@@ -49,7 +49,7 @@ const fetchPrevPage = async (cursor: string) => {
       }
     }
   }`;
-  const response = (await client.query({
+  const response = (await adminClient.query({
     data
   })) as ProductsResponse;
 
@@ -92,7 +92,7 @@ const fetchNextPage = async (cursor: string | null) => {
       }
     }
   }`;
-  const response = (await client.query({
+  const response = (await adminClient.query({
     data
   })) as ProductsResponse;
 
@@ -149,7 +149,7 @@ export const fetchProductsByQuery = async (
     }
   }`;
 
-  const response = (await client.query({
+  const response = (await adminClient.query({
     data
   })) as ProductsResponse;
 
@@ -197,7 +197,7 @@ export const fetchProductByHandle = async (handle: string) => {
       }
     }
   }`;
-  const response = (await client.query({
+  const response = (await adminClient.query({
     data
   })) as ProductByHandleResponse;
 
@@ -244,7 +244,7 @@ export const fetchProductsByTag = async (
       }
     }
   }`;
-  const response = (await client.query({
+  const response = (await adminClient.query({
     data
   })) as ProductsResponse;
 

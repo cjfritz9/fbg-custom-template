@@ -1,6 +1,7 @@
 import { StaticImageData } from 'next/image';
 import React, { PropsWithChildren } from 'react';
 import { PageInfo } from './api';
+import ShopifyBuy from 'shopify-buy';
 
 export type SortMethods =
   | 'featured'
@@ -18,4 +19,4 @@ export type PaginationData = {
   hasPreviousPage: boolean;
   endCursor: Cursor;
   hasNextPage: boolean;
-}
+};
