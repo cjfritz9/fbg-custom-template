@@ -20,3 +20,12 @@ export type PaginationData = {
   endCursor: Cursor;
   hasNextPage: boolean;
 };
+
+export interface CartInterface {
+  showCart: boolean;
+  checkout: ShopifyBuy.Checkout | undefined;
+  openCart: () => void;
+  closeCart: () => void;
+  addLineItem: (checkoutId: string, variantId: string, quantity: number) => Promise<void>;
+  removeLineItem: (checkoutId: string, lineItemIds: string[]) => Promise<void>;
+}

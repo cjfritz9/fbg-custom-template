@@ -13,6 +13,7 @@ import {
   HiOutlineCheckBadge
 } from 'react-icons/hi2';
 import Accordion from '../actions/Accordion';
+import { addItemsToCheckout } from '@/app/api/requests';
 
 const ProductPanel: React.FC<ProductPanelProps> = ({ product }) => {
   const [variant, setVariant] = useState(
