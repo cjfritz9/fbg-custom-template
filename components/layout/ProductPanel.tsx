@@ -95,7 +95,7 @@ const ProductPanel: React.FC<ProductPanelProps> = ({ product }) => {
       <div className='-my-4'>
         <Border />
       </div>
-      <div className='flex flex-col gap-4 py-4 sticky top-0 bg-base-100 outline-none'>
+      <div className='flex flex-col gap-4 py-4 sticky top-0 z-10 bg-base-100 outline-none'>
         <div className='flex gap-4'>
           <Button styles='btn-primary grow h-16 font-bold text-lg'>
             ADD TO CART
