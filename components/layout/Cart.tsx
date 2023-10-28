@@ -43,7 +43,7 @@ const Cart: React.FC = () => {
           className='drawer-overlay'
           onClick={closeCart}
         ></label>
-        <div className='w-[520px] min-h-full bg-base-200 text-base-content'>
+        <div className='w-80 md:w-[520px] min-h-full bg-base-200 text-base-content'>
           <div className='flex justify-between p-4 w-full border-b border-primary border-opacity-25'>
             <div />
             <h5 className='text-xl font-bold'>YOUR CART</h5>

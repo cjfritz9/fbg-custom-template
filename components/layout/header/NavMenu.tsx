@@ -90,7 +90,7 @@ const NavMenu: React.FC = () => {
               styles='hidden lg:block'
             />
             <Cart />
-            <div className='drawer lg:hidden z-40 justify-end w-fit'>
+            <div className='drawer lg:hidden justify-end w-fit'>
               <input
                 id='nav-drawer'
                 type='checkbox'
@@ -104,7 +104,7 @@ const NavMenu: React.FC = () => {
                   <IoMenuSharp className='text-lg sm:text-2xl' />
                 </label>
               </div>
-              <div className='drawer-side'>
+              <div className='drawer-side z-40'>
                 <label
                   htmlFor='nav-drawer'
                   aria-label='close sidebar'
