@@ -8,6 +8,8 @@ import {
 import React, { PropsWithChildren, useEffect, useState } from 'react';
 import ShopifyBuy from 'shopify-buy';
 
+const CHECKOUT_STORAGE_KEY = 'checkout_id';
+
 export const CartContext = React.createContext<CartInterface | null>(null);
 
 const CartProvider: React.FC<PropsWithChildren> = ({ children }) => {
@@ -39,28 +41,40 @@ const CartProvider: React.FC<PropsWithChildren> = ({ children }) => {
     setCheckout(checkoutRes);
   };
 
+  const createNewCheckout = async () => {
+    const checkoutRes = await createCheckout();
+    localStorage.setItem(CHECKOUT_STORAGE_KEY, checkoutRes.id);
+    setCheckout(checkoutRes)
+  };
+
   useEffect(() => {
-    const storedCheckoutId = localStorage.getItem('checkout_id');
+    const storedCheckoutId = localStorage.getItem(CHECKOUT_STORAGE_KEY);
     (async () => {
       if (!storedCheckoutId) {
-        const checkoutRes = await createCheckout();
-        localStorage.setItem('checkout_id', checkoutRes.id);
-        setCheckout(checkoutRes);
+        await createNewCheckout();
       } else {
         const checkoutRes = await getCheckout(storedCheckoutId);
-        setCheckout(checkoutRes);
+        if (checkoutRes.completedAt) {
+          await createNewCheckout();
+        }
       }
     })();
   }, []);
 
-  return <CartContext.Provider value={{
-    showCart,
-    checkout: checkout!,
-    openCart,
-    closeCart,
-    addLineItem,
-    removeLineItem
-  }}>{children}</CartContext.Provider>;
+  return (
+    <CartContext.Provider
+      value={{
+        showCart,
+        checkout: checkout!,
+        openCart,
+        closeCart,
+        addLineItem,
+        removeLineItem
+      }}
+    >
+      {children}
+    </CartContext.Provider>
+  );
 };
 
 export default CartProvider;

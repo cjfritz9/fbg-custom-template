@@ -7,9 +7,7 @@ import { CartContext } from '@/context/CartContext';
 import {
   IoCart,
   IoCartOutline,
-  IoClose,
-  IoTrashBin,
-  IoTrashBinOutline
+  IoClose
 } from 'react-icons/io5';
 import { LineItemProps } from '@/@types/props';
 import Image from 'next/image';
@@ -46,7 +44,7 @@ const Cart: React.FC = () => {
           onClick={closeCart}
         ></label>
         <div className='w-[520px] min-h-full bg-base-200 text-base-content'>
-          <div className='flex justify-between p-4 w-full border-b border-primary border-opacity-50'>
+          <div className='flex justify-between p-4 w-full border-b border-primary border-opacity-25'>
             <div />
             <h5 className='text-xl font-bold'>YOUR CART</h5>
             <div onClick={closeCart} className='cursor-pointer'>
@@ -59,14 +57,23 @@ const Cart: React.FC = () => {
                 <LineItem key={item.id} item={item} />
               ))
             ) : (
-              <li>No Items In Cart</li>
+              <li className='text-center'>No Items In Cart</li>
             )}
           </ul>
-          <div className='px-4 pb-4 sticky bottom-0 bg-base-200'>
-            <Link href={checkout?.webUrl ?? ''}>
-              <Button styles='btn-primary !w-full'>CHECKOUT</Button>
+          {checkout && checkout.lineItems.length > 0 ? (
+            <div className='px-4 pb-4 sticky bottom-0 bg-base-200'>
+              <Link href={checkout?.webUrl ?? ''}>
+                <Button styles='btn-primary !w-full'>CHECKOUT</Button>
+              </Link>
+            </div>
+          ) : (
+            <div className='px-4 pb-4 sticky bottom-0 bg-base-200'>
+            <Link href='/shop' onClick={closeCart}>
+              <Button styles='btn-primary !w-full'>SHOP NOW</Button>
             </Link>
           </div>
+          )
+          }
         </div>
       </div>
     </div>
