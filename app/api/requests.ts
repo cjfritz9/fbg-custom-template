@@ -14,6 +14,13 @@ export const getHomeContent = cache(async () => {
   return result;
 });
 
+export const getAboutContent = cache(async () => {
+  const response = await fetch(`${process.env.BASE_API_URL}/content/about`);
+  const result = await response.json();
+
+  return result;
+})
+
 export const getProducts = cache(
   async (): Promise<FormattedProductResponse> => {
     const response = await fetch(`/api/products`);

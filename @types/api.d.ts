@@ -8,20 +8,16 @@ interface HeroFields {
   };
 }
 
-interface ImageWithTextFields {
-  key: 'title' | 'subtitle' | 'paragraphs' | 'image';
+interface HomeMetaObjectFields {
+  key: string;
   value: string;
-  reference: {
-    image: {
-      url: string;
-    };
-  };
+  reference: null | MediaImageReference;
 }
 
-export type ProductImage = {
+export interface ShopifyImage {
   url: string;
   altText: string;
-};
+}
 
 export interface Product {
   title: string;
@@ -37,7 +33,7 @@ export interface Product {
     value: string;
   };
   images: {
-    nodes: ProductImage[];
+    nodes: ShopifyImage[];
   };
   priceRangeV2: {
     minVariantPrice: {
@@ -66,32 +62,27 @@ export interface QueryResult {
   image: string;
 }
 
+export interface MediaImageReference {
+  image: ShopifyImage;
+}
+
 export interface HomeContentResponse {
   body: {
     data: {
-      hero: {
-        nodes: [
-          {
-            fields: HeroFields[];
-          }
-        ];
-      };
-      top: {
-        nodes: [
-          {
-            fields: ImageWithTextFields[];
-          }
-        ];
-      };
-      bottom: {
-        nodes: [
-          {
-            fields: ImageWithTextFields[];
-          }
-        ];
+      metaobjectByHandle: {
+        fields: HomeMetaObjectFields[];
       };
     };
   };
+}
+
+export interface AboutContentResponse extends HomeContentResponse {
+  
+}
+
+export interface LinkCard {
+  title: string;
+  image: ShopifyImage;
 }
 
 export interface ProductsResponse {
@@ -121,7 +112,7 @@ export interface ProductsByQueryResponse {
           title: string;
           handle: string;
           images: {
-            nodes: ProductImage[];
+            nodes: ShopifyImage[];
           };
         }[];
       };
@@ -142,7 +133,7 @@ export interface FormattedProduct {
   variants?: {
     id: string;
     title: string;
-  }[]
+  }[];
   includes?: string[];
   specs?: string[];
 }

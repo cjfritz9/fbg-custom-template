@@ -1,6 +1,8 @@
 import {
+  AboutContentResponse,
   FormattedProductResponse,
   HomeContentResponse,
+  LinkCard,
   PageInfo,
   ProductByHandleResponse,
   ProductsByQueryResponse,
@@ -8,41 +10,54 @@ import {
   QueryResult
 } from '@/@types/api';
 import { FormattedProduct } from '@/@types/api';
+import { linkSync } from 'fs';
 
 // ADMIN FUNCTIONS
 
 export const formatHomeContentResponse = (res: HomeContentResponse) => {
-  const data = res.body.data;
+  const dataFields = res.body.data.metaobjectByHandle.fields;
+
   return {
-    videoUrl: data.hero.nodes[0].fields[0].reference.sources[0].url,
+    heroContent: {
+      title: dataFields.find((field) => field.key === 'hero_title')!.value,
+      subtitle: dataFields.find((field) => field.key === 'hero_subtitle')!
+        .value,
+      image: dataFields.find((field) => field.key === 'hero_image')!.reference!
+        .image
+    },
     topContent: {
-      title: data.top.nodes[0].fields.find((field) => field.key === 'title')
-        ?.value,
-
-      subtitle: data.top.nodes[0].fields.find(
-        (field) => field.key === 'subtitle'
-      )?.value,
-
-      paragraphs: data.top.nodes[0].fields.find(
-        (field) => field.key === 'paragraphs'
-      )?.value,
-      image: data.top.nodes[0].fields.find((field) => field.key === 'image')
-        ?.reference.image.url
+      title: dataFields.find((field) => field.key === 'top_iwt_title')!.value,
+      subtitle: dataFields.find((field) => field.key === 'top_iwt_sub')!.value,
+      paragraph: dataFields.find((field) => field.key === 'top_iwt_p')!.value,
+      image: dataFields.find((field) => field.key === 'top_iwt_img')!.reference!
+        .image
     },
     bottomContent: {
-      title: data.bottom.nodes[0].fields.find((field) => field.key === 'title')
-        ?.value,
-
-      subtitle: data.bottom.nodes[0].fields.find(
-        (field) => field.key === 'subtitle'
-      )?.value,
-
-      paragraphs: data.bottom.nodes[0].fields.find(
-        (field) => field.key === 'paragraphs'
-      )?.value,
-      image: data.bottom.nodes[0].fields.find((field) => field.key === 'image')
-        ?.reference.image.url
+      title: dataFields.find((field) => field.key === 'btm_iwt_title')!.value,
+      subtitle: dataFields.find((field) => field.key === 'btm_iwt_sub')!.value,
+      paragraph: dataFields.find((field) => field.key === 'btm_iwt_p')!.value,
+      image: dataFields.find((field) => field.key === 'btm_iwt_img')!.reference!
+        .image
     }
+  };
+};
+
+export const formatAboutContentResponse = (res: AboutContentResponse) => {
+  const dataFields = res.body.data.metaobjectByHandle.fields;
+  const linkCards = dataFields.slice(2).map((field) => ({
+    title: field.reference!.fields[0].value,
+    slug: field.reference!.fields[1].value,
+    image: field.reference!.fields[2].reference.image,
+  }));
+  console.log({ linkCards });
+  console.log(linkCards[4].reference);
+  return {
+    heroContent: {
+      title: dataFields.find((field) => field.key === 'hero_title')!.value,
+      image: dataFields.find((field) => field.key === 'slim_hero_image')!
+        .reference!.image
+    },
+    cards: linkCards
   };
 };
 

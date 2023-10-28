@@ -1,7 +1,7 @@
 import { footerLinks, navLinks } from '@/lib/static/links';
 import { StaticImageData } from 'next/image';
 import React, { PropsWithChildren } from 'react';
-import { FormattedProduct, Product } from './api';
+import { FormattedProduct, Product, ShopifyImage } from './api';
 import { FilterMethods, SortMethods } from './shop';
 import { IconType } from 'react-icons';
 import { CheckoutLineItem } from 'shopify-buy';
@@ -32,8 +32,10 @@ export interface LogoProps {
   height?: number;
 }
 
-export interface VideoHeroProps {
-  videoUrl: string;
+export interface HeroProps {
+  title: string;
+  subtitle: string;
+  image: ShopifyImage;
 }
 
 /**
@@ -129,7 +131,7 @@ export interface ProductReviews {
 }
 
 export interface LineItemProps {
-  item: CheckoutLineItem
+  item: CheckoutLineItem;
 }
 
 export interface ReviewStarsProps {
@@ -179,4 +181,18 @@ export interface PaginationBarProps extends ProductMenuProps {
 
 export interface PaginationLinkProps extends PropsWithChildren {
   href: string;
+}
+
+export interface PageLinkCardsProps {
+  cards: {
+    title: string;
+    slug: string;
+    image: ShopifyImage;
+  }[]
+}
+
+export interface PageLinkCardProps {
+  title: string;
+  image: ShopifyImage;
+  slug: string;
 }
