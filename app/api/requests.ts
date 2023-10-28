@@ -111,7 +111,7 @@ export const removeItemsFromCheckout = cache(
     lineItemIds: string[]
   ): Promise<ShopifyBuy.Checkout> => {
     const response = await fetch(`/api/checkout/remove-items?id=${checkoutId}`, {
-      method: 'POST',
+      method: 'DELETE',
       body: JSON.stringify({ lineItemIds })
     });
     const result = await response.json();

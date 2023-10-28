@@ -172,6 +172,7 @@ export const fetchProductByHandle = async (handle: string) => {
       }
       variants(first: 100) {
         nodes {
+          id
           title
         }
       }

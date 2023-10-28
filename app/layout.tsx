@@ -26,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang='en' data-theme='light'>
       <Script
+        async
         type='text/javascript'
         src='https://af.uppromote.com/tracking_third_party.js?shop=full-blast-gear.myshopify.com'
       />

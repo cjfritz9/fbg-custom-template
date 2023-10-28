@@ -9,7 +9,7 @@ import {
 } from '@/@types/api';
 import { FormattedProduct } from '@/@types/api';
 
-// ADMIN FUNCTIONS 
+// ADMIN FUNCTIONS
 
 export const formatHomeContentResponse = (res: HomeContentResponse) => {
   const data = res.body.data;
@@ -112,7 +112,10 @@ export const formatProductResponse = (
     title: rawProductData.title,
     handle: rawProductData.handle,
     description: rawProductData.description,
-    variants: rawProductData.variants?.nodes.map((variant) => variant.title),
+    variants: rawProductData.variants?.nodes.map((variant) => ({
+      id: variant.id,
+      title: variant.title
+    })),
     includes: JSON.parse(rawProductData.includes?.value ?? '[]'),
     specs: JSON.parse(rawProductData.specs?.value ?? '[]'),
     images: rawProductData.images.nodes,
@@ -140,6 +143,4 @@ const formatRating = (ratingData: string): number => {
   return +parsedRating.value;
 };
 
-
-// STOREFRONT FUNCTIONS 
-
+// STOREFRONT FUNCTIONS
