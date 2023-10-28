@@ -9,6 +9,7 @@ import Footer from '@/components/layout/footer/Footer';
 import Header from '@/components/layout/header/Header';
 import Script from 'next/script';
 import Providers from './providers';
+import CookieBar from '@/components/layout/CookieBar';
 
 const inter = Inter({ subsets: ['latin'] });
 const monsterrat = Montserrat({ subsets: ['latin'] });
@@ -41,6 +42,7 @@ export default function RootLayout({
         </Providers>
         <Ankle />
         <Footer />
+        <CookieBar />
       </body>
     </html>
   );

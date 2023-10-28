@@ -44,7 +44,7 @@ const CartProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const createNewCheckout = async () => {
     const checkoutRes = await createCheckout();
     localStorage.setItem(CHECKOUT_STORAGE_KEY, checkoutRes.id);
-    setCheckout(checkoutRes)
+    setCheckout(checkoutRes);
   };
 
   useEffect(() => {
@@ -56,10 +56,14 @@ const CartProvider: React.FC<PropsWithChildren> = ({ children }) => {
         const checkoutRes = await getCheckout(storedCheckoutId);
         if (checkoutRes.completedAt) {
           await createNewCheckout();
+        } else {
+          setCheckout(checkoutRes)
         }
       }
     })();
   }, []);
+
+  console.log({ checkout });
 
   return (
     <CartContext.Provider
