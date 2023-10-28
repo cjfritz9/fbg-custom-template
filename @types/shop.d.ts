@@ -1,6 +1,7 @@
 import { StaticImageData } from 'next/image';
 import React, { PropsWithChildren } from 'react';
 import { PageInfo } from './api';
+import ShopifyBuy from 'shopify-buy';
 
 export type SortMethods =
   | 'featured'
@@ -18,4 +19,13 @@ export type PaginationData = {
   hasPreviousPage: boolean;
   endCursor: Cursor;
   hasNextPage: boolean;
+};
+
+export interface CartInterface {
+  showCart: boolean;
+  checkout: ShopifyBuy.Checkout | undefined;
+  openCart: () => void;
+  closeCart: () => void;
+  addLineItem: (checkoutId: string, variantId: string, quantity: number) => Promise<void>;
+  removeLineItem: (checkoutId: string, lineItemIds: string[]) => Promise<void>;
 }

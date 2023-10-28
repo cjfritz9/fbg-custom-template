@@ -10,7 +10,7 @@ export const themes = [
       'primary-content': '#FFFFFF',
       secondary: '#E3532D',
       'secondary-content': '#1d232a',
-      accent: '#5d0704',
+      accent: '#878E76',
       'accent-content': '#1d232a',
       neutral: '#f4f4f4',
       'neutral-focus': '#1d232a',

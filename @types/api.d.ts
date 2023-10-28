@@ -27,8 +27,8 @@ export interface Product {
   title: string;
   handle: string;
   description: string;
-  variants?: {
-    nodes: { title: string }[];
+  variants: {
+    nodes: { id: string; title: string }[];
   };
   includes?: {
     value: string;
@@ -133,15 +133,18 @@ export interface FormattedProduct {
   title: string;
   handle: string;
   description: string;
-  variants?: string[] | undefined;
-  includes?: string[];
-  specs?: string[];
   images: { url: string; altText: string }[];
   minPrice: string;
   reviews: {
     rating: number;
     reviewCount: number;
   };
+  variants?: {
+    id: string;
+    title: string;
+  }[]
+  includes?: string[];
+  specs?: string[];
 }
 
 export interface FormattedProductResponse {

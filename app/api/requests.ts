@@ -5,6 +5,7 @@ import {
 } from '@/@types/api';
 import { FilterMethods } from '@/@types/shop';
 import { cache } from 'react';
+import ShopifyBuy from 'shopify-buy';
 
 export const getHomeContent = cache(async () => {
   const response = await fetch(`/api/content/home`);
@@ -70,3 +71,51 @@ export const getReviewsByProductHandle = cache(
     return results;
   }
 );
+
+export const getCheckout = cache(
+  async (checkoutId: string): Promise<ShopifyBuy.Checkout> => {
+    const response = await fetch(`/api/checkout?id=${checkoutId}`);
+    const result = await response.json();
+
+    return result;
+  }
+);
+
+export const createCheckout = cache(async (): Promise<ShopifyBuy.Checkout> => {
+  const response = await fetch(`/api/checkout`, {
+    method: 'POST'
+  });
+  const result = await response.json();
+
+  return result;
+});
+
+export const addItemsToCheckout = cache(
+  async (
+    checkoutId: string,
+    lineItems: any[]
+  ): Promise<ShopifyBuy.Checkout> => {
+    const response = await fetch(`/api/checkout/add-items?id=${checkoutId}`, {
+      method: 'POST',
+      body: JSON.stringify({ lineItems })
+    });
+    const result = await response.json();
+
+    return result;
+  }
+);
+
+export const removeItemsFromCheckout = cache(
+  async (
+    checkoutId: string,
+    lineItemIds: string[]
+  ): Promise<ShopifyBuy.Checkout> => {
+    const response = await fetch(`/api/checkout/remove-items?id=${checkoutId}`, {
+      method: 'DELETE',
+      body: JSON.stringify({ lineItemIds })
+    });
+    const result = await response.json();
+
+    return result;
+  }
+)

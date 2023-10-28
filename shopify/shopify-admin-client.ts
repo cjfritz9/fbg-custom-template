@@ -14,6 +14,6 @@ const session = shopify.session.customAppSession(
   shopify.config.hostName
 );
 
-const client = new shopify.clients.Graphql({ session });
+const adminClient = new shopify.clients.Graphql({ session });
 
-export default client;
+export default adminClient;

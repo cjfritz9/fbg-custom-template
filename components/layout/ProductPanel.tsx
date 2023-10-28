@@ -1,7 +1,7 @@
 'use client';
 
 import { ProductPanelProps } from '@/@types/props';
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useContext, useState } from 'react';
 import ReviewStars from '../UI/ReviewStars';
 import Border from './Border';
 import Button from '../actions/Button';
@@ -12,11 +12,15 @@ import {
   HiOutlineCheck,
   HiOutlineCheckBadge
 } from 'react-icons/hi2';
+import Accordion from '../actions/Accordion';
+import { CartContext } from '@/context/CartContext';
+import { CartInterface } from '@/@types/shop';
 
 const ProductPanel: React.FC<ProductPanelProps> = ({ product }) => {
   const [variant, setVariant] = useState(
-    product.variants ? product.variants[0] : 'Default Title'
+    product.variants ? product.variants[0].title : 'Default Title'
   );
+  const { checkout, addLineItem } = useContext(CartContext) as CartInterface;
 
   return (
     <div className='flex flex-col gap-8 max-w-[40rem]'>
@@ -30,7 +34,6 @@ const ProductPanel: React.FC<ProductPanelProps> = ({ product }) => {
             <Border />
           </div>
           <p className='uppercase font-semibold text-xl'>SELECT OPTION</p>
-
           <Listbox value={variant} onChange={setVariant}>
             <div className='relative mt-1'>
               <Listbox.Button className='relative w-full rounded-md bg-base-200 py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-lg'>
@@ -51,7 +54,7 @@ const ProductPanel: React.FC<ProductPanelProps> = ({ product }) => {
                 <Listbox.Options className='absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-base-100 py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-lg z-50'>
                   {product.variants.map((variant) => (
                     <Listbox.Option
-                      key={variant}
+                      key={variant.id}
                       className={({ active }) =>
                         `relative cursor-pointer select-none py-2 pl-10 pr-4 ${
                           active
@@ -68,7 +71,7 @@ const ProductPanel: React.FC<ProductPanelProps> = ({ product }) => {
                               selected ? 'font-medium' : 'font-normal'
                             }`}
                           >
-                            {variant}
+                            {variant.title}
                           </span>
                           {selected ? (
                             <span className='absolute inset-y-0 left-0 flex items-center pl-3 text-amber-600'>
@@ -94,11 +97,16 @@ const ProductPanel: React.FC<ProductPanelProps> = ({ product }) => {
       <div className='-my-4'>
         <Border />
       </div>
-      <div className='flex flex-col gap-4 py-4 sticky top-0 bg-base-100 outline-none'>
+      <div className='flex flex-col gap-4 py-4 sticky top-0 z-10 bg-base-100 outline-none'>
         <div className='flex gap-4'>
-          <Button styles='btn-primary grow h-16 font-bold text-lg'>
-            ADD TO CART
-          </Button>
+          <div
+            className='grow w-full'
+            onClick={() => addLineItem(checkout!.id, product.variants![0].id, 1)}
+          >
+            <Button styles='btn-primary !w-full h-16 font-bold text-lg'>
+              ADD TO CART
+            </Button>
+          </div>
           <div
             className='hidden xl:inline-block tooltip'
             data-tip='Bookmark this item'
@@ -113,24 +121,22 @@ const ProductPanel: React.FC<ProductPanelProps> = ({ product }) => {
         <Border />
       </div>
       <div>
-        <p className='uppercase font-semibold text-xl pb-4'>DESCRIPTION</p>
-        <div className='custom-scroll overflow-y-auto text-lg'>
+        <Accordion title='DESCRIPTION' defaultExpanded>
           <p>{product.description}</p>
-        </div>
+        </Accordion>
       </div>
       {product.includes && product.includes.length > 0 && (
         <>
           <div className='-my-4'>
             <Border />
           </div>
-          <div>
-            <p className='uppercase font-semibold text-xl pb-4'>INCLUDES</p>
+          <Accordion title='INCLUDED ITEMS'>
             <ul className='custom-scroll list-disc pl-5 overflow-y-auto text-lg'>
               {product.includes.map((listItem, i) => (
                 <li key={i}>{listItem}</li>
               ))}
             </ul>
-          </div>
+          </Accordion>
         </>
       )}
       {product.specs && product.specs.length > 0 && (
@@ -138,14 +144,13 @@ const ProductPanel: React.FC<ProductPanelProps> = ({ product }) => {
           <div className='-my-4'>
             <Border />
           </div>
-          <div>
-            <p className='uppercase font-semibold text-xl pb-4'>Specs</p>
+          <Accordion title='SPECS'>
             <ul className='custom-scroll list-disc pl-5 overflow-y-auto text-lg'>
               {product.specs.map((listItem, i) => (
                 <li key={i}>{listItem}</li>
               ))}
             </ul>
-          </div>
+          </Accordion>
         </>
       )}
     </div>

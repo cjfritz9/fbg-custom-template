@@ -1,5 +1,5 @@
 import { HomeContentResponse } from '@/@types/api';
-import client from '../shopify-client';
+import adminClient from '../shopify-admin-client';
 import { formatHomeContentResponse } from '../utils';
 
 export const fetchHomeContent = async () => {
@@ -52,7 +52,7 @@ export const fetchHomeContent = async () => {
       }
     }
   }`;
-  const response = (await client.query({
+  const response = (await adminClient.query({
     data
   })) as HomeContentResponse;
 

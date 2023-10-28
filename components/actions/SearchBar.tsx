@@ -69,7 +69,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ variant }) => {
       <div className='form-control hidden lg:inline-block'>
         <div className='relative'>
           {isSearching && (
-            <div className='loading loading-spinner loading-md text-secondary absolute right-4 top-3' />
+            <div className='loading loading-spinner loading-md text-secondary absolute right-8 top-3' />
           )}
           <Combobox onChange={handleChange}>
             <Combobox.Input
