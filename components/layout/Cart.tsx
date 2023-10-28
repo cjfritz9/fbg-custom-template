@@ -36,22 +36,23 @@ const Cart: React.FC = () => {
           <CartIcon />
         </label>
       </div>
-      <div className={`drawer-side z-20`}>
+      <div className='drawer-side z-20 h-full'>
         <label
           htmlFor='cart-drawer'
           aria-label='close sidebar'
           className='drawer-overlay'
           onClick={closeCart}
         ></label>
-        <div className='w-80 sm:w-[520px] min-h-full bg-base-200 text-base-content'>
-          <div className='flex justify-between p-4 w-full border-b border-primary border-opacity-25'>
+        <div className='w-80 sm:w-[560px] h-full bg-base-200 text-base-content'>
+          <div className='flex justify-between p-4 w-full border-b border-primary border-opacity-25 sticky top-0 bg-base-200'>
             <div />
             <h5 className='text-xl font-bold'>YOUR CART</h5>
             <div onClick={closeCart} className='cursor-pointer'>
               <IoClose />
             </div>
           </div>
-          <ul className='!text-sm p-4'>
+          <div className='flex flex-col justify-between h-full content-between'>
+          <ul className='!text-sm p-4 px-8'>
             {checkout && checkout.lineItems.length > 0 ? (
               checkout.lineItems.map((item) => (
                 <LineItem key={item.id} item={item} />
@@ -61,19 +62,20 @@ const Cart: React.FC = () => {
             )}
           </ul>
           {checkout && checkout.lineItems.length > 0 ? (
-            <div className='px-4 pb-4 sticky bottom-0 bg-base-200'>
+            <div className='p-4 sticky bottom-0 bg-base-200'>
               <Link href={checkout?.webUrl ?? ''}>
                 <Button styles='btn-primary !w-full'>CHECKOUT</Button>
               </Link>
             </div>
           ) : (
-            <div className='px-4 pb-4 sticky bottom-0 bg-base-200'>
+            <div className='p-4 sticky bottom-0 bg-base-200'>
             <Link href='/shop' onClick={closeCart}>
               <Button styles='btn-primary !w-full'>SHOP NOW</Button>
             </Link>
           </div>
           )
-          }
+        }
+        </div>
         </div>
       </div>
     </div>
@@ -111,7 +113,7 @@ const LineItem: React.FC<LineItemProps> = ({ item }) => {
   const { checkout, removeLineItem } = useContext(CartContext) as CartInterface;
 
   return (
-    <li className='flex w-full h-16 gap-8 mb-8'>
+    <li className='flex w-full h-18 gap-8 mb-8'>
       <Image
         src={item.variant!.image.src}
         alt={
@@ -122,13 +124,15 @@ const LineItem: React.FC<LineItemProps> = ({ item }) => {
         width={72}
         className='object-center object-cover'
       />
-      <div className='flex flex-col gap-2 justify-between w-full'>
-        <p className='truncate font-semibold'>{item.title}</p>
+      <div className='flex flex-col justify-between w-full'>
+        <p className='truncate font-semibold uppercase'>{item.title}</p>
+        <p className='truncate italic -mt-4'>{item.variant?.title === 'Default Title' ? 'Standard' : item.variant!.title}</p>
         <div className='flex gap-2 items-center justify-between'>
-          <div className='flex gap-2'>
+          <div className='flex gap-2 items-baseline'>
             <p>Qty:</p>
             <input
               defaultValue={item.quantity}
+              min={1}
               type='number'
               className='bg-base-100 w-12 text-center'
             />

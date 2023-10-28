@@ -14,20 +14,6 @@ import { TbChevronCompactUp, TbChevronCompactDown } from 'react-icons/tb';
 import { HiChevronUpDown } from 'react-icons/hi2';
 import ProductPanel from '@/components/layout/ProductPanel';
 
-export const generateMetadata = async ({
-  params: { handle }
-}: ProductMetadata) => {
-  const product = await getProductByHandle(handle);
-
-  if (!product) {
-    return notFound();
-  }
-
-  return {
-    title: product.title
-  };
-};
-
 const ProductPage: React.FC<ProductMetadata> = async ({
   params: { handle }
 }) => {

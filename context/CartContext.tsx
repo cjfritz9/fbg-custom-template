@@ -63,8 +63,6 @@ const CartProvider: React.FC<PropsWithChildren> = ({ children }) => {
     })();
   }, []);
 
-  console.log({ checkout });
-
   return (
     <CartContext.Provider
       value={{

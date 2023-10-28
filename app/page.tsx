@@ -6,6 +6,12 @@ import ProductGallery from '@/components/layout/ProductGallery';
 import RewardsBanner from '@/components/layout/RewardsBanner';
 import VideoHero from '@/components/layout/VideoHero';
 import { fetchHomeContent } from '@/shopify/content/content.model';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Full Blast Firearm Cleaning System',
+  description: 'Full Blast firearm cleaning system, tactical gear, and outdoor gear.'
+}
 
 const Home: React.FC = async () => {
   const content = await fetchHomeContent();

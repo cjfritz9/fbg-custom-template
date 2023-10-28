@@ -1,5 +1,22 @@
 import React, { PropsWithChildren } from 'react';
 import Breadcrumbs from '@/components/actions/Breadcrumbs';
+import { ProductMetadata } from '@/@types/metadata';
+import { getProductByHandle } from '@/app/api/requests';
+import { notFound } from 'next/navigation';
+
+export const generateMetadata = async ({
+  params: { handle }
+}: ProductMetadata) => {
+  const product = await getProductByHandle(handle);
+
+  if (!product) {
+    return notFound();
+  }
+
+  return {
+    title: `Full Blast Gear | ${product.title}`
+  };
+};
 
 const ProductLayout: React.FC<PropsWithChildren> = ({ children }) => {
 

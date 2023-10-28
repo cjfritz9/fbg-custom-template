@@ -15,7 +15,7 @@ const inter = Inter({ subsets: ['latin'] });
 const monsterrat = Montserrat({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: { default: 'Full Blast Gear', template: '%s | Full Blast Gear' },
+  title: { default: 'Full Blast Gear', template: 'Full Blast Gear | %s' },
   description: 'Full Blast Gear Description.'
 };
 
