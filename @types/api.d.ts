@@ -66,6 +66,10 @@ export interface MediaImageReference {
   image: ShopifyImage;
 }
 
+export interface MetaObjectReference {
+  
+}
+
 export interface HomeContentResponse {
   body: {
     data: {
@@ -77,7 +81,13 @@ export interface HomeContentResponse {
 }
 
 export interface AboutContentResponse extends HomeContentResponse {
-  
+  body: {
+    data: {
+      metaobjectByHandle: {
+        fields: any[]
+      }
+    }
+  }
 }
 
 export interface LinkCard {

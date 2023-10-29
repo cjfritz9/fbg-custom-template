@@ -1,4 +1,4 @@
-import { HomeContentResponse } from '@/@types/api';
+import { AboutContentResponse, HomeContentResponse } from '@/@types/api';
 import adminClient from '../shopify-admin-client';
 import {
   formatAboutContentResponse,
@@ -64,7 +64,7 @@ export const fetchAboutContent = async () => {
   }`;
   const response = (await adminClient.query({
     data
-  })) as HomeContentResponse;
+  })) as AboutContentResponse;
 
   const result = formatAboutContentResponse(response);
 

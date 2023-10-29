@@ -1,10 +1,10 @@
 import React from 'react';
-import { getAboutContent } from '../api/requests';
 import Image from 'next/image';
 import PageLinkCards from '@/components/layout/PageLinkCards';
+import { fetchAboutContent } from '@/shopify/content/content.model';
 
 const AboutPage: React.FC = async () => {
-  const content = await getAboutContent();
+  const content = await fetchAboutContent();
 
   return (
     <main className='bg-base-100'>

@@ -8,6 +8,7 @@ const PageLinkCards: React.FC<PageLinkCardsProps> = ({ cards }) => {
     <div className='flex flex-wrap lg:py-12 gap-12 w-full justify-center'>
       {cards.map((card) => (
         <PageLinkCard
+          key={card.title}
           title={card.title}
           slug={`/about/${card.title.replaceAll(' ', '-').toLowerCase()}`}
           image={card.image}

@@ -2,7 +2,6 @@ import {
   AboutContentResponse,
   FormattedProductResponse,
   HomeContentResponse,
-  LinkCard,
   PageInfo,
   ProductByHandleResponse,
   ProductsByQueryResponse,
@@ -49,8 +48,6 @@ export const formatAboutContentResponse = (res: AboutContentResponse) => {
     slug: field.reference!.fields[1].value,
     image: field.reference!.fields[2].reference.image,
   }));
-  console.log({ linkCards });
-  console.log(linkCards[4].reference);
   return {
     heroContent: {
       title: dataFields.find((field) => field.key === 'hero_title')!.value,
