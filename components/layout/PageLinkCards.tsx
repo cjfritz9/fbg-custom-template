@@ -21,12 +21,12 @@ const PageLinkCards: React.FC<PageLinkCardsProps> = ({ cards }) => {
 const PageLinkCard: React.FC<PageLinkCardProps> = ({ title, image, slug }) => {
   return (
     <Link href={slug}>
-      <div className='flex justify-center w-[480px] h-48 text-base-100 brightness-90 hover:brightness-100 [text-shadow:_0px_2px_4px_black] relative bg-accent'>
+      <div className='flex justify-center w-[560px] h-64 text-base-100 brightness-90 hover:brightness-100 [text-shadow:_0px_2px_4px_black] relative bg-accent'>
         <h3 className='absolute text-4xl bottom-2 font-semibold z-10'>{title}</h3>
         <Image
           src={image.url}
           alt={image.altText}
-          height={192}
+          height={256}
           width={560}
           className='object-cover object-center'
         />
