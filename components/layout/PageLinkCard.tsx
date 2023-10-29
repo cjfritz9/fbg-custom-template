@@ -17,7 +17,7 @@ const PageLinkCard: React.FC<PageLinkCardProps> = ({ title, image, slug }) => {
           alt={image.altText}
           height={256}
           width={560}
-          className={`object-cover object-center ${isHovered ? 'scale-125' : 'scale-100'} transition-all duration-500`}
+          className={`object-cover object-center ${isHovered ? 'scale-125' : 'scale-100'} transition-all duration-500 ease-in-out`}
         />
       </div>
     </Link>

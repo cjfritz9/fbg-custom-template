@@ -94,8 +94,6 @@ export const fetchAboutSubpageContent = async (handle: string) => {
     data
   })) as AboutContentResponse;
 
-  console.log('RES', response.body.data)
-
   const result = formatAboutSubpageContentResponse(response)
 
   return result;
