@@ -6,12 +6,13 @@ const ImageWithText: React.FC<ImageWithTextProps> = ({
   styles,
   imageSrc,
   children: textContent,
+  alignItems = 'center',
   reverse = false
 }) => {
   return (
     <div className={`hero lg:py-8 lg:px-8 xl:py-16 xl:px-40 ${styles}`}>
       <div
-        className={`hero-content py-12 xl:p-0 h-full max-w-max gap-8 lg:gap-24 ${
+        className={`hero-content items-${alignItems} py-12 xl:p-0 h-full max-w-max gap-8 lg:gap-24 ${
           reverse
             ? 'flex-col-reverse xl:flex-row-reverse'
             : 'xl:flex-row flex-col'

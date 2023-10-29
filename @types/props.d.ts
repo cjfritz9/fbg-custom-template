@@ -56,6 +56,7 @@ export interface ImageWithTextProps extends React.PropsWithChildren {
    *
    * [reversed: text | image]
    */
+  alignItems?: string;
   reverse?: boolean;
 }
 
