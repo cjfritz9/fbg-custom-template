@@ -1,7 +1,6 @@
 import React from 'react';
-import { PageLinkCardProps, PageLinkCardsProps } from '@/@types/props';
-import Link from 'next/link';
-import Image from 'next/image';
+import { PageLinkCardsProps } from '@/@types/props';
+import PageLinkCard from './PageLinkCard';
 
 const PageLinkCards: React.FC<PageLinkCardsProps> = ({ cards }) => {
   return (
@@ -15,23 +14,6 @@ const PageLinkCards: React.FC<PageLinkCardsProps> = ({ cards }) => {
         />
       ))}
     </div>
-  );
-};
-
-const PageLinkCard: React.FC<PageLinkCardProps> = ({ title, image, slug }) => {
-  return (
-    <Link href={slug}>
-      <div className='flex justify-center w-full sm:w-[560px] h-64 text-base-100 brightness-90 hover:brightness-100 [text-shadow:_0px_2px_4px_black] relative bg-accent'>
-        <h3 className='absolute uppercase text-4xl top-4 font-semibold z-10'>{title}</h3>
-        <Image
-          src={image.url}
-          alt={image.altText}
-          height={256}
-          width={560}
-          className='object-cover object-center'
-        />
-      </div>
-    </Link>
   );
 };
 
