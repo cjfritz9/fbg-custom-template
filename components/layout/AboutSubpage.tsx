@@ -369,10 +369,7 @@ const Maintenance: React.FC = () => {
           </div>
         </Accordion>
         <Border />
-        <Accordion
-          title='Familiarity and Respect for Your Firearm'
-          defaultExpanded
-        >
+        <Accordion title='Familiarity and Respect for Your Firearm'>
           <div className='flex flex-col gap-4'>
             <p>
               One of the most critical elements in owning and using any firearm
@@ -394,7 +391,7 @@ const Maintenance: React.FC = () => {
           </div>
         </Accordion>
         <Border />
-        <Accordion title='Reliability' defaultExpanded>
+        <Accordion title='Reliability'>
           <div className='flex flex-col gap-4'>
             <p>
               There is no denying that a reliable weapon is a clean weapon. Few
@@ -416,10 +413,7 @@ const Maintenance: React.FC = () => {
           </div>
         </Accordion>
         <Border />
-        <Accordion
-          title='Maintain Your Weapon’s Value Over Time'
-          defaultExpanded
-        >
+        <Accordion title='Maintain Your Weapon’s Value Over Time'>
           <div className='flex flex-col gap-4'>
             <p>
               There are very few things in this life you can purchase that will
@@ -445,7 +439,7 @@ const Maintenance: React.FC = () => {
           </div>
         </Accordion>
         <Border />
-        <Accordion title='Brushless Solvents' defaultExpanded>
+        <Accordion title='Brushless Solvents'>
           <div className='flex flex-col gap-4'>
             <p>
               For starters, if you’re a new gun owner or just unfamiliar with a
@@ -477,7 +471,7 @@ const Maintenance: React.FC = () => {
           </div>
         </Accordion>
         <Border />
-        <Accordion title='Lubrication' defaultExpanded>
+        <Accordion title='Lubrication'>
           <div className='flex flex-col gap-4'>
             <p>
               Lubrication is essential, but that doesn’t mean you should have a
@@ -506,7 +500,7 @@ const Maintenance: React.FC = () => {
           </div>
         </Accordion>
         <Border />
-        <Accordion title='Avoiding Problems' defaultExpanded>
+        <Accordion title='Avoiding Problems'>
           <div className='flex flex-col gap-4'>
             <p>
               Some folks clean their firearms after every use, and some when
