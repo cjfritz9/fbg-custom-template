@@ -42,19 +42,31 @@ export const formatHomeContentResponse = (res: HomeContentResponse) => {
 };
 
 export const formatAboutContentResponse = (res: AboutContentResponse) => {
+  if (!res.body.data.metaobjectByHandle) return;
   const dataFields = res.body.data.metaobjectByHandle.fields;
   const linkCards = dataFields.slice(2).map((field) => ({
     title: field.reference!.fields[0].value,
     slug: field.reference!.fields[1].value,
-    image: field.reference!.fields[2].reference.image,
+    image: field.reference!.fields[2].reference.image
   }));
   return {
-    heroContent: {
-      title: dataFields.find((field) => field.key === 'hero_title')!.value,
-      image: dataFields.find((field) => field.key === 'slim_hero_image')!
-        .reference!.image
-    },
+    title: dataFields.find((field) => field.key === 'hero_title')!.value,
+    image: dataFields.find((field) => field.key === 'slim_hero_image')!
+      .reference!.image,
     cards: linkCards
+  };
+};
+
+export const formatAboutSubpageContentResponse = (
+  res: AboutContentResponse
+) => {
+  if (!res.body.data.metaobjectByHandle) return;
+  const dataFields = res.body.data.metaobjectByHandle.fields;
+
+  return {
+    title: dataFields.find((field) => field.key === 'page_title')!.value,
+    image: dataFields.find((field) => field.key === 'hero_image')!.reference!
+      .image
   };
 };
 

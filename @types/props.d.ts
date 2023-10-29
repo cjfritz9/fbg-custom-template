@@ -34,8 +34,9 @@ export interface LogoProps {
 
 export interface HeroProps {
   title: string;
-  subtitle: string;
   image: ShopifyImage;
+  subtitle?: string;
+  slim?: boolean;
 }
 
 /**
@@ -195,4 +196,20 @@ export interface PageLinkCardProps {
   title: string;
   image: ShopifyImage;
   slug: string;
+}
+
+interface AboutSubpageLayoutProps extends PropsWithChildren {
+  params: {
+    subpage: string;
+  };
+}
+
+interface AboutSubpageProps {
+  params: {
+    subpage: string;
+  };
+}
+
+export interface AboutSubpagesProps {
+  subpage: string;
 }

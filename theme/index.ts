@@ -17,7 +17,7 @@ export const themes = [
       'neutral-content': '#1d232a',
       'base-100': '#FFFFFF',
       'base-200': '#f4f4f4',
-      'base-300': '#1D232A',
+      'base-300': '#301512',
       'base-content': '#1D232A',
 
       '--rounded-btn': '0rem',

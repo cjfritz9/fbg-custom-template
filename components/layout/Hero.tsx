@@ -3,7 +3,25 @@ import Button from '../actions/Button';
 import { HeroProps } from '@/@types/props';
 import Image from 'next/image';
 
-const Hero: React.FC<HeroProps> = ({ title, subtitle, image }) => {
+const Hero: React.FC<HeroProps> = ({ title, image, subtitle, slim = false }) => {
+
+  if (slim) {
+    return (
+      <div className='flex w-full justify-center items-center bg-accent relative'>
+      <h1 className='text-6xl font-bold absolute text-white uppercase top-16 z-10'>
+        {title}
+      </h1>
+      <Image
+        src={image.url}
+        alt={image.altText}
+        height={320}
+        width={1920}
+        className='object-cover object-center hover:brightness:100'
+      />
+    </div>
+    )
+  }
+
   return (
     <div className='max-h-[212px] h-[212px] md:max-h-[640px] md:h-[640px] overflow-hidden bg-base-100 backdrop-filter relative'>
       <div className='absolute bg-transparent h-full w-full 2xl:mx-[-3rem] z-10 text-center'>

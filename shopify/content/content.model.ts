@@ -2,6 +2,7 @@ import { AboutContentResponse, HomeContentResponse } from '@/@types/api';
 import adminClient from '../shopify-admin-client';
 import {
   formatAboutContentResponse,
+  formatAboutSubpageContentResponse,
   formatHomeContentResponse
 } from '../utils';
 
@@ -67,6 +68,35 @@ export const fetchAboutContent = async () => {
   })) as AboutContentResponse;
 
   const result = formatAboutContentResponse(response);
+
+  return result;
+};
+
+export const fetchAboutSubpageContent = async (handle: string) => {
+  const data = `{
+    metaobjectByHandle(handle: {type: "about_subpage", handle: "${handle}"}) {
+      fields {
+        key
+        value
+        reference {
+          ... on MediaImage {
+            image {
+              url
+              altText
+            }
+          }
+        }
+      }
+    }
+  }`;
+
+  const response = (await adminClient.query({
+    data
+  })) as AboutContentResponse;
+
+  console.log('RES', response.body.data)
+
+  const result = formatAboutSubpageContentResponse(response)
 
   return result;
 };
