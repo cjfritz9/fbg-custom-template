@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 const PageLinkCards: React.FC<PageLinkCardsProps> = ({ cards }) => {
   return (
-    <div className='flex flex-wrap lg:py-12 gap-12 w-full justify-center'>
+    <div className='flex flex-wrap lg:py-12 gap-8 w-full justify-center'>
       {cards.map((card) => (
         <PageLinkCard
           key={card.title}
