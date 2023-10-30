@@ -60,7 +60,7 @@ const CausesGallery: React.FC = () => {
             src={woundedWarriorProjectImg}
             width={575}
             height={512}
-            className='w-full xl:w-[512px] h-auto xl:h-[512px] object-cover object-center'
+            className='w-full xl:w-[575px] h-auto xl:h-[512px] object-cover object-center'
           />
         </SwiperSlide>
       </Swiper>
