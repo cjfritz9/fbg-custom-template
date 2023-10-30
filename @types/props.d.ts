@@ -187,14 +187,27 @@ export interface PaginationLinkProps extends PropsWithChildren {
 }
 
 export interface PageLinkCardsProps {
+  slugPrefix: string;
+  /** Tailwind CSS text size postfix
+   *
+   * Appended to "text-"
+   */
+  showButton: boolean;
+  textSize: string;
   cards: {
     title: string;
-    slug: string;
     image: ShopifyImage;
-  }[]
+    slug: string;
+  }[];
 }
 
 export interface PageLinkCardProps {
+  /** Tailwind CSS text size postfix
+   *
+   * Appended to "text-"
+   */
+  showButton: boolean;
+  textSize: string;
   title: string;
   image: ShopifyImage;
   slug: string;

@@ -1,15 +1,19 @@
 import {
   AboutContentResponse,
+  BlogsLayoutContentResponse,
+  BlogsPageContentResponse,
   FormattedProductResponse,
   HomeContentResponse,
   PageInfo,
   ProductByHandleResponse,
   ProductsByQueryResponse,
   ProductsResponse,
-  QueryResult
+  QueryResult,
+  ShopifyImage
 } from '@/@types/api';
 import { FormattedProduct } from '@/@types/api';
 import { linkSync } from 'fs';
+import { title } from 'process';
 
 // ADMIN FUNCTIONS
 
@@ -68,6 +72,32 @@ export const formatAboutSubpageContentResponse = (
     image: dataFields.find((field) => field.key === 'hero_image')!.reference!
       .image
   };
+};
+
+export const formatBlogsLayoutContentResponse = (
+  res: BlogsLayoutContentResponse
+) => {
+  if (!res.body.data.metaobjectByHandle) return;
+  const pageFields = res.body.data.metaobjectByHandle.fields;
+
+  return {
+    title: pageFields.find((field) => field.key === 'hero_title')!.value,
+    image: pageFields.find((field) => field.key === 'hero_image')!.reference
+      ?.image
+  };
+};
+
+export const formatBlogsPageContentResponse = (
+  res: BlogsPageContentResponse
+) => {
+  if (!res.body.data.metaobjects) return;
+  const blogPosts = res.body.data.metaobjects.nodes;
+
+  return blogPosts.map((blog) => ({
+    title: blog.title.value,
+    slug: blog.handle,
+    image: blog.image.reference.image
+  }));
 };
 
 export const formatProductsResponse = (

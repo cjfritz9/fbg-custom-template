@@ -31,36 +31,36 @@ const CausesGallery: React.FC = () => {
           <Image
             alt='Autism Speaks Logo'
             src={autismSpeaksImg}
-            width={512}
-            height={512}
-            className='w-full xl:w-[512px] h-full xl:h-[512px] object-cover object-center'
+            width={424}
+            height={424}
+            className='w-full xl:w-[424px] h-full xl:h-[424px] object-cover object-center'
           />
         </SwiperSlide>
         <SwiperSlide>
           <Image
             alt='Habitat For Humanity Logo'
             src={habitatForHumanityImg}
-            width={512}
-            height={512}
-            className='w-full xl:w-[512px] h-full xl:h-[512px] object-cover object-center'
+            width={424}
+            height={424}
+            className='w-full xl:w-[424px] h-full xl:h-[424px] object-cover object-center'
           />
         </SwiperSlide>
         <SwiperSlide>
           <Image
             alt='Pheasants Forever Logo'
             src={pheasantsForeverImg}
-            width={512}
-            height={512}
-            className='w-full xl:w-[512px] h-full xl:h-[512px] object-cover object-center'
+            width={424}
+            height={424}
+            className='w-full xl:w-[424px] h-full xl:h-[424px] object-cover object-center'
           />
         </SwiperSlide>
         <SwiperSlide>
           <Image
             alt='Wounded Warrior Project Logo'
             src={woundedWarriorProjectImg}
-            width={575}
-            height={512}
-            className='w-full xl:w-[575px] h-auto xl:h-[512px] object-cover object-center'
+            width={476}
+            height={424}
+            className='w-full xl:w-[476] h-auto object-cover object-center'
           />
         </SwiperSlide>
       </Swiper>

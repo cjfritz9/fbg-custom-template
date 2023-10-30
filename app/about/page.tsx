@@ -1,5 +1,4 @@
 import React from 'react';
-import Image from 'next/image';
 import PageLinkCards from '@/components/layout/PageLinkCards';
 import { fetchAboutContent } from '@/shopify/content/content.model';
 import Hero from '@/components/layout/Hero';
@@ -14,7 +13,7 @@ const AboutPage: React.FC = async () => {
       <Hero title={content.title} image={content.image} slim />
       <section className='py-16 px-8 bg-base-200'>
         <div className='flex flex-col-reverse xl:flex-row justify-between h-fit gap-8'>
-          <PageLinkCards cards={content.cards} />
+          <PageLinkCards showButton={false} textSize='4xl' slugPrefix='about' cards={content.cards} />
         </div>
       </section>
     </main>

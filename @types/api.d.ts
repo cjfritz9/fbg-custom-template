@@ -66,9 +66,7 @@ export interface MediaImageReference {
   image: ShopifyImage;
 }
 
-export interface MetaObjectReference {
-  
-}
+export interface MetaObjectReference {}
 
 export interface HomeContentResponse {
   body: {
@@ -84,10 +82,46 @@ export interface AboutContentResponse extends HomeContentResponse {
   body: {
     data: {
       metaobjectByHandle: {
-        fields: any[]
-      }
-    }
-  }
+        fields: any[];
+      };
+    };
+  };
+}
+
+export interface BlogsLayoutContentResponse {
+  body: {
+    data: {
+      metaobjectByHandle: {
+        fields: {
+          key: string;
+          value: string;
+          reference: {
+            image: ShopifyImage;
+          } | null;
+        }[];
+      };
+    };
+  };
+}
+
+export interface BlogsPageContentResponse {
+  body: {
+    data: {
+      metaobjects: {
+        nodes: {
+          handle: string;
+          title: {
+            value: string;
+          };
+          image: {
+            reference: {
+              image: ShopifyImage;
+            };
+          };
+        }[];
+      };
+    };
+  };
 }
 
 export interface LinkCard {

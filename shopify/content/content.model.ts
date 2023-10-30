@@ -1,8 +1,10 @@
-import { AboutContentResponse, HomeContentResponse } from '@/@types/api';
+import { AboutContentResponse, BlogsLayoutContentResponse, BlogsPageContentResponse, HomeContentResponse } from '@/@types/api';
 import adminClient from '../shopify-admin-client';
 import {
   formatAboutContentResponse,
   formatAboutSubpageContentResponse,
+  formatBlogsLayoutContentResponse,
+  formatBlogsPageContentResponse,
   formatHomeContentResponse
 } from '../utils';
 
@@ -94,7 +96,83 @@ export const fetchAboutSubpageContent = async (handle: string) => {
     data
   })) as AboutContentResponse;
 
-  const result = formatAboutSubpageContentResponse(response)
+  const result = formatAboutSubpageContentResponse(response);
 
   return result;
 };
+
+export const fetchBlogsLayoutContent = async () => {
+  const data = `{
+    metaobjectByHandle(handle: {type: "blogs_page", handle: "blogs"}) {
+      fields {
+        key
+        value
+        reference {
+          ... on MediaImage {
+            image {
+              url
+              altText
+            }
+          }
+        }
+      }
+    }
+    metaobjects(type: "blog_post", first: 12) {
+      nodes {
+        handle
+        title: field (key: "blog_title") {
+          value
+        }
+        image: field(key: "blog_image") {
+          reference {
+            ... on MediaImage {
+              image {
+                url
+                altText
+              }
+            }
+          }
+        }
+      }
+    }
+  }`;
+
+  const response = (await adminClient.query({
+    data
+  })) as BlogsLayoutContentResponse;
+
+  const result = formatBlogsLayoutContentResponse(response);
+
+  return result;
+};
+
+export const fetchBlogsPageContent = async () => {
+  const data = `{
+    metaobjects(type: "blog_post", first: 12) {
+      nodes {
+        handle
+        title: field (key: "blog_title") {
+          value
+        }
+        image: field(key: "blog_image") {
+          reference {
+            ... on MediaImage {
+              image {
+                url
+                altText
+              }
+            }
+          }
+        }
+      }
+    }
+  }`
+
+  const response = (await adminClient.query({
+    data
+  })) as BlogsPageContentResponse;
+
+  const result = formatBlogsPageContentResponse(response);
+
+  return result;
+}
