@@ -77,13 +77,13 @@ const OurStory: React.FC = () => {
               has been a priority.
             </p>
           </div>
-          <div className='flex flex-col gap-2 h-[640px] w-full lg:min-w-[640px]'>
+          <div className='flex flex-col gap-2 lg:h-[640px] w-full lg:min-w-[640px]'>
             <Image
               src={placeholderImg}
               alt='Founder of Full Blast Gear, Stephen Hoodecheck'
               height={640}
               width={640}
-              className='object-cover object-center min-w-[640px]'
+              className='object-cover object-center lg:min-w-[640px]'
             />
             <p className='text-xl font-semibold'>Stephen Hoodecheck</p>
             <p className='text-sm -mt-4 italic'>Founder, Full Blast Gear</p>
@@ -539,7 +539,7 @@ const Maintenance: React.FC = () => {
 const OurCauses: React.FC = () => {
   return (
     <div className='flex flex-col text-primary gap-8 py-8 px-4 lg:py-8 lg:px-8 xl:py-16 xl:px-28'>
-      <div className='flex gap-48'>
+      <div className='flex flex-col xl:flex-row gap-16 2xl:gap-48'>
         <div className='flex flex-col gap-4'>
           <h2 className='text-4xl font-semibold mb-4'>
             Causes That We Proudly Support

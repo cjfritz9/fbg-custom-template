@@ -5,6 +5,7 @@ import React from 'react';
 const ImageWithText: React.FC<ImageWithTextProps> = ({
   styles,
   imageSrc,
+  priority = false,
   children: textContent,
   alignItems = 'center',
   reverse = false
@@ -18,14 +19,16 @@ const ImageWithText: React.FC<ImageWithTextProps> = ({
             : 'xl:flex-row flex-col'
         }`}
       >
-        <Image
-          priority={false}
-          src={imageSrc}
-          height={512}
-          width={896}
-          alt='Full bore blast firearm cleaning system product image'
-          className='max-w-4xl shadow-2xl z-0 w-full h-auto object-cover'
-        />
+        <div className='w-full xl:min-w-[896px] h-auto'>
+          <Image
+            priority={priority}
+            src={imageSrc}
+            height={512}
+            width={896}
+            alt='Full bore blast firearm cleaning system product image'
+            className='max-w-4xl shadow-2xl z-0 w-full h-auto object-cover object-center'
+          />
+        </div>
         <div
           className={`${
             reverse ? 'text-center xl:text-left' : 'text-center xl:text-right'

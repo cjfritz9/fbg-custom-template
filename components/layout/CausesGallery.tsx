@@ -13,7 +13,7 @@ import 'swiper/css/effect-fade';
 
 const CausesGallery: React.FC = () => {
   return (
-    <div className='min-w-[575px] h-[512px] flex justify-center overflow-hidden'>
+    <div className='xl:min-w-[575px] w-full h-auto xl:h-[512px] flex justify-center overflow-hidden'>
       <Swiper
         effect='fade'
         autoplay={{
@@ -25,7 +25,7 @@ const CausesGallery: React.FC = () => {
           EffectFade,
           Autoplay,
         ]}
-        className='w-[624px]'
+        className='w-full h-auto xl:w-[624px]'
       >
         <SwiperSlide>
           <Image
@@ -33,7 +33,7 @@ const CausesGallery: React.FC = () => {
             src={autismSpeaksImg}
             width={512}
             height={512}
-            className='w-[512px] h-[512px] object-cover object-center'
+            className='w-full xl:w-[512px] h-full xl:h-[512px] object-cover object-center'
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -42,7 +42,7 @@ const CausesGallery: React.FC = () => {
             src={habitatForHumanityImg}
             width={512}
             height={512}
-            className='w-[512px] h-[512px] object-cover object-center'
+            className='w-full xl:w-[512px] h-full xl:h-[512px] object-cover object-center'
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -51,7 +51,7 @@ const CausesGallery: React.FC = () => {
             src={pheasantsForeverImg}
             width={512}
             height={512}
-            className='w-[512px] h-[512px] object-cover object-center'
+            className='w-full xl:w-[512px] h-full xl:h-[512px] object-cover object-center'
           />
         </SwiperSlide>
         <SwiperSlide>
@@ -60,7 +60,7 @@ const CausesGallery: React.FC = () => {
             src={woundedWarriorProjectImg}
             width={575}
             height={512}
-            className='w-[575px] h-[512px] object-cover object-center'
+            className='w-full xl:w-[512px] h-auto xl:h-[512px] object-cover object-center'
           />
         </SwiperSlide>
       </Swiper>

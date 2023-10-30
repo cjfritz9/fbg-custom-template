@@ -48,6 +48,7 @@ export interface HeroProps {
  */
 export interface ImageWithTextProps extends React.PropsWithChildren {
   imageSrc: StaticImageData | string;
+  priority?: boolean;
   styles: TailwindCSSStyles;
   /**
    * OPTIONAL - Reverses the layout

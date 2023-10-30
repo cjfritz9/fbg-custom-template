@@ -11,7 +11,7 @@ const PageLinkCard: React.FC<PageLinkCardProps> = ({ title, image, slug }) => {
   return (
     <Link href={slug} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
       <div className='flex justify-center w-full sm:w-[560px] h-64 text-base-100 brightness-90 hover:brightness-100 [text-shadow:_0px_2px_4px_black] relative bg-accent overflow-clip transition-all duration-500'>
-        <h3 className='absolute uppercase text-4xl top-4 font-semibold z-10'>{title}</h3>
+        <h3 className='absolute uppercase text-4xl text-center top-4 font-semibold z-10'>{title}</h3>
         <Image
           src={image.url}
           alt={image.altText}
