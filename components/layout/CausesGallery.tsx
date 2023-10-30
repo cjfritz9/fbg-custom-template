@@ -13,7 +13,7 @@ import 'swiper/css/effect-fade';
 
 const CausesGallery: React.FC = () => {
   return (
-    <div className='xl:min-w-[575px] w-full h-auto xl:h-[512px] flex justify-center overflow-hidden'>
+    <div className='xl:min-w-[424px] w-full h-auto xl:h-[476px] flex justify-center overflow-hidden'>
       <Swiper
         effect='fade'
         autoplay={{
