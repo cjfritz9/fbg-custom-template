@@ -10,8 +10,6 @@ import pheasantsForeverImg from '@/public/assets/images/fbg-causes-pf.jpg';
 import woundedWarriorProjectImg from '@/public/assets/images/fbg-causes-wwp.webp';
 import 'swiper/css';
 import 'swiper/css/effect-fade';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 
 const CausesGallery: React.FC = () => {
   return (
