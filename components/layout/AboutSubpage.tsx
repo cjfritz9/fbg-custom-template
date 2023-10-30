@@ -12,6 +12,7 @@ const AboutSubpages: React.FC<AboutSubpagesProps> = ({ subpage }) => {
   if (subpage === 'why-full-blast') return <WhyFullBlast />;
   if (subpage === 'our-approach') return <OurApproach />;
   if (subpage === 'maintenance') return <Maintenance />;
+  if (subpage === 'our-causes') return <OurCauses />;
 
   return notFound();
 };
@@ -320,6 +321,7 @@ const OurApproach: React.FC = () => {
 
 import cleaningImage from '@/public/assets/images/fbg-cleaning.jpg';
 import Accordion from '../actions/Accordion';
+import CausesGallery from './CausesGallery';
 
 const Maintenance: React.FC = () => {
   return (
@@ -530,6 +532,41 @@ const Maintenance: React.FC = () => {
         </Accordion>
         <Border />
       </ImageWithText>
+    </div>
+  );
+};
+
+const OurCauses: React.FC = () => {
+  return (
+    <div className='flex flex-col text-primary gap-8 py-8 px-4 lg:py-8 lg:px-8 xl:py-16 xl:px-28'>
+      <div className='flex gap-48'>
+        <div className='flex flex-col gap-4'>
+          <h2 className='text-4xl font-semibold mb-4'>
+            Causes That We Proudly Support
+          </h2>
+          <p>
+            At Full Blast, we proudly stand by the causes we support: Ducks
+            Unlimited, Pheasants Forever, Autism Speaks, and Habitat for
+            Humanity.
+          </p>
+          <p>
+            Our lands have been looked after on the homefront through rigorous
+            conservation efforts made by preservation groups{' '}
+            <b>Ducks Unlimited</b> and <b>Pheasants Forever</b>. Both
+            organizations lead the way in education, advocacy, and determination
+            for future generations to explore the outdoors.
+          </p>
+          <p>
+            <b>Autism Speaks</b> creates pathways for children and adults
+            throughout the spectrum and provides them the support, skills, and
+            medical interventions to reach their full potential in life. For
+            more than three decades, <b>Habitat for Humanity</b> has been
+            changing the lives of families through affordable housing, disaster
+            relief, and more.
+          </p>
+        </div>
+        <CausesGallery />
+      </div>
     </div>
   );
 };
