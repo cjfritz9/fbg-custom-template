@@ -17,6 +17,7 @@
     "axios": "^1.5.1",
     "next": "13.5.4",
     "next-cloudinary": "^4.24.1",
+    "next-recaptcha-v3": "^1.3.0",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^4.11.0",

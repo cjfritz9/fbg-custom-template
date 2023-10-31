@@ -19,7 +19,7 @@ export const getAboutContent = cache(async () => {
   const result = await response.json();
 
   return result;
-})
+});
 
 export const getProducts = cache(
   async (): Promise<FormattedProductResponse> => {
@@ -117,12 +117,33 @@ export const removeItemsFromCheckout = cache(
     checkoutId: string,
     lineItemIds: string[]
   ): Promise<ShopifyBuy.Checkout> => {
-    const response = await fetch(`/api/checkout/remove-items?id=${checkoutId}`, {
-      method: 'DELETE',
-      body: JSON.stringify({ lineItemIds })
-    });
+    const response = await fetch(
+      `/api/checkout/remove-items?id=${checkoutId}`,
+      {
+        method: 'DELETE',
+        body: JSON.stringify({ lineItemIds })
+      }
+    );
     const result = await response.json();
 
     return result;
   }
-)
+);
+
+export const postCaptchaResult = cache(
+  async (
+    token: string
+  ): Promise<any> => {
+    const response = await fetch(
+      '/api/auth/recaptcha',
+      {
+        method: 'POST',
+        body: JSON.stringify(token)
+      }
+    );
+
+    const result = await response.json();
+
+    return result;
+  }
+);
