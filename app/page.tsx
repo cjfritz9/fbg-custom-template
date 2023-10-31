@@ -45,7 +45,8 @@ const Home: React.FC = async () => {
           SHOP NOW
         </Button>
       </ImageWithText>
-      <RewardsBanner />
+      {/* Commented out but left in for future use per client request */}
+      {/* <RewardsBanner /> */}
       <ProductGallery
         title='TOP PRODUCTS'
         subtitle='From our full kit to any piece or part, you are sure to find what you

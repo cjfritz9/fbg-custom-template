@@ -1,7 +1,9 @@
 import {
   AboutContentResponse,
+  BlogPageContentResponse,
   BlogsLayoutContentResponse,
   BlogsPageContentResponse,
+  ContactPageContentResponse,
   FormattedProductResponse,
   HomeContentResponse,
   PageInfo,
@@ -98,6 +100,34 @@ export const formatBlogsPageContentResponse = (
     slug: blog.handle,
     image: blog.image.reference.image
   }));
+};
+
+export const formatBlogPageContentResponse = (res: BlogPageContentResponse) => {
+  if (!res.body.data.metaobjectByHandle) return;
+  const dataFields = res.body.data.metaobjectByHandle.fields;
+
+  return {
+    image: dataFields.find((field) => field.key === 'blog_image')!.reference!
+      .image,
+    title: dataFields.find((field) => field.key === 'blog_title')!.value,
+    subtitle: dataFields.find((field) => field.key === 'blog_subtitle')!.value,
+    datePosted: dataFields.find((field) => field.key === 'date_posted')!.value,
+    author: dataFields.find((field) => field.key === 'author')!.value,
+    blogContent: dataFields.find((field) => field.key === 'blog_content')!.value
+  };
+};
+
+export const formatContactPageContentResponse = (
+  res: ContactPageContentResponse
+) => {
+  if (!res.body.data.metaobjectByHandle) return;
+  const pageFields = res.body.data.metaobjectByHandle.fields;
+
+  return {
+    title: pageFields.find((field) => field.key === 'hero_title')!.value,
+    image: pageFields.find((field) => field.key === 'hero_image')!.reference
+      ?.image
+  };
 };
 
 export const formatProductsResponse = (

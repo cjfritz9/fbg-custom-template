@@ -1,10 +1,19 @@
-import { AboutContentResponse, BlogsLayoutContentResponse, BlogsPageContentResponse, HomeContentResponse } from '@/@types/api';
+import {
+  AboutContentResponse,
+  BlogPageContentResponse,
+  BlogsLayoutContentResponse,
+  BlogsPageContentResponse,
+  ContactPageContentResponse,
+  HomeContentResponse
+} from '@/@types/api';
 import adminClient from '../shopify-admin-client';
 import {
   formatAboutContentResponse,
   formatAboutSubpageContentResponse,
+  formatBlogPageContentResponse,
   formatBlogsLayoutContentResponse,
   formatBlogsPageContentResponse,
+  formatContactPageContentResponse,
   formatHomeContentResponse
 } from '../utils';
 
@@ -117,24 +126,6 @@ export const fetchBlogsLayoutContent = async () => {
         }
       }
     }
-    metaobjects(type: "blog_post", first: 12) {
-      nodes {
-        handle
-        title: field (key: "blog_title") {
-          value
-        }
-        image: field(key: "blog_image") {
-          reference {
-            ... on MediaImage {
-              image {
-                url
-                altText
-              }
-            }
-          }
-        }
-      }
-    }
   }`;
 
   const response = (await adminClient.query({
@@ -166,7 +157,7 @@ export const fetchBlogsPageContent = async () => {
         }
       }
     }
-  }`
+  }`;
 
   const response = (await adminClient.query({
     data
@@ -175,4 +166,58 @@ export const fetchBlogsPageContent = async () => {
   const result = formatBlogsPageContentResponse(response);
 
   return result;
-}
+};
+
+export const fetchBlogPageContent = async (handle: string) => {
+  const data = `{
+    metaobjectByHandle(handle: {type: "blog_post", handle: "${handle}"}){
+      fields {
+        key
+        value
+        reference {
+          ... on MediaImage {
+            image {
+              url
+              altText
+            }
+          }
+        }
+      }
+    }
+  }`;
+
+  const response = (await adminClient.query({
+    data
+  })) as BlogPageContentResponse;
+
+  const result = formatBlogPageContentResponse(response);
+
+  return result;
+};
+
+export const fetchContactLayoutContent = async () => {
+  const data = `{
+    metaobjectByHandle(handle: {type: "contact_page", handle: "contact"}) {
+      fields {
+        key
+        value
+        reference {
+          ... on MediaImage {
+            image {
+              url
+              altText
+            }
+          }
+        }
+      }
+    }
+  }`;
+
+  const response = (await adminClient.query({
+    data
+  })) as ContactPageContentResponse;
+
+  const result = formatContactPageContentResponse(response);
+
+  return result;
+};

@@ -9,7 +9,9 @@ const BlogsLayout: React.FC<PropsWithChildren> = async ({ children }) => {
 
   return (
     <div>
-      {content.image && <Hero title='Blogs' image={content.image} slim />}
+      {content.image && (
+        <Hero title={content.title} image={content.image} slim />
+      )}
       <div className='flex flex-col text-primary gap-8 py-8 px-4 lg:py-8 lg:px-8 xl:py-16 xl:px-28 bg-base-100'>
         {children}
       </div>

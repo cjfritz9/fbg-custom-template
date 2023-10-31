@@ -124,6 +124,38 @@ export interface BlogsPageContentResponse {
   };
 }
 
+export interface BlogPageContentResponse {
+  body: {
+    data: {
+      metaobjectByHandle: {
+        fields: {
+          key: string;
+          value: string;
+          reference: {
+            image: ShopifyImage;
+          } | null;
+        }[];
+      };
+    };
+  };
+}
+
+export interface ContactPageContentResponse {
+  body: {
+    data: {
+      metaobjectByHandle: {
+        fields: {
+          key: string;
+          value: string;
+          reference: {
+            image: ShopifyImage;
+          } | null;
+        }[];
+      };
+    };
+  };
+}
+
 export interface LinkCard {
   title: string;
   image: ShopifyImage;

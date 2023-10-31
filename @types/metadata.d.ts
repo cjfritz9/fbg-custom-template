@@ -3,3 +3,9 @@ export interface ProductMetadata {
     handle: string;
   }
 }
+
+export interface BlogMetadata {
+  params: {
+    handle: string;
+  }
+}
