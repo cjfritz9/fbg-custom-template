@@ -14,10 +14,10 @@ const ProductMenuGroup: React.FC<ProductMenuGroupProps> = ({
   return (
     <div className='flex flex-col w-48 lg:w-64 items-left px-8 -mb-4 lg:mb-0 h-full'>
       <div
-        className='flex w-full justify-between items-baseline cursor-pointer px-2 pb-2'
+        className='flex w-full justify-between items-baseline cursor-pointer px-2 pb-2 text-base-100'
         onClick={() => setIsCollapsed((prev) => !prev)}
       >
-        <p className='text-xl font-semibold text-base-100'>{category}</p>
+        <p className='text-xl font-semibold'>{category}</p>
         {isCollapsed && <IoChevronDown />}
       </div>
       <div className='tabs flex flex-col gap-2 text-sm pb-4 opacity-70 items-start lg:w-full'>
