@@ -70,7 +70,7 @@ const ContactLink: React.FC<ContactLinkProps> = ({
     <div
       className={`${
         isHovered ? 'text-green-600' : ''
-      } cursor-pointer tooltip tooltip-top tooltip-primary w-44`}
+      } cursor-pointer tooltip tooltip-bottom tooltip-primary w-44`}
       data-tip={tooltip}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
