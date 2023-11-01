@@ -3,7 +3,7 @@
 import { ProductMenuGroupProps } from '@/@types/props';
 import { SortMethods } from '@/@types/shop';
 import React, { useState } from 'react';
-import { IoChevronDown } from 'react-icons/io5';
+import { IoChevronDown, IoChevronUp } from 'react-icons/io5';
 
 const ProductMenuGroup: React.FC<ProductMenuGroupProps> = ({
   category,
@@ -18,7 +18,7 @@ const ProductMenuGroup: React.FC<ProductMenuGroupProps> = ({
         onClick={() => setIsCollapsed((prev) => !prev)}
       >
         <p className='text-xl font-semibold'>{category}</p>
-        {isCollapsed && <IoChevronDown />}
+        {isCollapsed ? <IoChevronDown /> : <IoChevronUp />}
       </div>
       <div className='tabs flex flex-col gap-2 text-sm pb-4 opacity-70 items-start lg:w-full'>
         {!isCollapsed &&

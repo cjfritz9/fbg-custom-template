@@ -26,7 +26,7 @@ const ProductMenu: React.FC<ProductMenuProps> = ({
   };
 
   return (
-    <div className='py-4 lg:py-16 bg-base-300 sticky top-0 z-10'>
+    <div className='py-4 lg:py-16 bg-accent sticky top-0 z-10'>
       <div className='flex lg:flex-col sticky top-16'>
         <ProductMenuGroup
           category='SORT'
