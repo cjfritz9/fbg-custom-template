@@ -36,12 +36,12 @@ const ContactForm: React.FC = () => {
       const token = await executeRecaptcha('form_submit');
 
       const result = await postCaptchaResult(token);
-      
+
       setIsSubmitting(false);
 
       if (!result.success) {
         setError(
-          '❌ ReCaptcha error: use the email link beneath the map to contact us'
+          '❌ reCAPTCHA error: use the email link beneath the map to contact us'
         );
         return;
       }
