@@ -2,7 +2,7 @@ import React from 'react';
 import { AboutSubpagesProps } from '@/@types/props';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
-import placeholderImg from '@/public/assets/images/fbg-placeholder.webp';
+import steveHsImage from '@/public/assets/images/fbg-steve-hs.jpg';
 import Border from './Border';
 import ImageWithText from './ImageWithText';
 
@@ -79,7 +79,7 @@ const OurStory: React.FC = () => {
           </div>
           <div className='flex flex-col gap-2 lg:h-[640px] w-full lg:min-w-[640px]'>
             <Image
-              src={placeholderImg}
+              src={steveHsImage}
               alt='Founder of Full Blast Gear, Stephen Hoodecheck'
               height={640}
               width={640}
@@ -267,7 +267,7 @@ const WhyFullBlast: React.FC = () => {
   );
 };
 
-import americanFlagImg from '@/public/assets/images/fbg-american-flag.jpg';
+import americanFlagImg from '@/public/assets/images/fbg-american-flag.jpeg';
 
 const OurApproach: React.FC = () => {
   return (
