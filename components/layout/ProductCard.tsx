@@ -22,17 +22,19 @@ const ProductCard: React.FC<ProductCardProps> = ({
           priority={priority}
           src={imageSrc}
           alt={imageAlt}
-          width={240}
-          height={240}
+          width={500}
+          height={500}
           className='object-cover w-full h-[254px]'
         />
       </figure>
-      <Border />
       <div className='card-body bg-base-100 items-start'>
         <div className='h-36 w-full'>
-          <div className='flex justify-between pt-2'>
-            <p className='text-xl font-bold text-secondary'>${price}</p>
+          <div className='flex justify-between'>
+            <p className='text-xl font-bold text-base-300'>${price}</p>
             <ReviewStars reviews={reviews} />
+          </div>
+          <div className='py-2'>
+            <Border color='neutral' />
           </div>
           <h2 className='card-title text-2xl'>{title}</h2>
         </div>

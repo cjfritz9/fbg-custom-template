@@ -114,8 +114,8 @@ export const Review: React.FC<ReviewProps> = ({ review }) => {
     <div key={review.id} className='pb-12'>
       <div className='flex gap-4'>
         <div className='avatar'>
-          <div className='w-16 rounded-full bg-secondary relative'>
-            <p className='absolute left-6 top-4 text-base-100 font-bold text-xl'>
+          <div className='w-16 rounded-full bg-blue-300 relative'>
+            <p className='absolute left-6 top-[18px] text-base-100 font-bold text-xl'>
               {review.reviewer.name[0].toUpperCase()}
             </p>
           </div>

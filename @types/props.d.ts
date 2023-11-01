@@ -23,6 +23,10 @@ export interface ButtonProps extends React.PropsWithChildren {
   prefetch?: boolean;
 }
 
+export interface BorderProps {
+  color?: string;
+}
+
 export interface AccordionProps extends React.PropsWithChildren {
   title: string;
   defaultExpanded?: boolean;
@@ -87,6 +91,11 @@ export interface NavIconProps {
 export interface FooterLinkGroupProps {
   title: string;
   links: typeof footerLinks.companyLinks;
+} 
+
+export interface SocialMediaIcon extends PropsWithChildren {
+  link: string;
+  color: string;
 }
 
 export interface SlideContainerProps extends PropsWithChildren {

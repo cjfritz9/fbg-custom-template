@@ -7,6 +7,7 @@ import { FormattedProduct, PageInfo } from '@/@types/api';
 import { PaginationData } from '@/@types/shop';
 import { getProducts } from '../api/requests';
 import PaginationBar from '@/components/actions/PaginationBar';
+import Border from '@/components/layout/Border';
 
 const ShopPage: React.FC = () => {
   const [products, setProducts] = useState<FormattedProduct[]>([]);

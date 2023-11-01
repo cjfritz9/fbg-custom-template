@@ -14,7 +14,7 @@ const ReviewStars: React.FC<ReviewStarsProps> = ({
   return reviews.reviewCount === 0 ? (
     <span> No Reviews </span>
   ) : (
-    <div className={`flex text-yellow-500 text-lg font-bold items-center ${styles}`}>
+    <div className={`flex text-secondary text-lg font-bold items-center ${styles}`}>
       {Array.from(new Array(stars.full)).map((_, i) => (
         <IoStar key={i} />
       ))}

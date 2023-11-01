@@ -14,7 +14,7 @@ const ProductMenuGroup: React.FC<ProductMenuGroupProps> = ({
   return (
     <div className='flex flex-col w-48 lg:w-64 items-left px-8 -mb-4 lg:mb-0 h-full'>
       <div
-        className='flex w-full justify-between items-baseline cursor-pointer px-2 pb-2 text-base-100'
+        className='flex w-full justify-between items-baseline cursor-pointer px-2 pb-2 text-primary'
         onClick={() => setIsCollapsed((prev) => !prev)}
       >
         <p className='text-xl font-semibold'>{category}</p>

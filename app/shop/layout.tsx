@@ -1,3 +1,4 @@
+import Border from '@/components/layout/Border';
 import { Metadata } from 'next';
 import React, { PropsWithChildren } from 'react';
 
@@ -8,7 +9,9 @@ export const metadata: Metadata = {
 };
 
 const ProductsLayout: React.FC<PropsWithChildren> = ({ children }) => {
-  return <div className='flex w-full h-auto bg-base-100'>{children}</div>;
+  return <div className='flex w-full h-auto bg-base-100'>
+    {children}
+  </div>;
 };
 
 export default ProductsLayout;
