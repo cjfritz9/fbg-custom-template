@@ -29,3 +29,10 @@ export interface CartInterface {
   addLineItem: (checkoutId: string, variantId: string, quantity: number) => Promise<void>;
   removeLineItem: (checkoutId: string, lineItemIds: string[]) => Promise<void>;
 }
+
+export interface ContactFormFields {
+  firstName: string;
+  lastName: string;
+  email: string;
+  message: string;
+}

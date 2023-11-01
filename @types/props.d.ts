@@ -228,3 +228,8 @@ interface AboutSubpageProps {
 export interface AboutSubpagesProps {
   subpage: string;
 }
+
+export interface ContactLinkProps extends PropsWithChildren {
+  href: string;
+  tooltip: string;
+}
