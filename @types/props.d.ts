@@ -95,7 +95,6 @@ export interface FooterLinkGroupProps {
 
 export interface SocialMediaIcon extends PropsWithChildren {
   link: string;
-  color: string;
 }
 
 export interface SlideContainerProps extends PropsWithChildren {

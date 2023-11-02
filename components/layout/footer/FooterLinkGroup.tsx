@@ -21,7 +21,7 @@ const FooterLinkGroup: React.FC<FooterLinkGroupProps> = ({ title, links }) => {
   return (
     <div className='lg:block flex-col text-primary items-start w-28 md:w-44'>
       <Link prefetch={false} href={`/${title.toLowerCase()}`}>
-        <p className='font-semibold pb-4 text-center text-lg sm:text-right w-full'>
+        <p className='font-semibold pb-4 text-center text-lg sm:text-right w-full hover:underline'>
           {title}
         </p>
       </Link>
