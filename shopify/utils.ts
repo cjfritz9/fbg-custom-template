@@ -153,6 +153,7 @@ export const formatProductsResponse = (
       title: product.title,
       handle: product.handle,
       description: product.description,
+      tags: product.tags,
       images: product.images.nodes,
       minPrice: product.priceRangeV2.minVariantPrice.amount,
       reviews: {
@@ -225,6 +226,25 @@ const formatRating = (ratingData: string): number => {
   const parsedRating = JSON.parse(ratingData);
 
   return +parsedRating.value;
+};
+
+// SORTING FUNCTIONS
+
+export const sortFormattedProductsByTag = (
+  productsData: FormattedProductResponse,
+  tag: string
+): FormattedProductResponse => {
+  productsData.products.sort((a, b) => {
+    if (a.tags!.includes(tag) && b.tags!.includes(tag)) {
+      return 0;
+    } else if (a.tags!.includes(tag)) {
+      return -1;
+    } else {
+      return 1;
+    }
+  });
+
+  return productsData;
 };
 
 // STOREFRONT FUNCTIONS

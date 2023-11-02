@@ -20,12 +20,12 @@ const ProductMenuGroup: React.FC<ProductMenuGroupProps> = ({
         <p className='text-xl font-semibold'>{category}</p>
         {isCollapsed ? <IoChevronDown /> : <IoChevronUp />}
       </div>
-      <div className='tabs flex flex-col gap-2 text-sm pb-4 opacity-70 items-start lg:w-full'>
+      <div className='tabs flex flex-col gap-2 text-sm pb-4 opacity-90 items-start lg:w-full'>
         {!isCollapsed &&
           options.map((option) => (
             <p
               key={option}
-              className='tab text-white hover:underline text-left h-fit'
+              className='tab text-primary hover:underline text-left h-fit'
               onClick={() => onMenuSelect(option.toLowerCase() as SortMethods)}
             >
               {option}

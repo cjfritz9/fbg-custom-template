@@ -9,7 +9,8 @@ import adminClient from '../shopify-admin-client';
 import {
   formatProductResponse,
   formatProductsByQueryResponse,
-  formatProductsResponse
+  formatProductsResponse,
+  sortFormattedProductsByTag
 } from '../utils';
 import { GetProductsParams } from '@/@types/shopify';
 
@@ -20,7 +21,7 @@ const fetchPrevPage = async (cursor: string) => {
         title
         handle
         description
-        images(first: 5) {
+        images(first: 1) {
           nodes {
             url
             altText
@@ -63,7 +64,7 @@ const fetchNextPage = async (cursor: string | null) => {
         title
         handle
         description
-        images(first: 5) {
+        images(first: 1) {
           nodes {
             url
             altText
@@ -216,7 +217,7 @@ export const fetchProductsByTag = async (
         title
         handle
         description
-        images(first: 5) {
+        images(first: 1) {
           nodes {
             url
             altText

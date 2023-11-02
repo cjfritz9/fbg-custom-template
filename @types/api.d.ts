@@ -23,6 +23,7 @@ export interface Product {
   title: string;
   handle: string;
   description: string;
+  tags?: string[];
   variants: {
     nodes: { id: string; title: string }[];
   };
@@ -200,6 +201,7 @@ export interface FormattedProduct {
   title: string;
   handle: string;
   description: string;
+  tags?: string[];
   images: { url: string; altText: string }[];
   minPrice: string;
   reviews: {

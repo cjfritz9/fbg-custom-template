@@ -23,7 +23,7 @@ const SocialMediaIcons: React.FC = () => {
 const SocialMediaIcon: React.FC<SocialMediaIcon> = ({ link, children }) => {
   return (
     <Link prefetch={false} href={link}>
-      <div>{children}</div>
+      {children}
     </Link>
   );
 };

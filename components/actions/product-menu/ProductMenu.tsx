@@ -3,7 +3,7 @@
 import React from 'react';
 import { ProductMenuProps } from '@/@types/props';
 import { FilterMethods, SortMethods } from '@/@types/shop';
-import { getProductsByTag } from '@/app/api/requests';
+import { getProductsByTag, getProductsSortedByTag } from '@/app/api/requests';
 import ProductMenuGroup from './ProductMenuGroup';
 
 const ProductMenu: React.FC<ProductMenuProps> = ({
@@ -17,32 +17,13 @@ const ProductMenu: React.FC<ProductMenuProps> = ({
     onLoading(false);
   };
 
-  const handleSortClick = async (option: SortMethods) => {
-    // TODO: ADD & IMPLEMENT SORTING FUNCTION
-    if (option === 'featured' || option === 'newest') {
-      handleFilterClick(option);
-    } else {
-    }
-  };
-
   return (
     <div className='py-4 lg:py-16 bg-base-100 sticky top-0 z-10'>
       <div className='flex lg:flex-col sticky top-16'>
         <ProductMenuGroup
-          category='SORT'
-          onMenuSelect={handleSortClick}
-          options={[
-            'FEATURED',
-            'NEWEST',
-            'HIGHEST RATED',
-            'PRICE - LOW',
-            'PRICE - HIGH'
-          ]}
-        />
-        <ProductMenuGroup
           category='FILTER'
           onMenuSelect={handleFilterClick}
-          options={['FULL KITS', 'PARTS']}
+          options={['FEATURED', 'NEWEST', 'POPULAR', 'FULL KITS', 'PARTS']}
         />
       </div>
     </div>
