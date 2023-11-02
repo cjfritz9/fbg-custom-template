@@ -10,7 +10,6 @@ import {
   formatProductResponse,
   formatProductsByQueryResponse,
   formatProductsResponse,
-  sortFormattedProductsByTag
 } from '../utils';
 import { GetProductsParams } from '@/@types/shopify';
 

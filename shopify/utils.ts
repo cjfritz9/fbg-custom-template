@@ -228,23 +228,4 @@ const formatRating = (ratingData: string): number => {
   return +parsedRating.value;
 };
 
-// SORTING FUNCTIONS
-
-export const sortFormattedProductsByTag = (
-  productsData: FormattedProductResponse,
-  tag: string
-): FormattedProductResponse => {
-  productsData.products.sort((a, b) => {
-    if (a.tags!.includes(tag) && b.tags!.includes(tag)) {
-      return 0;
-    } else if (a.tags!.includes(tag)) {
-      return -1;
-    } else {
-      return 1;
-    }
-  });
-
-  return productsData;
-};
-
 // STOREFRONT FUNCTIONS

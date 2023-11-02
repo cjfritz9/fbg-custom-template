@@ -3,7 +3,7 @@
 import React from 'react';
 import { ProductMenuProps } from '@/@types/props';
 import { FilterMethods, SortMethods } from '@/@types/shop';
-import { getProductsByTag, getProductsSortedByTag } from '@/app/api/requests';
+import { getProductsByTag } from '@/app/api/requests';
 import ProductMenuGroup from './ProductMenuGroup';
 
 const ProductMenu: React.FC<ProductMenuProps> = ({
