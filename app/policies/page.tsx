@@ -90,13 +90,13 @@ const PoliciesPage: React.FC = () => {
                   </Link>
                 </li>
                 <li className='hover:underline'>
-                  <Link href='policies/contact'>PRIVACY POLICY</Link>
+                  <Link href='policies/privacy'>PRIVACY POLICY</Link>
                 </li>
                 <li className='hover:underline'>
-                  <Link href='policies/account'>COOKIE POLICY</Link>
+                  <Link href='policies/cookies'>COOKIE POLICY</Link>
                 </li>
                 <li className='hover:underline'>
-                  <Link href='policies/account'>RETURN POLICY</Link>
+                  <Link href='policies/returns'>RETURN POLICY</Link>
                 </li>
               </ul>
             </div>
