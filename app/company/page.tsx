@@ -7,7 +7,7 @@ const CompanyPage: React.FC = () => {
   return (
     <div className='flex flex-col items-center bg-base-100 text-primary py-8 px-4 lg:py-8 lg:px-8 xl:py-16 xl:px-28'>
       <div className='max-w-[1280px]'>
-        <div className='flex flex-col lg:flex-row gap-12'>
+        <div className='flex flex-col lg:flex-row gap-12 xl:gap-48'>
           <div className='flex text-center lg:text-left p-8 lg:p-0 flex-col gap-2'>
             <h3 className='text-xl font-semibold my-2'>
               About Full Blast Gear
