@@ -3,7 +3,8 @@ import {
   addItemsToCheckout,
   createCheckout,
   getCheckout,
-  removeItemsFromCheckout
+  removeItemsFromCheckout,
+  updateItemsInCheckout
 } from '@/app/api/requests';
 import React, { PropsWithChildren, useEffect, useState } from 'react';
 import ShopifyBuy from 'shopify-buy';
@@ -41,6 +42,11 @@ const CartProvider: React.FC<PropsWithChildren> = ({ children }) => {
     setCheckout(checkoutRes);
   };
 
+  const updateLineItem = async (checkoutId: string, lineItems: ShopifyBuy.CheckoutLineItemUpdateInput[]) => {
+    const checkoutRes = await updateItemsInCheckout(checkoutId, lineItems);
+    setCheckout(checkoutRes)
+  }
+
   const createNewCheckout = async () => {
     const checkoutRes = await createCheckout();
     localStorage.setItem(CHECKOUT_STORAGE_KEY, checkoutRes.id);
@@ -71,6 +77,7 @@ const CartProvider: React.FC<PropsWithChildren> = ({ children }) => {
         openCart,
         closeCart,
         addLineItem,
+        updateLineItem,
         removeLineItem
       }}
     >

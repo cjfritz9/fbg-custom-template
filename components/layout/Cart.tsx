@@ -1,14 +1,10 @@
 'use client';
 
-import React, { useContext, useEffect, useState } from 'react';
+import React, { ChangeEvent, useContext, useEffect, useState } from 'react';
 import { NavIcon } from './header/NavMenu';
 import { CartInterface } from '@/@types/shop';
 import { CartContext } from '@/context/CartContext';
-import {
-  IoCart,
-  IoCartOutline,
-  IoClose
-} from 'react-icons/io5';
+import { IoCart, IoCartOutline, IoClose } from 'react-icons/io5';
 import { LineItemProps } from '@/@types/props';
 import Image from 'next/image';
 import Button from '../actions/Button';
@@ -52,30 +48,29 @@ const Cart: React.FC = () => {
             </div>
           </div>
           <div className='flex flex-col justify-between h-full content-between'>
-          <ul className='!text-sm p-4 px-8'>
+            <ul className='!text-sm p-4 px-8'>
+              {checkout && checkout.lineItems.length > 0 ? (
+                checkout.lineItems.map((item) => (
+                  <LineItem key={item.id} item={item} />
+                ))
+              ) : (
+                <li className='text-center'>No Items In Cart</li>
+              )}
+            </ul>
             {checkout && checkout.lineItems.length > 0 ? (
-              checkout.lineItems.map((item) => (
-                <LineItem key={item.id} item={item} />
-              ))
+              <div className='p-4 sticky bottom-0 bg-base-200'>
+                <Link href={checkout?.webUrl ?? ''}>
+                  <Button styles='btn-primary !w-full'>CHECKOUT</Button>
+                </Link>
+              </div>
             ) : (
-              <li className='text-center'>No Items In Cart</li>
+              <div className='p-4 sticky bottom-0 bg-base-200'>
+                <Link href='/shop' onClick={closeCart}>
+                  <Button styles='btn-primary !w-full'>SHOP NOW</Button>
+                </Link>
+              </div>
             )}
-          </ul>
-          {checkout && checkout.lineItems.length > 0 ? (
-            <div className='p-4 sticky bottom-0 bg-base-200'>
-              <Link href={checkout?.webUrl ?? ''}>
-                <Button styles='btn-primary !w-full'>CHECKOUT</Button>
-              </Link>
-            </div>
-          ) : (
-            <div className='p-4 sticky bottom-0 bg-base-200'>
-            <Link href='/shop' onClick={closeCart}>
-              <Button styles='btn-primary !w-full'>SHOP NOW</Button>
-            </Link>
           </div>
-          )
-        }
-        </div>
         </div>
       </div>
     </div>
@@ -110,7 +105,16 @@ const CartBadge: React.FC = () => {
 };
 
 const LineItem: React.FC<LineItemProps> = ({ item }) => {
-  const { checkout, removeLineItem } = useContext(CartContext) as CartInterface;
+  const { checkout, updateLineItem, removeLineItem } = useContext(
+    CartContext
+  ) as CartInterface;
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleChange = async (e: ChangeEvent<HTMLInputElement>) => {
+    setIsLoading(true);
+    await updateLineItem(checkout!.id, [{ id: item.id, quantity: +e.target.value }]);
+    setIsLoading(false);
+  };
 
   return (
     <li className='flex w-full h-18 gap-8 mb-8'>
@@ -126,16 +130,24 @@ const LineItem: React.FC<LineItemProps> = ({ item }) => {
       />
       <div className='flex flex-col justify-between w-full'>
         <p className='truncate font-semibold uppercase'>{item.title}</p>
-        <p className='truncate italic -mt-4'>{item.variant?.title === 'Default Title' ? 'Standard' : item.variant!.title}</p>
+        <p className='truncate italic -mt-4'>
+          {item.variant?.title === 'Default Title'
+            ? 'Standard'
+            : item.variant!.title}
+        </p>
         <div className='flex gap-2 items-center justify-between'>
           <div className='flex gap-2 items-baseline'>
             <p>Qty:</p>
             <input
-              defaultValue={item.quantity}
+              value={`${item.quantity}`}
               min={1}
               type='number'
               className='bg-base-100 w-12 text-center'
+              onChange={handleChange}
             />
+            {isLoading && (
+              <div className='loading loading-spinner loading-xs' />
+            )}
           </div>
           <div
             onClick={() => removeLineItem(checkout!.id, [item.id])}

@@ -1,7 +1,7 @@
 'use client';
 
 import { ProductPanelProps } from '@/@types/props';
-import React, { Fragment, useContext, useState } from 'react';
+import React, { Fragment, useContext, useEffect, useState } from 'react';
 import ReviewStars from '../UI/ReviewStars';
 import Border from './Border';
 import Button from '../actions/Button';
@@ -20,7 +20,23 @@ const ProductPanel: React.FC<ProductPanelProps> = ({ product }) => {
   const [variant, setVariant] = useState(
     product.variants ? product.variants[0].title : 'Default Title'
   );
-  const { checkout, addLineItem } = useContext(CartContext) as CartInterface;
+  const [amountInCart, setAmountInCart] = useState(0);
+  const { checkout, addLineItem, updateLineItem } = useContext(
+    CartContext
+  ) as CartInterface;
+
+  useEffect(() => {
+    if (checkout) {
+      const cartInstance = checkout.lineItems.find(
+        (item) => item.title === product.title
+      );
+      if (cartInstance) {
+        setAmountInCart(cartInstance.quantity);
+      } else {
+        setAmountInCart(0);
+      }
+    }
+  }, [checkout, product]);
 
   return (
     <div className='flex flex-col gap-8 max-w-[40rem]'>
@@ -99,21 +115,55 @@ const ProductPanel: React.FC<ProductPanelProps> = ({ product }) => {
       </div>
       <div className='flex flex-col gap-4 py-4 sticky top-0 z-10 bg-base-100 outline-none'>
         <div className='flex gap-4'>
-          <div
-            className='grow w-full'
-            onClick={() => addLineItem(checkout!.id, product.variants![0].id, 1)}
-          >
-            <Button styles='btn-primary !w-full h-16 font-bold text-lg'>
-              ADD TO CART
-            </Button>
-          </div>
-          <div
-            className='hidden xl:inline-block tooltip'
-            data-tip='Bookmark this item'
-          >
-            <Button styles='btn-base-200 border border-primary h-16 font-bold text-2xl !w-24 hover:bg-base-100'>
-              <IoBookmarkOutline />
-            </Button>
+          <div className='grow w-full'>
+            {amountInCart > 0 ? (
+              <div className='flex gap-4'>
+                <div
+                  onClick={() =>
+                    updateLineItem(checkout!.id, [
+                      {
+                        id: checkout!.lineItems.find(
+                          (item) => item.title === product.title
+                        )!.id,
+                        variantId: product.variants![0].id,
+                        quantity:
+                          checkout!.lineItems.find(
+                            (item) => item.title === product.title
+                          )!.quantity - 1
+                      }
+                    ])
+                  }
+                >
+                  <Button styles='btn-base-200 !w-16 h-16 font-bold text-lg hover:bg-base-200 hover:border-0 hover:brightness-95 border-0'>
+                    {'-'}
+                  </Button>
+                </div>
+                <div className='grow'>
+                  <Button styles='btn-primary !w-full h-16 font-bold text-lg pointer-events-none'>
+                    {amountInCart} IN CART
+                  </Button>
+                </div>
+                <div
+                  onClick={() =>
+                    addLineItem(checkout!.id, product.variants![0].id, 1)
+                  }
+                >
+                  <Button styles='btn-base-200 !w-16 h-16 font-bold text-lg hover:bg-base-200 hover:border-0 hover:brightness-95 border-0'>
+                    {'+'}
+                  </Button>
+                </div>
+              </div>
+            ) : (
+              <div
+                onClick={() =>
+                  addLineItem(checkout!.id, product.variants![0].id, 1)
+                }
+              >
+                <Button styles='btn-primary !w-full h-16 font-bold text-lg'>
+                  ADD TO CART
+                </Button>
+              </div>
+            )}
           </div>
         </div>
       </div>

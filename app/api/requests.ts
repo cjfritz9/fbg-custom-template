@@ -5,7 +5,10 @@ import {
 } from '@/@types/api';
 import { FilterMethods } from '@/@types/shop';
 import { cache } from 'react';
-import ShopifyBuy from 'shopify-buy';
+import ShopifyBuy, {
+  CheckoutLineItem,
+  CheckoutLineItemUpdateInput
+} from 'shopify-buy';
 
 export const getHomeContent = cache(async () => {
   const response = await fetch(`/api/content/home`);
@@ -130,20 +133,31 @@ export const removeItemsFromCheckout = cache(
   }
 );
 
-export const postCaptchaResult = cache(
+export const updateItemsInCheckout = cache(
   async (
-    token: string
-  ): Promise<any> => {
+    checkoutId: string,
+    lineItems: ShopifyBuy.CheckoutLineItemUpdateInput[]
+  ): Promise<ShopifyBuy.Checkout> => {
     const response = await fetch(
-      '/api/auth/recaptcha',
+      `/api/checkout/remove-items?id=${checkoutId}`,
       {
-        method: 'POST',
-        body: JSON.stringify(token)
+        method: 'PATCH',
+        body: JSON.stringify({ lineItems })
       }
     );
-
-    const result = await response.json();
+    const result = await response.json()
 
     return result;
   }
 );
+
+export const postCaptchaResult = cache(async (token: string): Promise<any> => {
+  const response = await fetch('/api/auth/recaptcha', {
+    method: 'POST',
+    body: JSON.stringify(token)
+  });
+
+  const result = await response.json();
+
+  return result;
+});
