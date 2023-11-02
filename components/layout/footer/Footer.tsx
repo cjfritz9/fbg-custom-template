@@ -2,6 +2,7 @@ import React from 'react';
 import Logo from '../../UI/Logo';
 import FooterLinks from './FooterLinks';
 import SocialMediaIcons from './SocialMediaIcons';
+import Link from 'next/link';
 
 const Footer: React.FC = () => {
   return (
@@ -15,9 +16,10 @@ const Footer: React.FC = () => {
         </div>
         <FooterLinks />
       </div>
-      <div className='bg-base-200 md:px-44 py-2'>
-        <p className='text-primary text-center'>
-          © 2022 FULL BLAST ENTERPRISES, LLC ALL RIGHTS RESERVED
+      <div className='bg-base-200 md:px-44 py-4'>
+        <p className='text-primary text-left text-sm'>
+          © 2022 FULL BLAST ENTERPRISES, LLC. ALL RIGHTS RESERVED |{' '}
+          <Link href='https://cjfritz.dev' className='hover:underline'>ECOMMERCE DEVELOPMENT BY FRITZ DESIGN CO.</Link>
         </p>
       </div>
     </div>
