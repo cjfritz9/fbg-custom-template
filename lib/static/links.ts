@@ -19,7 +19,7 @@ export const navLinks = [
 export const footerLinks = {
   companyLinks: [
     { name: 'Contact', slug: '/contact' },
-    { name: 'FAQ', slug: '/faq' },
+    { name: 'FAQ', slug: '/company/faq' },
     { name: 'Account', slug: '/account' }
   ],
   policyLinks: [
