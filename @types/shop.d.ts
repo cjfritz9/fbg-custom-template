@@ -36,3 +36,7 @@ export interface ContactFormFields {
   email: string;
   message: string;
 }
+
+export interface ReturnFormFields extends ContactFormFields {
+  orderNumber: string;
+}
