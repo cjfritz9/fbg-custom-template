@@ -32,7 +32,7 @@ const FooterLinkGroup: React.FC<FooterLinkGroupProps> = ({ title, links }) => {
             key={i}
             href={link.slug}
             className={`tab font-semibold px-0 text-primary text-opacity-70 !w-full h-fit text-left self-start ${
-              i === activeIndex && 'tab-active'
+              i === activeIndex && 'tab-active text-secondary'
             }`}
           >
             <p className='text-center sm:text-right w-full pb-2'>{link.name}</p>
