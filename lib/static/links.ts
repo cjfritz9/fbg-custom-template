@@ -6,7 +6,8 @@ export const navLinks = [
   {
     name: 'About',
     slug: '/about'
-  },  {
+  },
+  {
     name: 'Blogs',
     slug: '/blogs'
   },
@@ -18,22 +19,22 @@ export const navLinks = [
 
 export const footerLinks = {
   companyLinks: [
+    { name: 'Account', slug: '/account' },
     { name: 'Contact', slug: '/contact' },
-    { name: 'FAQ', slug: '/company/faq' },
-    { name: 'Account', slug: '/account' }
+    { name: 'FAQ', slug: '/company/faq' }
   ],
   policyLinks: [
     { name: 'Terms & Conditions', slug: '/policies/terms-and-conditions' },
     { name: 'Privacy Policy', slug: '/policies/privacy' },
-    { name: 'Cookie Policy', slug: '/policies/cookies' },
-    { name: 'Return Policy', slug: '/policies/returns' }
+    { name: 'Return Policy', slug: '/policies/returns' },
+    { name: 'Cookie Policy', slug: '/policies/cookies' }
   ],
   informationalLinks: [
-    {
-      name: 'Gun Cleaning',
-      slug: '/information/non-traditional-gun-cleaning'
-    },
     { name: 'Warranties', slug: '/information/warranties' },
-    { name: 'Shipping', slug: '/information/shipping' }
+    { name: 'Shipping', slug: '/information/shipping' },
+    {
+      name: 'Blogs',
+      slug: '/blogs'
+    }
   ]
 };
