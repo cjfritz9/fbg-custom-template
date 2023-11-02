@@ -1,13 +1,13 @@
 'use client';
 
-import { SocialMediaIcon } from '@/@types/props';
+import { SocialMediaIconProps, SocialMediaIconsProps } from '@/@types/props';
 import Link from 'next/link';
 import React from 'react';
 import { GrFacebook, GrInstagram } from 'react-icons/gr';
 
-const SocialMediaIcons: React.FC = () => {
+const SocialMediaIcons: React.FC<SocialMediaIconsProps> = ({ slim = false }) => {
   return (
-    <div className='flex w-full justify-evenly text-primary text-[40px] lg:text-4xl'>
+    <div className={`flex justify-evenly text-primary ${slim ? 'w-36 lg:text-3xl' : 'w-full text-[40px] lg:text-4xl' }`}>
       <SocialMediaIcon link='https://www.facebook.com/FullBlastGear'>
         <div className='text-blue-500'>
           <GrFacebook />
@@ -20,7 +20,7 @@ const SocialMediaIcons: React.FC = () => {
   );
 };
 
-const SocialMediaIcon: React.FC<SocialMediaIcon> = ({ link, children }) => {
+const SocialMediaIcon: React.FC<SocialMediaIconProps> = ({ link, children }) => {
   return (
     <Link prefetch={false} href={link}>
       {children}

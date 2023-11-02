@@ -51,7 +51,7 @@ const Home: React.FC = async () => {
         title='TOP PRODUCTS'
         subtitle='From our full kit to any piece or part, you are sure to find what you
           need.'
-        productsTag='top products'
+        productsTag='popular'
         length={5}
         link={{ name: 'SHOP NOW', slug: '/shop' }}
       />

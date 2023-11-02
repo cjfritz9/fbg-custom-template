@@ -82,7 +82,7 @@ const ProductPage: React.FC<ProductMetadata> = async ({
         <ProductGallery
           title='Similar Products'
           subtitle=''
-          productsTag='top products'
+          productsTag='popular'
           length={5}
         />
       </section>

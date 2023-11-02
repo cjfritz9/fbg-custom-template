@@ -38,7 +38,7 @@ export interface LogoProps {
 
 export interface HeroProps {
   title: string;
-  image: ShopifyImage;
+  image: ShopifyImage | { url: StaticImageData; altText: string };
   subtitle?: string;
   slim?: boolean;
 }
@@ -91,9 +91,13 @@ export interface NavIconProps {
 export interface FooterLinkGroupProps {
   title: string;
   links: typeof footerLinks.companyLinks;
-} 
+}
 
-export interface SocialMediaIcon extends PropsWithChildren {
+export interface SocialMediaIconsProps {
+  slim?: boolean;
+}
+
+export interface SocialMediaIconProps extends PropsWithChildren {
   link: string;
 }
 
