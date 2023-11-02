@@ -327,6 +327,115 @@ const PrivacyPage: React.FC = () => {
               direct Us to and when We have Your consent.
             </li>
           </ul>
+          <h3 className='text-xl font-semibold my-2'>
+            OTHER TERMS AND CONDITIONS
+          </h3>
+          <p>
+            Your access to and use of the Site and the Services is subject to
+            Our TOU.
+          </p>
+          <h3 className='text-xl font-semibold my-2'>
+            CHANGES TO OUR PRIVACY POLICY
+          </h3>
+          <p>
+            Our Site, Services, and business may change from time-to-time. It
+            may therefore be necessary for FBE to make changes to this Privacy
+            Policy. We reserve the right to update or modify this Privacy Policy
+            at any time and from time-to-time without prior notice. Please
+            review this policy periodically and especially before You provide
+            any Personal Data. This Privacy Policy was last updated on the date
+            indicated below. Your continued use of Our Site and Services after
+            any changes or revisions to this Privacy Policy indicates Your
+            agreement with the terms of such revised Privacy Policy.
+          </p>
+          <h3 className='text-xl font-semibold my-2'>
+            WHEN THIS PRIVACY POLICY APPLIES
+          </h3>
+          <p>
+            Our Privacy Policy applies to Our Site, Our Services and Services
+            affiliates, including services offered on other sites (such as Our
+            advertising services), but excludes services that have separate
+            privacy policies that do not incorporate this Privacy Policy. Our
+            Privacy Policy does not apply to services offered by other
+            companies, third-parties, or individuals, including products or
+            sites that may be displayed to You in search results, sites that may
+            include FBE Services, or other sites linked from Our Services. Our
+            Privacy Policy does not cover the information practices of other
+            companies and organizations who advertise Our services, and who may
+            use cookies, pixel tags, and other technologies as detailed above to
+            serve and offer relevant ads.
+          </p>
+          <h3 className='text-xl font-semibold my-2'>SPAM POLICY</h3>
+          <p>
+            As You sign up for Services with us, You may be asked for Your email
+            address, or initially contacted at Your email address provided
+            through a public domain. This information is used to keep You
+            informed of any changes in Your status with Our company or to
+            occasionally pass on important information about Our Services or
+            offerings. If You are using or have signed up to become a part of
+            Our mailing list through utilization of an opt-in feature, Your
+            information is used to keep in contact with You related to company
+            or industry news, special offerings, upcoming events, or
+            announcements from Our company. We maintain a strict ‘no-spam’
+            policy. Your email address, personal information, or mailing address
+            will not be sold or rented to a third-party. If, at any time, You
+            wish to be removed from Our distribution, customer, participation,
+            or opt-in list, simply contact Us at info@fullblastgear.com.
+            Removals are usually completed within 72 hours. We strive to protect
+            information transmitted, collected, stored, or received on behalf of
+            FBE.
+          </p>
+          <h3 className='text-xl font-semibold my-2'>
+            INFORMATION ACCESSIBILITY; CONTACTING FBE
+          </h3>
+          <p>
+            We welcome questions, comments, and concerns about Our Privacy
+            Policy and privacy practices. To keep Your Personal Data accurate,
+            current, and complete, please contact Us as specified below. We will
+            take reasonable steps to update, correct, modify, or delete Personal
+            Data in Our possession that You have previously submitted via Our
+            Site or Services, or to resolve any additional privacy issue You
+            identify. We aim to maintain Our Services in a manner that protects
+            information from accidental or malicious destruction. Because of
+            this, after You delete information from Our Site or Services, We may
+            not immediately delete residual copies from Our active servers and
+            may not remove information from Our backup systems.
+          </p>
+          <h3>CONTACT US</h3>
+          <p>
+            To communicate with Our Data Protection Officer, please email{' '}
+            <Link
+              href='mailto: info@fullblastgear.com'
+              className='underline break-all'
+            >
+              info@fullblastgear.com
+            </Link>{' '}
+            with the subject line, “attn: DATA PROTECTION OFFICER.”
+          </p>
+          <p>
+            Please also feel free to contact Us if You have any questions about
+            FBE’s Privacy Policy or the information practices of Our Site and
+            Services. You may contact Us at the following information:
+          </p>
+          <ul>
+            <li>Attn: Privacy Department</li>
+            <li>Full Blast Enterprises LLC</li>
+            <li>9809 Cypress Pt. Cir.</li>
+            <li>Lone Tree, CO 80124</li>
+            <li>
+              <Link href='tel: +18003189030' className='underline break-all'>
+                (800) 318-9030
+              </Link>
+            </li>
+            <li>
+              <Link
+                href='mailto: info@fullblastgear.com'
+                className='underline break-all'
+              >
+                info@fullblastgear.com
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
