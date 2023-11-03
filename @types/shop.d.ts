@@ -27,7 +27,7 @@ export interface CartInterface {
   openCart: () => void;
   closeCart: () => void;
   addLineItem: (checkoutId: string, variantId: string, quantity: number) => Promise<void>;
-  updateLineItem: (checkoutId: string, lineItemIds: ShopifyBuy.CheckoutLineItemUpdateInput[]) => Promise<void>;
+  updateLineItem: (checkoutId: string | undefined, lineItemIds: ShopifyBuy.CheckoutLineItemUpdateInput[]) => Promise<void>;
   removeLineItem: (checkoutId: string, lineItemIds: string[]) => Promise<void>;
 }
 

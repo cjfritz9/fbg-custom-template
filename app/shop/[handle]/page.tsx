@@ -64,13 +64,13 @@ const ProductPage: React.FC<ProductMetadata> = async ({
               <TbChevronCompactDown className='text-4xl text-base-200' />
             </Button>
           </div>
-          <div className='flex justify-center max-h-[556px] xl:w-[720px]'>
+          <div className='flex justify-center max-h-[656px] lg:w-[556px] xl:w-[720px] 2xl:w-[848px]'>
             <Image
               priority
               src={images[0].url}
               alt={images[0].altText}
-              height={800}
-              width={800}
+              height={960}
+              width={960}
               className='object-cover object-center w-full h-auto max-h-[556px]'
             />
           </div>
