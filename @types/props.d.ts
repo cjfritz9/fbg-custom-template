@@ -118,6 +118,18 @@ export interface ProductCardProps {
   };
 }
 
+export interface ProductImagesProps {
+  images: ShopifyImage[];
+}
+
+export interface ThumbnailImagesProps extends ProductImagesProps {
+  onUpdateImage: (index: number) => void;
+}
+
+export interface PrimaryImageProps extends ProductImagesProps {
+  currentImage: ShopifyImage;
+}
+
 /**
  * @type {title} Title to display on the gallery heading
  * @type {subtitle} Short phrase to display beneath the title and link
