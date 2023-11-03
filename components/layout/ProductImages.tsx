@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Image from 'next/image';
 import {
   PrimaryImageProps,
@@ -13,7 +13,6 @@ import 'swiper/css/navigation';
 import '@/app/swiper-custom.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-import { RiCloseFill } from 'react-icons/ri';
 import useLightbox from '@/lib/hooks/useLightbox';
 import { SlideImage } from 'yet-another-react-lightbox';
 
@@ -85,8 +84,12 @@ const ThumbnailImages: React.FC<ThumbnailImagesProps> = ({
   );
 };
 
-const PrimaryImage: React.FC<PrimaryImageProps> = ({ currentImage, images }) => {
+const PrimaryImage: React.FC<PrimaryImageProps> = ({
+  currentImage,
+  images
+}) => {
   const { openLightbox, renderLightbox } = useLightbox();
+  const thumbnailsRef = useRef(null);
 
   const slides: SlideImage[] = images.map((image) => ({ src: image.url }));
 
@@ -96,6 +99,7 @@ const PrimaryImage: React.FC<PrimaryImageProps> = ({ currentImage, images }) => 
       <div className='flex justify-center max-h-[656px] lg:w-[556px] xl:w-[720px] 2xl:w-[848px]'>
         <Image
           priority
+          ref={thumbnailsRef}
           src={currentImage.url}
           alt={currentImage.altText}
           height={960}
