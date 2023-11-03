@@ -157,6 +157,11 @@ export interface ProductReviews {
   reviewCount: number;
 }
 
+export interface NewReviewFormProps {
+  showForm: boolean;
+  onToggleReviewForm: () => void;
+}
+
 export interface LineItemProps {
   item: CheckoutLineItem;
 }

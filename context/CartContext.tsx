@@ -42,10 +42,13 @@ const CartProvider: React.FC<PropsWithChildren> = ({ children }) => {
     setCheckout(checkoutRes);
   };
 
-  const updateLineItem = async (checkoutId: string, lineItems: ShopifyBuy.CheckoutLineItemUpdateInput[]) => {
+  const updateLineItem = async (
+    checkoutId: string,
+    lineItems: ShopifyBuy.CheckoutLineItemUpdateInput[]
+  ) => {
     const checkoutRes = await updateItemsInCheckout(checkoutId, lineItems);
-    setCheckout(checkoutRes)
-  }
+    setCheckout(checkoutRes);
+  };
 
   const createNewCheckout = async () => {
     const checkoutRes = await createCheckout();
@@ -63,7 +66,7 @@ const CartProvider: React.FC<PropsWithChildren> = ({ children }) => {
         if (checkoutRes.completedAt) {
           await createNewCheckout();
         } else {
-          setCheckout(checkoutRes)
+          setCheckout(checkoutRes);
         }
       }
     })();

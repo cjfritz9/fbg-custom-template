@@ -12,3 +12,7 @@ export const GET = async (request: NextRequest) => {
   const reviews = await fetchReviewsByProductHandle(handle, +page, +perPage);
   return NextResponse.json(reviews);
 };
+
+export const POST = async (request: NextRequest) => {
+  return NextResponse.json('post request received')
+}

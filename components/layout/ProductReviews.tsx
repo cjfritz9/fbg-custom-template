@@ -1,11 +1,17 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import { ProductReviewsProps, ReviewProps } from '@/@types/props';
+import {
+  NewReviewFormProps,
+  ProductReviewsProps,
+  ReviewProps
+} from '@/@types/props';
 import Border from './Border';
 import ReviewStars from '../UI/ReviewStars';
 import { getReviewsByProductHandle } from '@/app/api/requests';
 import useIsClient from '@/lib/hooks/useIsClient';
+import Button from '../actions/Button';
+import { Dialog } from '@headlessui/react';
 
 const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
   const [reviewsList, setReviewsList] = useState([]);
@@ -14,6 +20,7 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
     perPage: 3
   });
   const [totalPages, setTotalPages] = useState(0);
+  const [showForm, setShowForm] = useState(false);
 
   const isClient = useIsClient();
 
@@ -23,6 +30,10 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
       ...prev,
       perPage: +value
     }));
+  };
+
+  const handleToggleReviewForm = () => {
+    setShowForm((prev) => !prev);
   };
 
   useEffect(() => {
@@ -46,6 +57,12 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
   return (
     <section className='flex flex-col text-primary py-12'>
       <Border />
+      {
+        <NewReviewForm
+          showForm={showForm}
+          onToggleReviewForm={handleToggleReviewForm}
+        />
+      }
       <div className='flex flex-col py-12 gap-2'>
         <p className='font-semibold text-4xl'>Product Reviews</p>
         <div className='flex gap-4 items-baseline justify-left'>
@@ -54,8 +71,11 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
         </div>
       </div>
       <Border />
-      <div className='py-12'>
+      <div className='flex w-full justify-between py-12'>
         <p className='font-semibold opacity-75'>{`${reviews.reviewCount} Reviews`}</p>
+        <div onClick={handleToggleReviewForm}>
+          <Button styles='btn-primary'>ADD REVIEW</Button>
+        </div>
       </div>
       {reviewsList.length > 0 ? (
         reviewsList.map((review: any) => (
@@ -154,6 +174,31 @@ export const Review: React.FC<ReviewProps> = ({ review }) => {
           </p>
         )}
       </div>
+    </div>
+  );
+};
+
+const NewReviewForm: React.FC<NewReviewFormProps> = ({
+  showForm,
+  onToggleReviewForm
+}) => {
+  if (!showForm) return null;
+
+  return (
+    <div className='fixed inset-0 flex w-screen items-center justify-center p-4'>
+      <Dialog
+        open={showForm}
+        onClose={onToggleReviewForm}
+        className='relative z-50 text-primary'
+      >
+        <div className='fixed inset-0 bg-black/30' aria-hidden='true' />
+        <div className='fixed inset-0 flex w-screen items-center justify-center p-4'>
+          <Dialog.Panel className='mx-auto p-12 max-w-sm rounded bg-white'>
+            <Dialog.Title className='text-xl'>Leave Your Review</Dialog.Title>
+            <Dialog.Title></Dialog.Title>
+          </Dialog.Panel>
+        </div>
+      </Dialog>
     </div>
   );
 };
