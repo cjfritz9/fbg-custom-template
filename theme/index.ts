@@ -8,7 +8,7 @@ export const themes = [
       ...defaultLightTheme,
       primary: '#1D232A',
       'primary-content': '#FFFFFF',
-      secondary: '#E3532D',
+      secondary: '#DF542E',
       'secondary-content': '#1d232a',
       accent: '#594442',
       'accent-content': '#1d232a',

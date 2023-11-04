@@ -138,20 +138,25 @@ const NavLink: React.FC<NavLinkProps> = ({ link, styles }) => {
     }
   }, [pathname, link.slug]);
   return (
-    <li
-      key={link.name}
-      className={`uppercase text-lg xl:text-xl font-semibold px-0 py-0 ${
-        isActive && 'underline underline-offset-4'
-      } ${styles}`}
-    >
-      <Link
-        prefetch
-        href={link.slug}
-        className='py-0 hover:bg-transparent hover:text-secondary focus:!text-secondary active:!text-secondary focus:!bg-transparent active:!bg-transparent'
+    <div>
+      <li
+        key={link.name}
+        className={`uppercase text-lg xl:text-xl font-semibold px-0 py-0 ${
+          isActive && ''
+        } ${styles}`}
       >
-        {link.name}
-      </Link>
-    </li>
+        <Link
+          prefetch
+          href={link.slug}
+          className='py-0 hover:bg-transparent hover:text-secondary focus:!text-secondary active:!text-secondary focus:!bg-transparent active:!bg-transparent'
+        >
+          {link.name}
+        </Link>
+      </li>
+      <div
+        className={`h-1.5 bg-secondary rounded-full ${isActive ? 'block' : 'hidden'}`}
+      />
+    </div>
   );
 };
 
@@ -177,6 +182,5 @@ export const NavIcon: React.FC<NavIconProps> = ({
     </Link>
   );
 };
-
 
 export default NavMenu;
