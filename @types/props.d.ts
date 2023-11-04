@@ -158,6 +158,7 @@ export interface ProductReviews {
 }
 
 export interface NewReviewFormProps {
+  handle: string;
   showForm: boolean;
   onToggleReviewForm: () => void;
 }

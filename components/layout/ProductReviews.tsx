@@ -12,6 +12,7 @@ import { getReviewsByProductHandle } from '@/app/api/requests';
 import useIsClient from '@/lib/hooks/useIsClient';
 import Button from '../actions/Button';
 import { Dialog } from '@headlessui/react';
+import '@/app/jdgm-base.css'
 
 const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
   const [reviewsList, setReviewsList] = useState([]);
@@ -59,6 +60,7 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
       <Border />
       {
         <NewReviewForm
+          handle={handle}
           showForm={showForm}
           onToggleReviewForm={handleToggleReviewForm}
         />
@@ -127,7 +129,8 @@ export default ProductReviews;
 
 export const Review: React.FC<ReviewProps> = ({ review }) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const truncatedBody = review.body.slice(0, 384) + '...';
+  const truncatedBody =
+    review.body.length > 384 ? review.body.slice(0, 384) + '...' : review.body;
   const reviewBodyRef = useRef<HTMLParagraphElement>(null);
 
   return (
