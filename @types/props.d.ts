@@ -163,10 +163,19 @@ export interface ProductReviews {
   reviewCount: number;
 }
 
-export interface NewReviewFormProps {
-  handle: string;
+export interface NewReviewModalProps {
+  product: FormattedProduct;
   showForm: boolean;
   onToggleReviewForm: () => void;
+}
+
+export interface NewReviewFormProps {
+  handle: string;
+}
+
+export interface NewReviewRatingProps {
+  rating: number;
+  onUpdateRating: (rating: number) => void;
 }
 
 export interface LineItemProps {
@@ -180,7 +189,7 @@ export interface ReviewStarsProps {
 }
 
 export interface ProductReviewsProps {
-  handle: ShopifyHandle;
+  product: FormattedProduct;
   reviews: ProductReviews;
 }
 

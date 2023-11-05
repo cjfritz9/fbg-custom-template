@@ -3,7 +3,7 @@ import {
   FormattedProductResponse,
   QueryResult
 } from '@/@types/api';
-import { FilterMethods } from '@/@types/shop';
+import { FilterMethods, NewReviewData } from '@/@types/shop';
 import { cache } from 'react';
 import ShopifyBuy, {
   CheckoutLineItem,
@@ -82,6 +82,18 @@ export const getReviewsByProductHandle = cache(
   }
 );
 
+export const createReviewByProductHandle = cache(
+  async (reviewData: NewReviewData): Promise<any> => {
+    const response = await fetch(`/api/reviews?handle=${reviewData.handle}`, {
+      method: 'POST',
+      body: JSON.stringify(reviewData)
+    });
+    const results = await response.json();
+
+    return results;
+  }
+);
+
 export const getCheckout = cache(
   async (checkoutId: string): Promise<ShopifyBuy.Checkout> => {
     const response = await fetch(`/api/checkout?id=${checkoutId}`);
@@ -145,7 +157,7 @@ export const updateItemsInCheckout = cache(
         body: JSON.stringify({ lineItems })
       }
     );
-    const result = await response.json()
+    const result = await response.json();
 
     return result;
   }

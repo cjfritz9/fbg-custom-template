@@ -1,21 +1,23 @@
 'use client';
 
-import { ReturnFormFields } from '@/@types/shop';
-import { postCaptchaResult } from '@/app/api/requests';
+import { NewReviewFormFields } from '@/@types/shop';
+import { createReviewByProductHandle, postCaptchaResult } from '@/app/api/requests';
 import { useReCaptcha } from 'next-recaptcha-v3';
-import Script from 'next/script';
-import React, { ChangeEvent, useCallback, useState } from 'react';
+import { IoStar, IoStarHalf, IoStarOutline } from 'react-icons/io5';
+import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
+import { NewReviewFormProps, NewReviewRatingProps } from '@/@types/props';
+import { postReviewByProductHandle } from '@/judge.me/utils';
 
-const formFields: ReturnFormFields = {
-  firstName: '',
-  lastName: '',
+const formFields: NewReviewFormFields = {
+  name: '',
   email: '',
-  orderNumber: '',
-  message: ''
+  rating: 0,
+  title: '',
+  body: ''
 };
 
-const ReturnForm: React.FC = () => {
-  const [fields, setFields] = useState<ReturnFormFields>(formFields);
+const NewReviewForm: React.FC<NewReviewFormProps> = ({ handle }) => {
+  const [fields, setFields] = useState<NewReviewFormFields>(formFields);
   const [success, setSuccess] = useState('');
   const [error, setError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -36,26 +38,38 @@ const ReturnForm: React.FC = () => {
 
       const token = await executeRecaptcha('form_submit');
 
-      const result = await postCaptchaResult(token);
+      const rcResult = await postCaptchaResult(token);
 
       setIsSubmitting(false);
 
-      if (!result.success) {
+      if (!rcResult.success) {
         setError(
           '❌ reCAPTCHA error: use the email link beneath the map to contact us'
         );
         return;
       }
 
-      if (result.score < 0.5) {
+      if (rcResult.score < 0.5) {
         setError('reCAPTCHA validation failed - try again');
         return;
-      } else {
-        setSuccess('✔️ Your message was sent, we will reply to you ASAP');
+      }
+
+      const postReviewResult = await createReviewByProductHandle({
+        handle,
+        ...fields
+      });
+
+      if (postReviewResult?.success) {
+        setSuccess('✔️ Your review was created and is being processed.');
         resetForm();
+      } else {
+        setError(
+          'Something went wrong on our end. If this issue persists please let us know!'
+        );
+        return;
       }
     },
-    [executeRecaptcha, fields]
+    [executeRecaptcha, fields, handle]
   );
 
   const handleChange = (
@@ -70,12 +84,19 @@ const ReturnForm: React.FC = () => {
     setError('');
   };
 
+  const handleUpdatingRating = (rating: number) => {
+    //@ts-ignore
+    setFields((prev) => ({ ...prev, rating }));
+  };
+
   const resetForm = () => {
     setFields(formFields);
     setTimeout(() => {
       setSuccess('');
     }, 3000);
   };
+
+  console.log(fields);
 
   return (
     <form
@@ -87,29 +108,19 @@ const ReturnForm: React.FC = () => {
     >
       <div className='form-control'>
         <div className='flex-col gap-8'>
-          <h3 className='text-3xl'>Return Form</h3>
           <div className='flex flex-col xl:flex-row xl:gap-8'>
             <div className='flex flex-col w-full'>
-              <label className='label'>
-                <span className='label-text'>First Name</span>
-              </label>
-              <input
-                type='text'
-                name='firstName'
-                value={fields.firstName}
-                className='input input-bordered w-full'
-                onChange={handleChange}
-                onFocus={handleResetError}
+              <NewReviewRating
+                rating={fields.rating}
+                onUpdateRating={handleUpdatingRating}
               />
-            </div>
-            <div className='flex flex-col w-full'>
               <label className='label'>
-                <span className='label-text'>Last Name</span>
+                <span className='label-text'>Your Name</span>
               </label>
               <input
                 type='text'
-                name='lastName'
-                value={fields.lastName}
+                name='name'
+                value={fields.name}
                 className='input input-bordered w-full'
                 onChange={handleChange}
                 onFocus={handleResetError}
@@ -119,7 +130,7 @@ const ReturnForm: React.FC = () => {
           <div className='flex flex-col xl:flex-row xl:gap-8'>
             <div className='flex flex-col w-full'>
               <label className='label'>
-                <span className='label-text'>Email</span>
+                <span className='label-text'>Your Email</span>
               </label>
               <input
                 type='text'
@@ -130,14 +141,16 @@ const ReturnForm: React.FC = () => {
                 onFocus={handleResetError}
               />
             </div>
+          </div>
+          <div className='flex flex-col xl:flex-row xl:gap-8'>
             <div className='flex flex-col w-full'>
               <label className='label'>
-                <span className='label-text'>Order Number</span>
+                <span className='label-text'>Review Title</span>
               </label>
               <input
                 type='text'
-                name='orderNumber'
-                value={fields.orderNumber}
+                name='title'
+                value={fields.title}
                 className='input input-bordered w-full'
                 onChange={handleChange}
                 onFocus={handleResetError}
@@ -146,11 +159,11 @@ const ReturnForm: React.FC = () => {
           </div>
           <div className='form-control'>
             <label className='label'>
-              <span className='label-text'>Message</span>
+              <span className='label-text'>Review </span>
             </label>
             <textarea
-              name='message'
-              value={fields.message}
+              name='body'
+              value={fields.body}
               className='textarea textarea-bordered h-24 lg:h-64'
               onChange={handleChange}
               onFocus={handleResetError}
@@ -173,8 +186,39 @@ const ReturnForm: React.FC = () => {
   );
 };
 
-const validateForm = (fields: ReturnFormFields) => {
+const NewReviewRating: React.FC<NewReviewRatingProps> = ({
+  rating,
+  onUpdateRating
+}) => {
+  const [selected, setSelected] = useState(0);
+
+  const handleClick = (rating: number) => {
+    setSelected(rating);
+    onUpdateRating(rating);
+  };
+
+  useEffect(() => {
+    setSelected(rating);
+  }, [rating]);
+
+  return (
+    <div className='flex gap-2 text-secondary text-2xl'>
+      {Array.from(new Array(5)).map((_, i) => (
+        <div
+          key={i}
+          onClick={() => handleClick(i + 1)}
+          className='cursor-pointer'
+        >
+          {selected >= i + 1 ? <IoStar /> : <IoStarOutline />}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+const validateForm = (fields: NewReviewFormFields) => {
   for (const field in fields) {
+    if (field === 'rating') continue;
     if (field === 'email') {
       if (!fields[field].includes('@') || !fields[field].includes('.')) {
         return {
@@ -183,6 +227,7 @@ const validateForm = (fields: ReturnFormFields) => {
         };
       }
     }
+    //@ts-ignore
     if (fields[field as keyof typeof fields].length === 0) {
       return {
         isValid: false,
@@ -197,4 +242,4 @@ const validateForm = (fields: ReturnFormFields) => {
   };
 };
 
-export default ReturnForm;
+export default NewReviewForm;

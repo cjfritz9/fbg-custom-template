@@ -22,14 +22,9 @@ export const POST = async (req: NextRequest) => {
     return NextResponse.json('No product handle provided');
   }
 
-  await postReviewByProductHandle({
-    handle,
-    email: 'dev.cjfritz@gmail.com',
-    rating: 5,
-    name: 'Great Product!',
-    title: '10/5 Stars',
-    body: 'Woo!'
-  });
+  const reviewData = await req.json();
 
-  return NextResponse.json('post request received');
+  const result = await postReviewByProductHandle(reviewData)
+
+  return NextResponse.json(result);
 };

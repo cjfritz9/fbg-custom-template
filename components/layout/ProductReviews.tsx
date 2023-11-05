@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import {
-  NewReviewFormProps,
+  NewReviewModalProps,
   ProductReviewsProps,
   ReviewProps
 } from '@/@types/props';
@@ -12,9 +12,12 @@ import { getReviewsByProductHandle } from '@/app/api/requests';
 import useIsClient from '@/lib/hooks/useIsClient';
 import Button from '../actions/Button';
 import { Dialog } from '@headlessui/react';
-import '@/app/jdgm-base.css';
+import NewReviewForm from '../actions/NewReviewForm';
 
-const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
+const ProductReviews: React.FC<ProductReviewsProps> = ({
+  product,
+  reviews
+}) => {
   const [reviewsList, setReviewsList] = useState([]);
   const [visibleReviews, setVisibleReviews] = useState([]);
   const [pagination, setPagination] = useState({
@@ -48,16 +51,16 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
   };
 
   useEffect(() => {
-    if (reviews && handle) {
+    if (reviews && product.handle) {
       (async () => {
-        const response = await getReviewsByProductHandle(handle);
+        const response = await getReviewsByProductHandle(product.handle);
         if (response) {
           setReviewsList(response);
           setVisibleReviews(response.slice(0, 3));
         }
       })();
     }
-  }, [handle, reviews]);
+  }, [product.handle, reviews]);
 
   useEffect(() => {
     setVisibleReviews(
@@ -70,14 +73,12 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
 
   if (!isClient) return null;
 
-  console.log(pagination)
-
   return (
     <section className='flex flex-col text-primary py-12'>
       <Border />
       {
-        <NewReviewForm
-          handle={handle}
+        <NewReviewModal
+          product={product}
           showForm={showForm}
           onToggleReviewForm={handleToggleReviewForm}
         />
@@ -93,7 +94,7 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
       <div className='flex w-full justify-between py-12'>
         <p className='font-semibold opacity-75'>{`${reviews.reviewCount} Reviews`}</p>
         <div onClick={handleToggleReviewForm}>
-          <Button styles='btn-primary'>ADD REVIEW</Button>
+          <Button styles='btn-primary'>LEAVE A REVIEW</Button>
         </div>
       </div>
       {visibleReviews.length > 0 ? (
@@ -201,7 +202,8 @@ export const Review: React.FC<ReviewProps> = ({ review }) => {
   );
 };
 
-const NewReviewForm: React.FC<NewReviewFormProps> = ({
+const NewReviewModal: React.FC<NewReviewModalProps> = ({
+  product,
   showForm,
   onToggleReviewForm
 }) => {
@@ -216,9 +218,12 @@ const NewReviewForm: React.FC<NewReviewFormProps> = ({
       >
         <div className='fixed inset-0 bg-black/30' aria-hidden='true' />
         <div className='fixed inset-0 flex w-screen items-center justify-center p-4'>
-          <Dialog.Panel className='mx-auto p-12 max-w-sm rounded bg-white'>
-            <Dialog.Title className='text-xl'>Leave Your Review</Dialog.Title>
-            <Dialog.Title></Dialog.Title>
+          <Dialog.Panel className='flex flex-col gap-4 mx-auto p-12 max-w-2xl rounded bg-white'>
+            <div className='flex gap-32 justify-between items-baseline'>
+              <Dialog.Title className='text-xl'>Leave Your Review</Dialog.Title>
+              <Dialog.Title>{product.title}</Dialog.Title>
+            </div>
+            <NewReviewForm handle={product.handle} />
           </Dialog.Panel>
         </div>
       </Dialog>

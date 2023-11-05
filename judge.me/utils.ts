@@ -1,18 +1,11 @@
+import { NewReviewData } from "@/@types/shop";
+
 const JUDGEME_API_URL = process.env.JUDGEME_API_URL!;
 const SHOP_DOMAIN = process.env.SHOPIFY_SHOP_NAME!;
 const TOKEN = process.env.JUDGEME_TOKEN!;
 const AUTH_QUERY_PARAMS = `shop_domain=${SHOP_DOMAIN}&api_token=${TOKEN}`;
 
 type JudgeMeIdVariant = 'internal' | 'external';
-
-interface NewReviewData {
-  handle: string;
-  name: string;
-  email: string;
-  rating: number;
-  title: string;
-  body: string;
-}
 
 export const fetchJudgeMeIdByProductHandle = async (
   type: JudgeMeIdVariant,
@@ -50,9 +43,9 @@ export const fetchReviewsByProductHandle = async (
 export const postReviewByProductHandle = async (reviewData: NewReviewData) => {
   const { handle, name, email, rating, title, body } = reviewData;
   const judgeMeId = await fetchJudgeMeIdByProductHandle('external', handle);
-  console.log({ judgeMeId });
+
   const response = await fetch(
-    `${JUDGEME_API_URL}/reviews?${AUTH_QUERY_PARAMS}&platform=shopify&name=${name}&email=${email}&rating=${rating}&body=${body}&id=${judgeMeId}&title=${title}`,
+    `${JUDGEME_API_URL}/reviews?${AUTH_QUERY_PARAMS}&platform=shopify&name=${name}&email=${email}&rating=${rating}&title=${title}&body=${body}&id=${judgeMeId}`,
     {
       method: 'POST'
     }
