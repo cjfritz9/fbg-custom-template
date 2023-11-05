@@ -12,15 +12,16 @@ import { getReviewsByProductHandle } from '@/app/api/requests';
 import useIsClient from '@/lib/hooks/useIsClient';
 import Button from '../actions/Button';
 import { Dialog } from '@headlessui/react';
-import '@/app/jdgm-base.css'
+import '@/app/jdgm-base.css';
 
 const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
   const [reviewsList, setReviewsList] = useState([]);
+  const [visibleReviews, setVisibleReviews] = useState([]);
   const [pagination, setPagination] = useState({
     currentPage: 1,
-    perPage: 3
+    perPage: 3,
+    totalPages: 1
   });
-  const [totalPages, setTotalPages] = useState(0);
   const [showForm, setShowForm] = useState(false);
 
   const isClient = useIsClient();
@@ -29,8 +30,17 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
     if (+value > 10 || +value < 1) return;
     setPagination((prev) => ({
       ...prev,
-      perPage: +value
+      perPage: +value,
+      totalPages: Math.ceil(reviewsList.length / +value)
     }));
+  };
+
+  const handleClick = (direction: 'prev' | 'next') => {
+    if (direction === 'prev') {
+      setPagination((prev) => ({ ...prev, currentPage: prev.currentPage - 1 }));
+    } else {
+      setPagination((prev) => ({ ...prev, currentPage: prev.currentPage + 1 }));
+    }
   };
 
   const handleToggleReviewForm = () => {
@@ -40,20 +50,27 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
   useEffect(() => {
     if (reviews && handle) {
       (async () => {
-        const response = await getReviewsByProductHandle(
-          handle,
-          pagination.currentPage,
-          pagination.perPage
-        );
+        const response = await getReviewsByProductHandle(handle);
         if (response) {
           setReviewsList(response);
+          setVisibleReviews(response.slice(0, 3));
         }
       })();
-      setTotalPages(Math.ceil(reviews.reviewCount / pagination.perPage));
     }
-  }, [handle, reviews, pagination]);
+  }, [handle, reviews]);
+
+  useEffect(() => {
+    setVisibleReviews(
+      reviewsList.slice(
+        (pagination.currentPage - 1) * pagination.perPage,
+        pagination.currentPage * pagination.perPage
+      )
+    );
+  }, [reviewsList, pagination]);
 
   if (!isClient) return null;
+
+  console.log(pagination)
 
   return (
     <section className='flex flex-col text-primary py-12'>
@@ -79,8 +96,8 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
           <Button styles='btn-primary'>ADD REVIEW</Button>
         </div>
       </div>
-      {reviewsList.length > 0 ? (
-        reviewsList.map((review: any) => (
+      {visibleReviews.length > 0 ? (
+        visibleReviews.map((review: any) => (
           <Review key={review.id} review={review} />
         ))
       ) : (
@@ -88,28 +105,31 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
       )}
       <Border />
       <div className='flex flex-col xl:flex-row justify-between py-4 gap-4 items-center'>
-        <div></div>
-        <div className='flex items-center gap-4'>
-          {Array.from(new Array(totalPages < 10 ? totalPages : 10)).map(
-            (_, i) => (
-              <div
-                key={i}
-                className={
-                  i + 1 === pagination.currentPage
-                    ? 'font-bold text-blue-600 pointer-events-none'
-                    : 'cursor-pointer hover:font-bold'
-                }
-                onClick={() =>
-                  setPagination((prev) => ({
-                    ...prev,
-                    currentPage: i + 1
-                  }))
-                }
-              >
-                {i + 1}
-              </div>
-            )
-          )}
+        <div>
+          <div />
+        </div>
+        <div className='flex items-center gap-4 font-semibold'>
+          <button
+            className={`btn bg-transparent border-0 hover:bg-transparent text-xl ${
+              pagination.currentPage === 1 ? 'btn-disabled !bg-opacity-0' : ''
+            }`}
+            onClick={() => handleClick('prev')}
+          >
+            «
+          </button>
+          <div className='pointer-events-none text-blue-500'>
+            {pagination.currentPage}
+          </div>
+          <button
+            className={`btn bg-transparent border-0 hover:bg-transparent text-xl ${
+              pagination.totalPages <= pagination.currentPage
+                ? 'btn-disabled !bg-opacity-0'
+                : ''
+            }`}
+            onClick={() => handleClick('next')}
+          >
+            »
+          </button>
         </div>
         <div className='flex items-center gap-4'>
           <p>Reviews Per Page:</p>
