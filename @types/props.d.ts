@@ -2,7 +2,7 @@ import { footerLinks, navLinks } from '@/lib/static/links';
 import { StaticImageData } from 'next/image';
 import React, { PropsWithChildren } from 'react';
 import { FormattedProduct, Product, ShopifyImage } from './api';
-import { FilterMethods, SortMethods } from './shop';
+import { FilterMethods, ProductVariant, SortMethods } from './shop';
 import { IconType } from 'react-icons';
 import { CheckoutLineItem } from 'shopify-buy';
 
@@ -150,6 +150,12 @@ export interface ProductGalleryProps {
 
 export interface ProductPanelProps {
   product: FormattedProduct;
+}
+
+export interface ProductVariantsProps {
+  variants: ProductVariant[] | undefined;
+  selectedVariant: ProductVariant;
+  onUpdateVariant: (variant: any) => void;
 }
 
 export interface ProductReviews {

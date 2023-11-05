@@ -26,10 +26,22 @@ export interface CartInterface {
   checkout: ShopifyBuy.Checkout | undefined;
   openCart: () => void;
   closeCart: () => void;
-  addLineItem: (checkoutId: string, variantId: string, quantity: number) => Promise<void>;
-  updateLineItem: (checkoutId: string, lineItemIds: ShopifyBuy.CheckoutLineItemUpdateInput[]) => Promise<void>;
+  addLineItem: (
+    checkoutId: string,
+    variantId: string,
+    quantity: number
+  ) => Promise<void>;
+  updateLineItem: (
+    checkoutId: string,
+    lineItemIds: ShopifyBuy.CheckoutLineItemUpdateInput[]
+  ) => Promise<void>;
   removeLineItem: (checkoutId: string, lineItemIds: string[]) => Promise<void>;
 }
+
+export interface ProductVariant {
+  id: string;
+  title: string;
+};
 
 export interface ContactFormFields {
   firstName: string;
