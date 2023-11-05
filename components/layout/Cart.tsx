@@ -196,13 +196,15 @@ const LineItem: React.FC<LineItemProps> = ({ item }) => {
             {isLoading && (
               <div className='loading loading-spinner loading-xs' />
             )}
-            <div
-              className={`text-green-600 opacity-${
-                updateSuccessful ? 100 : 0
-              } transition-opacity duration-300`}
-            >
-              ✔️
-            </div>
+            {!isLoading && (
+              <div
+                className={`text-green-600 opacity-${
+                  updateSuccessful ? 100 : 0
+                } transition-opacity duration-300`}
+              >
+                ✔️
+              </div>
+            )}
           </div>
           <div
             onClick={() => removeLineItem(checkout!.id, [item.id])}
