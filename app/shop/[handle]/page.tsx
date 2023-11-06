@@ -44,7 +44,7 @@ const ProductPage: React.FC<ProductMetadata> = async ({
         <ProductGallery
           title='Similar Products'
           subtitle=''
-          productsTag='popular'
+          productsTag={product?.tags![0] ?? 'popular'}
           length={5}
         />
       </section>

@@ -86,7 +86,7 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({
                   alt={product.images[0].altText}
                   width={512}
                   height={400}
-                  className='h-full object-cover object-bottom'
+                  className='h-full object-cover object-center'
                 />
               </Link>
             </SwiperSlide>
