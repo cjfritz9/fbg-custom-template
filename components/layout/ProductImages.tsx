@@ -53,7 +53,7 @@ const ThumbnailImages: React.FC<ThumbnailImagesProps> = ({
               alt={image.altText}
               height={192}
               width={192}
-              className='w-32 h-32 object-cover'
+              className='w-32 h-32 object-cover hover:brightness-105'
               onClick={() => onUpdateImage(i)}
             />
           </SwiperSlide>
@@ -104,7 +104,7 @@ const PrimaryImage: React.FC<PrimaryImageProps> = ({
           alt={currentImage.altText}
           height={960}
           width={960}
-          className='object-cover object-center w-full h-auto max-h-[556px] cursor-pointer'
+          className='object-cover object-center w-full h-auto max-h-[556p0x] cursor-zoom-in'
           onClick={openLightbox}
         />
       </div>
