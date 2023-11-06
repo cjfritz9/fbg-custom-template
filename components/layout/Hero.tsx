@@ -50,7 +50,7 @@ const Hero: React.FC<HeroProps> = ({
         src={image.url}
         alt={image.altText}
         width={1920}
-        height={1048}
+        height={640}
         className='object-center object-cover brightness-[60%]'
       ></Image>
     </div>

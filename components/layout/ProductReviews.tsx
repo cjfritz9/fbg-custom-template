@@ -26,6 +26,7 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({
     totalPages: 1
   });
   const [showForm, setShowForm] = useState(false);
+  const [firstRender, setFirstRender] = useState(true);
   const reviewsTopRef = useRef<HTMLDivElement>(null);
 
   const isClient = useIsClient();
@@ -64,14 +65,23 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({
   }, [product.handle, reviews]);
 
   useEffect(() => {
-    reviewsTopRef.current!.scrollIntoView();
     setVisibleReviews(
       reviewsList.slice(
         (pagination.currentPage - 1) * pagination.perPage,
         pagination.currentPage * pagination.perPage
       )
     );
+    if (!firstRender) {
+      reviewsTopRef.current!.scrollIntoView();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reviewsList, pagination]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setFirstRender(false);
+    }, 5000);
+  }, []);
 
   if (!isClient) return null;
 
@@ -224,7 +234,9 @@ const NewReviewModal: React.FC<NewReviewModalProps> = ({
         <div className='fixed inset-0 flex w-screen items-center justify-center p-4'>
           <Dialog.Panel className='flex min-w-[360px] flex-col gap-4 mx-auto p-4 sm:p-12 max-w-2xl rounded bg-white'>
             <div className='flex flex-col sm:flex-row gap-6 sm:gap-24 justify-between items-baseline'>
-              <Dialog.Title className='text-2xl'>Leave Your Review</Dialog.Title>
+              <Dialog.Title className='text-2xl'>
+                Leave Your Review
+              </Dialog.Title>
               <Dialog.Title className='text-sm'>{product.title}</Dialog.Title>
             </div>
             <NewReviewForm
