@@ -1,7 +1,10 @@
 'use client';
 
 import { NewReviewFormFields } from '@/@types/shop';
-import { createReviewByProductHandle, postCaptchaResult } from '@/app/api/requests';
+import {
+  createReviewByProductHandle,
+  postCaptchaResult
+} from '@/app/api/requests';
 import { useReCaptcha } from 'next-recaptcha-v3';
 import { IoStar, IoStarHalf, IoStarOutline } from 'react-icons/io5';
 import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
@@ -16,7 +19,7 @@ const formFields: NewReviewFormFields = {
   body: ''
 };
 
-const NewReviewForm: React.FC<NewReviewFormProps> = ({ handle }) => {
+const NewReviewForm: React.FC<NewReviewFormProps> = ({ handle, onClose }) => {
   const [fields, setFields] = useState<NewReviewFormFields>(formFields);
   const [success, setSuccess] = useState('');
   const [error, setError] = useState('');
@@ -171,16 +174,24 @@ const NewReviewForm: React.FC<NewReviewFormProps> = ({ handle }) => {
           </div>
           <div className='h-6'>{error || success}</div>
         </div>
-        <button
-          className='btn btn-primary w-fit mt-2 min-w-[90px]'
-          type='submit'
-        >
-          {isSubmitting ? (
-            <div className='loading loading-spinner loading-md' />
-          ) : (
-            'SUBMIT'
-          )}
-        </button>
+        <div className='flex justify-between'>
+          <button
+            className='btn btn-primary w-fit mt-2 min-w-[90px]'
+            type='submit'
+          >
+            {isSubmitting ? (
+              <div className='loading loading-spinner loading-md' />
+            ) : (
+              'SUBMIT'
+            )}
+          </button>
+          <button
+            className='btn btn-error w-fit mt-2 min-w-[90px]'
+            onClick={onClose}
+          >
+            DISCARD
+          </button>
+        </div>
       </div>
     </form>
   );

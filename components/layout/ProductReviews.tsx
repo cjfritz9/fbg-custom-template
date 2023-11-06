@@ -26,6 +26,7 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({
     totalPages: 1
   });
   const [showForm, setShowForm] = useState(false);
+  const reviewsTopRef = useRef<HTMLDivElement>(null);
 
   const isClient = useIsClient();
 
@@ -63,6 +64,7 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({
   }, [product.handle, reviews]);
 
   useEffect(() => {
+    reviewsTopRef.current!.scrollIntoView();
     setVisibleReviews(
       reviewsList.slice(
         (pagination.currentPage - 1) * pagination.perPage,
@@ -90,7 +92,9 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({
           <ReviewStars reviews={reviews} styles='!text-2xl' />
         </div>
       </div>
-      <Border />
+      <div ref={reviewsTopRef}>
+        <Border />
+      </div>
       <div className='flex w-full justify-between py-12'>
         <p className='font-semibold opacity-75'>{`${reviews.reviewCount} Reviews`}</p>
         <div onClick={handleToggleReviewForm}>
@@ -214,16 +218,19 @@ const NewReviewModal: React.FC<NewReviewModalProps> = ({
       <Dialog
         open={showForm}
         onClose={onToggleReviewForm}
-        className='relative z-50 text-primary'
+        className='relative z-50 text-primary m-12'
       >
         <div className='fixed inset-0 bg-black/30' aria-hidden='true' />
         <div className='fixed inset-0 flex w-screen items-center justify-center p-4'>
-          <Dialog.Panel className='flex flex-col gap-4 mx-auto p-12 max-w-2xl rounded bg-white'>
-            <div className='flex gap-32 justify-between items-baseline'>
-              <Dialog.Title className='text-xl'>Leave Your Review</Dialog.Title>
-              <Dialog.Title>{product.title}</Dialog.Title>
+          <Dialog.Panel className='flex min-w-[360px] flex-col gap-4 mx-auto p-4 sm:p-12 max-w-2xl rounded bg-white'>
+            <div className='flex flex-col sm:flex-row gap-6 sm:gap-24 justify-between items-baseline'>
+              <Dialog.Title className='text-2xl'>Leave Your Review</Dialog.Title>
+              <Dialog.Title className='text-sm'>{product.title}</Dialog.Title>
             </div>
-            <NewReviewForm handle={product.handle} />
+            <NewReviewForm
+              onClose={onToggleReviewForm}
+              handle={product.handle}
+            />
           </Dialog.Panel>
         </div>
       </Dialog>

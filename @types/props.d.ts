@@ -171,6 +171,7 @@ export interface NewReviewModalProps {
 
 export interface NewReviewFormProps {
   handle: string;
+  onClose: () => void;
 }
 
 export interface NewReviewRatingProps {
