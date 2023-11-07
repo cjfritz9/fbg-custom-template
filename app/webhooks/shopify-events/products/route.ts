@@ -9,7 +9,7 @@ export const POST = async (req: NextRequest) => {
   console.log({ payload });
   console.log({ headers: req.headers.get('X-Shopify-Hmac-Sha256') });
   const hash = crypto.createHmac(
-    'sha256',
+    process.env.HASH_HMAC_ALGORITHM!,
     process.env.SHOPIFY_WEBHOOK_SIGNATURE!
   );
   console.log({ hash });
