@@ -5,14 +5,13 @@ import { NextRequest } from 'next/server';
 export const POST = async (req: NextRequest) => {
   const payload = await req.json();
 
-  console.log(payload)
+  console.log(payload);
+  console.log(req.headers);
 
-  if (payload.model === 'products') {
-    revalidateTag(CACHE_TAG_PRODUCTS)
-  }
+  revalidateTag(CACHE_TAG_PRODUCTS);
 
   if (payload.model === 'metaobjects') {
-    revalidateTag(CACHE_TAG_METAOBJECTS)
+    revalidateTag(CACHE_TAG_METAOBJECTS);
   }
 
   return new Response(null, { status: 204 });
