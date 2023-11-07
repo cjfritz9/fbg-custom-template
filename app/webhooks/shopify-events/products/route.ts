@@ -1,15 +1,7 @@
 import { CACHE_TAG_METAOBJECTS, CACHE_TAG_PRODUCTS } from '@/app/api/requests';
 import { revalidateTag } from 'next/cache';
-import { NextRequest } from 'next/server';
-import { buffer } from 'node:stream/consumers';
 import getRawBody from 'raw-body';
 import crypto from 'crypto';
-
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
 
 export const POST = async (req: any) => {
   const payload = await req.json();
