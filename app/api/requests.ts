@@ -5,10 +5,10 @@ import {
 } from '@/@types/api';
 import { FilterMethods, NewReviewData } from '@/@types/shop';
 import { cache } from 'react';
-import ShopifyBuy, {
-  CheckoutLineItem,
-  CheckoutLineItemUpdateInput
-} from 'shopify-buy';
+import ShopifyBuy from 'shopify-buy';
+
+export const CACHE_TAG_PRODUCTS = 'products';
+export const CACHE_TAG_METAOBJECTS = 'metaobjects';
 
 export const getHomeContent = cache(async () => {
   const response = await fetch(`/api/content/home`);
