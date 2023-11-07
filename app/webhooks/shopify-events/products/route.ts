@@ -1,10 +1,19 @@
 import { CACHE_TAG_METAOBJECTS, CACHE_TAG_PRODUCTS } from '@/app/api/requests';
 import { revalidateTag } from 'next/cache';
 import { NextRequest } from 'next/server';
+import { buffer } from 'node:stream/consumers';
+import getRawBody from 'raw-body';
 import crypto from 'crypto';
 
-export const POST = async (req: NextRequest) => {
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
+
+export const POST = async (req: any) => {
   const payload = await req.json();
+  const rawBody = await getRawBody(req);
 
   console.log({ payload });
   console.log({ headers: req.headers.get('X-Shopify-Hmac-Sha256') });
@@ -12,8 +21,9 @@ export const POST = async (req: NextRequest) => {
     .createHmac(
       process.env.HASH_HMAC_ALGORITHM!,
       process.env.SHOPIFY_WEBHOOK_SIGNATURE!
-    )
-    .update(JSON.stringify(payload), 'utf8')
+  )
+    //@ts-ignore
+    .update(rawBody, 'utf8')
     .digest('base64');
   console.log({ hash });
 
