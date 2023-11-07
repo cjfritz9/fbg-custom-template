@@ -6,7 +6,7 @@ export const POST = async (req: NextRequest) => {
   const payload = await req.json();
 
   console.log(payload);
-  console.log(req.headers);
+  console.log(req.headers.get('X-Shopify-Hmac-Sha256'));
 
   revalidateTag(CACHE_TAG_PRODUCTS);
 
