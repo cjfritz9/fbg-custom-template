@@ -18,7 +18,7 @@ export const POST = async (req: NextRequest) => {
       process.env.HASH_HMAC_ALGORITHM!,
       process.env.SHOPIFY_WEBHOOK_SIGNATURE!
     )
-    .update(text)
+    .update(text, 'utf8')
     .digest('base64');
   console.log({ hash });
 
