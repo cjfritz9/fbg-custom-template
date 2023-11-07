@@ -5,9 +5,8 @@ import { NextRequest } from 'next/server';
 import getRawBody from 'raw-body';
 import { Readable } from 'stream';
 
-export const POST = async (req: any) => {
-  const payload = await (req as NextRequest).json();
-  const body = await getRawBody(req as Readable);
+export const POST = async (req: NextRequest) => {
+  const payload = await req.json();
   const text = await req.text();
 
   console.log({ text });
@@ -19,7 +18,7 @@ export const POST = async (req: any) => {
       process.env.HASH_HMAC_ALGORITHM!,
       process.env.SHOPIFY_WEBHOOK_SIGNATURE!
     )
-    .update(body)
+    .update(text)
     .digest('base64');
   console.log({ hash });
 
