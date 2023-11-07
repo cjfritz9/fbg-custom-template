@@ -8,10 +8,13 @@ export const POST = async (req: NextRequest) => {
 
   console.log({ payload });
   console.log({ headers: req.headers.get('X-Shopify-Hmac-Sha256') });
-  const hash = crypto.createHmac(
-    process.env.HASH_HMAC_ALGORITHM!,
-    process.env.SHOPIFY_WEBHOOK_SIGNATURE!
-  );
+  const hash = crypto
+    .createHmac(
+      process.env.HASH_HMAC_ALGORITHM!,
+      process.env.SHOPIFY_WEBHOOK_SIGNATURE!
+    )
+    .update(payload, 'utf8')
+    .digest('base64');
   console.log({ hash });
 
   revalidateTag(CACHE_TAG_PRODUCTS);
