@@ -5,6 +5,8 @@ import React from 'react';
 const BlogsPage: React.FC = async () => {
   const blogs = await fetchBlogsPageContent();
 
+  console.log(blogs)
+
   if (!blogs) return;
 
   return (
