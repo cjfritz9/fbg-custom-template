@@ -1,7 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter, Montserrat } from 'next/font/google';
-// import Providers from './providers';
 import SplashScreen from '@/components/UI/SplashScreen';
 import Announcement from '@/components/actions/Announcement';
 import Ankle from '@/components/layout/Ankle';

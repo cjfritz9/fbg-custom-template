@@ -99,8 +99,6 @@ const NewReviewForm: React.FC<NewReviewFormProps> = ({ handle, onClose }) => {
     }, 3000);
   };
 
-  console.log(fields);
-
   return (
     <form
       className='w-full'
