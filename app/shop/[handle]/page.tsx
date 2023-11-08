@@ -7,22 +7,6 @@ import React from 'react';
 import ProductPanel from '@/components/layout/ProductPanel';
 import ProductImages from '@/components/layout/ProductImages';
 
-export const generateMetadata = async ({
-  params: { handle }
-}: {
-  params: {
-    handle: string;
-  };
-}) => {
-  const product = await getProductByHandle(handle);
-  if (!product) {
-    notFound();
-  }
-  return {
-    title: product.title
-  };
-};
-
 const ProductPage: React.FC<ProductMetadata> = async ({
   params: { handle }
 }) => {

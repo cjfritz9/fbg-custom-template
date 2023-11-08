@@ -1,8 +1,15 @@
 import Accordion from '@/components/actions/Accordion';
 import ReturnForm from '@/components/actions/ReturnForm';
 import Border from '@/components/layout/Border';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import React from 'react';
+
+export const metadata: Metadata = {
+  title: { default: 'Returns', template: '%s | Full Blast Gear' },
+  description:
+    'Understand our policies and commitments on the Policies page at Full Blast Gear. We value transparency, integrity, and your satisfaction. Learn about our privacy, return, and customer service policies to ensure a seamless experience with our unique firearm cleaning solutions.'
+};
 
 const ReturnsPage: React.FC = () => {
   return (

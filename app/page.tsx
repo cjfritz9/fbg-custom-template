@@ -3,16 +3,9 @@ import Button from '@/components/actions/Button';
 import Border from '@/components/layout/Border';
 import ImageWithText from '@/components/layout/ImageWithText';
 import ProductGallery from '@/components/layout/ProductGallery';
-import RewardsBanner from '@/components/layout/RewardsBanner';
+// import RewardsBanner from '@/components/layout/RewardsBanner';
 import Hero from '@/components/layout/Hero';
 import { fetchHomeContent } from '@/shopify/content/content.model';
-import { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Full Blast Firearm Cleaning System',
-  description:
-    'Full Blast firearm cleaning system, tactical gear, and outdoor gear.'
-};
 
 const Home: React.FC = async () => {
   const content = await fetchHomeContent();
@@ -45,8 +38,7 @@ const Home: React.FC = async () => {
           SHOP NOW
         </Button>
       </ImageWithText>
-      {/* Commented out but left in for future use per client request */}
-      {/* <RewardsBanner /> */}
+      {/* <RewardsBanner /> // Commented out but left in for future use per client request */}
       <ProductGallery
         title='TOP PRODUCTS'
         subtitle='From our full kit to any piece or part, you are sure to find what you
