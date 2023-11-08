@@ -6,7 +6,7 @@ import { NextRequest } from 'next/server';
 export const POST = async (req: NextRequest) => {
   const data = await req.text();
 
-  console.log({ data });
+  console.log('Webhook received...')
   const hmacHeader = req.headers.get('X-Shopify-Hmac-Sha256');
   const digest = crypto
     .createHmac(
@@ -17,6 +17,8 @@ export const POST = async (req: NextRequest) => {
     .digest(process.env.HASH_HMAC_ENCODING! as crypto.BinaryToTextEncoding);
   
   if (hmacHeader === digest) {
+    console.log('Webhook validated...')
+    console.log('products cache updating.')
     revalidateTag(CACHE_TAG_PRODUCTS);
     return new Response(null, { status: 200 });
   } else {
