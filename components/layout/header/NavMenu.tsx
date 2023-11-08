@@ -86,7 +86,7 @@ const NavMenu: React.FC = () => {
             )}
             <NavIcon
               variants={[IoPersonOutline, IoPerson]}
-              href='/account'
+              href='https://full-blast-gear.myshopify.com/account'
               styles='hidden lg:block'
             />
             <Cart />
@@ -154,7 +154,9 @@ const NavLink: React.FC<NavLinkProps> = ({ link, styles }) => {
         </Link>
       </li>
       <div
-        className={`h-1.5 bg-secondary rounded-full ${isActive ? 'block' : 'hidden'}`}
+        className={`h-1.5 bg-secondary rounded-full ${
+          isActive ? 'block' : 'hidden'
+        }`}
       />
     </div>
   );
@@ -172,6 +174,7 @@ export const NavIcon: React.FC<NavIconProps> = ({
   return (
     <Link
       href={href ?? ''}
+      target={href?.includes('https://') ? '_blank' : undefined}
       prefetch={href !== undefined}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
