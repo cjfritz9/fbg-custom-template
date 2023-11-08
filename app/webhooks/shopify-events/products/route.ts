@@ -7,9 +7,6 @@ import { Readable } from 'stream';
 
 export const POST = async (req: NextRequest) => {
   const payload = await req.json();
-  const text = await req.text();
-
-  console.log({ text });
 
   console.log({ payload });
   console.log({ headers: req.headers.get('X-Shopify-Hmac-Sha256') });
