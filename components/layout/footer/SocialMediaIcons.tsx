@@ -31,7 +31,7 @@ const SocialMediaIcon: React.FC<SocialMediaIconProps> = ({
   children
 }) => {
   return (
-    <Link prefetch={false} href={link}>
+    <Link prefetch={false} href={link} target='_blank'>
       {children}
     </Link>
   );

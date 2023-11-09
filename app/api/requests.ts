@@ -51,7 +51,7 @@ export const getPaginatedProducts = cache(
 );
 
 export const getProductByHandle = cache(
-  async (handle: string): Promise<FormattedProduct> => {
+  async (handle: string): Promise<FormattedProduct | undefined> => {
     const response = await fetch(
       `${process.env.BASE_API_URL}/products/${handle}`,
       {
@@ -60,22 +60,25 @@ export const getProductByHandle = cache(
         }
       }
     );
-    const result = await response.json();
 
-    return result;
+    if (response) {
+      const result = await response.json();
+      return result;
+    }
   }
 );
 
 export const getProductsByTag = cache(
-  async (tag: FilterMethods): Promise<FormattedProductResponse> => {
+  async (tag: FilterMethods): Promise<FormattedProductResponse | undefined> => {
     const response = await fetch(`/api/products/tags/${tag}`, {
       next: {
         tags: [CACHE_TAG_PRODUCTS]
       }
     });
-    const results = await response.json();
-
-    return results;
+    if (response) {
+      const results = await response.json();
+      return results;
+    }
   }
 );
 
@@ -102,6 +105,7 @@ export const getReviewsByProductHandle = cache(
         }
       }
     );
+
     const results = await response.json();
 
     return results;

@@ -11,11 +11,11 @@ const ProductPage: React.FC<ProductMetadata> = async ({
   params: { handle }
 }) => {
   const product = await getProductByHandle(handle);
-  const { images } = product;
 
   if (!product) {
     return notFound();
   }
+  const { images } = product;
 
   return (
     <main>
