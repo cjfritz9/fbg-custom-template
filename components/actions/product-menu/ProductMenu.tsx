@@ -15,7 +15,9 @@ const ProductMenu: React.FC<ProductMenuProps> = ({
 
   const handleFilterClick = async (option: FilterMethods) => {
     onLoading(true);
-    const { products, pageInfo } = await getProductsByTag(option);
+    const response = await getProductsByTag(option);
+    if (!response) return;
+    const { products, pageInfo } = response;
     onUpdateProducts(products, pageInfo);
     router.push('/shop?page=1');
     onLoading(false);

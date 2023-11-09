@@ -11,7 +11,6 @@ export const GET = async (
   try {
     const result = await fetchProductByHandle(handle);
     return NextResponse.json(result);
-    
   } catch (error) {
     console.log({ error });
     return NextResponse.json(null)

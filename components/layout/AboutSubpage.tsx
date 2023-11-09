@@ -29,7 +29,7 @@ const OurStory: React.FC = () => {
             Full Blast Gear’s Story
           </small>
         </div>
-        <div className='flex flex-col-reverse lg:flex-row gap-24'>
+        <div className='flex flex-col-reverse lg:flex-row gap-6 lg:gap-24'>
           <div className='flex flex-col gap-4'>
             <p>
               Steve, the founder of Full Blast Gear as been a firearms

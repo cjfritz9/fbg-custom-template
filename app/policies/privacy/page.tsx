@@ -149,6 +149,7 @@ const PrivacyPage: React.FC = () => {
             more about Google Analytics’ use of this data, please visit:
           </p>
           <Link
+            target='_blank'
             href='https://marketingplatform.google.com/about/analytics/'
             className='underline break-all'
           >
@@ -158,6 +159,7 @@ const PrivacyPage: React.FC = () => {
             To opt out of Google Analytics for display advertising or customize
             Google display network ads, visit the{' '}
             <Link
+              target='_blank'
               href='https://adssettings.google.com/authenticated'
               className='underline break-all'
             >
@@ -182,6 +184,7 @@ const PrivacyPage: React.FC = () => {
           </p>
           <p>
             <Link
+              target='_blank'
               href='http://optout.networkadvertising.org/#!/'
               className='underline break-all'
             >
@@ -190,6 +193,7 @@ const PrivacyPage: React.FC = () => {
           </p>
           <p>
             <Link
+              target='_blank'
               href='http://optout.aboutads.info/#!/'
               className='underline break-all'
             >
@@ -198,6 +202,7 @@ const PrivacyPage: React.FC = () => {
           </p>
           <p>
             <Link
+              target='_blank'
               href='http://www.youronlinechoices.eu/'
               className='underline break-all'
             >
@@ -229,6 +234,7 @@ const PrivacyPage: React.FC = () => {
             mechanisms listed above. However, We do not currently recognize or
             respond to browser-initiated DNT signals. Please visit the{' '}
             <Link
+              target='_blank'
               href='https://allaboutdnt.com/'
               className='underline break-all'
             >
