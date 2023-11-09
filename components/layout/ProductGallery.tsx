@@ -32,6 +32,7 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({
   useEffect(() => {
     (async () => {
       const response = await getProductsByTag(productsTag);
+      if (!response) return;
       const { products: taggedProducts } = response;
       setProducts(taggedProducts.slice(0, length));
     })();
