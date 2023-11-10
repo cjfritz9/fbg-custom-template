@@ -195,23 +195,25 @@ export const Review: React.FC<ReviewProps> = ({ review }) => {
           {isExpanded ? review.body : truncatedBody}
         </p>
       </div>
-      <div>
-        {!isExpanded ? (
-          <p
-            className='text-blue-700 font-semibold mt-4 cursor-pointer'
-            onClick={() => setIsExpanded(true)}
-          >
-            Read More
-          </p>
-        ) : (
-          <p
-            className='text-blue-700 font-semibold mt-4 cursor-pointer'
-            onClick={() => setIsExpanded(false)}
-          >
-            Show Less
-          </p>
-        )}
-      </div>
+      {review.body.length > 384 && (
+        <div>
+          {!isExpanded ? (
+            <p
+              className='text-blue-700 font-semibold mt-4 cursor-pointer'
+              onClick={() => setIsExpanded(true)}
+            >
+              Read More
+            </p>
+          ) : (
+            <p
+              className='text-blue-700 font-semibold mt-4 cursor-pointer'
+              onClick={() => setIsExpanded(false)}
+            >
+              Show Less
+            </p>
+          )}
+        </div>
+      )}
     </div>
   );
 };
