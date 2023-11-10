@@ -5,17 +5,21 @@ import React, { Fragment, useContext, useEffect, useState } from 'react';
 import ReviewStars from '../UI/ReviewStars';
 import Border from './Border';
 import Button from '../actions/Button';
-import { IoBookmarkOutline } from 'react-icons/io5';
 import { Listbox, Transition } from '@headlessui/react';
 import {
   HiChevronUpDown,
-  HiOutlineCheck,
   HiOutlineCheckBadge
 } from 'react-icons/hi2';
 import Accordion from '../actions/Accordion';
 import { CartContext } from '@/context/CartContext';
 import { CartInterface } from '@/@types/shop';
 
+/** Implements Listbox from '@headlessui/react'
+ * 
+ * Uses listbox conditionally when a product has more than one variant
+ *
+ * https://headlessui.com/react/listbox
+ */
 const ProductPanel: React.FC<ProductPanelProps> = ({ product }) => {
   const [variant, setVariant] = useState(
     product.variants ? product.variants[0].title : 'Default Title'

@@ -7,12 +7,8 @@ import SearchBar from '../../actions/SearchBar';
 import Logo from '../../UI/Logo';
 import { NavIconProps, NavLinkProps } from '@/@types/props';
 import {
-  IoBag,
-  IoBagOutline,
   IoCall,
   IoCallOutline,
-  IoCart,
-  IoCartOutline,
   IoCloseSharp,
   IoMenuSharp,
   IoPerson,

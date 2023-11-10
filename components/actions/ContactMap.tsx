@@ -1,7 +1,7 @@
 'use client';
 
 import { ContactLinkProps } from '@/@types/props';
-import React, { PropsWithChildren, useState } from 'react';
+import React, { useState } from 'react';
 import { PiMapPinLineBold } from 'react-icons/pi';
 import { RiMailLine, RiPhoneLine } from 'react-icons/ri';
 

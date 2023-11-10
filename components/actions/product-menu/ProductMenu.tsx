@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { ProductMenuProps } from '@/@types/props';
-import { FilterMethods, SortMethods } from '@/@types/shop';
+import { FilterMethods } from '@/@types/shop';
 import { getProductsByTag } from '@/app/api/requests';
 import ProductMenuGroup from './ProductMenuGroup';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 const ProductMenu: React.FC<ProductMenuProps> = ({
   onUpdateProducts,

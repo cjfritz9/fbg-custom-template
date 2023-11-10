@@ -1,5 +1,3 @@
-import ProductCard from "@/components/layout/ProductCard";
-
 const API_URL = process.env.JUDGEME_API_URL!;
 const SHOP_DOMAIN = process.env.SHOPIFY_SHOP_NAME!;
 const TOKEN = process.env.JUDGEME_TOKEN!;
