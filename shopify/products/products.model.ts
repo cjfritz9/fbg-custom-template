@@ -188,6 +188,7 @@ export const fetchProductByHandle = async (handle: string) => {
           currencyCode
         }
       }
+      tags
       metafields(first: 2, namespace: "reviews") {
         nodes {
           key

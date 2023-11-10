@@ -11,11 +11,8 @@ import {
   ProductsByQueryResponse,
   ProductsResponse,
   QueryResult,
-  ShopifyImage
 } from '@/@types/api';
 import { FormattedProduct } from '@/@types/api';
-import { linkSync } from 'fs';
-import { title } from 'process';
 
 // ADMIN FUNCTIONS
 
@@ -205,6 +202,7 @@ export const formatProductResponse = (
     specs: JSON.parse(rawProductData.specs?.value ?? '[]'),
     images: rawProductData.images.nodes,
     minPrice: rawProductData.priceRangeV2.minVariantPrice.amount,
+    tags: rawProductData.tags,
     reviews: {
       rating,
       reviewCount

@@ -1,19 +1,33 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import { ProductReviewsProps, ReviewProps } from '@/@types/props';
+import {
+  NewReviewModalProps,
+  ProductReviewsProps,
+  ReviewProps
+} from '@/@types/props';
 import Border from './Border';
 import ReviewStars from '../UI/ReviewStars';
 import { getReviewsByProductHandle } from '@/app/api/requests';
 import useIsClient from '@/lib/hooks/useIsClient';
+import Button from '../actions/Button';
+import { Dialog } from '@headlessui/react';
+import NewReviewForm from '../actions/NewReviewForm';
 
-const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
+const ProductReviews: React.FC<ProductReviewsProps> = ({
+  product,
+  reviews
+}) => {
   const [reviewsList, setReviewsList] = useState([]);
+  const [visibleReviews, setVisibleReviews] = useState([]);
   const [pagination, setPagination] = useState({
     currentPage: 1,
-    perPage: 3
+    perPage: 3,
+    totalPages: 1
   });
-  const [totalPages, setTotalPages] = useState(0);
+  const [showForm, setShowForm] = useState(false);
+  const [firstRender, setFirstRender] = useState(true);
+  const reviewsTopRef = useRef<HTMLDivElement>(null);
 
   const isClient = useIsClient();
 
@@ -21,31 +35,66 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
     if (+value > 10 || +value < 1) return;
     setPagination((prev) => ({
       ...prev,
-      perPage: +value
+      perPage: +value,
+      totalPages: Math.ceil(reviewsList.length / +value)
     }));
   };
 
+  const handleClick = (direction: 'prev' | 'next') => {
+    if (direction === 'prev') {
+      setPagination((prev) => ({ ...prev, currentPage: prev.currentPage - 1 }));
+    } else {
+      setPagination((prev) => ({ ...prev, currentPage: prev.currentPage + 1 }));
+    }
+  };
+
+  const handleToggleReviewForm = () => {
+    setShowForm((prev) => !prev);
+  };
+
   useEffect(() => {
-    if (reviews && handle) {
+    if (reviews && product.handle) {
       (async () => {
-        const response = await getReviewsByProductHandle(
-          handle,
-          pagination.currentPage,
-          pagination.perPage
-        );
+        const response = await getReviewsByProductHandle(product.handle);
         if (response) {
           setReviewsList(response);
+          setVisibleReviews(response.slice(0, 3));
         }
       })();
-      setTotalPages(Math.ceil(reviews.reviewCount / pagination.perPage));
     }
-  }, [handle, reviews, pagination]);
+  }, [product.handle, reviews]);
+
+  useEffect(() => {
+    setVisibleReviews(
+      reviewsList.slice(
+        (pagination.currentPage - 1) * pagination.perPage,
+        pagination.currentPage * pagination.perPage
+      )
+    );
+    if (!firstRender) {
+      reviewsTopRef.current!.scrollIntoView();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [reviewsList, pagination]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setFirstRender(false);
+    }, 5000);
+  }, []);
 
   if (!isClient) return null;
 
   return (
     <section className='flex flex-col text-primary py-12'>
       <Border />
+      {
+        <NewReviewModal
+          product={product}
+          showForm={showForm}
+          onToggleReviewForm={handleToggleReviewForm}
+        />
+      }
       <div className='flex flex-col py-12 gap-2'>
         <p className='font-semibold text-4xl'>Product Reviews</p>
         <div className='flex gap-4 items-baseline justify-left'>
@@ -53,12 +102,17 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
           <ReviewStars reviews={reviews} styles='!text-2xl' />
         </div>
       </div>
-      <Border />
-      <div className='py-12'>
-        <p className='font-semibold opacity-75'>{`${reviews.reviewCount} Reviews`}</p>
+      <div ref={reviewsTopRef}>
+        <Border />
       </div>
-      {reviewsList.length > 0 ? (
-        reviewsList.map((review: any) => (
+      <div className='flex w-full justify-between py-12'>
+        <p className='font-semibold opacity-75'>{`${reviews.reviewCount} Reviews`}</p>
+        <div onClick={handleToggleReviewForm}>
+          <Button styles='btn-primary'>LEAVE A REVIEW</Button>
+        </div>
+      </div>
+      {visibleReviews.length > 0 ? (
+        visibleReviews.map((review: any) => (
           <Review key={review.id} review={review} />
         ))
       ) : (
@@ -66,28 +120,31 @@ const ProductReviews: React.FC<ProductReviewsProps> = ({ handle, reviews }) => {
       )}
       <Border />
       <div className='flex flex-col xl:flex-row justify-between py-4 gap-4 items-center'>
-        <div></div>
-        <div className='flex items-center gap-4'>
-          {Array.from(new Array(totalPages < 10 ? totalPages : 10)).map(
-            (_, i) => (
-              <div
-                key={i}
-                className={
-                  i + 1 === pagination.currentPage
-                    ? 'font-bold text-blue-600 pointer-events-none'
-                    : 'cursor-pointer hover:font-bold'
-                }
-                onClick={() =>
-                  setPagination((prev) => ({
-                    ...prev,
-                    currentPage: i + 1
-                  }))
-                }
-              >
-                {i + 1}
-              </div>
-            )
-          )}
+        <div>
+          <div />
+        </div>
+        <div className='flex items-center gap-4 font-semibold'>
+          <button
+            className={`btn bg-transparent border-0 hover:bg-transparent text-xl ${
+              pagination.currentPage === 1 ? 'btn-disabled !bg-opacity-0' : ''
+            }`}
+            onClick={() => handleClick('prev')}
+          >
+            «
+          </button>
+          <div className='pointer-events-none text-blue-500'>
+            {pagination.currentPage}
+          </div>
+          <button
+            className={`btn bg-transparent border-0 hover:bg-transparent text-xl ${
+              pagination.totalPages <= pagination.currentPage
+                ? 'btn-disabled !bg-opacity-0'
+                : ''
+            }`}
+            onClick={() => handleClick('next')}
+          >
+            »
+          </button>
         </div>
         <div className='flex items-center gap-4'>
           <p>Reviews Per Page:</p>
@@ -107,7 +164,8 @@ export default ProductReviews;
 
 export const Review: React.FC<ReviewProps> = ({ review }) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const truncatedBody = review.body.slice(0, 384) + '...';
+  const truncatedBody =
+    review.body.length > 384 ? review.body.slice(0, 384) + '...' : review.body;
   const reviewBodyRef = useRef<HTMLParagraphElement>(null);
 
   return (
@@ -154,6 +212,40 @@ export const Review: React.FC<ReviewProps> = ({ review }) => {
           </p>
         )}
       </div>
+    </div>
+  );
+};
+
+const NewReviewModal: React.FC<NewReviewModalProps> = ({
+  product,
+  showForm,
+  onToggleReviewForm
+}) => {
+  if (!showForm) return null;
+
+  return (
+    <div className='fixed inset-0 flex w-screen items-center justify-center p-4'>
+      <Dialog
+        open={showForm}
+        onClose={onToggleReviewForm}
+        className='relative z-50 text-primary m-12'
+      >
+        <div className='fixed inset-0 bg-black/30' aria-hidden='true' />
+        <div className='fixed inset-0 flex w-screen items-center justify-center p-4'>
+          <Dialog.Panel className='flex min-w-[360px] flex-col gap-4 mx-auto p-4 sm:p-12 max-w-2xl rounded bg-white'>
+            <div className='flex flex-col sm:flex-row gap-6 sm:gap-24 justify-between items-baseline'>
+              <Dialog.Title className='text-2xl'>
+                Leave Your Review
+              </Dialog.Title>
+              <Dialog.Title className='text-sm'>{product.title}</Dialog.Title>
+            </div>
+            <NewReviewForm
+              onClose={onToggleReviewForm}
+              handle={product.handle}
+            />
+          </Dialog.Panel>
+        </div>
+      </Dialog>
     </div>
   );
 };

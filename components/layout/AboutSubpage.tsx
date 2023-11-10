@@ -29,7 +29,7 @@ const OurStory: React.FC = () => {
             Full Blast Gear’s Story
           </small>
         </div>
-        <div className='flex flex-col-reverse lg:flex-row gap-24'>
+        <div className='flex flex-col-reverse lg:flex-row gap-6 lg:gap-24'>
           <div className='flex flex-col gap-4'>
             <p>
               Steve, the founder of Full Blast Gear as been a firearms
@@ -77,13 +77,13 @@ const OurStory: React.FC = () => {
               has been a priority.
             </p>
           </div>
-          <div className='flex flex-col gap-2 lg:h-[640px] w-full lg:min-w-[640px]'>
+          <div className='flex flex-col gap-2 lg:h-[480px] w-full lg:min-w-[640px]'>
             <Image
               src={steveHsImage}
               alt='Founder of Full Blast Gear, Stephen Hoodecheck'
-              height={640}
-              width={640}
-              className='object-cover object-center lg:min-w-[640px]'
+              height={480}
+              width={480}
+              className='object-cover object-center lg:min-w-[480px]'
             />
             <p className='text-xl font-semibold'>Stephen Hoodecheck</p>
             <p className='text-sm -mt-4 italic'>Founder, Full Blast Gear</p>

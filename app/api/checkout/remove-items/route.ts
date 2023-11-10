@@ -29,8 +29,6 @@ export const PATCH = async (req: NextRequest) => {
     return NextResponse.json('No line items provided');
   }
 
-  console.log(checkoutId, payload)
-
   const checkoutRes = await storeClient.checkout.updateLineItems(
     checkoutId,
     payload.lineItems

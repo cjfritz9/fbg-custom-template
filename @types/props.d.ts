@@ -2,7 +2,7 @@ import { footerLinks, navLinks } from '@/lib/static/links';
 import { StaticImageData } from 'next/image';
 import React, { PropsWithChildren } from 'react';
 import { FormattedProduct, Product, ShopifyImage } from './api';
-import { FilterMethods, SortMethods } from './shop';
+import { FilterMethods, ProductVariant, SortMethods } from './shop';
 import { IconType } from 'react-icons';
 import { CheckoutLineItem } from 'shopify-buy';
 
@@ -118,6 +118,18 @@ export interface ProductCardProps {
   };
 }
 
+export interface ProductImagesProps {
+  images: ShopifyImage[];
+}
+
+export interface ThumbnailImagesProps extends ProductImagesProps {
+  onUpdateImage: (index: number) => void;
+}
+
+export interface PrimaryImageProps extends ProductImagesProps {
+  currentImage: ShopifyImage;
+}
+
 /**
  * @type {title} Title to display on the gallery heading
  * @type {subtitle} Short phrase to display beneath the title and link
@@ -140,9 +152,31 @@ export interface ProductPanelProps {
   product: FormattedProduct;
 }
 
+export interface ProductVariantsProps {
+  variants: ProductVariant[] | undefined;
+  selectedVariant: ProductVariant;
+  onUpdateVariant: (variant: any) => void;
+}
+
 export interface ProductReviews {
   rating: number;
   reviewCount: number;
+}
+
+export interface NewReviewModalProps {
+  product: FormattedProduct;
+  showForm: boolean;
+  onToggleReviewForm: () => void;
+}
+
+export interface NewReviewFormProps {
+  handle: string;
+  onClose: () => void;
+}
+
+export interface NewReviewRatingProps {
+  rating: number;
+  onUpdateRating: (rating: number) => void;
 }
 
 export interface LineItemProps {
@@ -156,7 +190,7 @@ export interface ReviewStarsProps {
 }
 
 export interface ProductReviewsProps {
-  handle: ShopifyHandle;
+  product: FormattedProduct;
   reviews: ProductReviews;
 }
 

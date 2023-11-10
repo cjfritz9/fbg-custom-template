@@ -6,6 +6,22 @@ import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import React from 'react';
 
+export const generateMetadata = async ({
+  params: { handle }
+}: {
+  params: { handle: string };
+}) => {
+  const content = await fetchBlogPageContent(handle);
+
+  if (!content) {
+    return notFound();
+  }
+
+  return {
+    title: `${content.title}`
+  };
+};
+
 const BlogPage: React.FC<BlogMetadata> = async ({ params: { handle } }) => {
   const content = await fetchBlogPageContent(handle);
   if (!content) return notFound();

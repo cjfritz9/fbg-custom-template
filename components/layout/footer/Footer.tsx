@@ -16,10 +16,10 @@ const Footer: React.FC = () => {
         </div>
         <FooterLinks />
       </div>
-      <div className='bg-base-200 md:px-44 py-4'>
-        <p className='text-primary text-left text-sm'>
+      <div className='bg-base-200 md:px-44 p-4'>
+        <p className='text-primary text-left text-xs md:text-md'>
           © 2022 FULL BLAST ENTERPRISES, LLC. ALL RIGHTS RESERVED |{' '}
-          <Link href='https://cjfritz.dev' className='hover:underline'>ECOMMERCE DEVELOPMENT BY FRITZ DESIGN CO.</Link>
+          <Link href='https://cjfritz.dev' target='_blank' className='hover:underline'>ECOMMERCE DEVELOPMENT BY FRITZ DESIGN CO.</Link>
         </p>
       </div>
     </div>

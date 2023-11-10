@@ -3,12 +3,12 @@ import {
   FormattedProductResponse,
   QueryResult
 } from '@/@types/api';
-import { FilterMethods } from '@/@types/shop';
+import { FilterMethods, NewReviewData } from '@/@types/shop';
 import { cache } from 'react';
-import ShopifyBuy, {
-  CheckoutLineItem,
-  CheckoutLineItemUpdateInput
-} from 'shopify-buy';
+import ShopifyBuy from 'shopify-buy';
+
+export const CACHE_TAG_PRODUCTS = 'products';
+export const CACHE_TAG_METAOBJECTS = 'metaobjects';
 
 export const getHomeContent = cache(async () => {
   const response = await fetch(`/api/content/home`);
@@ -26,7 +26,11 @@ export const getAboutContent = cache(async () => {
 
 export const getProducts = cache(
   async (): Promise<FormattedProductResponse> => {
-    const response = await fetch(`/api/products`);
+    const response = await fetch(`/api/products`, {
+      next: {
+        tags: [CACHE_TAG_PRODUCTS]
+      }
+    });
     const results = await response.json();
 
     return results;
@@ -35,7 +39,11 @@ export const getProducts = cache(
 
 export const getPaginatedProducts = cache(
   async (query: string): Promise<FormattedProductResponse> => {
-    const response = await fetch(`/api/products?${query}`);
+    const response = await fetch(`/api/products?${query}`, {
+      next: {
+        tags: [CACHE_TAG_PRODUCTS]
+      }
+    });
     const results = await response.json();
 
     return results;
@@ -43,28 +51,44 @@ export const getPaginatedProducts = cache(
 );
 
 export const getProductByHandle = cache(
-  async (handle: string): Promise<FormattedProduct> => {
+  async (handle: string): Promise<FormattedProduct | undefined> => {
     const response = await fetch(
-      `${process.env.BASE_API_URL}/products/${handle}`
+      `${process.env.BASE_API_URL}/products/${handle}`,
+      {
+        next: {
+          tags: [CACHE_TAG_PRODUCTS]
+        }
+      }
     );
-    const result = await response.json();
 
-    return result;
+    if (response) {
+      const result = await response.json();
+      return result;
+    }
   }
 );
 
 export const getProductsByTag = cache(
-  async (tag: FilterMethods): Promise<FormattedProductResponse> => {
-    const response = await fetch(`/api/products/tags/${tag}`);
-    const results = await response.json();
-
-    return results;
+  async (tag: FilterMethods): Promise<FormattedProductResponse | undefined> => {
+    const response = await fetch(`/api/products/tags/${tag}`, {
+      next: {
+        tags: [CACHE_TAG_PRODUCTS]
+      }
+    });
+    if (response) {
+      const results = await response.json();
+      return results;
+    }
   }
 );
 
 export const getProductsByQuery = cache(
   async (query: string): Promise<QueryResult[]> => {
-    const response = await fetch(`/api/products/search?query=${query}`);
+    const response = await fetch(`/api/products/search?query=${query}`, {
+      next: {
+        tags: [CACHE_TAG_PRODUCTS]
+      }
+    });
     const results = await response.json();
 
     return results;
@@ -72,10 +96,31 @@ export const getProductsByQuery = cache(
 );
 
 export const getReviewsByProductHandle = cache(
-  async (handle: string, page = 1, perPage = 3): Promise<any> => {
+  async (handle: string): Promise<any> => {
     const response = await fetch(
-      `/api/reviews?handle=${handle}&page=${page}&perPage=${perPage}`
+      `/api/reviews?handle=${handle}&page=1&perPage=1000`,
+      {
+        next: {
+          tags: [CACHE_TAG_PRODUCTS]
+        }
+      }
     );
+
+    const results = await response.json();
+
+    return results;
+  }
+);
+
+export const createReviewByProductHandle = cache(
+  async (reviewData: NewReviewData): Promise<any> => {
+    const response = await fetch(`/api/reviews?handle=${reviewData.handle}`, {
+      method: 'POST',
+      body: JSON.stringify(reviewData),
+      next: {
+        tags: [CACHE_TAG_PRODUCTS]
+      }
+    });
     const results = await response.json();
 
     return results;
@@ -145,7 +190,7 @@ export const updateItemsInCheckout = cache(
         body: JSON.stringify({ lineItems })
       }
     );
-    const result = await response.json()
+    const result = await response.json();
 
     return result;
   }

@@ -31,6 +31,7 @@ const FooterLinkGroup: React.FC<FooterLinkGroupProps> = ({ title, links }) => {
             prefetch={false}
             key={i}
             href={link.slug}
+            target={link.slug.includes('https://') ? '_blank' : undefined}
             className={`tab font-semibold px-0 text-primary text-opacity-70 !w-full h-fit text-left self-start ${
               i === activeIndex && 'tab-active text-secondary'
             }`}

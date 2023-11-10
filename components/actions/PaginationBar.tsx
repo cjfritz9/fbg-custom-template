@@ -36,7 +36,6 @@ const PaginationBar: React.FC<PaginationBarProps> = ({
 
   useEffect(() => {
     const paramsPage = params.get('page');
-    console.log(paramsPage);
     if (paramsPage && +paramsPage) {
       setPage(+paramsPage);
     }

@@ -11,6 +11,7 @@ import { FormattedProduct } from '@/@types/api';
 import { getProductsByTag } from '@/app/api/requests';
 import Image from 'next/image';
 import { ProductGalleryProps } from '@/@types/props';
+import Border from './Border';
 
 /** Uses Swiper.js under the hood, making use of
  *  the Autoplay and Pagination modules, fully
@@ -26,12 +27,14 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({
   link
 }) => {
   const [products, setProducts] = useState<FormattedProduct[]>([]);
+  const [hoverData, setHoverData] = useState({ isHovered: false, index: 0 });
 
   useEffect(() => {
     (async () => {
       const response = await getProductsByTag(productsTag);
-      const { products: topProducts } = response;
-      setProducts(topProducts.slice(0, length));
+      if (!response) return;
+      const { products: taggedProducts } = response;
+      setProducts(taggedProducts.slice(0, length));
     })();
   }, [productsTag, length]);
 
@@ -65,30 +68,38 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({
             clickable: true
           }}
           modules={[Autoplay, Pagination]}
-          className='h-96 w-[100%] !overflow-x-visible'
+          className='h-fit w-[100%] !overflow-x-visible !pb-12'
         >
-          {products.map((product) => (
+          {products.map((product, i) => (
             <SwiperSlide
               key={product.handle}
-              className='md:!w-[33%] text-center relative flex items-center'
+              className='md:!w-[25%] text-center relative flex items-center bg-base-100'
+              onMouseEnter={() => setHoverData({ isHovered: true, index: i })}
+              onMouseLeave={() => setHoverData({ isHovered: false, index: 0 })}
             >
-              <Link
-                href={`shop/${product.handle}`}
-                prefetch={false}
-                className='w-full h-full'
-              >
-                <div className='absolute bg-gradient-to-t from-slate-300 via-35% via-transparent to-transparent w-full h-full'></div>
-                <p className='absolute w-full bottom-12 px-4 text-xl font-semibold text-accent'>
-                  {product.title}
-                </p>
-                <Image
-                  src={product.images[0].url}
-                  alt={product.images[0].altText}
-                  width={512}
-                  height={400}
-                  className='h-full object-cover object-bottom'
-                />
-              </Link>
+              <div>
+                <Link
+                  href={`shop/${product.handle}`}
+                  prefetch={false}
+                  className='w-full h-full mix-blend-multiply'
+                >
+                  <Image
+                    src={product.images[0].url}
+                    alt={product.images[0].altText}
+                    width={512}
+                    height={400}
+                    className={`h-full object-cover object-center border-b ${
+                      hoverData.isHovered && hoverData.index === i
+                        ? 'border-b-secondary'
+                        : ' border-b-transparent'
+                    }`}
+                  />
+                  <Border />
+                  <p className='h-24 flex items-center justify-center w-full bg-transparent px-4 text-xl font-semibold text-accent'>
+                    {product.title}
+                  </p>
+                </Link>
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>

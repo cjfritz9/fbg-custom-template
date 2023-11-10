@@ -1,6 +1,13 @@
 import Accordion from '@/components/actions/Accordion';
 import Border from '@/components/layout/Border';
+import { Metadata } from 'next';
 import React from 'react';
+
+export const metadata: Metadata = {
+  title: { default: 'Warranties', template: '%s | Full Blast Gear' },
+  description:
+    "Access valuable information and resources on the Information page at Full Blast Gear. Discover educational content, user guides, and more to help you make informed decisions about your firearm cleaning needs. At Full Blast Gear, we're dedicated to providing you with the knowledge you need for effective firearm maintenance."
+};
 
 const WarrantiesPage: React.FC = () => {
   return (

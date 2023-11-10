@@ -1,4 +1,11 @@
+import { Metadata } from 'next';
 import React from 'react';
+
+export const metadata: Metadata = {
+  title: { default: 'Cookies', template: '%s | Full Blast Gear' },
+  description:
+    'Understand our policies and commitments on the Policies page at Full Blast Gear. We value transparency, integrity, and your satisfaction. Learn about our privacy, return, and customer service policies to ensure a seamless experience with our unique firearm cleaning solutions.'
+};
 
 const CookiesPage: React.FC = () => {
   return (

@@ -1,10 +1,14 @@
+'use client';
+
 import { ProductCardProps } from '@/@types/props';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import Button from '../actions/Button';
 import ReviewStars from '../UI/ReviewStars';
 import Border from './Border';
+import { CartContext } from '@/context/CartContext';
+import { CartInterface } from '@/@types/shop';
 
 const ProductCard: React.FC<ProductCardProps> = ({
   priority,
@@ -15,36 +19,49 @@ const ProductCard: React.FC<ProductCardProps> = ({
   imageAlt,
   reviews
 }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const { checkout, addLineItem } = useContext(CartContext) as CartInterface;
+
   return (
-    <div className='card w-[20rem] md:w-[26rem] glass text-primary drop-shadow-md shadow-md'>
-      <figure>
-        <Image
-          priority={priority}
-          src={imageSrc}
-          alt={imageAlt}
-          width={500}
-          height={500}
-          className='object-cover w-full h-[254px]'
-        />
-      </figure>
-      <div className='card-body bg-base-100 items-start'>
-        <div className='h-36 w-full'>
-          <div className='flex justify-between'>
-            <p className='text-xl font-bold text-base-300'>${price}</p>
-            <ReviewStars reviews={reviews} />
+    <Link href={handle} className='grow'>
+      <div
+        className='card w-[20rem] md:w-[26rem] glass text-primary shadow-none hover:shadow-lg rounded-t-md'
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <figure>
+          <Image
+            priority={priority}
+            src={imageSrc}
+            alt={imageAlt}
+            width={500}
+            height={500}
+            className={`object-cover w-full h-[254px] transition-all duration-300 ${
+              isHovered ? 'scale-110' : ''
+            }`}
+          />
+        </figure>
+        <Border color='neutral' />
+        <div
+          className={`card-body bg-base-100 rounded-b-md items-start border-b-4 transition-colors duration-300 ${
+            isHovered ? 'border-b-secondary' : ' border-b-base-100'
+          }`}
+        >
+          <div className='h-36 w-full'>
+            <div className='flex justify-between'>
+              <p className='text-xl font-bold text-base-300'>${price}</p>
+              <ReviewStars reviews={reviews} />
+            </div>
+            <div className='py-2'></div>
+            <h2 className='card-title text-2xl'>{title}</h2>
           </div>
-          <div className='py-2'>
-            <Border color='neutral' />
+          <div className='card-actions w-full flex gap-4'>
+            <Button styles='btn-primary grow btn-outline'>View</Button>
           </div>
-          <h2 className='card-title text-2xl'>{title}</h2>
-        </div>
-        <div className='card-actions w-full'>
-          <Link href={handle} className='w-full'>
-            <Button styles='btn-primary min-w-full'>View</Button>
-          </Link>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

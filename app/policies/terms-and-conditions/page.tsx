@@ -1,5 +1,12 @@
+import { Metadata } from 'next';
 import Link from 'next/link';
 import React from 'react';
+
+export const metadata: Metadata = {
+  title: { default: 'Terms And Conditions', template: '%s | Full Blast Gear' },
+  description:
+    'Understand our policies and commitments on the Policies page at Full Blast Gear. We value transparency, integrity, and your satisfaction. Learn about our privacy, return, and customer service policies to ensure a seamless experience with our unique firearm cleaning solutions.'
+};
 
 const TermsAndConditionsPage: React.FC = () => {
   return (
@@ -441,6 +448,7 @@ const TermsAndConditionsPage: React.FC = () => {
             regulations, including without limitation the Export Administration
             Regulations: see{' '}
             <Link
+            target='_blank'
               href='https://www.bis.doc.gov/index.php/regulations/export-administration-regulations-ear'
               className='underline break-all'
             >
@@ -448,6 +456,7 @@ const TermsAndConditionsPage: React.FC = () => {
             </Link>
             ) and sanctions control programs of the United States (see{' '}
             <Link
+            target='_blank'
               href='https://www.treasury.gov/resource-center/sanctions/Programs/Pages/Programs.aspx'
               className='underline break-all'
             >
@@ -457,6 +466,7 @@ const TermsAndConditionsPage: React.FC = () => {
             prohibited party identified on any government export exclusion lists
             (see{' '}
             <Link
+              target='_blank'
               href='https://www.bis.doc.gov/index.php/policy-guidance/lists-of-parties-of-concern'
               className='underline break-all'
             >
@@ -532,7 +542,7 @@ const TermsAndConditionsPage: React.FC = () => {
           <p>
             ATTENTION CALIFORNIA RESIDENTS − PROPOSITION 65 WARNING.
             California’s{' '}
-            <Link href='https://www.p65warnings.ca.gov' className='underline break-all'>
+            <Link target='_blank' href='https://www.p65warnings.ca.gov' className='underline break-all'>
               Proposition 65
             </Link>{' '}
             (“Prop 65”) entitles California consumers to receive special
@@ -550,6 +560,7 @@ const TermsAndConditionsPage: React.FC = () => {
             California’s official governmental page on Prop 65 for more
             information:{' '}
             <Link
+              target='_blank'
               href='https://oehha.ca.gov/proposition-65'
               className='underline break-all'
             >

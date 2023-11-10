@@ -1,6 +1,13 @@
 'use client';
 
-import React, { ChangeEvent, useContext, useEffect, useState } from 'react';
+import React, {
+  ChangeEvent,
+  FocusEvent,
+  KeyboardEvent,
+  useContext,
+  useEffect,
+  useState
+} from 'react';
 import { NavIcon } from './header/NavMenu';
 import { CartInterface } from '@/@types/shop';
 import { CartContext } from '@/context/CartContext';
@@ -9,6 +16,7 @@ import { LineItemProps } from '@/@types/props';
 import Image from 'next/image';
 import Button from '../actions/Button';
 import Link from 'next/link';
+import { useDebounce } from 'use-debounce';
 
 const Cart: React.FC = () => {
   const { showCart, checkout, openCart, closeCart } = useContext(
@@ -109,12 +117,50 @@ const LineItem: React.FC<LineItemProps> = ({ item }) => {
     CartContext
   ) as CartInterface;
   const [isLoading, setIsLoading] = useState(false);
+  const [updateSuccessful, setUpdateSuccessful] = useState(false);
+  const [quantity, setQuantity] = useState(item.quantity);
+  const [debouncedQuantity] = useDebounce(quantity, 400);
 
-  const handleChange = async (e: ChangeEvent<HTMLInputElement>) => {
-    setIsLoading(true);
-    await updateLineItem(checkout!.id, [{ id: item.id, quantity: +e.target.value }]);
-    setIsLoading(false);
+  const handleFocus = (e: FocusEvent<HTMLInputElement>) => {
+    e.target.select();
   };
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (quantity !== 1) {
+      setIsLoading(true);
+    }
+    if (e.key === 'Backspace') {
+      setQuantity(1);
+      return e.preventDefault();
+    }
+  };
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setQuantity(+e.target.value);
+    setIsLoading(true);
+  };
+
+  const showSuccess = () => {
+    setUpdateSuccessful(true);
+    setTimeout(() => {
+      setUpdateSuccessful(false);
+    }, 1200);
+  };
+
+  useEffect(() => {
+    (async () => {
+      await updateLineItem(checkout!.id, [
+        { id: item.id, quantity: debouncedQuantity }
+      ]);
+    })();
+    setIsLoading(false);
+    showSuccess();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedQuantity]);
+
+  useEffect(() => {
+    setQuantity(item.quantity);
+  }, [item.quantity]);
 
   return (
     <li className='flex w-full h-18 gap-8 mb-8'>
@@ -139,14 +185,25 @@ const LineItem: React.FC<LineItemProps> = ({ item }) => {
           <div className='flex gap-2 items-baseline'>
             <p>Qty:</p>
             <input
-              value={`${item.quantity}`}
+              value={quantity}
               min={1}
               type='number'
               className='bg-base-100 w-12 text-center'
+              onFocus={handleFocus}
+              onKeyDown={handleKeyDown}
               onChange={handleChange}
             />
             {isLoading && (
               <div className='loading loading-spinner loading-xs' />
+            )}
+            {!isLoading && (
+              <div
+                className={`text-green-600 opacity-${
+                  updateSuccessful ? 100 : 0
+                } transition-opacity duration-300`}
+              >
+                ✔️
+              </div>
             )}
           </div>
           <div
