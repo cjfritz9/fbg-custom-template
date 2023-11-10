@@ -1,11 +1,4 @@
-<<<<<<< HEAD
-import { fetchReviewsByProductHandle } from '@/judgedotme/utils';
-=======
-import {
-  fetchReviewsByProductHandle,
-  postReviewByProductHandle
-} from '@/judge.me/utils';
->>>>>>> refs/remotes/origin/main
+import { fetchReviewsByProductHandle, postReviewByProductHandle } from '@/judgedotme/utils';
 import { NextRequest, NextResponse } from 'next/server';
 
 export const GET = async (req: NextRequest) => {

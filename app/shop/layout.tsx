@@ -1,4 +1,3 @@
-import Border from '@/components/layout/Border';
 import { Metadata } from 'next';
 import React, { PropsWithChildren } from 'react';
 
