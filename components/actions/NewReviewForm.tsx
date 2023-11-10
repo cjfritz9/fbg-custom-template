@@ -6,10 +6,9 @@ import {
   postCaptchaResult
 } from '@/app/api/requests';
 import { useReCaptcha } from 'next-recaptcha-v3';
-import { IoStar, IoStarHalf, IoStarOutline } from 'react-icons/io5';
+import { IoStar, IoStarOutline } from 'react-icons/io5';
 import React, { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { NewReviewFormProps, NewReviewRatingProps } from '@/@types/props';
-import { postReviewByProductHandle } from '@/judge.me/utils';
 
 const formFields: NewReviewFormFields = {
   name: '',
