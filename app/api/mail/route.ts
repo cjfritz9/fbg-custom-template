@@ -45,9 +45,27 @@ export const POST = async (req: NextRequest) => {
     transporter.sendMail(
       {
         from: 'noreply.fullblastgear@gmail.com',
-        to: 'support@fullblastgear.com',
+        to: process.env.MAILER_RECIPIENT!,
         subject: body.subject,
-        html: `<p>${body.message}</p>`
+        html: `
+        <div>
+          <h2>New Contact Form Response for Full Blast Gear</h3>
+          <br/>
+          <h3>From:</h3>
+          <p>${body.firstName} ${body.lastName}</p>
+          <p>${body.email}</p>
+          ${
+            body.orderNumber
+              ? `
+            <h3>Order Number:</h3>
+            <p>${body.orderNumber}</p>
+            `
+              : ''
+          }
+          <h3>Message:</h3>
+          <p>${body.message}</p>
+        </div>
+        `
       },
       (err, info) => {
         if (err) {
