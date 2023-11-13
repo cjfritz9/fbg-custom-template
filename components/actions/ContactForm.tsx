@@ -1,7 +1,7 @@
 'use client';
 
 import { ContactFormFields } from '@/@types/shop';
-import { postCaptchaResult } from '@/app/api/requests';
+import { postCaptchaResult, postMail } from '@/app/api/requests';
 import { useReCaptcha } from 'next-recaptcha-v3';
 import Script from 'next/script';
 import React, { ChangeEvent, useCallback, useState } from 'react';
@@ -24,29 +24,39 @@ const ContactForm: React.FC = () => {
   const handleSubmit = useCallback(
     async (e: React.FormEvent) => {
       e.preventDefault();
-      
+
       const validationResponse = validateForm(fields);
-      
+
       if (!validationResponse.isValid) {
         setError(validationResponse.message);
         return;
       }
       setIsSubmitting(true);
-      
+
       const token = await executeRecaptcha('form_submit');
 
-      const result = await postCaptchaResult(token);
+      const captchaResult = await postCaptchaResult(token);
+
+      const mailResult = await postMail(fields);
+      console.log(mailResult)
 
       setIsSubmitting(false);
 
-      if (!result.success) {
+      if (!captchaResult.success) {
         setError(
           '❌ reCAPTCHA error: use the email link beneath the map to contact us'
         );
         return;
       }
 
-      if (result.score < 0.5) {
+      if (!mailResult) {
+        setError(
+          '❌ Mail error: We had an issue sending your message - please use the email link beneath the map to contact us'
+
+        )
+      }
+
+      if (captchaResult.score < 0.5) {
         setError('reCAPTCHA validation failed - try again');
         return;
       } else {
@@ -141,8 +151,15 @@ const ContactForm: React.FC = () => {
           </div>
           <div className='h-6'>{error || success}</div>
         </div>
-        <button className='btn btn-primary w-fit mt-2 min-w-[90px]' type='submit'>
-          {isSubmitting ? <div className='loading loading-spinner loading-md' /> : 'SUBMIT'}
+        <button
+          className='btn btn-primary w-fit mt-2 min-w-[90px]'
+          type='submit'
+        >
+          {isSubmitting ? (
+            <div className='loading loading-spinner loading-md' />
+          ) : (
+            'SUBMIT'
+          )}
         </button>
       </div>
     </form>
@@ -157,7 +174,7 @@ const validateForm = (fields: ContactFormFields) => {
         return {
           isValid: false,
           message: '❌ Please enter a valid Email Address'
-        }
+        };
       }
     }
     if (fields[field as keyof typeof fields].length === 0) {

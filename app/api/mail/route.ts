@@ -3,24 +3,29 @@ import nodemailer from 'nodemailer';
 
 export const POST = async (req: NextRequest) => {
   const body = await req.json();
+  console.log(body);
   const mailerConfig = {
     service: process.env.MAILER_SERVICE!,
-    host: process.env.MAILER_HOST!,
-    secure: true,
-    secureConnection: false,
-    tls: {
-      ciphers: process.env.MAILER_TLS_CIPHERS!
-    },
-    requireTLS: true,
-    port: +process.env.MAILER_PORT!,
+    // host: process.env.MAILER_HOST!,
+    // secure: true,
+    // secureConnection: false,
+    // tls: {
+    //   ciphers: process.env.MAILER_TLS_CIPHERS!
+    // },
+    // requireTLS: true,
+    // port: +process.env.MAILER_PORT!,
     debug: true,
     auth: {
-      user: 'no-reply@fullblastgear.com',
-      pass: '...'
+      type: 'OAuth2',
+      user: process.env.MAILER_USER!,
+      pass: process.env.MAILER_PASS!,
+      clientId: process.env.MAILER_OAUTH_CLIENT_ID!,
+      clientSecret: process.env.MAILER_OAUTH_CLIENT_SECRET!,
+      refreshToken: process.env.MAILER_OAUTH_REFRESH_TOKEN!
     }
   };
+  //@ts-ignore
   const transporter = nodemailer.createTransport(mailerConfig);
-
   await new Promise((resolve, reject) => {
     transporter.verify((error, success) => {
       if (error) {
@@ -36,10 +41,10 @@ export const POST = async (req: NextRequest) => {
   const response = await new Promise((resolve, reject) => {
     transporter.sendMail(
       {
-        from: 'no-reply@fullblastgear.com',
-        to: body.recipient,
+        from: 'noreply.fullblastgear@gmail.com',
+        to: 'noreply.fullblastgear@gmail.com',
         subject: 'New Web Support Request',
-        text: `<p>${body.text}</p>`
+        text: `<p>${body.message}</p>`
       },
       (err, info) => {
         if (err) {

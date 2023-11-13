@@ -206,3 +206,15 @@ export const postCaptchaResult = cache(async (token: string): Promise<any> => {
 
   return result;
 });
+
+export const postMail = cache(async (mailData: any): Promise<any> => {
+  console.log({ mailData });
+  const response = await fetch('/api/mail', {
+    method: 'POST',
+    body: JSON.stringify(mailData)
+  });
+
+  const result = await response.json();
+
+  return result;
+});
