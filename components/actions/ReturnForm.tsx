@@ -1,7 +1,7 @@
 'use client';
 
 import { ReturnFormFields } from '@/@types/shop';
-import { postCaptchaResult } from '@/app/api/requests';
+import { postCaptchaResult, postMail } from '@/app/api/requests';
 import { useReCaptcha } from 'next-recaptcha-v3';
 import Script from 'next/script';
 import React, { ChangeEvent, useCallback, useState } from 'react';
@@ -36,19 +36,31 @@ const ReturnForm: React.FC = () => {
 
       const token = await executeRecaptcha('form_submit');
 
-      const result = await postCaptchaResult(token);
+      const captchaResult = await postCaptchaResult(token);
+
+      const mailResult = await postMail({
+        subject: 'New Product Return Request - Full Blast Gear',
+        ...fields
+      });
 
       setIsSubmitting(false);
 
-      if (!result.success) {
+      if (!captchaResult.success) {
         setError(
           '❌ reCAPTCHA error: use the email link beneath the map to contact us'
         );
         return;
       }
 
-      if (result.score < 0.5) {
+      if (captchaResult.score < 0.5) {
         setError('reCAPTCHA validation failed - try again');
+        return;
+      }
+
+      if (!mailResult || mailResult.error) {
+        setError(
+          '❌ Mail error: We had an issue sending your message - please send your request to: support@fullblastgear.com'
+        );
         return;
       } else {
         setSuccess('✔️ Your message was sent, we will reply to you ASAP');

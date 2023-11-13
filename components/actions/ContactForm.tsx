@@ -37,8 +37,10 @@ const ContactForm: React.FC = () => {
 
       const captchaResult = await postCaptchaResult(token);
 
-      const mailResult = await postMail(fields);
-      console.log(mailResult)
+      const mailResult = await postMail({
+        subject: 'New Customer Inquiry - Full Blast Gear',
+        ...fields
+      });
 
       setIsSubmitting(false);
 
@@ -49,11 +51,10 @@ const ContactForm: React.FC = () => {
         return;
       }
 
-      if (!mailResult) {
+      if (!mailResult || mailResult.error) {
         setError(
           '❌ Mail error: We had an issue sending your message - please use the email link beneath the map to contact us'
-
-        )
+        );
       }
 
       if (captchaResult.score < 0.5) {
