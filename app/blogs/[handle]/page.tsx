@@ -1,7 +1,7 @@
 import { BlogMetadata } from '@/@types/metadata';
 import Border from '@/components/layout/Border';
 import { fetchBlogPageContent } from '@/shopify/content/content.model';
-import ShopifyRichText from '@/shopify/richtext-to-html';
+import ShopifyRichText from '@/shopify/content/richtext-to-html';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import React from 'react';
