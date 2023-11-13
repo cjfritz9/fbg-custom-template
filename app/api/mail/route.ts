@@ -2,18 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
 export const POST = async (req: NextRequest) => {
-  console.log({
-    AUTH: {
-      service: process.env.MAILER_SERVICE!,
-      user: process.env.MAILER_USER!,
-      pass: process.env.MAILER_PASS!,
-      clientId: process.env.MAILER_OAUTH_CLIENT_ID!,
-      clientSecret: process.env.MAILER_OAUTH_CLIENT_SECRET!,
-      refreshToken: process.env.MAILER_OAUTH_REFRESH_TOKEN!
-    }
-  });
   const body = await req.json();
-  console.log(body);
   const mailerConfig = {
     service: process.env.MAILER_SERVICE!,
     // LEFT IN FOR POTENTIAL FUTURE GODADDY SETUP
@@ -56,7 +45,7 @@ export const POST = async (req: NextRequest) => {
     transporter.sendMail(
       {
         from: 'noreply.fullblastgear@gmail.com',
-        to: 'noreply.fullblastgear@gmail.com',
+        to: 'support@fullblastgear.com',
         subject: body.subject,
         html: `<p>${body.message}</p>`
       },

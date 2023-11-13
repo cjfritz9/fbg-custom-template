@@ -1,6 +1,5 @@
 import { fetchProductByHandle } from '@/shopify/products/products.model';
 import { NextRequest, NextResponse } from 'next/server';
-import { getProductByHandle } from '../../requests';
 
 export const GET = async (
   req: NextRequest,
