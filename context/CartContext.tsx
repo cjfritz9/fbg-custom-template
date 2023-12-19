@@ -63,7 +63,7 @@ const CartProvider: React.FC<PropsWithChildren> = ({ children }) => {
         await createNewCheckout();
       } else {
         const checkoutRes = await getCheckout(storedCheckoutId);
-        if (checkoutRes.completedAt) {
+        if (checkoutRes?.completedAt) {
           await createNewCheckout();
         } else {
           setCheckout(checkoutRes);

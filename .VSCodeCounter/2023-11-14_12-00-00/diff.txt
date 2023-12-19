@@ -1,0 +1,156 @@
+Date : 2023-11-14 12:00:00
+Directory : /home/cjfritz/dev/freelance-work/full-blast-gear
+Total : 67 files,  3697 codes, 19 comments, 196 blanks, all 3912 lines
+
+Languages
++------------------+------------+------------+------------+------------+------------+
+| language         | files      | code       | comment    | blank      | total      |
++------------------+------------+------------+------------+------------+------------+
+| TypeScript React |         51 |      3,443 |          8 |        155 |      3,606 |
+| TypeScript       |         13 |        220 |         11 |         33 |        264 |
+| CSS              |          2 |         31 |          0 |          8 |         39 |
+| JSON             |          1 |          3 |          0 |          0 |          3 |
++------------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                             | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                |         67 |      3,697 |         19 |        196 |      3,912 |
+| . (Files)                                                                                        |          1 |          3 |          0 |          0 |          3 |
+| @types                                                                                           |          2 |         60 |          0 |         14 |         74 |
+| app                                                                                              |         38 |      2,830 |         11 |         91 |      2,932 |
+| app (Files)                                                                                      |          5 |         32 |         -1 |          7 |         38 |
+| app/about                                                                                        |          2 |         20 |          0 |          6 |         26 |
+| app/about (Files)                                                                                |          1 |          4 |          0 |          2 |          6 |
+| app/about/[subpage]                                                                              |          1 |         16 |          0 |          4 |         20 |
+| app/api                                                                                          |          5 |        163 |         12 |         17 |        192 |
+| app/api (Files)                                                                                  |          1 |         62 |          0 |          8 |         70 |
+| app/api/checkout                                                                                 |          1 |         15 |          0 |          3 |         18 |
+| app/api/checkout/remove-items                                                                    |          1 |         15 |          0 |          3 |         18 |
+| app/api/mail                                                                                     |          1 |         73 |         12 |          2 |         87 |
+| app/api/products                                                                                 |          1 |          4 |          0 |          0 |          4 |
+| app/api/products/[handle]                                                                        |          1 |          4 |          0 |          0 |          4 |
+| app/api/reviews                                                                                  |          1 |          9 |          0 |          4 |         13 |
+| app/blogs                                                                                        |          2 |         19 |          0 |          4 |         23 |
+| app/blogs (Files)                                                                                |          1 |          6 |          0 |          1 |          7 |
+| app/blogs/[handle]                                                                               |          1 |         13 |          0 |          3 |         16 |
+| app/cart                                                                                         |          1 |          4 |          0 |          2 |          6 |
+| app/collections                                                                                  |          1 |          4 |          0 |          2 |          6 |
+| app/collections/[slug]                                                                           |          1 |          4 |          0 |          2 |          6 |
+| app/company                                                                                      |          3 |        374 |          0 |          9 |        383 |
+| app/company (Files)                                                                              |          2 |        109 |          0 |          4 |        113 |
+| app/company/faq                                                                                  |          1 |        265 |          0 |          5 |        270 |
+| app/contact                                                                                      |          3 |         -8 |          0 |         -3 |        -11 |
+| app/information                                                                                  |          4 |        312 |          0 |         16 |        328 |
+| app/information (Files)                                                                          |          2 |        137 |          0 |          7 |        144 |
+| app/information/shipping                                                                         |          1 |         82 |          0 |          4 |         86 |
+| app/information/warranties                                                                       |          1 |         93 |          0 |          5 |         98 |
+| app/policies                                                                                     |          6 |      1,916 |          0 |         25 |      1,941 |
+| app/policies (Files)                                                                             |          2 |        147 |          0 |          7 |        154 |
+| app/policies/cookies                                                                             |          1 |        298 |          0 |          5 |        303 |
+| app/policies/privacy                                                                             |          1 |        455 |          0 |          4 |        459 |
+| app/policies/returns                                                                             |          1 |        154 |          0 |          5 |        159 |
+| app/policies/terms-and-conditions                                                                |          1 |        862 |          0 |          4 |        866 |
+| app/products                                                                                     |          2 |         14 |          0 |          3 |         17 |
+| app/products (Files)                                                                             |          1 |          4 |          0 |          1 |          5 |
+| app/products/[handle]                                                                            |          1 |         10 |          0 |          2 |         12 |
+| app/shop                                                                                         |          3 |        -46 |          0 |         -1 |        -47 |
+| app/shop (Files)                                                                                 |          2 |          7 |          0 |          0 |          7 |
+| app/shop/[handle]                                                                                |          1 |        -53 |          0 |         -1 |        -54 |
+| app/webhooks                                                                                     |          1 |         26 |          0 |          4 |         30 |
+| app/webhooks/shopify-events                                                                      |          1 |         26 |          0 |          4 |         30 |
+| app/webhooks/shopify-events/products                                                             |          1 |         26 |          0 |          4 |         30 |
+| components                                                                                       |         17 |        804 |          9 |         86 |        899 |
+| components/actions                                                                               |          5 |        445 |          1 |         55 |        501 |
+| components/actions (Files)                                                                       |          4 |        442 |          2 |         54 |        498 |
+| components/actions/product-menu                                                                  |          1 |          3 |         -1 |          1 |          3 |
+| components/layout                                                                                |         12 |        359 |          8 |         31 |        398 |
+| components/layout (Files)                                                                        |          7 |        347 |          8 |         32 |        387 |
+| components/layout/footer                                                                         |          3 |         12 |          0 |          0 |         12 |
+| components/layout/header                                                                         |          2 |          0 |          0 |         -1 |         -1 |
+| context                                                                                          |          1 |          9 |          0 |          1 |         10 |
+| judge.me                                                                                         |          1 |        -23 |          0 |         -6 |        -29 |
+| judgedotme                                                                                       |          1 |         55 |          0 |         10 |         65 |
+| lib                                                                                              |          2 |         21 |          0 |          6 |         27 |
+| lib/hooks                                                                                        |          1 |         20 |          0 |          6 |         26 |
+| lib/static                                                                                       |          1 |          1 |          0 |          0 |          1 |
+| shopify                                                                                          |          4 |        -62 |         -1 |         -6 |        -69 |
+| shopify (Files)                                                                                  |          2 |       -123 |         -1 |        -25 |       -149 |
+| shopify/content                                                                                  |          1 |        106 |          0 |         22 |        128 |
+| shopify/products                                                                                 |          1 |        -45 |          0 |         -3 |        -48 |
++--------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| filename                                                                                         | language         | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| /home/cjfritz/dev/freelance-work/full-blast-gear/@types/props.d.ts                               | TypeScript       |         30 |          0 |          9 |         39 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/@types/shop.d.ts                                | TypeScript       |         30 |          0 |          5 |         35 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/about/[subpage]/layout.tsx                  | TypeScript React |         16 |          0 |          4 |         20 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/about/layout.tsx                            | TypeScript React |          4 |          0 |          2 |          6 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/api/checkout/remove-items/route.ts          | TypeScript       |         15 |          0 |          3 |         18 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/api/mail/route.ts                           | TypeScript       |         73 |         12 |          2 |         87 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/api/products/[handle]/route.ts              | TypeScript       |          4 |          0 |          0 |          4 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/api/requests.ts                             | TypeScript       |         62 |          0 |          8 |         70 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/api/reviews/route.ts                        | TypeScript       |          9 |          0 |          4 |         13 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/blogs/[handle]/page.tsx                     | TypeScript React |         13 |          0 |          3 |         16 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/blogs/layout.tsx                            | TypeScript React |          6 |          0 |          1 |          7 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/cart/page.tsx                               | TypeScript React |          4 |          0 |          2 |          6 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/collections/[slug]/page.tsx                 | TypeScript React |          4 |          0 |          2 |          6 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/company/faq/page.tsx                        | TypeScript React |        265 |          0 |          5 |        270 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/company/layout.tsx                          | TypeScript React |         25 |          0 |          4 |         29 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/company/page.tsx                            | TypeScript React |         84 |          0 |          0 |         84 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/contact/layout.tsx                          | TypeScript React |          6 |          0 |          1 |          7 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/contact/page.tsx                            | TypeScript React |         -3 |          0 |          0 |         -3 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/contact/providers.tsx                       | TypeScript React |        -11 |          0 |         -4 |        -15 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/globals.css                                 | CSS              |          0 |          0 |          1 |          1 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/information/layout.tsx                      | TypeScript React |         25 |          0 |          4 |         29 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/information/page.tsx                        | TypeScript React |        112 |          0 |          3 |        115 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/information/shipping/page.tsx               | TypeScript React |         82 |          0 |          4 |         86 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/information/warranties/page.tsx             | TypeScript React |         93 |          0 |          5 |         98 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/layout.tsx                                  | TypeScript React |          1 |         -1 |          0 |          0 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/page.tsx                                    | TypeScript React |         -7 |          0 |         -1 |         -8 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/policies/cookies/page.tsx                   | TypeScript React |        298 |          0 |          5 |        303 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/policies/layout.tsx                         | TypeScript React |         25 |          0 |          4 |         29 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/policies/page.tsx                           | TypeScript React |        122 |          0 |          3 |        125 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/policies/privacy/page.tsx                   | TypeScript React |        455 |          0 |          4 |        459 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/policies/returns/page.tsx                   | TypeScript React |        154 |          0 |          5 |        159 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/policies/terms-and-conditions/page.tsx      | TypeScript React |        862 |          0 |          4 |        866 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/products/[handle]/page.tsx                  | TypeScript React |         10 |          0 |          2 |         12 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/products/page.tsx                           | TypeScript React |          4 |          0 |          1 |          5 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/providers.tsx                               | TypeScript React |          7 |          0 |          0 |          7 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/shop/[handle]/page.tsx                      | TypeScript React |        -53 |          0 |         -1 |        -54 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/shop/layout.tsx                             | TypeScript React |         -1 |          0 |          0 |         -1 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/shop/page.tsx                               | TypeScript React |          8 |          0 |          0 |          8 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/swiper-custom.css                           | CSS              |         31 |          0 |          7 |         38 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/app/webhooks/shopify-events/products/route.ts   | TypeScript       |         26 |          0 |          4 |         30 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/components/actions/ContactForm.tsx              | TypeScript React |         16 |          0 |          2 |         18 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/components/actions/NewReviewForm.tsx            | TypeScript React |        224 |          2 |         28 |        254 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/components/actions/PaginationBar.tsx            | TypeScript React |         12 |          0 |          1 |         13 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/components/actions/ReturnForm.tsx               | TypeScript React |        190 |          0 |         23 |        213 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/components/actions/product-menu/ProductMenu.tsx | TypeScript React |          3 |         -1 |          1 |          3 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/components/layout/Cart.tsx                      | TypeScript React |         62 |          1 |          6 |         69 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/components/layout/Lightbox.tsx                  | TypeScript React |          7 |          0 |          3 |         10 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/components/layout/ProductCard.tsx               | TypeScript React |         14 |          0 |          3 |         17 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/components/layout/ProductGallery.tsx            | TypeScript React |         11 |          0 |          0 |         11 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/components/layout/ProductImages.tsx             | TypeScript React |        106 |          0 |         10 |        116 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/components/layout/ProductPanel.tsx              | TypeScript React |         60 |          6 |          4 |         70 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/components/layout/ProductReviews.tsx            | TypeScript React |         87 |          1 |          6 |         94 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/components/layout/footer/Footer.tsx             | TypeScript React |          2 |          0 |          0 |          2 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/components/layout/footer/FooterLinkGroup.tsx    | TypeScript React |          1 |          0 |          0 |          1 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/components/layout/footer/SocialMediaIcons.tsx   | TypeScript React |          9 |          0 |          0 |          9 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/components/layout/header/Header.tsx             | TypeScript React |         -4 |          0 |          0 |         -4 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/components/layout/header/NavMenu.tsx            | TypeScript React |          4 |          0 |         -1 |          3 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/context/CartContext.tsx                         | TypeScript React |          9 |          0 |          1 |         10 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/judge.me/utils.ts                               | TypeScript       |        -23 |          0 |         -6 |        -29 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/judgedotme/utils.ts                             | TypeScript       |         55 |          0 |         10 |         65 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/lib/hooks/useLightbox.tsx                       | TypeScript React |         20 |          0 |          6 |         26 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/lib/static/links.ts                             | TypeScript       |          1 |          0 |          0 |          1 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/package.json                                    | JSON             |          3 |          0 |          0 |          3 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/shopify/content/richtext-to-html.tsx            | TypeScript React |        106 |          0 |         22 |        128 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/shopify/products/products.model.ts              | TypeScript       |        -45 |          0 |         -3 |        -48 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/shopify/richtext-to-html.tsx                    | TypeScript React |       -106 |          0 |        -22 |       -128 |
+| /home/cjfritz/dev/freelance-work/full-blast-gear/shopify/utils.ts                                | TypeScript       |        -17 |         -1 |         -3 |        -21 |
+| Total                                                                                            |                  |      3,697 |         19 |        196 |      3,912 |
++--------------------------------------------------------------------------------------------------+------------------+------------+------------+------------+------------+

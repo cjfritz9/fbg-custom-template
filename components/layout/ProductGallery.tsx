@@ -79,7 +79,7 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({
             >
               <div>
                 <Link
-                  href={`shop/${product.handle}`}
+                  href={`/shop/${product.handle}`}
                   prefetch={false}
                   className='w-full h-full mix-blend-multiply'
                 >
@@ -88,14 +88,14 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({
                     alt={product.images[0].altText}
                     width={512}
                     height={400}
-                    className={`h-full object-cover object-center border-b ${
+                    className={`h-64 object-cover object-center border-b ${
                       hoverData.isHovered && hoverData.index === i
                         ? 'border-b-secondary'
                         : ' border-b-transparent'
                     }`}
                   />
                   <Border />
-                  <p className='h-24 flex items-center justify-center w-full bg-transparent px-4 text-xl font-semibold text-accent'>
+                  <p className='h-32 flex items-center justify-center w-full bg-transparent px-4 text-xl font-semibold text-accent'>
                     {product.title}
                   </p>
                 </Link>
