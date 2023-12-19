@@ -8,7 +8,7 @@ import { RiMailLine, RiPhoneLine } from 'react-icons/ri';
 const ContactMap: React.FC = () => {
   return (
     <div className='w-full'>
-      <div className='flex w-full justify-evenly mb-8 text-5xl'>
+      <div className='flex w-full justify-evenly mb-8 text-5xl gap-4'>
         <ContactLink href='tel: 8003189030' tooltip='Give us a call'>
           <div className='flex flex-col gap-4 items-center text-center'>
             <p>
@@ -18,7 +18,7 @@ const ContactMap: React.FC = () => {
           </div>
         </ContactLink>
         <ContactLink
-          href='mailto: support@fullblastgear.com'
+          href='mailto:support@fullblastgear.com'
           tooltip='Send us an Email'
         >
           <div className='flex flex-col gap-4 items-center text-center'>
