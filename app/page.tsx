@@ -6,6 +6,7 @@ import ProductGallery from '@/components/layout/ProductGallery';
 // import RewardsBanner from '@/components/layout/RewardsBanner';
 import Hero from '@/components/layout/Hero';
 import { fetchHomeContent } from '@/shopify/content/content.model';
+import DevDisclaimerModal from '@/components/UI/DevDisclaimerModal';
 
 const Home: React.FC = async () => {
   const content = await fetchHomeContent();
@@ -64,6 +65,7 @@ const Home: React.FC = async () => {
           OUR BLOGS
         </Button>
       </ImageWithText>
+      <DevDisclaimerModal />
     </main>
   );
 };
