@@ -67,14 +67,14 @@ const ThumbnailImages: React.FC<ThumbnailImagesProps> = ({
         className='max-w-[640px] sm:max-w-[556px] flex justify-evenly xl:!hidden'
       >
         {images.map((image, i) => (
-          <SwiperSlide key={image.url} className='min-w-20 cursor-pointer'>
+          <SwiperSlide key={image.url} className='min-w-20 !w-auto cursor-pointer'>
             <Image
               key={image.url}
               src={image.url}
               alt={image.altText}
               height={192}
               width={192}
-              className='min-w-20 w-auto min-h-20 h-20 object-cover'
+              className='min-w-20 w-20 min-h-20 h-20 object-cover'
               onClick={() => onUpdateImage(i)}
             />
           </SwiperSlide>
