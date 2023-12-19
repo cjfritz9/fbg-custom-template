@@ -46,14 +46,14 @@ const ThumbnailImages: React.FC<ThumbnailImagesProps> = ({
         className='!min-h-[556px] !max-w-32 !hidden xl:!block !py-10'
       >
         {images.map((image, i) => (
-          <SwiperSlide key={image.url} className='h-auto w-auto cursor-pointer'>
+          <SwiperSlide key={image.url} className='!w-32 !h-[130px] border hover:border-secondary cursor-pointer'>
             <Image
               key={image.url}
               src={image.url}
               alt={image.altText}
               height={192}
               width={192}
-              className='w-32 h-32 object-cover hover:brightness-105'
+              className='!w-32 !h-32 object-cover hover:brightness-105'
               onClick={() => onUpdateImage(i)}
             />
           </SwiperSlide>
@@ -67,7 +67,7 @@ const ThumbnailImages: React.FC<ThumbnailImagesProps> = ({
         className='max-w-[640px] sm:max-w-[556px] flex justify-evenly xl:!hidden'
       >
         {images.map((image, i) => (
-          <SwiperSlide key={image.url} className='min-w-20 !w-auto cursor-pointer'>
+          <SwiperSlide key={image.url} className='min-w-20 border hover:border-secondary !w-auto cursor-pointer'>
             <Image
               key={image.url}
               src={image.url}

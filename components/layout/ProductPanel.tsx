@@ -49,7 +49,7 @@ const ProductPanel: React.FC<ProductPanelProps> = ({ product }) => {
   }, [checkout, product]);
 
   return (
-    <div className='flex flex-col gap-8 max-w-[32rem]'>
+    <div className='flex flex-col gap-8 xl:max-w-[32rem]'>
       <div>
         <h2 className='text-4xl font-bold'>{product.title}</h2>
         <ReviewStars reviews={product.reviews} styles='!text-2xl' showCount />
