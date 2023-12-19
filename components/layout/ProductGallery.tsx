@@ -73,7 +73,7 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({
           {products.map((product, i) => (
             <SwiperSlide
               key={product.handle}
-              className='md:!w-[25%] text-center relative flex items-center bg-base-100'
+              className='!w-[50%] md:!w-[25%] text-center relative flex items-center bg-base-100'
               onMouseEnter={() => setHoverData({ isHovered: true, index: i })}
               onMouseLeave={() => setHoverData({ isHovered: false, index: 0 })}
             >
