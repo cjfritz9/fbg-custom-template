@@ -5,10 +5,10 @@ import { IoMdDownload } from 'react-icons/io';
 
 const DevDisclaimerModal: React.FC = () => {
   const handleDownload = () => {
-    const pdfUrl = 'LaunchDayEvent.ics';
+    const ICS_URL = 'FullBlastUSALaunchDayEvent.ics';
     const link = document.createElement('a');
-    link.href = pdfUrl;
-    link.download = '/public/LaunchDayEvent.ics';
+    link.href = ICS_URL;
+    link.download = '/public/FullBlastUSALaunchDayEvent.ics';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -37,7 +37,7 @@ const DevDisclaimerModal: React.FC = () => {
             Please join us when we enable purchases on January 15th!
           </p>
           <span
-            className='flex gap-2 text-lg items-center cursor-pointer py-4 text-blue-600'
+            className='flex gap-2 text-md items-center cursor-pointer py-4 text-blue-600'
             onClick={handleDownload}
           >
             <p>Remind Me</p>
