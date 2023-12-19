@@ -34,13 +34,13 @@ const DevDisclaimerModal: React.FC = () => {
             testing purposes only.
           </p>
           <p className='py-4'>
-            Please join us when the site goes live January 15th!
+            Please join us when we enable purchases on January 15th!
           </p>
           <span
             className='flex gap-2 text-lg items-center cursor-pointer py-4 text-blue-600'
             onClick={handleDownload}
           >
-            <p className=''>Remind Me</p>
+            <p>Remind Me</p>
             <IoMdDownload />
           </span>
         </div>
