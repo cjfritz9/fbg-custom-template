@@ -97,7 +97,7 @@ const NavMenu: React.FC = () => {
                   htmlFor='nav-drawer'
                   className='drawer-button btn bg-base-100 border-none min-h-0 h-6 px-0'
                 >
-                  <IoMenuSharp className='text-lg sm:text-2xl' />
+                  <IoMenuSharp className='text-lg sm:text-2xl hover:bg-base-100 active:bg-base-100' />
                 </label>
               </div>
               <div className='drawer-side z-40'>
