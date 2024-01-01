@@ -19,6 +19,7 @@ export const navLinks = [
 
 export const footerLinks = {
   companyLinks: [
+    { name: 'Partner Program', slug: '/partners' },
     { name: 'Account', slug: 'https://full-blast-gear.myshopify.com/account' },
     { name: 'Contact', slug: '/contact' },
     { name: 'FAQ', slug: '/company/faq' }

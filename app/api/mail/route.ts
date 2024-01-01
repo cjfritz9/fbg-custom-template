@@ -5,7 +5,8 @@ export const POST = async (req: NextRequest) => {
   const body = await req.json();
   const mailerConfig = {
     service: process.env.MAILER_SERVICE!,
-    // LEFT IN FOR POTENTIAL FUTURE GODADDY SETUP
+    
+    // POTENTIAL FUTURE GODADDY SETUP REFERENCE
     // __________________________________________
     // host: process.env.MAILER_HOST!,
     // secure: true,
@@ -49,7 +50,7 @@ export const POST = async (req: NextRequest) => {
         subject: body.subject,
         html: `
         <div>
-          <h2>New Contact Form Response for Full Blast Gear</h3>
+          <h2>New Contact Form Response for Full Blast Gear</h2>
           <br/>
           <h3>From:</h3>
           <p>${body.firstName} ${body.lastName}</p>
