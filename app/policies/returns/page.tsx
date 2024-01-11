@@ -6,9 +6,9 @@ import Link from 'next/link';
 import React from 'react';
 
 export const metadata: Metadata = {
-  title: { default: 'Returns', template: '%s | Full Blast Gear' },
+  title: { default: 'Returns', template: '%s | Full Blast USA' },
   description:
-    'Understand our policies and commitments on the Policies page at Full Blast Gear. We value transparency, integrity, and your satisfaction. Learn about our privacy, return, and customer service policies to ensure a seamless experience with our unique firearm cleaning solutions.'
+    'Understand our policies and commitments on the Policies page at Full Blast USA. We value transparency, integrity, and your satisfaction. Learn about our privacy, return, and customer service policies to ensure a seamless experience with our unique firearm cleaning solutions.'
 };
 
 const ReturnsPage: React.FC = () => {
@@ -29,7 +29,7 @@ const ReturnsPage: React.FC = () => {
               <p className='max-w-[800px]'>
                 Refunds will be credited to the original credit/debit card used
                 at the time of purchase. Additionally, only items purchased
-                directly through Full Blast Gear can be refunded through our
+                directly through Full Blast USA can be refunded through our
                 website.
               </p>
               <p className='max-w-[800px]'>
@@ -106,7 +106,7 @@ const ReturnFAQsAccordion: React.FC = () => {
 '
       >
         <p>
-          Once your items are inspected by a Full Blast Gear team member
+          Once your items are inspected by a Full Blast USA team member
           (typically within 5 business days). Then, you’ll get your refund
           typically within 72 hours.
         </p>

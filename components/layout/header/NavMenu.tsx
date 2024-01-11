@@ -43,7 +43,7 @@ const NavMenu: React.FC = () => {
             className='gap-4 w-48 text-xl font-bold justify-end items-center cursor-pointer hidden lg:flex'
             onClick={handleCallClick}
           >
-            <IoCall className='text-green-500' />
+            <IoCall className='text-base-300' />
             <p>800-318-9030</p>
           </div>
         </div>

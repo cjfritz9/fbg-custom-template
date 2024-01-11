@@ -3,9 +3,9 @@ import Link from 'next/link';
 import React from 'react';
 
 export const metadata: Metadata = {
-  title: { default: 'Privacy', template: '%s | Full Blast Gear' },
+  title: { default: 'Privacy', template: '%s | Full Blast USA' },
   description:
-    'Understand our policies and commitments on the Policies page at Full Blast Gear. We value transparency, integrity, and your satisfaction. Learn about our privacy, return, and customer service policies to ensure a seamless experience with our unique firearm cleaning solutions.'
+    'Understand our policies and commitments on the Policies page at Full Blast USA. We value transparency, integrity, and your satisfaction. Learn about our privacy, return, and customer service policies to ensure a seamless experience with our unique firearm cleaning solutions.'
 };
 
 const PrivacyPage: React.FC = () => {

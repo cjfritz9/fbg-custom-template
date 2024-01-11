@@ -64,12 +64,7 @@ const SplashScreen: React.FC = () => {
     <>
       {isClient && (
         <div className='flex lg:hidden flex-col gap-12 top-4 left-4 sm:top-10 sm:left-12 absolute z-[51]'>
-          <Image
-            priority
-            src={logoAlt}
-            alt='Full Blast Gear Logo'
-            height={48}
-          />
+          <Image priority src={logoAlt} alt='Full Blast USA Logo' height={48} />
         </div>
       )}
       <span className='block lg:hidden loading loading-spinner loading-lg text-primary text-center absolute z-[52] top-[20dvh] left-[47dvw]'></span>
@@ -78,12 +73,7 @@ const SplashScreen: React.FC = () => {
         className='flex fixed bg-base-100 h-full w-full z-50 items-center overflow'
       >
         <div ref={logoRef} className='hidden lg:block translate-x-[-240px]'>
-          <Image
-            priority
-            src={logoAlt}
-            alt='Full Blast Gear Logo'
-            height={76}
-          />
+          <Image priority src={logoAlt} alt='Full Blast USA Logo' height={76} />
         </div>
       </div>
     </>

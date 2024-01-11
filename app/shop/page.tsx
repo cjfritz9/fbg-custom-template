@@ -59,10 +59,10 @@ const ShopPage: React.FC = () => {
           onUpdateProducts={onUpdateProducts}
           onLoading={onLoading}
         />
-        <div className='flex flex-col w-full bg-base-200 gap-4 lg:gap-8 py-8 px-8 xl:py-16 xl:px-28'>
+        <div className='flex flex-col w-full bg-base-100 gap-4 lg:gap-8 py-8 px-8 xl:py-16 xl:px-28'>
           <div
             id='cards-container'
-            className='flex flex-wrap gap-4 lg:gap-12 justify-center lg:justify-start bg-base-200 w-full'
+            className='flex flex-wrap gap-4 lg:gap-12 justify-center lg:justify-start w-full'
           >
             {isLoading ? (
               <LoadingCards />

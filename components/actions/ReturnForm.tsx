@@ -39,7 +39,7 @@ const ReturnForm: React.FC = () => {
       const captchaResult = await postCaptchaResult(token);
 
       const mailResult = await postMail({
-        subject: 'New Product Return Request - Full Blast Gear',
+        subject: 'New Product Return Request - Full Blast USA',
         ...fields
       });
 

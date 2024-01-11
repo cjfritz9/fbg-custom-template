@@ -31,7 +31,7 @@ const ImageWithText: React.FC<ImageWithTextProps> = ({
         </div>
         <div
           className={`2xl:w-[576px] ${
-            reverse ? 'text-center xl:text-left' : 'text-center xl:text-right'
+            reverse ? 'text-left' : 'text-left xl:text-right'
           }`}
         >
           {textContent}

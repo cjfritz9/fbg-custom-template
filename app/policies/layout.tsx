@@ -4,9 +4,9 @@ import policiesHero from '@/public/assets/images/fbg-policies-hero.webp';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: { default: 'Policies', template: '%s - Policies | Full Blast Gear' },
+  title: { default: 'Policies', template: '%s - Policies | Full Blast USA' },
   description:
-    'Understand our policies and commitments on the Policies page at Full Blast Gear. We value transparency, integrity, and your satisfaction. Learn about our privacy, return, and customer service policies to ensure a seamless experience with our unique firearm cleaning solutions.'
+    'Understand our policies and commitments on the Policies page at Full Blast USA. We value transparency, integrity, and your satisfaction. Learn about our privacy, return, and customer service policies to ensure a seamless experience with our unique firearm cleaning solutions.'
 };
 
 const PoliciesLayout: React.FC<PropsWithChildren> = ({ children }) => {

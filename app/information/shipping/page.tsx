@@ -3,9 +3,9 @@ import { Metadata } from 'next';
 import React from 'react';
 
 export const metadata: Metadata = {
-  title: { default: 'Shipping', template: '%s | Full Blast Gear' },
+  title: { default: 'Shipping', template: '%s | Full Blast USA' },
   description:
-    "Access valuable information and resources on the Information page at Full Blast Gear. Discover educational content, user guides, and more to help you make informed decisions about your firearm cleaning needs. At Full Blast Gear, we're dedicated to providing you with the knowledge you need for effective firearm maintenance."
+    "Access valuable information and resources on the Information page at Full Blast USA. Discover educational content, user guides, and more to help you make informed decisions about your firearm cleaning needs. At Full Blast USA, we're dedicated to providing you with the knowledge you need for effective firearm maintenance."
 };
 
 const ShippingPage: React.FC = () => {

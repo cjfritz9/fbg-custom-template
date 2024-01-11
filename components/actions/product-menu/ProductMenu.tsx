@@ -32,7 +32,7 @@ const ProductMenu: React.FC<ProductMenuProps> = ({
   };
 
   return (
-    <div className='py-4 lg:py-16 bg-base-100 sticky top-0 z-10'>
+    <div className='py-4 lg:py-16 bg-base-100 sticky top-0 z-10 border-r'>
       <div className='flex lg:flex-col justify-center sticky top-16'>
         <p
           className='ml-6 mb-6 tab text-primary self-start hover:underline text-left h-fit'

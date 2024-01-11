@@ -38,7 +38,7 @@ const ContactForm: React.FC = () => {
       const captchaResult = await postCaptchaResult(token);
 
       const mailResult = await postMail({
-        subject: 'New Customer Inquiry - Full Blast Gear',
+        subject: 'New Customer Inquiry - Full Blast USA',
         ...fields
       });
 

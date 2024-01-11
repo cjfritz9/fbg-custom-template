@@ -9,11 +9,9 @@ const CompanyPage: React.FC = () => {
       <div className='max-w-[1280px]'>
         <div className='flex flex-col lg:flex-row gap-12 xl:gap-48'>
           <div className='flex text-center lg:text-left p-8 lg:p-0 flex-col gap-2'>
-            <h3 className='text-xl font-semibold my-2'>
-              About Full Blast Gear
-            </h3>
+            <h3 className='text-xl font-semibold my-2'>About Full Blast USA</h3>
             <p className='max-w-[848px]'>
-              Welcome to Full Blast Gear, your trusted source for premium gun
+              Welcome to Full Blast USA, your trusted source for premium gun
               cleaning kits, firearm parts, and outdoor gear. We are a company
               dedicated to serving firearm enthusiasts, hunters, and outdoor
               adventurers with top-quality products and exceptional customer
@@ -21,7 +19,7 @@ const CompanyPage: React.FC = () => {
             </p>
             <h3 className='text-xl font-semibold my-2'>Our Mission</h3>
             <p className='max-w-[848px]'>
-              At Full Blast Gear, our mission is to provide the highest level of
+              At Full Blast USA, our mission is to provide the highest level of
               customer satisfaction by offering superior products that enhance
               the shooting and outdoor experience. We are committed to promoting
               safety, responsible firearm ownership, and outdoor exploration.
@@ -44,7 +42,7 @@ const CompanyPage: React.FC = () => {
               <Border />
             </div>
             <p className='font-semibold'>
-              Thank you for choosing Full Blast Gear. We look forward to serving
+              Thank you for choosing Full Blast USA. We look forward to serving
               your firearm and outdoor gear needs.
             </p>
           </div>

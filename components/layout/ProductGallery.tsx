@@ -47,7 +47,7 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({
             <Link
               prefetch={false}
               href={link.slug}
-              className='text-xs underline uppercase underline-offset-4 text-secondary font-bold'
+              className='text-xs underline uppercase underline-offset-4 text-base-300 font-bold'
             >
               {link.name}
             </Link>
@@ -59,11 +59,11 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({
         <Swiper
           slidesPerView={'auto'}
           spaceBetween={60}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true
-          }}
+          // autoplay={{
+          //   delay: 5000,
+          //   disableOnInteraction: false,
+          //   pauseOnMouseEnter: true
+          // }}
           pagination={{
             clickable: true
           }}
@@ -73,7 +73,7 @@ const ProductGallery: React.FC<ProductGalleryProps> = ({
           {products.map((product, i) => (
             <SwiperSlide
               key={product.handle}
-              className='!w-[50%] md:!w-[25%] text-center relative flex items-center bg-base-100'
+              className='!w-[100%] md:!w-[25%] text-center relative flex items-center bg-base-100'
               onMouseEnter={() => setHoverData({ isHovered: true, index: i })}
               onMouseLeave={() => setHoverData({ isHovered: false, index: 0 })}
             >

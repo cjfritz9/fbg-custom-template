@@ -32,7 +32,7 @@ const BlogPage: React.FC<BlogMetadata> = async ({ params: { handle } }) => {
         <h2 className='text-2xl lg:text-4xl font-bold'>{content.title}</h2>
         <div className='flex gap-8'>
           <p className='opacity-80 italic'>By {content.author}</p>
-          <p className='text-secondary font-semibold'>
+          <p className='text-base-300 font-semibold'>
             {new Date(content.datePosted).toDateString().slice(3)}
           </p>
         </div>

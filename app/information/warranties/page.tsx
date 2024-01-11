@@ -4,9 +4,9 @@ import { Metadata } from 'next';
 import React from 'react';
 
 export const metadata: Metadata = {
-  title: { default: 'Warranties', template: '%s | Full Blast Gear' },
+  title: { default: 'Warranties', template: '%s | Full Blast USA' },
   description:
-    "Access valuable information and resources on the Information page at Full Blast Gear. Discover educational content, user guides, and more to help you make informed decisions about your firearm cleaning needs. At Full Blast Gear, we're dedicated to providing you with the knowledge you need for effective firearm maintenance."
+    "Access valuable information and resources on the Information page at Full Blast USA. Discover educational content, user guides, and more to help you make informed decisions about your firearm cleaning needs. At Full Blast USA, we're dedicated to providing you with the knowledge you need for effective firearm maintenance."
 };
 
 const WarrantiesPage: React.FC = () => {
@@ -25,10 +25,7 @@ const WarrantiesPage: React.FC = () => {
 const WarrantyAccordion: React.FC = () => {
   return (
     <>
-      <Accordion
-        title='WHAT WARRANTY COVERS:'
-        defaultExpanded
-      >
+      <Accordion title='WHAT WARRANTY COVERS:' defaultExpanded>
         <p>
           This warranty covers any manufacturer workmanship defects in your Full
           Blast™ products. This warranty applies to consumer use only and is
@@ -44,18 +41,14 @@ const WarrantyAccordion: React.FC = () => {
         </p>
       </Accordion>
       <Border />
-      <Accordion
-        title='WHO IS COVERED UNDER WARRANTY:'
-      >
+      <Accordion title='WHO IS COVERED UNDER WARRANTY:'>
         <p>
           This warranty is for the original consumer purchaser only. It is not
           transferable. Proof of purchase must be verified.
         </p>
       </Accordion>
       <Border />
-      <Accordion
-        title='WHAT WARRANTY DOES NOT COVER:'
-      >
+      <Accordion title='WHAT WARRANTY DOES NOT COVER:'>
         <p>
           Any problem that is caused by abuse, misuse, or an act of nature
           (fire, flood, etc.) is not covered. Consequential and incidental
@@ -63,9 +56,7 @@ const WarrantyAccordion: React.FC = () => {
         </p>
       </Accordion>
       <Border />
-      <Accordion
-        title='WHAT FULL BLAST ENTERPRISES™ WILL DO:'
-      >
+      <Accordion title='WHAT FULL BLAST ENTERPRISES™ WILL DO:'>
         <p>
           If the item proves to be defective in workmanship, Full Blast™ will
           attempt to repair the item. If this is not possible we will replace it
@@ -75,9 +66,7 @@ const WarrantyAccordion: React.FC = () => {
         </p>
       </Accordion>
       <Border />
-      <Accordion
-        title='LIMITATION ON DAMAGES AND DURATION OF IMPLIED WARRANTIES:'
-      >
+      <Accordion title='LIMITATION ON DAMAGES AND DURATION OF IMPLIED WARRANTIES:'>
         <p>
           Full Blast™ will repair or replace the product as provided under this
           warranty. This shall be the only remedy of the consumer. Full Blast™

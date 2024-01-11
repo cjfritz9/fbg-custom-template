@@ -7,7 +7,8 @@ const Announcement: React.FC = () => {
        align-center font-normal top-0'
     >
       <span className='flex gap-1'>
-        <p>MADE IN THE USA | Free Shipping $50+ | 2 Year Warranty</p>
+        <p>MADE IN THE USA | Free Shipping On Orders Over $100 To The Continental USA* | Minimum 2
+Year Warranty*</p>
       </span>
     </div>
   );

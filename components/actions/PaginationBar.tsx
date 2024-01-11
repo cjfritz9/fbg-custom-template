@@ -42,7 +42,7 @@ const PaginationBar: React.FC<PaginationBarProps> = ({
   }, [params]);
 
   return (
-    <div className='join align-center justify-center lg:justify-start mt-8'>
+    <div className='join align-center border w-fit justify-center lg:justify-start mt-8'>
       <button
         className={`join-item btn bg-base-100 border ${
           !hasPages.prev || page === 1 ? 'btn-disabled' : ''

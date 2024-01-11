@@ -9,10 +9,18 @@ const RewardsBanner: React.FC = () => {
         <MdOutlineCardGiftcard className='text-7xl' />
         <div>
           <h2 className='text-2xl  font-semibold'>STOCK UP & EARN REWARDS</h2>
-          <p className='text-lg opacity-80'>Earn points for every dollar spent at Full Blast Gear to unlock discounts with each purchase.</p>
+          <p className='text-lg opacity-80'>
+            Earn points for every dollar spent at Full Blast USA to unlock
+            discounts with each purchase.
+          </p>
         </div>
       </div>
-      <Link href='/rewards' className='text-lg text-secondary font-bold underline underline-offset-4'>View Details</Link>
+      <Link
+        href='/rewards'
+        className='text-lg text-secondary font-bold underline underline-offset-4'
+      >
+        View Details
+      </Link>
     </div>
   );
 };

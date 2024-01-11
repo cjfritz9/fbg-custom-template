@@ -41,7 +41,7 @@ const Hero: React.FC<HeroProps> = ({
             href='/shop'
             prefetch
           >
-            SHOP NOW
+            SEE PRODUCTS
           </Button>
         </div>
       </div>

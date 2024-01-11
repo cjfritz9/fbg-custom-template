@@ -5,9 +5,9 @@ import { notFound } from 'next/navigation';
 import React from 'react';
 
 export const metadata: Metadata = {
-  title: { default: 'Contact Us', template: '%s | Full Blast Gear' },
+  title: { default: 'Contact Us', template: '%s | Full Blast USA' },
   description:
-  "Reach out to Full Blast Gear through our Contact page. We're here to answer your questions and provide assistance. Whether you have inquiries about our products, need support, or want to collaborate, our team is ready to assist you. Contact us today to get in touch with the firearm cleaning experts at Full Blast Gear."
+    "Reach out to Full Blast USA through our Contact page. We're here to answer your questions and provide assistance. Whether you have inquiries about our products, need support, or want to collaborate, our team is ready to assist you. Contact us today to get in touch with the firearm cleaning experts at Full Blast USA."
 };
 
 const ContactLayout: React.FC<React.PropsWithChildren> = async ({

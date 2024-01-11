@@ -11,7 +11,7 @@ const PoliciesPage: React.FC = () => {
           <div className='flex flex-col text-center lg:text-left p-8 lg:p-0 gap-4'>
             <h3 className='text-xl font-semibold my-2'>Policies</h3>
             <p className='max-w-[848px]'>
-              Welcome to Full Blast Gear! We are committed to providing you with
+              Welcome to Full Blast USA! We are committed to providing you with
               a transparent and secure shopping experience. To ensure that you
               have a clear understanding of our practices and policies, we have
               outlined the following key documents:
@@ -49,7 +49,7 @@ const PoliciesPage: React.FC = () => {
                   <Link href='/policies/returns'>Returns and Refunds:</Link>
                 </b>{' '}
                 We want you to be completely satisfied with your purchases from
-                Full Blast Gear. Our Returns and Refunds Policy provides
+                Full Blast USA. Our Returns and Refunds Policy provides
                 information on the process for returning items and requesting
                 refunds.
               </li>
@@ -69,7 +69,7 @@ const PoliciesPage: React.FC = () => {
               <Border />
             </div>
             <p className='font-semibold'>
-              Thank you for choosing Full Blast Gear. We look forward to serving
+              Thank you for choosing Full Blast USA. We look forward to serving
               your firearm and outdoor gear needs.
             </p>
           </div>

@@ -54,7 +54,7 @@ const CausesGallery: React.FC = () => {
             className='w-full xl:w-[424px] h-full xl:h-[424px] object-cover object-center'
           />
         </SwiperSlide>
-        <SwiperSlide>
+        {/* <SwiperSlide>
           <Image
             alt='Wounded Warrior Project Logo'
             src={woundedWarriorProjectImg}
@@ -62,7 +62,7 @@ const CausesGallery: React.FC = () => {
             height={424}
             className='w-full xl:w-[476] h-auto object-cover object-center'
           />
-        </SwiperSlide>
+        </SwiperSlide> */}
       </Swiper>
     </div>
   );

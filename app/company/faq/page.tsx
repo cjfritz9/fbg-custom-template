@@ -7,7 +7,7 @@ import React from 'react';
 export const metadata: Metadata = {
   title: { default: 'FAQ', template: '' },
   description:
-    'Learn about the heart and soul of Full Blast Gear on our Company page. Discover our history, values, and the dedicated team behind our unique firearm cleaning solutions. Explore the driving force that sets us apart in the industry and fuels our commitment to excellence. Get to know the Full Blast Gear story and what makes us your trusted source for firearm maintenance.'
+    'Learn about the heart and soul of Full Blast USA on our Company page. Discover our history, values, and the dedicated team behind our unique firearm cleaning solutions. Explore the driving force that sets us apart in the industry and fuels our commitment to excellence. Get to know the Full Blast USA story and what makes us your trusted source for firearm maintenance.'
 };
 
 const FAQPage: React.FC = () => {

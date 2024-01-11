@@ -25,19 +25,18 @@ const OurStory: React.FC = () => {
       <div className='flex flex-col gap-12'>
         <div>
           <h2 className='text-4xl font-semibold -mb-1'>Our Journey</h2>
-          <small className='text-secondary text-lg'>
-            Full Blast Gear’s Story
+          <small className='text-base-300 text-lg'>
+            Full Blast USA’s Story
           </small>
         </div>
         <div className='flex flex-col-reverse lg:flex-row gap-6 lg:gap-24'>
           <div className='flex flex-col gap-4'>
             <p>
-              Steve, the founder of Full Blast Gear as been a firearms
-              enthusiast since he was a child, and like many people, he
-              struggled with traditional cleaning methods. Whether it was
-              time-consuming or toilsome, he saw there was room for improvement.
-              He wanted to create American Made tools to help make gun cleaning
-              easier.
+              Steve, the founder of Full Blast USA as been a firearms enthusiast
+              since he was a child, and like many people, he struggled with
+              traditional cleaning methods. Whether it was time-consuming or
+              toilsome, he saw there was room for improvement. He wanted to
+              create American Made tools to help make gun cleaning easier.
             </p>
             <p>
               When I was around 9 years old, I actively watched and learned from
@@ -80,13 +79,13 @@ const OurStory: React.FC = () => {
           <div className='flex flex-col gap-2 lg:h-[480px] w-full lg:min-w-[640px]'>
             <Image
               src={steveHsImage}
-              alt='Founder of Full Blast Gear, Stephen Hoodecheck'
+              alt='Founder of Full Blast USA, Stephen Hoodecheck'
               height={480}
               width={480}
               className='object-cover object-center lg:min-w-[480px]'
             />
             <p className='text-xl font-semibold'>Stephen Hoodecheck</p>
-            <p className='text-sm -mt-4 italic'>Founder, Full Blast Gear</p>
+            <p className='text-sm -mt-4 italic'>Founder, Full Blast USA</p>
           </div>
         </div>
         <Border />
@@ -159,12 +158,12 @@ const OurMission: React.FC = () => {
             As dedicated firearm owners, we were always searching for the best
             products at fair prices. Having no luck in finding gear that
             provided consistent satisfaction, we decided to make American-made
-            gun cleaning products for all gun enthusiasts. With Full Blast Gear
+            gun cleaning products for all gun enthusiasts. With Full Blast USA
             innovative products you can be confident the job gets done right,
             the first time, every time.
           </p>
           <p>
-            At Full Blast Gear, we seek to revolutionize equipment and outdoor
+            At Full Blast USA, we seek to revolutionize equipment and outdoor
             apparel with lightweight, durable and technically advanced purpose.
             Our materials are mainly sourced here in the United States,
             establishing jobs for American workers, and promoting the American
@@ -178,7 +177,7 @@ const OurMission: React.FC = () => {
             feedback seriously and use it to drive our product development. Our
             journey is one of dedication to quality, service, and the unwavering
             support of our fellow firearm enthusiasts. Thank you for being a
-            part of the Full Blast Gear story.
+            part of the Full Blast USA story.
           </p>
         </div>
       </ImageWithText>
@@ -227,7 +226,7 @@ const WhyFullBlast: React.FC = () => {
         alignItems='start'
         reverse
       >
-        <div className='flex flex-col gap-4'>
+        <div className='flex flex-col gap-4 text-left'>
           <h2 className='text-4xl font-semibold mb-4'>
             How does Full-Bore Blast work?
           </h2>

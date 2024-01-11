@@ -26,7 +26,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   return (
     <Link href={handle} className='grow'>
       <div
-        className='card w-[20rem] md:w-[26rem] glass text-primary shadow-none hover:shadow-lg rounded-t-md'
+        className='card w-[20rem] md:w-[26rem] glass text-primary shadow-lg rounded-t-md'
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >

@@ -3,9 +3,9 @@ import Link from 'next/link';
 import React from 'react';
 
 export const metadata: Metadata = {
-  title: { default: 'Terms And Conditions', template: '%s | Full Blast Gear' },
+  title: { default: 'Terms And Conditions', template: '%s | Full Blast USA' },
   description:
-    'Understand our policies and commitments on the Policies page at Full Blast Gear. We value transparency, integrity, and your satisfaction. Learn about our privacy, return, and customer service policies to ensure a seamless experience with our unique firearm cleaning solutions.'
+    'Understand our policies and commitments on the Policies page at Full Blast USA. We value transparency, integrity, and your satisfaction. Learn about our privacy, return, and customer service policies to ensure a seamless experience with our unique firearm cleaning solutions.'
 };
 
 const TermsAndConditionsPage: React.FC = () => {
@@ -15,7 +15,7 @@ const TermsAndConditionsPage: React.FC = () => {
         <div className='flex flex-col px-4 text-center lg:text-left lg:p-0 gap-4'>
           <h3 className='text-xl font-semibold my-2'>TERMS OF USE</h3>
           <p>
-            We welcome and thank you for visiting www.fullblastgear.com Full
+            We welcome and thank you for visiting www.fullblastusa.com Full
             Blast Enterprises LLC (“FBE,” “Our,” “Us,” or “We”), a Colorado
             limited liability company with its principal office at 9809 Cypress
             Pt. Cir., Lone Tree, CO 80124, owns and operates this website (the
@@ -183,7 +183,10 @@ const TermsAndConditionsPage: React.FC = () => {
             If You dispute any charges, You must let Us know within thirty (30)
             calendar days after the date We charge You. To request a credit or
             refund, You must submit a claim by email at:{' '}
-            <Link href='mailto: info@fullblastgear.com' className='underline break-all'>
+            <Link
+              href='mailto: info@fullblastgear.com'
+              className='underline break-all'
+            >
               info@fullblastgear.com
             </Link>
             . The email must contain the following information: (i) the words{' '}
@@ -448,7 +451,7 @@ const TermsAndConditionsPage: React.FC = () => {
             regulations, including without limitation the Export Administration
             Regulations: see{' '}
             <Link
-            target='_blank'
+              target='_blank'
               href='https://www.bis.doc.gov/index.php/regulations/export-administration-regulations-ear'
               className='underline break-all'
             >
@@ -456,7 +459,7 @@ const TermsAndConditionsPage: React.FC = () => {
             </Link>
             ) and sanctions control programs of the United States (see{' '}
             <Link
-            target='_blank'
+              target='_blank'
               href='https://www.treasury.gov/resource-center/sanctions/Programs/Pages/Programs.aspx'
               className='underline break-all'
             >
@@ -542,7 +545,11 @@ const TermsAndConditionsPage: React.FC = () => {
           <p>
             ATTENTION CALIFORNIA RESIDENTS − PROPOSITION 65 WARNING.
             California’s{' '}
-            <Link target='_blank' href='https://www.p65warnings.ca.gov' className='underline break-all'>
+            <Link
+              target='_blank'
+              href='https://www.p65warnings.ca.gov'
+              className='underline break-all'
+            >
               Proposition 65
             </Link>{' '}
             (“Prop 65”) entitles California consumers to receive special
@@ -798,7 +805,10 @@ const TermsAndConditionsPage: React.FC = () => {
             objections to copyrighted content or material made available on or
             through Our Site, You may submit a notification to Our Designated
             Agent at the following address:{' '}
-            <Link href='mailto: info@fullblastgear.com' className='underline break-all'>
+            <Link
+              href='mailto: info@fullblastgear.com'
+              className='underline break-all'
+            >
               info@fullblastgear.com
             </Link>
             . Any notification to FBE under 17 U.S.C. § 512(c) alleging
@@ -851,7 +861,10 @@ const TermsAndConditionsPage: React.FC = () => {
               </Link>
             </li>
             <li>
-              <Link href='mailto: info@fullblastgear.com' className='underline break-all'>
+              <Link
+                href='mailto: info@fullblastgear.com'
+                className='underline break-all'
+              >
                 info@fullblastgear.com
               </Link>
             </li>

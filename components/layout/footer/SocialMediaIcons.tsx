@@ -3,7 +3,7 @@
 import { SocialMediaIconProps, SocialMediaIconsProps } from '@/@types/props';
 import Link from 'next/link';
 import React from 'react';
-import { GrFacebook, GrInstagram } from 'react-icons/gr';
+import { GrFacebook, GrInstagram, GrYoutube } from 'react-icons/gr';
 
 const SocialMediaIcons: React.FC<SocialMediaIconsProps> = ({
   slim = false
@@ -15,12 +15,15 @@ const SocialMediaIcons: React.FC<SocialMediaIconsProps> = ({
       }`}
     >
       <SocialMediaIcon link='https://www.facebook.com/FullBlastGear'>
-        <div className='text-blue-500'>
+        <div className='text-primary'>
           <GrFacebook />
         </div>
       </SocialMediaIcon>
       <SocialMediaIcon link='https://www.instagram.com/fullblastgear/'>
         <GrInstagram />
+      </SocialMediaIcon>
+      <SocialMediaIcon link='https://www.youtube.com/'>
+        <GrYoutube />
       </SocialMediaIcon>
     </div>
   );

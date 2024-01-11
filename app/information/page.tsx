@@ -13,8 +13,8 @@ const InformationPage: React.FC = () => {
               Information and Resources
             </h3>
             <p className='max-w-[848px]'>
-              Welcome to the Full Blast Gear Information page, where you can
-              find valuable details about our company, services, and important
+              Welcome to the Full Blast USA Information page, where you can find
+              valuable details about our company, services, and important
               topics. We’re dedicated to providing you with the information you
               need. Here are some key areas you might be interested in:
             </p>
@@ -46,7 +46,7 @@ const InformationPage: React.FC = () => {
               </li>
             </ul>
             <p className='max-w-[848px]'>
-              Full Blast Gear is committed to providing you with top-quality
+              Full Blast USA is committed to providing you with top-quality
               products and exceptional service. We believe that well-informed
               customers make the best decisions, so please don’t hesitate to
               explore the specific pages linked above for more detailed
@@ -64,7 +64,7 @@ const InformationPage: React.FC = () => {
               <Border />
             </div>
             <p className='font-semibold'>
-              Thank you for choosing Full Blast Gear. We look forward to serving
+              Thank you for choosing Full Blast USA. We look forward to serving
               your firearm and outdoor gear needs.
             </p>
           </div>

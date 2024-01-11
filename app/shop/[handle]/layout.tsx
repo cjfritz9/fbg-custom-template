@@ -14,12 +14,11 @@ export const generateMetadata = async ({
   }
 
   return {
-    title: `Full Blast Gear | ${product.title}`
+    title: `Full Blast USA | ${product.title}`
   };
 };
 
 const ProductLayout: React.FC<PropsWithChildren> = ({ children }) => {
-
   return (
     <div className='flex flex-col w-full h-auto bg-base-100 py-8 px-4 lg:py-8 lg:px-8 xl:py-16 xl:px-28'>
       <Breadcrumbs />
