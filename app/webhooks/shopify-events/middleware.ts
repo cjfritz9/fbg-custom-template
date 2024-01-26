@@ -5,6 +5,8 @@ import { NextRequest } from 'next/server';
 export async function middleware(req: NextRequest) {
   const data = await req.text();
 
+  console.log(data)
+
   console.info('Webhook received...');
   const hmacHeader = req.headers.get('X-Shopify-Hmac-Sha256');
   const digest = crypto
