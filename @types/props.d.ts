@@ -34,6 +34,7 @@ export interface AccordionProps extends React.PropsWithChildren {
 
 export interface LogoProps {
   height?: number;
+  width?: number;
 }
 
 export interface HeroProps {

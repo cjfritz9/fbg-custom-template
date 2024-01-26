@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
       <div className='w-full flex flex-col-reverse xl:flex-row gap-4 xl:gap-40 justify-between bg-base-100 p-4 md:px-44 md:py-12'>
         <div className='flex flex-col justify-between'>
           <div className='hidden xl:block w-full'>
-            <Logo height={128} />
+            <Logo height={128} width={274} />
           </div>
           <SocialMediaIcons />
         </div>
@@ -18,7 +18,8 @@ const Footer: React.FC = () => {
       </div>
       <div className='bg-base-200 md:px-44 p-4'>
         <p className='text-primary text-left text-xs md:text-md'>
-          © 2024 FULL BLAST ENTERPRISES, LLC. ALL RIGHTS RESERVED</p>
+          © 2024 FULL BLAST ENTERPRISES, LLC. ALL RIGHTS RESERVED
+        </p>
       </div>
     </div>
   );
