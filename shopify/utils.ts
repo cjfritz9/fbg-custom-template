@@ -7,10 +7,13 @@ import {
   FormattedProductResponse,
   HomeContentResponse,
   PageInfo,
+  PartersListResponse,
+  PartnerResponse,
+  PartnerResult,
   ProductByHandleResponse,
   ProductsByQueryResponse,
   ProductsResponse,
-  QueryResult,
+  QueryResult
 } from '@/@types/api';
 import { FormattedProduct } from '@/@types/api';
 
@@ -226,4 +229,56 @@ const formatRating = (ratingData: string): number => {
   return +parsedRating.value;
 };
 
+export const formatPartnersListResponse = (res: PartersListResponse) => {
+  return res.body.data.metaobjectByHandle.fields[0].references.nodes.map(
+    (node) => ({
+      handle: node.handle,
+      name: node.name.value,
+      logo: node.logo.reference.image,
+      excerpt: node.excerpt.value
+    })
+  );
+};
+
+export const formatPartnerResponse = (res: PartnerResponse): PartnerResult => {
+  return {
+    name: res.body.data.metaobjectByHandle.name.value,
+    excerpt: res.body.data.metaobjectByHandle.excerpt.value,
+    about: res.body.data.metaobjectByHandle.about.value,
+    logo: res.body.data.metaobjectByHandle.logo.reference.image,
+    hero: res.body.data.metaobjectByHandle.hero.reference.image,
+    featuredImage: res.body.data.metaobjectByHandle.featuredImg.reference.image,
+    productsTag: res.body.data.metaobjectByHandle.productsTag.value,
+    location: res.body.data.metaobjectByHandle.location.value,
+    phoneNumber: res.body.data.metaobjectByHandle.phoneNumber?.value,
+    email: res.body.data.metaobjectByHandle.email?.value,
+    websiteUrl: res.body.data.metaobjectByHandle.websiteUrl?.value
+  };
+};
+
 // STOREFRONT FUNCTIONS
+
+export const formatAddressForGoogle = (address: string): string => {
+  console.log(encodeURIComponent(address));
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+    address
+  )}`;
+};
+
+export const formatPhoneNumber = (phoneNumber: string): string => {
+  const phoneNumberArray = [...phoneNumber];
+
+  phoneNumberArray.splice(0, 0, '(');
+  phoneNumberArray.splice(4, 0, ') ');
+  phoneNumberArray.splice(8, 0, '-');
+
+  return phoneNumberArray.join('');
+};
+
+export const formatWebsiteUrl = (websiteUrl: string): string => {
+  if (websiteUrl.startsWith('https://')) {
+    return websiteUrl.slice(8)
+  } else {
+    return websiteUrl.slice(7)
+  }
+}

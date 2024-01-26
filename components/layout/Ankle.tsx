@@ -8,7 +8,7 @@ const Ankle: React.FC = () => {
         <p className='text-xl text-white font-semibold text-center md:text-left'>
           SUBSCRIBE TO OUR NEWSLETTER
         </p>
-        <p className='text-sm max-w-3xl'>
+        <p className='text-sm text-white max-w-3xl'>
           Sign up for FREE and receive current news from our Made in the USA Gun
           Community, including special features, interviews, and insider info.
           You can unsubscribe at any time. We won’t share your e-mail, ever.

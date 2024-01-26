@@ -127,6 +127,7 @@ export interface ThumbnailImagesProps extends ProductImagesProps {
 }
 
 export interface PrimaryImageProps extends ProductImagesProps {
+  index: number;
   currentImage: ShopifyImage;
 }
 
@@ -278,4 +279,12 @@ export interface AboutSubpagesProps {
 export interface ContactLinkProps extends PropsWithChildren {
   href: string;
   tooltip: string;
+}
+
+export interface PartnerCardProps {
+  name: string;
+  handle: string;
+  logo: ShopifyImage;
+  excerpt: string;
+  index: number;
 }

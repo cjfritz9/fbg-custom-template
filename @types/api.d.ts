@@ -8,6 +8,10 @@ interface HeroFields {
   };
 }
 
+interface MetaobjectField {
+  value: string;
+}
+
 interface HomeMetaObjectFields {
   key: string;
   value: string;
@@ -219,4 +223,76 @@ export interface FormattedProduct {
 export interface FormattedProductResponse {
   pageInfo: PageInfo;
   products: FormattedProduct[];
+}
+
+export interface PartersListResponse {
+  body: {
+    data: {
+      metaobjectByHandle: {
+        fields: {
+          references: {
+            nodes: {
+              handle: string;
+              name: {
+                value: string;
+              };
+              logo: {
+                reference: {
+                  image: ShopifyImage;
+                };
+              };
+              excerpt: {
+                value: string;
+              };
+            }[];
+          };
+        }[];
+      };
+    };
+  };
+}
+
+export interface PartnerResponse {
+  body: {
+    data: {
+      metaobjectByHandle: {
+        name: MetaobjectField;
+        excerpt: MetaobjectField;
+        about: MetaobjectField;
+        logo: {
+          reference: {
+            image: ShopifyImage;
+          };
+        };
+        hero: {
+          reference: {
+            image: ShopifyImage;
+          };
+        };
+        featuredImg: {
+          reference: {
+            image: ShopifyImage;
+          };
+        };
+        productsTag: MetaobjectField;
+        location: MetaobjectField;
+        phoneNumber?: MetaobjectField;
+        email?: MetaobjectField;
+        websiteUrl?: MetaobjectField;
+      };
+    };
+  };
+}
+export interface PartnerResult {
+  name: string;
+  excerpt: string;
+  about: string;
+  logo: ShopifyImage;
+  hero: ShopifyImage;
+  featuredImage: ShopifyImage;
+  productsTag: string;
+  location: string;
+  phoneNumber?: string;
+  email?: string;
+  websiteUrl?: string;
 }

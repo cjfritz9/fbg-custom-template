@@ -1,9 +1,11 @@
 import {
   FormattedProduct,
   FormattedProductResponse,
+  PartnerResult,
   QueryResult
 } from '@/@types/api';
 import { FilterMethods, NewReviewData } from '@/@types/shop';
+import { formatPartnerResponse } from '@/shopify/utils';
 import { cache } from 'react';
 import ShopifyBuy from 'shopify-buy';
 
@@ -212,6 +214,26 @@ export const postMail = cache(async (mailData: any): Promise<any> => {
     method: 'POST',
     body: JSON.stringify(mailData)
   });
+
+  const result = await response.json();
+
+  return result;
+});
+
+export const getPartners = cache(async () => {
+  const response = await fetch('/api/partners');
+
+  console.log(response);
+
+  const result = await response.json();
+
+  return result;
+});
+
+export const getPartnerByHandle = cache(async (handle: string): Promise<PartnerResult> => {
+  const response = await fetch(`/api/partners/${handle}`);
+
+  console.log(response);
 
   const result = await response.json();
 

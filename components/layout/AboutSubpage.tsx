@@ -21,119 +21,114 @@ import groupImg from '@/public/assets/images/fbg-group-hunt.webp';
 
 const OurStory: React.FC = () => {
   return (
-    <div className='flex flex-col text-primary py-8 px-4 lg:py-8 lg:px-8 xl:py-16 xl:px-28'>
-      <div className='flex flex-col gap-12'>
-        <div>
-          <h2 className='text-4xl font-semibold -mb-1'>Our Journey</h2>
-          <small className='text-base-300 text-lg'>
-            Full Blast USA’s Story
-          </small>
-        </div>
-        <div className='flex flex-col-reverse lg:flex-row gap-6 lg:gap-24'>
-          <div className='flex flex-col gap-4'>
-            <p>
-              Steve, the founder of Full Blast USA as been a firearms enthusiast
-              since he was a child, and like many people, he struggled with
-              traditional cleaning methods. Whether it was time-consuming or
-              toilsome, he saw there was room for improvement. He wanted to
-              create American Made tools to help make gun cleaning easier.
-            </p>
-            <p>
-              When I was around 9 years old, I actively watched and learned from
-              my father about firearm cleaning. After every trip to the range
-              for target practice, shooting clays, and family hunting trips, my
-              brothers and I would sit around our father as he methodically
-              disassembled and cleaned our guns. With wide, curious eyes, we
-              listened as he taught us the process of disassembling, cleaning,
-              and reassembling a firearm. He explained the names of each part
-              and how cleaning a firearm is more than “what you’re supposed to
-              do.” Dad told us stories about how his father imparted his firearm
-              knowledge in the same way, which later became more ingrained
-              during his time proudly serving in the United States military.
-            </p>
-            <p>
-              Unfortunately, later in life, I abandoned my fathers’ wisdom.
-              Cleaning my firearms took too much time and seemed to be more
-              laborious than it was worth. After hunts, my guns would go right
-              into their case - dirty, at times wet. So far, I hadn’t come into
-              any issues; they always functioned adequately when I needed them.
-              This only encouraged the terrible habit I developed, as I fell
-              into the trap of “cleaning is a myth.”
-            </p>
-            <p>
-              A couple of years later, my neglect finally caught up. The
-              consequences were handed to me on a rust-speckled gun. If that
-              wasn’t upsetting enough, shells were not ejecting as they should.
-              Frustrated, I disassembled my gun for further inspection.
-            </p>
-            <p>
-              I discovered a gut-wrenching truth: the bore was pitted in places
-              from corrosion. This pitting was a devastating problem. I had
-              ruined my prized Ithaca Model 37 12-gauge shotgun, and I was the
-              only one to blame. The fate of my carelessness was the last lesson
-              I would ever need. Since then, I have held onto my father’s
-              wisdom, and since then keeping my firearms in pristine condition
-              has been a priority.
-            </p>
-          </div>
-          <div className='flex flex-col gap-2 lg:h-[480px] w-full lg:min-w-[640px]'>
-            <Image
-              src={steveHsImage}
-              alt='Founder of Full Blast USA, Stephen Hoodecheck'
-              height={480}
-              width={480}
-              className='object-cover object-center lg:min-w-[480px]'
-            />
-            <p className='text-xl font-semibold'>Stephen Hoodecheck</p>
-            <p className='text-sm -mt-4 italic'>Founder, Full Blast USA</p>
-          </div>
-        </div>
-        <Border />
-        <div className='flex w-full justify-center'>
-          <Image
-            src={groupImg}
-            alt=''
-            height={540}
-            width={1080}
-            className='object-cover object-center'
-          />
-        </div>
-        <Border />
+    <div className='flex flex-col gap-12'>
+      <div>
+        <h2 className='text-4xl font-semibold -mb-1'>Our Journey</h2>
+        <small className='text-base-300 text-lg'>Full Blast USA’s Story</small>
+      </div>
+      <div className='flex flex-col-reverse lg:flex-row gap-6 lg:gap-24'>
         <div className='flex flex-col gap-4'>
           <p>
-            For decades, I cleaned my rifles, shotguns, and handguns with
-            traditional tools and products. During one excursion, I noticed a
-            hunting buddy was attempting to use a quick-clean product that was
-            popular at the time. I couldn’t help but notice the commotion going
-            on in my buddy’s world at that moment. He fussed over trying to feed
-            the device through the barrel with one hand while attempting to keep
-            his shotgun inverted.
+            Steve, the founder of Full Blast USA as been a firearms enthusiast
+            since he was a child, and like many people, he struggled with
+            traditional cleaning methods. Whether it was time-consuming or
+            toilsome, he saw there was room for improvement. He wanted to create
+            American Made tools to help make gun cleaning easier.
           </p>
           <p>
-            Becoming annoyed, he attempted an alternate method, laying his gun
-            across his lap, hoping to pull the cord and cleaning material
-            through without all the hassle. As it turned out, he then needed to
-            upend his gun because his reach was not quite long enough to get the
-            job done.
+            When I was around 9 years old, I actively watched and learned from
+            my father about firearm cleaning. After every trip to the range for
+            target practice, shooting clays, and family hunting trips, my
+            brothers and I would sit around our father as he methodically
+            disassembled and cleaned our guns. With wide, curious eyes, we
+            listened as he taught us the process of disassembling, cleaning, and
+            reassembling a firearm. He explained the names of each part and how
+            cleaning a firearm is more than “what you’re supposed to do.” Dad
+            told us stories about how his father imparted his firearm knowledge
+            in the same way, which later became more ingrained during his time
+            proudly serving in the United States military.
           </p>
           <p>
-            Somewhat frustrated over the situation, I kept thinking that there
-            has to be an easier, faster, hassle-free way to clean one’s
-            firearms. I had an urge to solve this problem so I hit the ground
-            running. Several years, many hours of research, exhilarating trials,
-            and defeating errors, finally, the Full-Bore Blast firearm cleaning
-            product was born!
+            Unfortunately, later in life, I abandoned my fathers’ wisdom.
+            Cleaning my firearms took too much time and seemed to be more
+            laborious than it was worth. After hunts, my guns would go right
+            into their case - dirty, at times wet. So far, I hadn’t come into
+            any issues; they always functioned adequately when I needed them.
+            This only encouraged the terrible habit I developed, as I fell into
+            the trap of “cleaning is a myth.”
           </p>
           <p>
-            Then and now I am determined to craft quality products for shooting
-            enthusiasts right here in the USA. The Full-Bore Blast system is a
-            simple, quick, enjoyable way to clean and protect your firearms
-            while meeting the utmost standards of quality and efficiency. I
-            think my dad would be proud of this made in America gun cleaner. And
-            I hope you’ll see and enjoy the benefits of all our innovative
-            firearm products here at Full Blast for years to come.
+            A couple of years later, my neglect finally caught up. The
+            consequences were handed to me on a rust-speckled gun. If that
+            wasn’t upsetting enough, shells were not ejecting as they should.
+            Frustrated, I disassembled my gun for further inspection.
+          </p>
+          <p>
+            I discovered a gut-wrenching truth: the bore was pitted in places
+            from corrosion. This pitting was a devastating problem. I had ruined
+            my prized Ithaca Model 37 12-gauge shotgun, and I was the only one
+            to blame. The fate of my carelessness was the last lesson I would
+            ever need. Since then, I have held onto my father’s wisdom, and
+            since then keeping my firearms in pristine condition has been a
+            priority.
           </p>
         </div>
+        <div className='flex flex-col gap-2 lg:h-[480px] w-full lg:min-w-[640px]'>
+          <Image
+            src={steveHsImage}
+            alt='Founder of Full Blast USA, Stephen Hoodecheck'
+            height={480}
+            width={480}
+            className='object-cover object-center lg:min-w-[480px]'
+          />
+          <p className='text-xl font-semibold'>Stephen Hoodecheck</p>
+          <p className='text-sm -mt-4 italic'>Founder, Full Blast USA</p>
+        </div>
+      </div>
+      <Border />
+      <div className='flex w-full justify-center'>
+        <Image
+          src={groupImg}
+          alt=''
+          height={540}
+          width={1080}
+          className='object-cover object-center'
+        />
+      </div>
+      <Border />
+      <div className='flex flex-col gap-4'>
+        <p>
+          For decades, I cleaned my rifles, shotguns, and handguns with
+          traditional tools and products. During one excursion, I noticed a
+          hunting buddy was attempting to use a quick-clean product that was
+          popular at the time. I couldn’t help but notice the commotion going on
+          in my buddy’s world at that moment. He fussed over trying to feed the
+          device through the barrel with one hand while attempting to keep his
+          shotgun inverted.
+        </p>
+        <p>
+          Becoming annoyed, he attempted an alternate method, laying his gun
+          across his lap, hoping to pull the cord and cleaning material through
+          without all the hassle. As it turned out, he then needed to upend his
+          gun because his reach was not quite long enough to get the job done.
+        </p>
+        <p>
+          Somewhat frustrated over the situation, I kept thinking that there has
+          to be an easier, faster, hassle-free way to clean one’s firearms. I
+          had an urge to solve this problem so I hit the ground running. Several
+          years, many hours of research, exhilarating trials, and defeating
+          errors, finally, the Full-Bore Blast firearm cleaning product was
+          born!
+        </p>
+        <p>
+          Then and now I am determined to craft quality products for shooting
+          enthusiasts right here in the USA. The Full-Bore Blast system is a
+          simple, quick, enjoyable way to clean and protect your firearms while
+          meeting the utmost standards of quality and efficiency. I think my dad
+          would be proud of this made in America gun cleaner. And I hope you’ll
+          see and enjoy the benefits of all our innovative firearm products here
+          at Full Blast for years to come.
+        </p>
       </div>
     </div>
   );
@@ -143,45 +138,43 @@ import womanFiringRange from '@/public/assets/images/fbg-woman-firing-range.jpg'
 
 const OurMission: React.FC = () => {
   return (
-    <div className='flex flex-col text-primary py-8 px-4 lg:py-8 lg:px-8 xl:py-16 xl:px-28'>
-      <ImageWithText
-        imageSrc={womanFiringRange}
-        styles='!p-0 !m-0'
-        alignItems='start'
-        reverse
-      >
-        <div className='flex flex-col gap-4'>
-          <h2 className='text-4xl font-semibold text-base-300'>
-            Our Gun Owners’ Pledge
-          </h2>
-          <p>
-            As dedicated firearm owners, we were always searching for the best
-            products at fair prices. Having no luck in finding gear that
-            provided consistent satisfaction, we decided to make American-made
-            gun cleaning products for all gun enthusiasts. With Full Blast USA
-            innovative products you can be confident the job gets done right,
-            the first time, every time.
-          </p>
-          <p>
-            At Full Blast USA, we seek to revolutionize equipment and outdoor
-            apparel with lightweight, durable and technically advanced purpose.
-            Our materials are mainly sourced here in the United States,
-            establishing jobs for American workers, and promoting the American
-            manufacturing industry. Our pride and value in the people and
-            communities of this great nation runs deep.
-          </p>
-          <p>
-            We are committed to continuous innovation and improvement. Our team
-            is made up of passionate hunters, shooters, and outdoor enthusiasts
-            who understand the unique needs of our customers. We take your
-            feedback seriously and use it to drive our product development. Our
-            journey is one of dedication to quality, service, and the unwavering
-            support of our fellow firearm enthusiasts. Thank you for being a
-            part of the Full Blast USA story.
-          </p>
-        </div>
-      </ImageWithText>
-    </div>
+    <ImageWithText
+      imageSrc={womanFiringRange}
+      styles='!p-0 !m-0'
+      alignItems='start'
+      reverse
+    >
+      <div className='flex flex-col gap-4'>
+        <h2 className='text-4xl font-semibold text-base-300'>
+          Our Gun Owners’ Pledge
+        </h2>
+        <p>
+          As dedicated firearm owners, we were always searching for the best
+          products at fair prices. Having no luck in finding gear that provided
+          consistent satisfaction, we decided to make American-made gun cleaning
+          products for all gun enthusiasts. With Full Blast USA innovative
+          products you can be confident the job gets done right, the first time,
+          every time.
+        </p>
+        <p>
+          At Full Blast USA, we seek to revolutionize equipment and outdoor
+          apparel with lightweight, durable and technically advanced purpose.
+          Our materials are mainly sourced here in the United States,
+          establishing jobs for American workers, and promoting the American
+          manufacturing industry. Our pride and value in the people and
+          communities of this great nation runs deep.
+        </p>
+        <p>
+          We are committed to continuous innovation and improvement. Our team is
+          made up of passionate hunters, shooters, and outdoor enthusiasts who
+          understand the unique needs of our customers. We take your feedback
+          seriously and use it to drive our product development. Our journey is
+          one of dedication to quality, service, and the unwavering support of
+          our fellow firearm enthusiasts. Thank you for being a part of the Full
+          Blast USA story.
+        </p>
+      </div>
+    </ImageWithText>
   );
 };
 
@@ -189,7 +182,7 @@ import howItWorksImg from '@/public/assets/images/fbg-how-it-works.jpg';
 
 const WhyFullBlast: React.FC = () => {
   return (
-    <div className='flex flex-col text-primary py-8 px-4 gap-8 lg:py-8 lg:px-8 xl:py-16 xl:px-28'>
+    <>
       <div>
         <h2 className='text-4xl font-semibold mb-4'>
           If George Washington was still around, he’d use Full Blast​
@@ -222,7 +215,7 @@ const WhyFullBlast: React.FC = () => {
       </div>
       <ImageWithText
         imageSrc={howItWorksImg}
-        styles='!p-0 !m-0'
+        styles='!p-0 !m-0 justify-start'
         alignItems='start'
         reverse
       >
@@ -262,7 +255,7 @@ const WhyFullBlast: React.FC = () => {
           </p>
         </div>
       </ImageWithText>
-    </div>
+    </>
   );
 };
 
@@ -270,51 +263,49 @@ import americanFlagImg from '@/public/assets/images/fbg-american-flag.jpeg';
 
 const OurApproach: React.FC = () => {
   return (
-    <div className='flex flex-col text-primary py-8 px-4 lg:py-8 lg:px-8 xl:py-16 xl:px-28'>
-      <ImageWithText
-        imageSrc={americanFlagImg}
-        styles='!m-0 !p-0'
-        alignItems='start'
-        reverse
-      >
-        <div className='flex flex-col gap-4'>
-          <h2 className='text-4xl font-semibold mb-4'>
-            We Are Proudly ’American First’
-          </h2>
-          <p>
-            We take pride in being part of something greater than us. “American
-            First” and “Made in America” products are how our gun cleaning tools
-            are made and chosen. In doing this, we can give back to those who
-            gave so much to us by providing jobs and growing the American
-            workforce. Being proudly American is not a statement we use
-            thoughtlessly. Our pride is found in the brave individuals who left
-            behind families to fight for our freedom and the visionaries who
-            took risks and sacrificed their time and energy, making it possible
-            for us to create and manufacture our dreams.
-          </p>
-          <p>
-            “American Made” or “Made in the USA” products are granted this title
-            when they are manufactured and produced in the United States. The
-            Federal Trade Commission guidelines what criteria must be met in
-            order for a product to display a “Made in the USA” label. When not
-            all standards are met, products may instead be assembled in the
-            states, and labeled with an “Assembled in the USA” label. “Made in
-            the USA” is an unwritten-yet-understood promise of quality,
-            patriotism, and job security for American workers.
-          </p>
-          <p>
-            Our “Stars & Stripes” rating system is designed to guide you in
-            buying American-made products. Certain things cannot be produced
-            entirely in the states with raw materials strictly sourced from our
-            lands, primarily because of restrictions or costs. We want to
-            provide you with the best equipment that is 100% crafted in America,
-            and at the most affordable prices, but this is not always possible.
-            Therefore, our system categorizes the degree to which each product
-            is American-made.
-          </p>
-        </div>
-      </ImageWithText>
-    </div>
+    <ImageWithText
+      imageSrc={americanFlagImg}
+      styles='!m-0 !p-0'
+      alignItems='start'
+      reverse
+    >
+      <div className='flex flex-col gap-4'>
+        <h2 className='text-4xl font-semibold mb-4'>
+          We Are Proudly ’American First’
+        </h2>
+        <p>
+          We take pride in being part of something greater than us. “American
+          First” and “Made in America” products are how our gun cleaning tools
+          are made and chosen. In doing this, we can give back to those who gave
+          so much to us by providing jobs and growing the American workforce.
+          Being proudly American is not a statement we use thoughtlessly. Our
+          pride is found in the brave individuals who left behind families to
+          fight for our freedom and the visionaries who took risks and
+          sacrificed their time and energy, making it possible for us to create
+          and manufacture our dreams.
+        </p>
+        <p>
+          “American Made” or “Made in the USA” products are granted this title
+          when they are manufactured and produced in the United States. The
+          Federal Trade Commission guidelines what criteria must be met in order
+          for a product to display a “Made in the USA” label. When not all
+          standards are met, products may instead be assembled in the states,
+          and labeled with an “Assembled in the USA” label. “Made in the USA” is
+          an unwritten-yet-understood promise of quality, patriotism, and job
+          security for American workers.
+        </p>
+        <p>
+          Our “Stars & Stripes” rating system is designed to guide you in buying
+          American-made products. Certain things cannot be produced entirely in
+          the states with raw materials strictly sourced from our lands,
+          primarily because of restrictions or costs. We want to provide you
+          with the best equipment that is 100% crafted in America, and at the
+          most affordable prices, but this is not always possible. Therefore,
+          our system categorizes the degree to which each product is
+          American-made.
+        </p>
+      </div>
+    </ImageWithText>
   );
 };
 
@@ -324,27 +315,26 @@ import CausesGallery from './CausesGallery';
 
 const Maintenance: React.FC = () => {
   return (
-    <div className='flex flex-col text-primary gap-8 py-8 px-4 lg:py-8 lg:px-8 xl:py-16 xl:px-28'>
-      <div className='flex flex-col gap-4'>
-        <h2 className='text-4xl font-semibold mb-4'>
-          Why Cleaning Your Gun is Important
-        </h2>
-        <p>
-          Owning a firearm comes with a lot of responsibility. It doesn’t matter
-          if your single gun (or secret bunker/armory) is for hunting, safety,
-          sport, or collection, the majority of information discussed usually
-          revolves around safety – and rightly so. The topic that often gets
-          overlooked is the importance of maintenance and cleaning. While it may
-          seem like a simple part of gun ownership, it consists of more than
-          just “what you’re supposed to do.” Here are 7 reasons that look into
-          the importance to maintain your firearm and gun cleaning, and what you
-          gain from it as well.
-        </p>
-      </div>
+    <div className='flex flex-col gap-4'>
+      <h2 className='text-4xl font-semibold mb-4'>
+        Why Cleaning Your Gun is Important
+      </h2>
+      <p>
+        Owning a firearm comes with a lot of responsibility. It doesn’t matter
+        if your single gun (or secret bunker/armory) is for hunting, safety,
+        sport, or collection, the majority of information discussed usually
+        revolves around safety – and rightly so. The topic that often gets
+        overlooked is the importance of maintenance and cleaning. While it may
+        seem like a simple part of gun ownership, it consists of more than just
+        “what you’re supposed to do.” Here are 7 reasons that look into the
+        importance to maintain your firearm and gun cleaning, and what you gain
+        from it as well.
+      </p>
+
       <Border />
       <ImageWithText
         imageSrc={cleaningImage}
-        styles='!m-0 !p-0'
+        styles='!m-0 !p-0 justify-start'
         alignItems='start'
         reverse
       >
@@ -537,35 +527,32 @@ const Maintenance: React.FC = () => {
 
 const OurCauses: React.FC = () => {
   return (
-    <div className='flex flex-col text-primary gap-8 py-8 px-4 lg:py-8 lg:px-8 xl:py-16 xl:px-28'>
-      <div className='flex flex-col xl:flex-row gap-16 2xl:gap-48'>
-        <div className='flex flex-col gap-4'>
-          <h2 className='text-4xl font-semibold mb-4'>
-            Causes That We Proudly Support
-          </h2>
-          <p>
-            At Full Blast, we proudly stand by the causes we support: Ducks
-            Unlimited, Pheasants Forever, Autism Speaks, and Habitat for
-            Humanity.
-          </p>
-          <p>
-            Our lands have been looked after on the homefront through rigorous
-            conservation efforts made by preservation groups{' '}
-            <b>Ducks Unlimited</b> and <b>Pheasants Forever</b>. Both
-            organizations lead the way in education, advocacy, and determination
-            for future generations to explore the outdoors.
-          </p>
-          <p>
-            <b>Autism Speaks</b> creates pathways for children and adults
-            throughout the spectrum and provides them the support, skills, and
-            medical interventions to reach their full potential in life. For
-            more than three decades, <b>Habitat for Humanity</b> has been
-            changing the lives of families through affordable housing, disaster
-            relief, and more.
-          </p>
-        </div>
-        <CausesGallery />
+    <div className='flex flex-col xl:flex-row gap-16 2xl:gap-48'>
+      <div className='flex flex-col gap-4'>
+        <h2 className='text-4xl font-semibold mb-4'>
+          Causes That We Proudly Support
+        </h2>
+        <p>
+          At Full Blast, we proudly stand by the causes we support: Ducks
+          Unlimited, Pheasants Forever, Autism Speaks, and Habitat for Humanity.
+        </p>
+        <p>
+          Our lands have been looked after on the homefront through rigorous
+          conservation efforts made by preservation groups{' '}
+          <b>Ducks Unlimited</b> and <b>Pheasants Forever</b>. Both
+          organizations lead the way in education, advocacy, and determination
+          for future generations to explore the outdoors.
+        </p>
+        <p>
+          <b>Autism Speaks</b> creates pathways for children and adults
+          throughout the spectrum and provides them the support, skills, and
+          medical interventions to reach their full potential in life. For more
+          than three decades, <b>Habitat for Humanity</b> has been changing the
+          lives of families through affordable housing, disaster relief, and
+          more.
+        </p>
       </div>
+      <CausesGallery />
     </div>
   );
 };

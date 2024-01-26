@@ -4,7 +4,10 @@ import {
   BlogsLayoutContentResponse,
   BlogsPageContentResponse,
   ContactPageContentResponse,
-  HomeContentResponse
+  HomeContentResponse,
+  PartersListResponse,
+  PartnerResponse,
+  PartnerResult
 } from '@/@types/api';
 import adminClient from '../shopify-admin-client';
 import {
@@ -14,7 +17,9 @@ import {
   formatBlogsLayoutContentResponse,
   formatBlogsPageContentResponse,
   formatContactPageContentResponse,
-  formatHomeContentResponse
+  formatHomeContentResponse,
+  formatPartnerResponse,
+  formatPartnersListResponse
 } from '../utils';
 
 export const fetchHomeContent = async () => {
@@ -218,6 +223,115 @@ export const fetchContactLayoutContent = async () => {
   })) as ContactPageContentResponse;
 
   const result = formatContactPageContentResponse(response);
+
+  return result;
+};
+
+export const fetchPartnersList = async () => {
+  const data = `{
+    metaobjectByHandle(handle: {type: "partners", handle: "partners-list" }) {
+      fields {
+        key
+        value
+        references(first: 12) {
+          nodes {
+            ... on Metaobject {
+              handle
+              name: field(key: "name") {
+                value
+              }
+              logo: field (key: "logo") {
+                reference {
+                  ... on MediaImage {
+                    image {
+                      altText
+                      url
+                    }
+                  }
+                }
+              }
+              excerpt: field (key: "excerpt") {
+                value
+              }
+            }
+          }
+        }
+      }
+    }
+  }`;
+
+  const response = (await adminClient.query({ data })) as PartersListResponse;
+
+  const result = formatPartnersListResponse(response);
+
+  return result;
+};
+
+export const fetchPartnerByHandle = async (
+  handle: string
+): Promise<PartnerResult> => {
+  const data = `{
+    metaobjectByHandle(handle: {type: "product_partner", handle: "${handle}"}) {
+      name: field(key: "name") {
+        value
+      }
+      excerpt: field(key: "excerpt") {
+        value
+      }
+      about: field(key: "about_the_partner") {
+        value
+      }
+      logo: field(key: "logo") {
+        reference {
+          ... on MediaImage {
+            image {
+              altText
+              url
+            }
+          }
+        }
+      }
+      hero: field(key: "banner_image") {
+        reference {
+          ... on MediaImage {
+            image {
+              altText
+              url
+            }
+          }
+        }
+      }
+      featuredImg: field(key: "featured") {
+        reference {
+          ... on MediaImage {
+            image {
+              altText
+              url
+            }
+          }
+        }
+      }
+      productsTag: field(key: "products_tag") {
+        value
+      }
+      location: field(key: "location") {
+        value
+      }
+      phoneNumber: field(key: "phone_number") {
+        value
+      }
+      email: field(key: "email") {
+        value
+      }
+      websiteUrl: field(key: "website_url") {
+        value
+      }
+    }
+  }`;
+
+  const response = (await adminClient.query({ data })) as PartnerResponse;
+
+  const result = formatPartnerResponse(response);
 
   return result;
 };

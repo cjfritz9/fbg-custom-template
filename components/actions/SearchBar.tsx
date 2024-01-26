@@ -10,6 +10,7 @@ import { QueryResult } from '@/@types/api';
 import Image from 'next/image';
 import Border from '../layout/Border';
 import { SearchBarProps } from '@/@types/props';
+import Link from 'next/link';
 
 /** Implements Combobox from '@headlessui/react'
  *
@@ -23,10 +24,6 @@ const SearchBar: React.FC<SearchBarProps> = ({ variant }) => {
   const [isSearching, setIsSearching] = useState(false);
   const [products, setProducts] = useState<QueryResult[]>([]);
   const [debouncedQuery] = useDebounce(query, 300);
-
-  const handleChange = (slug: string) => {
-    router.push(`/shop/${slug}`);
-  };
 
   useEffect(() => {
     if (debouncedQuery.length > 1) {
@@ -71,7 +68,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ variant }) => {
           {isSearching && (
             <div className='loading loading-spinner loading-md text-secondary absolute right-8 top-3' />
           )}
-          <Combobox onChange={handleChange}>
+          <Combobox>
             <Combobox.Input
               placeholder='Search...'
               className={`input input-bordered border-primary bg-primary-content w-96 xl:w-[560px]
@@ -91,30 +88,32 @@ const SearchBar: React.FC<SearchBarProps> = ({ variant }) => {
                   <Border />
                   <Combobox.Option key={product.handle} value={product.handle}>
                     {({ active }) => (
-                      <span
-                        className={`flex gap-4 h-20 items-center w-full text-xl text-primary ${
-                          active && !noResults
-                            ? 'bg-neutral text-secondary'
-                            : 'bg-base-200'
-                        }`}
-                      >
-                        {!noResults && (
-                          <Image
-                            src={product.image}
-                            alt={`Search result image for ${product.title}`}
-                            height={80}
-                            width={80}
-                            className='w-20 h-20 object-cover object-center'
-                          />
-                        )}
-                        <p
-                          className={`truncate pr-2 ${
-                            noResults && 'text-center w-full'
+                      <Link href={`/shop/${product.handle}`} prefetch={active}>
+                        <span
+                          className={`flex gap-4 h-20 items-center w-full text-xl text-primary ${
+                            active && !noResults
+                              ? 'bg-neutral text-secondary'
+                              : 'bg-base-200'
                           }`}
                         >
-                          {product.title}
-                        </p>
-                      </span>
+                          {!noResults && (
+                            <Image
+                              src={product.image}
+                              alt={`Search result image for ${product.title}`}
+                              height={80}
+                              width={80}
+                              className='w-20 h-20 object-cover object-center'
+                            />
+                          )}
+                          <p
+                            className={`truncate pr-2 ${
+                              noResults && 'text-center w-full'
+                            }`}
+                          >
+                            {product.title}
+                          </p>
+                        </span>
+                      </Link>
                     )}
                   </Combobox.Option>
                 </>
@@ -130,10 +129,10 @@ const SearchBar: React.FC<SearchBarProps> = ({ variant }) => {
     return (
       <div className='form-control w-full mb-4'>
         <div className='relative w-full'>
-          <Combobox onChange={handleChange}>
-          {isSearching && (
-            <div className='loading loading-spinner loading-md text-secondary absolute right-4 top-3' />
-          )}
+          <Combobox>
+            {isSearching && (
+              <div className='loading loading-spinner loading-md text-secondary absolute right-4 top-3' />
+            )}
             <Combobox.Input
               placeholder='Search...'
               className={`input input-bordered border-primary bg-primary-content w-full`}
@@ -152,19 +151,21 @@ const SearchBar: React.FC<SearchBarProps> = ({ variant }) => {
                   <Border />
                   <Combobox.Option key={product.handle} value={product.handle}>
                     {({ active }) => (
-                      <span
-                        className={`flex gap-4 h-8 items-center text-md text-primary bg-base-100 w-full ${
-                          active && !noResults ? 'text-secondary' : ''
-                        }`}
-                      >
-                        <p
-                          className={`truncate pr-2 ${
-                            noResults && 'text-center w-full'
+                      <Link href={`/shop/${product.handle}`} prefetch={active}>
+                        <span
+                          className={`flex gap-4 h-8 items-center text-md text-primary bg-base-100 w-full ${
+                            active && !noResults ? 'text-secondary' : ''
                           }`}
                         >
-                          {product.title}
-                        </p>
-                      </span>
+                          <p
+                            className={`truncate pr-2 ${
+                              noResults && 'text-center w-full'
+                            }`}
+                          >
+                            {product.title}
+                          </p>
+                        </span>
+                      </Link>
                     )}
                   </Combobox.Option>
                 </>

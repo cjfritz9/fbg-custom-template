@@ -9,3 +9,9 @@ export interface BlogMetadata {
     handle: string;
   }
 }
+
+export interface PartnerMetadata {
+  params: {
+    handle: string;
+  }
+}

@@ -26,7 +26,7 @@ const ProductImages: React.FC<ProductImagesProps> = ({ images }) => {
   return (
     <div className='max-w-[90dvw] flex flex-col-reverse xl:flex-row justify-between h-fit lg:top-16 lg:sticky gap-8'>
       <ThumbnailImages images={images} onUpdateImage={handleThumbnailClick} />
-      <PrimaryImage currentImage={images[imageIndex]} images={images} />
+      <PrimaryImage index={imageIndex} currentImage={images[imageIndex]} images={images} />
     </div>
   );
 };
@@ -86,7 +86,8 @@ const ThumbnailImages: React.FC<ThumbnailImagesProps> = ({
 
 const PrimaryImage: React.FC<PrimaryImageProps> = ({
   currentImage,
-  images
+  images,
+  index
 }) => {
   const { openLightbox, renderLightbox } = useLightbox();
   const thumbnailsRef = useRef(null);
@@ -95,7 +96,7 @@ const PrimaryImage: React.FC<PrimaryImageProps> = ({
 
   return (
     <>
-      {renderLightbox({ slides })}
+      {renderLightbox({ slides, index })}
       <div className='flex justify-center max-h-[656px] lg:w-[556px] xl:w-[720px] 2xl:w-[848px]'>
         <Image
           priority

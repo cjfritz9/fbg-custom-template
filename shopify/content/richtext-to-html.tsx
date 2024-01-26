@@ -72,7 +72,7 @@ const ShopifyRichText = (
   }
 
   if (node.type === 'paragraph') {
-    return <p className='mb-4'>{renderChildren()}</p>;
+    return <p className='mb-2'>{renderChildren()}</p>;
   }
 
   if (node.type === 'list-item') {
@@ -92,11 +92,11 @@ const ShopifyRichText = (
       .filter(({ type }) => node[type])
       .map(({ className }) => className)
       .join(' ');
-
-    if (nodeClassName === '') {
-      return node.value;
-    }
-    return <span className={nodeClassName}>{node.value}</span>;
+    return (
+      <span className={`${nodeClassName ?? ''} ${node.bold ? 'font-bold' : ''}`}>
+        {node.value}
+      </span>
+    );
   }
 
   if (node.type === 'heading') {
@@ -104,7 +104,9 @@ const ShopifyRichText = (
     const fontSize = getFontSize(node.level);
 
     return (
-      <HeadingTag className={`text-${fontSize} font-bold py-4`}>{renderChildren()}</HeadingTag>
+      <HeadingTag className={`text-${fontSize} font-bold py-4`}>
+        {renderChildren()}
+      </HeadingTag>
     );
   }
 

@@ -54,7 +54,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
               <ReviewStars reviews={reviews} />
             </div>
             <div className='py-2'></div>
-            <h2 className='card-title text-2xl'>{title}</h2>
+            <h3 className='card-title text-2xl'>{title}</h3>
           </div>
           <div className='card-actions w-full flex gap-4'>
             <Button styles='btn-primary grow btn-outline'>View</Button>
