@@ -13,14 +13,22 @@ export const CACHE_TAG_PRODUCTS = 'products';
 export const CACHE_TAG_METAOBJECTS = 'metaobjects';
 
 export const getHomeContent = cache(async () => {
-  const response = await fetch(`/api/content/home`);
+  const response = await fetch(`/api/content/home`, {
+    next: {
+      tags: [CACHE_TAG_METAOBJECTS]
+    }
+  });
   const result = await response.json();
 
   return result;
 });
 
 export const getAboutContent = cache(async () => {
-  const response = await fetch(`${process.env.BASE_API_URL}/content/about`);
+  const response = await fetch(`${process.env.BASE_API_URL}/content/about`, {
+    next: {
+      tags: [CACHE_TAG_METAOBJECTS]
+    }
+  });
   const result = await response.json();
 
   return result;
@@ -221,7 +229,11 @@ export const postMail = cache(async (mailData: any): Promise<any> => {
 });
 
 export const getPartners = cache(async () => {
-  const response = await fetch('/api/partners');
+  const response = await fetch('/api/partners', {
+    next: {
+      tags: [CACHE_TAG_METAOBJECTS]
+    }
+  });
 
   console.log(response);
 
@@ -230,12 +242,18 @@ export const getPartners = cache(async () => {
   return result;
 });
 
-export const getPartnerByHandle = cache(async (handle: string): Promise<PartnerResult> => {
-  const response = await fetch(`/api/partners/${handle}`);
+export const getPartnerByHandle = cache(
+  async (handle: string): Promise<PartnerResult> => {
+    const response = await fetch(`/api/partners/${handle}`, {
+      next: {
+        tags: [CACHE_TAG_METAOBJECTS]
+      }
+    });
 
-  console.log(response);
+    console.log(response);
 
-  const result = await response.json();
+    const result = await response.json();
 
-  return result;
-});
+    return result;
+  }
+);
