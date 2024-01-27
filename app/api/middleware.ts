@@ -4,7 +4,7 @@ import { NextRequest } from 'next/server';
 export async function middleware(req: NextRequest) {
   const data = await req.text();
 
-  console.log(data)
+  console.log(data);
 
   console.info('Webhook received...');
   const hmacHeader = req.headers.get('X-Shopify-Hmac-Sha256');
@@ -26,6 +26,6 @@ export async function middleware(req: NextRequest) {
 }
 
 // See "Matching Paths" below to learn more
-// export const config = {
-//   matcher: ['/webhooks/shopify-events/:path*', '/webhooks/shopify-events/:path*']
-// };
+export const config = {
+  matcher: '/webhooks/shopify-events/:path*'
+};
