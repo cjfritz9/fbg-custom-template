@@ -27,5 +27,5 @@ export async function middleware(req: NextRequest) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: '/webhooks/shopify-events/:path*'
+  matcher: '/webhooks/shopify-events/metaobjects'
 };
