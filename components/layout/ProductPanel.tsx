@@ -6,16 +6,13 @@ import ReviewStars from '../UI/ReviewStars';
 import Border from './Border';
 import Button from '../actions/Button';
 import { Listbox, Transition } from '@headlessui/react';
-import {
-  HiChevronUpDown,
-  HiOutlineCheckBadge
-} from 'react-icons/hi2';
+import { HiChevronUpDown, HiOutlineCheckBadge } from 'react-icons/hi2';
 import Accordion from '../actions/Accordion';
 import { CartContext } from '@/context/CartContext';
 import { CartInterface, ProductVariant } from '@/@types/shop';
 
 /** Implements Listbox from '@headlessui/react'
- * 
+ *
  * Uses listbox conditionally when a product has more than one variant
  *
  * https://headlessui.com/react/listbox
@@ -105,11 +102,15 @@ const ProductPanel: React.FC<ProductPanelProps> = ({ product }) => {
                   </Button>
                 </div>
               </div>
+            ) : product.status === 'DRAFT' ? (
+              <Button styles={`btn-disabled !w-full h-16 font-bold text-lg`}>
+                OUT OF STOCK
+              </Button>
             ) : (
-              <div
+                  <div
                 onClick={() => addLineItem(checkout!.id, selectedVariant.id, 1)}
               >
-                <Button styles='btn-primary !w-full h-16 font-bold text-lg'>
+                <Button styles={`btn-primary !w-full h-16 font-bold text-lg`}>
                   ADD TO CART
                 </Button>
               </div>

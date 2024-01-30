@@ -9,7 +9,7 @@ import adminClient from '../shopify-admin-client';
 import {
   formatProductResponse,
   formatProductsByQueryResponse,
-  formatProductsResponse,
+  formatProductsResponse
 } from '../utils';
 import { GetProductsParams } from '@/@types/shopify';
 
@@ -58,7 +58,9 @@ const fetchPrevPage = async (cursor: string) => {
 
 const fetchNextPage = async (cursor: string | null) => {
   const data = `{
-    products(first: 6, after: ${cursor ? `"${cursor}"` : null}) {
+    products(first: 6, after: ${
+      cursor ? `"${cursor}"` : null
+    }, query: "status:ACTIVE") {
       nodes {
         title
         handle
@@ -163,6 +165,7 @@ export const fetchProductByHandle = async (handle: string) => {
     productByHandle(handle: "${handle}") {
       title
       handle
+      status
       description
       images(first: 5) {
         nodes {

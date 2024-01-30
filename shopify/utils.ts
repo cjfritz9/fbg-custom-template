@@ -196,6 +196,7 @@ export const formatProductResponse = (
   return {
     title: rawProductData.title,
     handle: rawProductData.handle,
+    status: rawProductData.status,
     description: rawProductData.description,
     variants: rawProductData.variants?.nodes.map((variant) => ({
       id: variant.id,

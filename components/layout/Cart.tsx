@@ -19,9 +19,9 @@ import Link from 'next/link';
 import { useDebounce } from 'use-debounce';
 
 const Cart: React.FC = () => {
-  const { showCart, checkout, openCart, closeCart } = useContext(
-    CartContext
-  ) as CartInterface;
+  const { showCart, checkout, removeLineItem, openCart, closeCart } =
+    useContext(CartContext) as CartInterface;
+  
   return (
     <div className='drawer drawer-end w-fit'>
       <input
@@ -58,9 +58,13 @@ const Cart: React.FC = () => {
           <div className='flex flex-col justify-between h-full content-between'>
             <ul className='!text-sm p-4 px-8'>
               {checkout && checkout.lineItems.length > 0 ? (
-                checkout.lineItems.map((item) => (
-                  <LineItem key={item.id} item={item} />
-                ))
+                checkout.lineItems.map((item) => {
+                  if (item.variant) {
+                    return <LineItem key={item.id} item={item} />;
+                  } else {
+                    removeLineItem(checkout.id, [item.id]);
+                  }
+                })
               ) : (
                 <li className='text-center'>No Items In Cart</li>
               )}

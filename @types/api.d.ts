@@ -26,6 +26,7 @@ export interface ShopifyImage {
 export interface Product {
   title: string;
   handle: string;
+  status?: string;
   description: string;
   tags?: string[];
   variants: {
@@ -223,6 +224,7 @@ export interface ProductsByQueryResponse {
 export interface FormattedProduct {
   title: string;
   handle: string;
+  status?: string;
   description: string;
   tags?: string[];
   images: { url: string; altText: string }[];
