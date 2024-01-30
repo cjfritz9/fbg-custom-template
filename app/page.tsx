@@ -7,9 +7,10 @@ import ProductGallery from '@/components/layout/ProductGallery';
 import Hero from '@/components/layout/Hero';
 import { fetchHomeContent } from '@/shopify/content/content.model';
 import DevDisclaimerModal from '@/components/UI/DevDisclaimerModal';
+import { getHomeContent } from './api/requests';
 
 const Home: React.FC = async () => {
-  const content = await fetchHomeContent();
+  const content = await getHomeContent();
 
   return (
     <main>

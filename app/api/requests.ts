@@ -13,7 +13,7 @@ export const CACHE_TAG_PRODUCTS = 'products';
 export const CACHE_TAG_METAOBJECTS = 'metaobjects';
 
 export const getHomeContent = cache(async () => {
-  const response = await fetch(`/api/content/home`, {
+  const response = await fetch(`${process.env.BASE_API_URL}/content/home`, {
     next: {
       tags: [CACHE_TAG_METAOBJECTS]
     }
