@@ -235,8 +235,6 @@ export const getPartners = cache(async () => {
     }
   });
 
-  console.log(response);
-
   const result = await response.json();
 
   return result;
@@ -249,8 +247,6 @@ export const getPartnerByHandle = cache(
         tags: [CACHE_TAG_METAOBJECTS]
       }
     });
-
-    console.log(response);
 
     const result = await response.json();
 

@@ -5,7 +5,6 @@ export const POST = async (req: NextRequest) => {
   const body = await req.json();
   if (body && body.email) {
     const response = await postNewCustomerEmailSignup(body.email);
-    console.log(response)
     return NextResponse.json(response);
   } else {
     return NextResponse.json(
