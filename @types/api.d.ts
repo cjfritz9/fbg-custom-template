@@ -177,6 +177,25 @@ export interface ProductsResponse {
   };
 }
 
+export interface CustomerResponse {
+  body: {
+    data: {
+      customerCreate: {
+        customer: {
+          email: string;
+          id: string;
+          emailMarketingConsent: {
+            marketingOptInLevel: string;
+            marketingState: string;
+            consentUpdatedAt: string;
+          };
+        } | null;
+        userErrors: any[];
+      };
+    };
+  };
+}
+
 export interface ProductByHandleResponse {
   body: {
     data: {

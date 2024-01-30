@@ -277,8 +277,20 @@ export const formatPhoneNumber = (phoneNumber: string): string => {
 
 export const formatWebsiteUrl = (websiteUrl: string): string => {
   if (websiteUrl.startsWith('https://')) {
-    return websiteUrl.slice(8)
+    return websiteUrl.slice(8);
   } else {
-    return websiteUrl.slice(7)
+    return websiteUrl.slice(7);
   }
-}
+};
+
+export const validateEmail = (email: string) => {
+  if (
+    email.includes('.') &&
+    email.includes('@') &&
+    email.lastIndexOf('.') < email.length - 2
+  ) {
+    return { isValid: true };
+  } else {
+    return { isValid: false };
+  }
+};
