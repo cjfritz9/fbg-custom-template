@@ -39,9 +39,12 @@ export const fetchHomeContent = async () => {
       }
     }
   }`;
+
   const response = (await adminClient.query({
     data
   })) as HomeContentResponse;
+
+  console.log(response)
 
   const result = formatHomeContentResponse(response);
 

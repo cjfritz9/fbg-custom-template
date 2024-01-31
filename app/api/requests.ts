@@ -13,7 +13,7 @@ export const CACHE_TAG_PRODUCTS = 'products';
 export const CACHE_TAG_METAOBJECTS = 'metaobjects';
 
 export const getHomeContent = cache(async () => {
-  const response = await fetch(`${process.env.BASE_API_URL}/content/home`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/content/home`, {
     next: {
       tags: [CACHE_TAG_METAOBJECTS]
     }
@@ -24,7 +24,7 @@ export const getHomeContent = cache(async () => {
 });
 
 export const getAboutContent = cache(async () => {
-  const response = await fetch(`${process.env.BASE_API_URL}/content/about`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_API_URL}/content/about`, {
     next: {
       tags: [CACHE_TAG_METAOBJECTS]
     }
@@ -63,7 +63,7 @@ export const getPaginatedProducts = cache(
 export const getProductByHandle = cache(
   async (handle: string): Promise<FormattedProduct | undefined> => {
     const response = await fetch(
-      `${process.env.BASE_API_URL}/products/${handle}`,
+      `${process.env.NEXT_PUBLIC_BASE_API_URL}/products/${handle}`,
       {
         next: {
           tags: [CACHE_TAG_PRODUCTS]

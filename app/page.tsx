@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '@/components/actions/Button';
 import Border from '@/components/layout/Border';
 import ImageWithText from '@/components/layout/ImageWithText';
 import ProductGallery from '@/components/layout/ProductGallery';
-// import RewardsBanner from '@/components/layout/RewardsBanner';
 import Hero from '@/components/layout/Hero';
-import { fetchHomeContent } from '@/shopify/content/content.model';
 import DevDisclaimerModal from '@/components/UI/DevDisclaimerModal';
+import { getHomeContent } from './api/requests';
+
+export const dynamic = 'force-dynamic'
 
 const Home: React.FC = async () => {
-  const content = await fetchHomeContent();
+  const content = await getHomeContent();
 
   return (
     <main>
