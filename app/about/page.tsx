@@ -4,6 +4,8 @@ import { fetchAboutContent } from '@/shopify/content/content.model';
 import Hero from '@/components/layout/Hero';
 import { notFound } from 'next/navigation';
 
+export const dynamic = 'force-dynamic'
+
 const AboutPage: React.FC = async () => {
   const content = await fetchAboutContent();
   if (!content) return notFound();

@@ -1,9 +1,11 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { IoMdDownload } from 'react-icons/io';
 
 const DevDisclaimerModal: React.FC = () => {
+  const [displayModal, setDisplayModal] = useState(false);
+
   const handleDownload = () => {
     const ICS_URL = 'FullBlastUSALaunchDayEvent.ics';
     const link = document.createElement('a');
@@ -15,8 +17,15 @@ const DevDisclaimerModal: React.FC = () => {
   };
 
   useEffect(() => {
-    //@ts-ignore
-    document.getElementById('dev-disclaimer').showModal();
+    const hasSeenDisclaimer = localStorage.getItem('dev_disclaimer');
+
+    if (hasSeenDisclaimer === 'true') {
+      return;
+    } else {
+      //@ts-ignore
+      document.getElementById('dev-disclaimer').showModal();
+      localStorage.setItem('dev_disclaimer', 'true');
+    }
   }, []);
 
   return (
