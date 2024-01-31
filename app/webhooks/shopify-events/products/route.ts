@@ -6,8 +6,6 @@ import crypto from 'crypto';
 export const POST = async (req: NextRequest) => {
   const data = await req.text();
 
-  console.log(data);
-
   console.info('Webhook received...');
   const hmacHeader = req.headers.get('X-Shopify-Hmac-Sha256');
   const digest = crypto

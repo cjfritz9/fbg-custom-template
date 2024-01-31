@@ -260,7 +260,6 @@ export const formatPartnerResponse = (res: PartnerResponse): PartnerResult => {
 // STOREFRONT FUNCTIONS
 
 export const formatAddressForGoogle = (address: string): string => {
-  console.log(encodeURIComponent(address));
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
     address
   )}`;

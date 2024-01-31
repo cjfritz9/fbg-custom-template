@@ -21,8 +21,6 @@ const PartnerPage: React.FC<PartnerMetadata> = async ({
   const content = await fetchPartnerByHandle(handle);
   if (!content) return notFound();
 
-  console.log(JSON.parse(content.about));
-
   return (
     <div>
       <Hero title={content.name} image={content.hero} slim />

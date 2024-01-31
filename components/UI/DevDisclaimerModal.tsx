@@ -34,7 +34,7 @@ const DevDisclaimerModal: React.FC = () => {
             testing purposes only.
           </p>
           <p className='py-4'>
-            Please join us when we enable purchases on January 15th!
+            Please join us when we enable purchases in February, 2024!
           </p>
           <span
             className='flex gap-2 text-md items-center cursor-pointer py-4 text-blue-600'

@@ -44,8 +44,6 @@ export const fetchHomeContent = async () => {
     data
   })) as HomeContentResponse;
 
-  console.log(response)
-
   const result = formatHomeContentResponse(response);
 
   return result;
