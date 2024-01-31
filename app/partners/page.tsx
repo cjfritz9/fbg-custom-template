@@ -10,8 +10,6 @@ import PartnerCard, {
 import { PartnerCardProps } from '@/@types/props';
 import Border from '@/components/layout/Border';
 
-export const dynamic = 'force-dynamic';
-
 const PartnersPage: React.FC = () => {
   const [partners, setPartners] = useState<PartnerCardProps[]>([]);
   const [isLoading, setIsLoading] = useState(true);
